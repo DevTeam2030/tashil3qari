@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    <string name="app_name">Tashil</string>-->
+<!--    <string name="facebook_app_id">1040585093579655</string>-->
+<!--    <string name="fb_login_protocol_scheme">fb1040585093579655</string>-->
+<!--    <string name="facebook_client_token">71523e6644bce67257c08e140e7f7395</string>-->
+
+    <string name="app_name">Tashil</string>
+    <string name="facebook_app_id">3244352379228551</string>
+    <string name="fb_login_protocol_scheme">fb3244352379228551</string>
+    <string name="facebook_client_token">3a2c8e743d27e645d1da34f1ed80dc26</string>
+
+
+
+</resources>

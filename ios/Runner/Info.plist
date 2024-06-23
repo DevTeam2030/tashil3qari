@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>com.tashil.akari</string>
+	</array>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>تسهيل عقارى</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>ar</string>
+	</array>
+	<key>CFBundleName</key>
+	<string>تسهيل عقارى</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(FLUTTER_BUILD_NAME)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.tashil.akari</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb3244352379228551</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.tashil.akari</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.1023870718730-kaqhi8if7ecn5qtg1qjbm1ihbjuk4skm</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.tashil.akari</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.tashil.akari</string>
+			</array>
+		</dict>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>FacebookAppID</key>
+	<string>3244352379228551</string>
+	<key>FacebookClientToken</key>
+	<string>3a2c8e743d27e645d1da34f1ed80dc26</string>
+	<key>FacebookDisplayName</key>
+	<string>tashil</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+	<key>FirebaseDeepLinkPasteboardRetrievalEnabled</key>
+	<false/>
+	<key>FirebaseDynamicLinksCustomDomains</key>
+	<array>
+		<string>https://tashilakariapp.page.link</string>
+	</array>
+	<key>FirebaseScreenReportingEnabled</key>
+	<true/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+
+		           <string>comgooglemaps</string>
+                        <string>baidumap</string>
+                        <string>iosamap</string>
+                        <string>waze</string>
+                        <string>yandexmaps</string>
+                        <string>yandexnavi</string>
+                        <string>citymapper</string>
+                        <string>mapswithme</string>
+                        <string>osmandmaps</string>
+                        <string>dgis</string>
+                        <string>qqmap</string>
+                        <string>here-location</string>
+                        <string>tomtomgo</string>
+                        <string>https</string>
+                         <string>http</string>
+                          <string>fbapi</string>
+                          <string>sms</string>
+                          <string>tel</string>
+                          <string>fb-messenger-share-api</string>
+	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>MKDirectionsApplicationSupportedModes</key>
+	<array/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>تسهيل عقارى app wants to access your camera to allow you to upload photos to products that appear on our app</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>تسهيل عقارى app wants to access your location to know your exactly location as home,office,etc to deliver the products you bought it from our app to your location</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>تسهيل عقارى app wants to access your location to know your exactly location as home,office,etc to deliver the products you bought it from our app to your location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>تسهيل عقارى app wants to access your location to know your exactly location as home,office,etc to deliver the products you bought it from our app to your location</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>تسهيل عقارى app wants to access your microphone library to allow you to upload audio to products that appear on our app</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>تسهيل عقارى app wants to access your photo library to allow you to upload photos to products that appear on our app</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>processing</string>
+		<string>remote-notification</string>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>io.flutter.embedded_views_preview</key>
+	<true/>
+
+	<key>UISupportsDocumentBrowser</key>
+    <true/>
+</dict>
+</plist>

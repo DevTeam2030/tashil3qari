@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.512" y1="0.045" x2="0.863" y2="0.854" gradientUnits="objectBoundingBox">
+      <stop offset="0"/>
+      <stop offset="0.942" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_13589" data-name="Group 13589" transform="translate(-177 -611)">
+    <circle id="background" cx="18" cy="18" r="18" transform="translate(177 611)" fill="#d93825"/>
+    <g id="gmail" transform="translate(167.3 547.3)">
+      <g id="Group_13588" data-name="Group 13588" transform="translate(18.127 73.7)">
+        <path id="Path_28578" data-name="Path 28578" d="M67.2,131.5,65.81,145.531H49.025L47.9,131.774l9.517,5.323Z" transform="translate(-47.9 -128.857)" fill="#f2f2f2"/>
+        <path id="Path_28579" data-name="Path 28579" d="M71.023,73.7l-9.312,8.749L52.4,73.7H71.023Z" transform="translate(-52.194 -73.7)" fill="#f2f2f2"/>
+      </g>
+      <path id="Path_28580" data-name="Path 28580" d="M64.3,131.1l.018.485L46.125,145.131,45,131.374l9.513,5.328Z" transform="translate(-27.006 -54.775)" opacity="0.1"/>
+      <path id="Path_28581" data-name="Path 28581" d="M19.252,123.261v12.632H17.734A1.033,1.033,0,0,1,16.7,134.86V121.4l1.669.046Z" transform="translate(0 -45.519)" fill="#d54c3f"/>
+      <path id="Path_28582" data-name="Path 28582" d="M37.294,121.844l.018,14.05-9.531-.009L16.7,121.4l10.807,6.046Z" transform="translate(0 -45.518)" opacity="0.2" fill="url(#linear-gradient)"/>
+      <path id="Path_28583" data-name="Path 28583" d="M442.052,118.728v13.46a1.033,1.033,0,0,1-1.034,1.034H439.5V120.589l.841-1.989Z" transform="translate(-403.464 -42.847)" fill="#c33c2c"/>
+      <path id="Path_28584" data-name="Path 28584" d="M38.588,74.734v1.148l-2.552,1.861L27.653,84l-8.4-6.261L16.7,75.882V74.734A1.033,1.033,0,0,1,17.734,73.7h.6l9.312,6.792L36.956,73.7h.595a1.034,1.034,0,0,1,1.038,1.034Z" transform="translate(0 0)" fill="#de5145"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="35.077" viewBox="0 0 36 35.077">
+  <g id="Layer_2" data-name="Layer 2" transform="translate(0.461)">
+    <g id="_01.facebook" data-name="01.facebook" transform="translate(-0.461 0)">
+      <ellipse id="background" cx="18" cy="17.538" rx="18" ry="17.538" fill="#334c8c"/>
+      <path id="icon" d="M66.31,45.667,66,48.3a.5.5,0,0,1-.5.443H62.762v7.814a.353.353,0,0,1-.348.356h-2.79a.353.353,0,0,1-.348-.358l.015-7.811H57.218a.5.5,0,0,1-.5-.5V45.612a.5.5,0,0,1,.5-.5h2.06V42.561c0-2.954,1.757-4.561,4.33-4.561h2.108a.5.5,0,0,1,.5.5v2.217a.5.5,0,0,1-.5.5H64.424c-1.4.022-1.662.692-1.662,1.692v2.2h3.063a.5.5,0,0,1,.485.56Z" transform="translate(-43.383 -29.841)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

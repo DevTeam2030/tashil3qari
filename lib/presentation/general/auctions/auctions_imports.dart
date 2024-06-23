@@ -1,0 +1,26 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tashil_agary/app/extentions.dart';
+import 'package:tashil_agary/app/utils.dart';
+import 'package:tashil_agary/components/size_box_height.dart';
+import 'package:tashil_agary/presentation/general/search_list/widgets/ad_grid_item.dart';
+import 'package:tashil_agary/presentation/general/search_list/widgets/ad_list_item.dart';
+import 'package:tashil_agary/providers/auction_provider.dart';
+import 'package:tashil_agary/utilites/color_manager.dart';
+import 'package:tashil_agary/utilites/image_manager.dart';
+import 'package:tashil_agary/utilites/values_manager.dart';
+import '../../../app/contants.dart';
+import '../../../app/enums.dart';
+import '../../../components/no_data_available.dart';
+import '../../../components/screen_loading.dart';
+import '../../../components/text_field/general_appbar_logo.dart';
+import '../../../components/text_field/text_field_imports.dart';
+import '../../../domain/model/models/home_catogery_model.dart';
+import '../../../utilites/font_manager.dart';
+import '../../../utilites/styles_manager.dart';
+import '../../general/search_list/widgets/search_filter_bottom_sheet.dart';
+import '../home_Screen/home_imports.dart';
+
+part 'auctions_data.dart';
+part 'auctions_screen.dart';

@@ -1,0 +1,54 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
+import 'package:tashil_agary/app/enums.dart';
+import 'package:tashil_agary/app/extentions.dart';
+import 'package:tashil_agary/app/utils.dart';
+import 'package:tashil_agary/components/cach_image.dart';
+import 'package:tashil_agary/components/size_box_height.dart';
+import 'package:tashil_agary/presentation/general/ad/ad_imports.dart';
+import 'package:tashil_agary/providers/auth_provider.dart';
+import 'package:tashil_agary/providers/home_provider.dart';
+import 'package:tashil_agary/utilites/color_manager.dart';
+import 'package:tashil_agary/utilites/font_manager.dart';
+import 'package:tashil_agary/utilites/image_manager.dart';
+import 'package:tashil_agary/utilites/route_manager.dart';
+import 'package:tashil_agary/utilites/styles_manager.dart';
+import 'package:tashil_agary/utilites/values_manager.dart';
+import '../../../../app/contants.dart';
+import '../../../../components/appbar_logo.dart';
+import '../../../../components/chatNotifyIcon.dart';
+import '../../../../domain/model/models/country_model.dart';
+import '../../../../domain/model/models/finishing_types_model.dart';
+import '../../../../domain/model/models/general_property_model.dart';
+import '../../../../domain/model/models/home_catogery_model.dart';
+import '../../../../providers/general_provider.dart';
+import '../../../../providers/profile_provider.dart';
+import '../../../../providers/wishlist_provider.dart';
+import '../../favorites/favorites_screen.dart';
+import '../home_imports.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import '../../../../components/buttons/text_button.dart';
+import 'package:tashil_agary/presentation/general/home_Screen/widgets/property_item.dart';
+import 'package:tashil_agary/presentation/general/home_Screen/widgets/space_item.dart';
+import '../../../../app/validator.dart';
+import '../../../../components/text_field/text_field_imports.dart';
+import 'finishing_item.dart';
+
+
+
+
+part 'ad_alert_widget.dart';
+part'categories_drop_down.dart';
+part 'cities_drop_down.dart';
+part 'for_sale_or_rent_drop_down.dart';
+part 'home_appbar.dart';
+part'search_drop_down.dart';
+part'selected_city_map.dart';
+part'get_current_location.dart';
+part'home_open_search.dart';
+part'search_select_location_button.dart';
+part'types_filter.dart';
+part'home_favorite_Icon.dart';

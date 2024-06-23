@@ -1,0 +1,47 @@
+import 'dart:io';
+
+import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'package:tashil_agary/app/extentions.dart';
+import 'package:tashil_agary/components/size_box_height.dart';
+import '../../../../app/contants.dart';
+import '../../../../app/enums.dart';
+import '../../../../app/url_luncher.dart';
+import '../../../../app/utils.dart';
+import '../../../../components/loading_manager.dart';
+import '../../../../app/validator.dart';
+import '../../../../components/buttons/text_button.dart';
+import '../../../../components/cach_image.dart';
+import '../../../../components/screen_loading.dart';
+import '../../../../components/text_field/text_field_imports.dart';
+import '../../../../domain/model/agreement/agreement_details_model.dart';
+import '../../../../domain/model/models/agreements_model.dart';
+import '../../../../domain/model/models/finishing_types_model.dart';
+import '../../../../domain/model/models/general_property_model.dart';
+import '../../../../domain/model/models/user_ads_model.dart';
+import '../../../../providers/profile_provider.dart';
+import '../../../../providers/auth_provider.dart';
+import '../../../../utilites/color_manager.dart';
+import '../../../../utilites/font_manager.dart';
+import '../../../../utilites/image_manager.dart';
+import '../../../../utilites/localization_manager.dart';
+import '../../../../utilites/route_manager.dart';
+import '../../../../utilites/styles_manager.dart';
+import '../../../../utilites/values_manager.dart';
+import '../../add_ad/add_ad_imports.dart';
+import '../../auht/widgets/register_as_widget.dart';
+import '../../chats/make_agreement/make_agreement_imports.dart';
+import '../../chats/model/chat_message_model.dart';
+import '../../your_consultant/widgets/widgets_imports.dart';
+import '../personal_profile_imports.dart';
+
+
+part 'peronal_data_widget.dart';
+part 'personal_profile_details_tab.dart';
+part 'ad_actions_drop_down.dart';
+part 'delete_reasons_ad_bottom_sheet.dart';
+part 'agreement_item.dart';
+part 'agreement_details_item.dart';

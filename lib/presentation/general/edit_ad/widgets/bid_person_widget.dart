@@ -1,0 +1,78 @@
+part of'widgets_imports.dart';
+
+
+class BidPersonWidget extends StatelessWidget {
+  final bool isWin ;
+  const BidPersonWidget({super.key,required this.isWin});
+
+  @override
+  Widget build(BuildContext context) {
+
+
+    return Column(
+      children: [
+        if(isWin) const AppSizeBox(height: 14,),
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                if(isWin) Image.asset(ImageManager.winPng,width: 40,height: 40,fit: BoxFit.cover,),
+                  // SvgPicture.asset(ImageManager.win,width: 40,height: 40,fit: BoxFit.cover,),
+
+                CachedImage(
+                  url:'https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg',
+                  height: 50,width: 50,
+                  fit: BoxFit.cover,
+                  border: Border.all(color: ColorManager.white,width: 2),
+                  boxShape: BoxShape.circle,
+                ),
+                const AppSizeBox(width: 4,),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    AppText(
+                      title:'صادق زيدان',
+                      titleMaxLines: 2,
+                      titleHeight: 1.3,
+                      titleSize: FontSize.s14,
+                      titleAlign: TextAlign.start,
+                      titleColor: ColorManager.black,
+                      fontWeightType: FontWeightType.extraBold,
+                    ),
+
+                    AppText(
+                      title:'منذ 20  ثانية',
+                      titleSize: FontSize.s9,
+                      titleAlign: TextAlign.start,
+                      titleColor: ColorManager.black,
+                      fontWeightType:FontWeightType.regular,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+
+            AppText(
+              title:'55000 ريال',
+              titleSize:isWin? FontSize.s16:FontSize.s12,
+              titleAlign: TextAlign.start,
+              titleColor: ColorManager.black,
+              fontWeightType:isWin? FontWeightType.extraBold:FontWeightType.regular,
+            ),
+          ],
+        ),
+
+          // const AppSizeBox(height: 4,),
+
+
+        const Divider(color: ColorManager.divider, thickness: 1,)
+
+
+
+      ],
+    );
+  }
+}

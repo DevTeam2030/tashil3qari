@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "948695171772",
+    "project_id": "tashilakari",
+    "storage_bucket": "tashilakari.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948695171772:android:4d153209ecb90c133ac6b9",
+        "android_client_info": {
+          "package_name": "com.tashil.akari"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBXEPIyCFQfCLtxei4eWPq00eHBNJCDGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
