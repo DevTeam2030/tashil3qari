@@ -17,16 +17,20 @@ class HomeFavoriteIcon extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            CircleAvatar(
-              radius: 18,
-              backgroundColor: ColorManager.primary,
-              child: InkWell(
-                splashColor: ColorManager.white,
-                highlightColor:ColorManager.white ,
-                onTap: ()=>onSatelliteSelected() ,
-                child:Icon(Icons.satellite_alt,color: homeData.mapType== MapType.normal?ColorManager.grey:ColorManager.white,size: 18,) ,
-              ),
+            ValueListenableBuilder(valueListenable: homeData.selectedCity,
+                builder: (context, value, child) => value==null?  AppSizeBox(height: 20,): CircleAvatar(
+                  radius: 18,
+                  backgroundColor: ColorManager.primary,
+                  child:InkWell(
+                    splashColor: ColorManager.white,
+                    highlightColor:ColorManager.white ,
+                    onTap: ()=>onSatelliteSelected() ,
+                    child:Icon(Icons.satellite_alt,
+                      color: homeData.mapType== MapType.normal?ColorManager.white:ColorManager.red,size: 18,) ,
+                  ),
+                ),
             ),
+
             AppSizeBox(height: 10,),
             CircleAvatar(
               radius: 18,

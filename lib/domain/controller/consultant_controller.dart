@@ -71,6 +71,32 @@ class ConsultantController  {
     }
     return false;
   }
+  Future<bool> addRateToConsultant({required BuildContext context,required int consultantId,
+    required double rate, required String comment}) async {
+    var res = await _dio.post(url:'${Urls.addRateToConsultant}?lang=${Constants.langCode}', context: context,
+        body: {
+          "consultant_id":consultantId,
+          "rate":rate,
+          "comment":comment
+        });
+    if (res != null) {
+      if(res['message']!=null) LoadingDialog.showToastNotification(res['message']);
+      return true;
+    }
+    return false;
+  }
+  Future<bool> replyRate({required BuildContext context,required int rateId,required String comment}) async {
+    var res = await _dio.post(url:'${Urls.replyRate}?lang=${Constants.langCode}', context: context,
+        body: {
+          "rate_id":rateId,
+          "comment":comment
+        });
+    if (res != null) {
+      if(res['message']!=null) LoadingDialog.showToastNotification(res['message']);
+      return true;
+    }
+    return false;
+  }
 
   Future<bool> unFollowConsultant({required BuildContext context,required int consultantId}) async {
     var res = await _dio.post(url:'${Urls.unFollowConsultant}?lang=${Constants.langCode}', context: context,

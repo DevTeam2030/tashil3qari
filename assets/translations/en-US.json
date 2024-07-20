@@ -525,6 +525,7 @@
  "Real estate news": "Real estate news",
  "Publish": "Publish",
  "WriteRealEstateOpportunity": "Write a real estate opportunity here........",
+ "WriteRealEstateDesOpportunity": "Write a description of real estate opportunity here........",
  "WritRrealEstateNews": "Write real estate news here........",
  "Real estate opportunity": "Real estate opportunity",
  "unfollow": "Unfollow",
@@ -643,5 +644,11 @@
  "Specify an amount": "Specify an amount",
  "Reason for reporting": "Reason for reporting",
  "ChooseSerialNumber": "Choose serial number",
- "ChooseSerialNumberMessge": "Please select a serial number"
+ "ChooseSerialNumberMessge": "Please select a serial number",
+ "PleaseSelectCityFirst": "Please select city first",
+ "upgradeTpConsultant": "Upgare to consultant",
+ "ComplaintSuggestion": "Complaint/Suggestion",
+ "Comments": "Comments",
+ "Comment": "Comment",
+ "Add your rating": "Add your rating"
 }

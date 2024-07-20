@@ -15,6 +15,7 @@ import 'package:tashil_agary/domain/model/model/home_product.dart';
 import 'package:tashil_agary/domain/model/model/product_details_model.dart';
 import 'package:tashil_agary/domain/model/privacy_model.dart';
 import 'package:tashil_agary/providers/notifications_provider.dart';
+import 'package:tashil_agary/providers/wishlist_provider.dart';
 
 import '../app/my_app.dart';
 import '../app/utils.dart';
@@ -107,6 +108,26 @@ class ProductProvider extends ChangeNotifier {
     isLoading=false;
     notifyListeners();
   }
+  Future<void>unWish({required BuildContext context,required GeneralPropertyModel  property})async{
+    if(Utils.checkIsLogin()==false)return;
+    isLoading=true;
+    notifyListeners();
+    bool unWished =await context.read<WishlistProvider>().unWishlist(context: context,adId: property.id);
+    if(unWished)ownerProperties.firstWhere((element) => element.id==property.id,).wishlist=false;
 
+
+    isLoading=false;
+    notifyListeners();
+  }
+  Future<void>wish({required BuildContext context,required GeneralPropertyModel  property})async{
+    if(Utils.checkIsLogin()==false)return;
+    isLoading=true;
+    notifyListeners();
+    bool wishlist =await context.read<WishlistProvider>().wishlist(context: context,adId: property.id);
+    if(wishlist)ownerProperties.firstWhere((element) => element.id==property.id,).wishlist=true;
+
+    isLoading=false;
+    notifyListeners();
+  }
 
 }

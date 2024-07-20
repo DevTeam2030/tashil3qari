@@ -12,6 +12,8 @@ class ConsultantProfileDataWidget extends StatefulWidget {
 
 class _ConsultantProfileDataWidgetState extends State<ConsultantProfileDataWidget> {
   bool showAll=false;
+  var titles=['advertisements'.tr(),'Comments'.tr()];
+
 @override
 Widget build(BuildContext context) {
   return   Material(
@@ -40,7 +42,7 @@ Widget build(BuildContext context) {
                 children: [
                   CachedImage(
                     url:widget.consultantInfo.image,
-                    height: 120,width: 100,
+                    height: 90,width: 90,
                     fit: BoxFit.cover,
                     boxShape: BoxShape.circle,
                   ),
@@ -201,71 +203,93 @@ Widget build(BuildContext context) {
 
 
 
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+
               MyTextButton(title: widget.consultantInfo.isFollow?'unfollow'.tr():'Follow'.tr(),
-                  size: Size( .8.sw,  47),
+                  size: Size( .4.sw,  40),
+                  // size: Size( .8.sw,  47),
                   radius: 10,
-                  fontWeightType: FontWeightType.bold,
+                  fontWeightType: FontWeightType.regular,
                   titleSize: FontSize.s16,
                   primaryColor: ColorManager.primary,
                   titleColor: ColorManager.white,
                   onPressed: (){
-                if(widget.consultantInfo.isFollow){
-                  context.read<ConsultantProvider>().unFollowConsultant(context: context,consultant: widget.consultantInfo);
-                }
-                else {
-                  context.read<ConsultantProvider>().followConsultant(context: context,consultant: widget.consultantInfo);
-                }
+                    if(widget.consultantInfo.isFollow){
+                      context.read<ConsultantProvider>().unFollowConsultant(context: context,consultant: widget.consultantInfo);
+                    }
+                    else {
+                      context.read<ConsultantProvider>().followConsultant(context: context,consultant: widget.consultantInfo);
+                    }
                   }),
 
+              MyTextButton(title: 'ComplaintSuggestion'.tr(),
+                  size: Size( .4.sw,  40),
+                  radius: 10,
+                  fontWeightType: FontWeightType.regular,
+                  titleSize: FontSize.s16,
+                  primaryColor: ColorManager.primary,
+                  titleColor: ColorManager.white,
+                  onPressed: (){
+                    LoadingDialog().widgetAlertDialog(context: context, widget: ReportWidget(
+                      title: 'ComplaintSuggestion'.tr(),
+                      consultantId: widget.consultantInfo.id,));
+                  }),
+
+            ],
+          ),
 
           const AppSizeBox(height: 12,),
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal:12.0),
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //     children: [
-          //       // for(var item in ['advertisements'.tr(),'Personal data'.tr()])
-          //       InkWell(
-          //         onTap: () =>widget.onTabPressed(false),
-          //           child: Container(
-          //             padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 12),
-          //             alignment: Alignment.center,
-          //             decoration: BoxDecoration(
-          //                 borderRadius:
-          //                 BorderRadius.circular(RadiusManager.r16),
-          //                 color: !widget.showAdsTab?ColorManager.primary:ColorManager.white
-          //               // boxShadow: Constants.kBoxShadow
-          //             ),
-          //             child: AppText(
-          //                 title: 'advertisements'.tr(),
-          //                 titleAlign: TextAlign.center,
-          //                 titleMaxLines: 1,fontWeightType: FontWeightType.bold,
-          //                 titleSize: FontSize.s12,
-          //                 titleColor: !widget.showAdsTab?ColorManager.white:ColorManager.grey),
-          //           ),
-          //         ),
-          //       InkWell(
-          //         onTap: () =>widget.onTabPressed(true),
-          //           child: Container(
-          //             padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 12),
-          //             alignment: Alignment.center,
-          //             decoration: BoxDecoration(
-          //                 borderRadius:
-          //                 BorderRadius.circular(RadiusManager.r16),
-          //                 color: widget.showAdsTab?ColorManager.primary:ColorManager.white
-          //               // boxShadow: Constants.kBoxShadow
-          //             ),
-          //             child: AppText(
-          //                 title: 'Personal data'.tr(),
-          //                 titleAlign: TextAlign.end,
-          //                 titleMaxLines: 1,fontWeightType: FontWeightType.bold,
-          //                 titleSize: FontSize.s12,
-          //                 titleColor: widget.showAdsTab?ColorManager.white:ColorManager.grey),
-          //           ),
-          //         ),
-          //     ],
-          //   ),
-          // )
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal:12.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+
+                  InkWell(
+                    onTap: () =>widget.onTabPressed(true),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 12),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                          BorderRadius.circular(RadiusManager.r16),
+                          color:widget.showAdsTab?ColorManager.primary:ColorManager.white
+                        // boxShadow: Constants.kBoxShadow
+                      ),
+                      child: AppText(
+                          title: 'advertisements'.tr(),
+                          titleAlign: TextAlign.center,
+                          titleMaxLines: 1,fontWeightType: FontWeightType.bold,
+                          titleSize: FontSize.s12,
+                          titleColor: widget.showAdsTab?ColorManager.white:ColorManager.grey),
+                    ),
+                  ),
+                InkWell(
+                    onTap: () =>widget.onTabPressed(false),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 12),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                          BorderRadius.circular(RadiusManager.r16),
+                          color:!widget.showAdsTab?ColorManager.primary:ColorManager.white
+                        // boxShadow: Constants.kBoxShadow
+                      ),
+                      child: AppText(
+                          title: 'Comments'.tr(),
+                          titleAlign: TextAlign.center,
+                          titleMaxLines: 1,fontWeightType: FontWeightType.bold,
+                          titleSize: FontSize.s12,
+                          titleColor: !widget.showAdsTab?ColorManager.white:ColorManager.grey),
+                    ),
+                  ),
+
+
+              ],
+            ),
+          )
             ],
           ),
         ),

@@ -9,6 +9,7 @@ class Urls{
  static const activateAccount='auth/activate-acount';
  static const sendVerificationCode='auth/send-verification-code';
  static const updateLocation='auth/update-location';
+ static const requestConsultant='request-consultant';
  static const forgetPassword='auth/password-reset-email';
  static const changePassword='change-password';
  static const profile='profile';
@@ -37,12 +38,15 @@ class Urls{
  static const getAgreementConsultants='get-agreements-consultant';
  static const getConsultantInfo='get-consultant-info';
  static const followConsultant='follow';
+ static const addRateToConsultant='addRateToConsultant';
+ static const replyRate='addRateToConsultant';
  static const unFollowConsultant='un-follow';
  static const consultantAds='consultant/ads';
  static const updateProfile='update-profile';
  static const deleteProperty='delete-property';
  static const removeFromAuction='remove-auction';
  static const unPublishProperty='un-publish-property';
+ static const addConsultantProperty='add-consultant-property';
  static const publishProperty='publish-property';
  static const addComplaint='add-complaint';
  static const addAuction='add-auction';

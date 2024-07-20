@@ -1,25 +1,44 @@
 part of 'widgets_imports.dart';
 
-class RealEstateNewsTab extends StatefulWidget {
+class RealEstateNewsTab extends StatelessWidget {
   final CouncilData councilData;
   final   List<PostModel> data;
-  const RealEstateNewsTab({super.key, required this.councilData,required this.data});
+  final   bool isLoading ;
+  const RealEstateNewsTab({super.key, required this.councilData,required this.data,required this.isLoading});
 
-  @override
-  State<RealEstateNewsTab> createState() => _RealEstateNewsTabState();
-}
-
-class _RealEstateNewsTabState extends State<RealEstateNewsTab> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 1.0.sh,
       width: 1.0.sw,
-      child: ListView.builder(
-        itemCount: widget.data.length+1,
-        itemBuilder: (context, index) =>
-            index==0?AddRealEstateNews(councilData: widget.councilData,):
-            RealEstateNewsItem(councilData: widget.councilData,post: widget.data[index-1]),),
+      child: Column(
+        children: [
+
+
+          const AppSizeBox(height: 14,),
+          CityDropDown(
+            selectedCity:councilData.selectedCity,
+            cities: councilData.cities,
+            onChanged: (v) {
+                councilData.selectedCity = v!;
+              context.read<CouncilProvider>().getCouncilData(context: context,notify: true,cityId: v.id);
+
+            },
+          ),
+          if( data.isEmpty&&!isLoading)
+            AppText(title:'NoDataCurrentlyAvailable'.tr(), titleSize: FontSize.s14,
+              titleMaxLines: 14,
+              titleHeight: 1.4,
+              titleAlign: TextAlign.center,
+              titleColor: ColorManager.titleServiceNameColor,
+              fontWeightType: FontWeightType.bold,),
+          Expanded(child: ListView.builder(
+            itemCount: data.length+1,
+            itemBuilder: (context, index) =>
+            index==0?AddRealEstateNews(councilData: councilData,):
+            RealEstateNewsItem(councilData: councilData,post: data[index-1]),),)
+        ],
+      ),
     );
   }
 }

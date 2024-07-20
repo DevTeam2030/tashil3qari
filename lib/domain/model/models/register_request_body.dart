@@ -78,6 +78,7 @@ class UpdatePhoneRequestModel {
     "des":des,
   };
 }
+
 class UpdateLocationRequestModel {
   UpdateLocationRequestModel({
     required this.id,

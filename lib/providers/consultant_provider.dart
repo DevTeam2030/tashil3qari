@@ -40,6 +40,8 @@ bool isLoading=false;
 
   }
 
+
+
   Future<void>getConsultants({required BuildContext context,bool? notify,int? opportunityId, int? cityId })async{
     allConsultants=[];
     filterConsultants=[];
@@ -132,6 +134,25 @@ bool isLoading=false;
     bool wishlist =await context.read<WishlistProvider>().wishlist(context: context,adId: property.id);
     if(wishlist)consultantsAds.firstWhere((element) => element.id==property.id,).wishlist=true;
 
+    isLoading=false;
+    notifyListeners();
+  }
+
+
+  Future<void>addRateToConsultant({required BuildContext context,required int consultantId,required double rate,required String comment})async{
+    if(Utils.checkIsLogin()==false)return;
+    isLoading=true;
+    notifyListeners();
+  await _api.addRateToConsultant(context: context,consultantId: consultantId,
+    comment: comment,rate: rate,);
+    isLoading=false;
+    notifyListeners();
+  }
+  Future<void>replyRate({required BuildContext context,required int rateId,required String comment})async{
+    if(Utils.checkIsLogin()==false)return;
+    isLoading=true;
+    notifyListeners();
+    await _api.replyRate(context: context,rateId: rateId, comment: comment);
     isLoading=false;
     notifyListeners();
   }

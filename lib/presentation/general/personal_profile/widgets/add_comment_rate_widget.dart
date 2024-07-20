@@ -1,31 +1,26 @@
 part of'widgets_imports.dart';
 
 
-class EditPostWidget extends StatefulWidget {
-  final  PostModel post;
-  final CouncilData councilData;
-  const EditPostWidget({super.key,required this.post,required this.councilData});
+class AddCommentToRateWidget extends StatefulWidget {
+  final int rateId ;
+  const AddCommentToRateWidget({super.key,required this.rateId});
 
   @override
-  State<EditPostWidget> createState() => _EditPostWidgetState();
+  State<AddCommentToRateWidget> createState() => _AddCommentToRateWidgetState();
 }
 
-class _EditPostWidgetState extends State<EditPostWidget> {
+class _AddCommentToRateWidgetState extends State<AddCommentToRateWidget> {
   final formKey = GlobalKey<FormState>();
-  TextEditingController postController = TextEditingController();
-  late CityModel selectedCity;
+  TextEditingController reasonController = TextEditingController();
 @override
   void initState() {
   super.initState();
-  postController.text=widget.post.post;
-  if(mounted)selectedCity=widget.councilData.cities.firstWhere((element) => element.id==widget.post.cityId,
-      orElse: ()=>widget.councilData.cities.first);
 
   }
 
   @override
   void dispose() {
-    postController.dispose();
+    reasonController.dispose();
     super.dispose();
 
   }
@@ -64,7 +59,7 @@ Widget build(BuildContext context) {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       AppText(
-                        title:'Edit'.tr(),
+                        title:'yourComment'.tr(),
                         titleMaxLines: 1,
                         titleSize: FontSize.s16,
                         titleAlign: TextAlign.center,
@@ -74,23 +69,13 @@ Widget build(BuildContext context) {
                     ],
                   ),
 
-                  CityDropDown(
-                    selectedCity:selectedCity,
-                    cities:widget.councilData.cities,
-                    onChanged: (v) {
-                      setState(() {
-                        selectedCity = v!;
-                      });
-
-                    },
-                  ),
                   const AppSizeBox(height: AppSize.s20),
 
 
                   MoreLineTextFormField(
-                      controller: postController,
-                      hintTitle: 'Edit'.tr(),
-                      labelTitle: 'Edit'.tr(),
+                      controller: reasonController,
+                      hintTitle: 'WriteYourComment'.tr(),
+                      labelTitle: 'WriteYourComment'.tr(),
                       textInputType: TextInputType.multiline,
                       textInputAction: TextInputAction.newline,
                       hintFontSize: FontSize.s12,
@@ -99,7 +84,7 @@ Widget build(BuildContext context) {
                       textSize: FontSize.s12,
                       fillColor: ColorManager.textGrey,
                       borderColor: ColorManager.textGrey,
-                      maxLines: 10,
+                      maxLines: 4,
                     validator: (v) => Validator().validateEmpty(value: v.toString(),),
                   ),
                   const AppSizeBox(height: AppSize.s20),
@@ -113,9 +98,8 @@ Widget build(BuildContext context) {
                       onPressed: (){
                         Navigator.pop(context);
                         if(formKey.currentState!.validate()){
-                          context.read<CouncilProvider>().editPost(context: context, postId: widget.post.id,
-                          cityId: selectedCity.id,
-                          post: postController.text);
+                          // context.read<CouncilProvider>().reportConsultant(context: context, consultantId: widget.consultantId,
+                          // message: reasonController.text);
                         }
 
                       }),

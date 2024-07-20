@@ -117,6 +117,14 @@ bool isLoading=false;
     isLoading=false;
     notifyListeners();
   }
+  Future<void>hiringRealEstateConsultantForAd({required BuildContext context, required int adId,required int consultantId,})async{
+    isLoading=true;
+    notifyListeners();
+    await _api.hiringRealEstateConsultantForAd(context: context,consultantId: consultantId,
+        propertyId: adId);
+    isLoading=false;
+    notifyListeners();
+  }
 
   Future<bool>deleteImageFromAd({required BuildContext context, required int imageId})async{
     isLoading=true;

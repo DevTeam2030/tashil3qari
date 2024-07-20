@@ -77,7 +77,7 @@ double width=120.0;
                 postId: widget.post.id, isPost: widget.isPost);
           }
           else if(value=='Edit'.tr()) {
-            LoadingDialog().widgetAlertDialog(context: context, widget: EditPostWidget(post: widget.post,));
+            LoadingDialog().widgetAlertDialog(context: context, widget: EditPostWidget(post: widget.post,councilData: widget.councilData),);
          
           }
           else if(value=='AddConsultantToAgreement'.tr()) {

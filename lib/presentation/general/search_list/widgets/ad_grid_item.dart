@@ -81,7 +81,7 @@ Widget build(BuildContext context) {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        
+
                         children: [
                           InkWell(
                             splashColor: ColorManager.white,

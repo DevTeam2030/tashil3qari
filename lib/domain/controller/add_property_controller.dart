@@ -169,6 +169,38 @@ class AddPropertyController  {
     return data;
   }
 
+  Future<void> hiringRealEstateConsultantForAd({required BuildContext context,required int propertyId,required int consultantId}) async {
+    // int? num;
+
+    var res = await _dio.post(url:'${Urls.addConsultantProperty}?lang=${Constants.langCode}', context: context,
+        body:
+        {
+    "property_id": propertyId,
+    "consultant_id": consultantId,
+    });
+    if (res != null) {
+      try{
+
+        // num= int.tryParse(res['data']['id'].toString());
+        // if(num!=null){
+        //   MyRoute().navigate(context: context, route: IfAddAdBidScreen(propertyId: num));
+          LoadingDialog().widgetAlertDialog(context:Constants.navigatorAppKey.currentContext!,
+              widget:  AdSuccesWidget(title: 'requirementsMessage'.tr(),
+                  // message: 'requirementsMessage1'.tr(),
+                  message: res['message'].toString()
+              ));
+        // }
+      }catch(e){
+        Utils.printData(e.toString());
+      }
+
+    }
+    // return num;
+
+  }
+
+
+
   Future<int?> addUnPublishedPropertyToPublish({required BuildContext context,required  Map<String,dynamic>map, }) async {
     int? num;
 

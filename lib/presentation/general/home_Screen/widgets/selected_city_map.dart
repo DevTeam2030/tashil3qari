@@ -29,6 +29,7 @@ class SelectedCityMap extends StatelessWidget {
                   homeData.showCitiesMarkers=true;
                   homeData.selectedCity.value=null;
                   // homeData.showAllMap=true;
+                  homeData.mapType= MapType.normal;
                   context.read<HomeProvider>().properties=[];
                   homeData.initDataCitiesMarkers(context: context,isNotify: true,
                       afterBuildCitiesMarkers:(){});

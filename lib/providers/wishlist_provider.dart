@@ -49,6 +49,7 @@ class WishlistProvider extends ChangeNotifier {
     //   notifyListeners();
 
     bool wished=await _api.wishlist(context: context,adId: adId);
+    context= Constants.navigatorAppKey.currentState!.context;
     if(wished) {
       for (var item in context.read<HomeProvider>().properties) {
         if (item.id == adId) {
@@ -67,6 +68,7 @@ class WishlistProvider extends ChangeNotifier {
     //   notifyListeners();
 
     bool unWished=await _api.unWishlist(context: context,adId: adId);
+    context= Constants.navigatorAppKey.currentState!.context;
     if(unWished){
       // ignore: use_build_context_synchronously
       for(var item in context.read<HomeProvider>().properties){

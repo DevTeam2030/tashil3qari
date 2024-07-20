@@ -11,7 +11,7 @@ class YourConsultantProfileScreen extends StatefulWidget {
 
 class _YourConsultantProfileScreenState extends State<YourConsultantProfileScreen> {
   bool showAsList = true;
-  bool showAdsTab = false;
+  bool showAdsTab = true;
 
   @override
   void initState() {
@@ -56,7 +56,7 @@ class _YourConsultantProfileScreenState extends State<YourConsultantProfileScree
 
 
 
-                    if (!showAdsTab)
+                    if (showAdsTab)
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 14.0,vertical: 15),
                         child: Row(
@@ -106,61 +106,51 @@ class _YourConsultantProfileScreenState extends State<YourConsultantProfileScree
                         ),
                       ),
 
-                    if (!showAdsTab&& provider.consultantsAds.isEmpty&&!provider.isLoading)
+                    if (showAdsTab&& provider.consultantsAds.isEmpty&&!provider.isLoading)
                       const Padding(
                         padding: EdgeInsets.only(top: 40),
                         child: NoDataCurrentlyAvailable(),
+                      ),
+
+                    if(!showAdsTab)
+                      Padding(
+                        padding: const EdgeInsets.only(right:16.0,left: 16,top: 10,bottom: 10),
+                        child: Row(
+
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            AppText(
+                                title: 'Add your rating'.tr(),
+                                titleAlign: TextAlign.start,
+                                titleMaxLines: 1,fontWeightType: FontWeightType.medium,
+                                titleSize: FontSize.s20,titleColor: ColorManager.black),
+
+
+                            InkWell(
+                              onTap: ()async{
+                               await LoadingDialog().widgetAlertDialog(context: context, widget: AddRateToConsultantWidget(
+                                  consultantId: widget.consultantId));
+
+                               
+                              },
+                              child: CircleAvatar(
+                                radius: 16,
+                                backgroundColor: ColorManager.primary,
+                                child:  Icon(Icons.add,
+                                    size: AppSize.s20,
+                                    color: ColorManager.white),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
 
                   ]),
                 ),
 
 
-                // if (!showAdsTab)
-                  if (showAsList)
-                    SliverPadding(
-                        padding: const EdgeInsets.symmetric(horizontal: 14),
-                        sliver: SliverList(
-                            delegate: SliverChildBuilderDelegate(
-                                  (BuildContext context, int index) {
-                                return AdListItem(property: provider.consultantsAds[index],
-                                  onFavoriteTap: (property){
-                                    if(property.wishlist) {
-                                      provider.unWish(context: context, property: property);
-                                    } else {
-                                      provider.wish(context: context, property: property);
-                                    }
-                                  },);
-                              },
-                              childCount: provider.consultantsAds.length,
-                            )))
-                  else
-                    SliverPadding(
-                      padding: const EdgeInsets.symmetric(horizontal: 14),
-                      sliver:  SliverGrid(
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          mainAxisSpacing: 1,
-                          crossAxisSpacing: 2,
-                          childAspectRatio: .74,
-                        ),
-                        delegate: SliverChildBuilderDelegate(
-                              (context, index) {
-                            return AdGridItem(property: provider.consultantsAds[index],
-                            onFavoriteTap: (property){
-                              if(property.wishlist) {
-                                provider.unWish(context: context, property: property);
-                              } else {
-                                provider.wish(context: context, property: property);
-                              }
-                            },);
-                          },
-                          // childCount:widget.cat.subCategories.length,
-                          childCount: provider.consultantsAds.length,
-                        ),
-                      ),)
-
-
+                if (showAdsTab)YourConsultantAdsTab(showAsList: showAsList, provider: provider,)
+                else YourConsultantCommentsTab(provider: provider,),
                 // else     SliverList(
                 //   delegate: SliverChildListDelegate([
                 //

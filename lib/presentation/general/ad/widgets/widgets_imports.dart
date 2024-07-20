@@ -38,6 +38,7 @@ import '../ad_imports.dart';
 import '../owner_ads.dart';
 
 part 'ad_slider.dart';
+part 'user_profile_data_widget.dart';
 part 'ad_details.dart';
 part 'advertiser_data.dart';
 part 'ad_infromations.dart';

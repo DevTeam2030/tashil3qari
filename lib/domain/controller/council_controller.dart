@@ -14,9 +14,13 @@ import '../model/user_notification_model.dart';
 
 class CouncilController  {
   final DioHelper _dio = DioHelper();
-  Future<List<PostModel>> getPosts({required BuildContext context,}) async {
+  Future<List<PostModel>> getPosts({required BuildContext context,int? cityId}) async {
     List<PostModel> data=[];
-    var res = await _dio.get(url:'${Urls.getPosts}?lang=${Constants.langCode}', context: context);
+    String url='${Urls.getPosts}?lang=${Constants.langCode}';
+    if(cityId!=null){
+      url+='&city_id=$cityId';
+    }
+    var res = await _dio.get(url:url, context: context);
     if (res != null) {
       try{
         data = List<PostModel>.from(res['data'].map((x) => PostModel.fromJson(x)));
@@ -29,9 +33,13 @@ class CouncilController  {
     return data;
   }
 
-  Future<List<PostModel>> getOpportunities({required BuildContext context,}) async {
+  Future<List<PostModel>> getOpportunities({required BuildContext context,int? cityId}) async {
     List<PostModel> data=[];
-    var res = await _dio.get(url:'${Urls.getOpportunities}?lang=${Constants.langCode}', context: context);
+    String url='${Urls.getOpportunities}?lang=${Constants.langCode}';
+    if(cityId!=null){
+      url+='&city_id=$cityId';
+    }
+    var res = await _dio.get(url:url, context: context);
     if (res != null) {
       try{
         data = List<PostModel>.from(res['data'].map((x) => PostModel.fromJson(x)));
@@ -44,11 +52,13 @@ class CouncilController  {
     return data;
   }
 
-  Future<bool> addPost({required BuildContext context,required String post,required File? image}) async {
+  Future<bool> addPost({required BuildContext context,required String post,required File? image,required int cityId}) async {
     FormData formData = FormData();
     if(image!=null){
       formData.files.add(MapEntry('image', MultipartFile.fromFileSync(image.path, filename: image.path.split("/").last),));
     }
+
+    formData.fields.add(MapEntry('city_id', cityId.toString()));
     formData.fields.add(MapEntry('post', post));
 
     var res = await _dio.post(url:'${Urls.addPost}?lang=${Constants.langCode}', context: context,body: {},formData: formData);
@@ -64,10 +74,12 @@ class CouncilController  {
     }
     return false;
   }
-  Future<bool> editPost({required BuildContext context,required String post,required int postId}) async {
+  Future<bool> editPost({required BuildContext context,required String post,required int postId,
+    required int cityId}) async {
 
     var res = await _dio.post(url:'${Urls.editPost}?lang=${Constants.langCode}', context: context,body: {
       "post":post,
+      "city_id":cityId,
       "post_id":postId
     },);
     if (res != null) {
@@ -84,12 +96,16 @@ class CouncilController  {
   }
 
 
-  Future<bool> addOpportunity({required BuildContext context,required String post,required File? image}) async {
+  Future<bool> addOpportunity({required BuildContext context,required String post,required String description,
+    required File? image,required int cityId}) async {
     FormData formData = FormData();
     if(image!=null){
       formData.files.add(MapEntry('image', MultipartFile.fromFileSync(image.path, filename: image.path.split("/").last),));
     }
+    
+    formData.fields.add(MapEntry('city_id', cityId.toString()));
     formData.fields.add(MapEntry('post', post));
+    formData.fields.add(MapEntry('description', post));
 
     var res = await _dio.post(url:'${Urls.addOpportunity}?lang=${Constants.langCode}', context: context,body: {},formData: formData);
     if (res != null) {

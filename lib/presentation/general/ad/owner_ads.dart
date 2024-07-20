@@ -37,7 +37,7 @@ class _AllOwnerAdsState extends State<AllOwnerAds> {
             isLoading: provider.isLoading,
             height: 1.0.sh,
             width: 1.0.sw,
-            child: provider.isLoading?const AppSizeBox(height: 0,):
+            child: provider.isLoading&&provider.ownerProperties.isEmpty?const AppSizeBox(height: 0,):
             Container(
               height: 1.0.sh,
               width: 1.0.sw,
@@ -62,11 +62,19 @@ class _AllOwnerAdsState extends State<AllOwnerAds> {
                       crossAxisCount: 2,
                       mainAxisSpacing: 1,
                       crossAxisSpacing: 2,
-                      childAspectRatio: .74,
+                      childAspectRatio: .58,
+
                     ),
                     delegate: SliverChildBuilderDelegate(
                           (context, index) {
-                        return AdGridItem(property: provider.ownerProperties[index],);
+                        return AdGridItem(property: provider.ownerProperties[index],
+                          onFavoriteTap: (property){
+                            if(property.wishlist) {
+                              provider.unWish(context: context, property: property);
+                            } else {
+                              provider.wish(context: context, property: property);
+                            }
+                          },);
                       },
                       // childCount:widget.cat.subCategories.length,
                       childCount:provider.ownerProperties.length,

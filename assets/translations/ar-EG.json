@@ -550,6 +550,7 @@
   "Real estate news": "خبر عقاري",
   "Publish": "نشــــر",
   "WriteRealEstateOpportunity": "اكتب فرصة عقارية هنا ........",
+  "WriteRealEstateDesOpportunity": "اكتب وصف الفرصة العقارية هنا ........",
   "WritRrealEstateNews": "اكتب الخبر العقاري هنا ........",
   "Real estate opportunity": "فرصة عقارية",
   "unfollow": "الغاء المتابعه",
@@ -664,5 +665,11 @@
   "saleRent": "للبيع/للايجار ",
   "Reason for reporting": "سبب الإبلاغ",
   "ChooseSerialNumber": "إختر الرقم التسلسلي",
-  "ChooseSerialNumberMessge": "من فضلك إختر الرقم التسلسلي"
+  "ChooseSerialNumberMessge": "من فضلك إختر الرقم التسلسلي",
+  "PleaseSelectCityFirst": "برجاء تحديد المدينه أولا",
+  "upgradeTpConsultant": "الترقية لمستشار",
+  "ComplaintSuggestion": "شكوى/إقتراح",
+  "Comments": "التعليقات",
+  "Comment": "تعليق",
+  "Add your rating": "أضف تقييمك"
 }

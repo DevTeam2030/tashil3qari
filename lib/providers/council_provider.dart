@@ -12,18 +12,14 @@ class CouncilProvider extends ChangeNotifier {
   List<PostModel> posts = [];
   List<PostModel> opportunities = [];
 
-  Future<void> getCouncilData({required BuildContext context, required bool notify}) async {
+  Future<void> getCouncilData({required BuildContext context, required bool notify,int? cityId}) async {
     isLoading = true;
     posts = [];
     opportunities = [];
 
     if (notify) notifyListeners();
-    posts = await _api.getPosts(
-      context: context,
-    );
-    opportunities = await _api.getOpportunities(
-      context: context,
-    );
+    posts = await _api.getPosts(context: context,cityId: cityId);
+    opportunities = await _api.getOpportunities(context: context,cityId: cityId);
 
     isLoading = false;
     notifyListeners();
@@ -37,28 +33,29 @@ class CouncilProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> addPost({required BuildContext context, required String post, required File? image}) async {
+  Future<void> addPost({required BuildContext context, required String post, required File? image,required int cityId}) async {
     isLoading = true;
 
     notifyListeners();
-    bool isAdded = await _api.addPost(context: context, image: image, post: post);
+    bool isAdded = await _api.addPost(context: context, image: image, post: post,cityId: cityId);
 
     if (isAdded) {
       posts = await _api.getPosts(
         context: context,
+        cityId: cityId
       );
     }
     isLoading = false;
     notifyListeners();
   }
-  Future<void> editPost({required BuildContext context, required String post ,required int postId}) async {
+  Future<void> editPost({required BuildContext context, required String post ,required int postId,required int cityId}) async {
     isLoading = true;
 
     notifyListeners();
-    bool isAdded = await _api.editPost(context: context, postId: postId, post: post);
+    bool isAdded = await _api.editPost(context: context, postId: postId, post: post,cityId: cityId);
 
     if (isAdded) {
-      posts = await _api.getPosts(context: context,);
+      posts = await _api.getPosts(context: context,cityId: cityId);
     }
     isLoading = false;
     notifyListeners();
@@ -67,16 +64,19 @@ class CouncilProvider extends ChangeNotifier {
   Future<void> addOpportunity(
       {required BuildContext context,
       required String post,
+      required String description,
+        required int cityId,
       required File? image}) async {
     isLoading = true;
 
     notifyListeners();
     bool isAdded =
-        await _api.addOpportunity(context: context, image: image, post: post);
+        await _api.addOpportunity(context: context, image: image, post: post,cityId: cityId,description: description);
 
     if (isAdded) {
       opportunities = await _api.getOpportunities(
         context: context,
+        cityId: cityId
       );
     }
     isLoading = false;

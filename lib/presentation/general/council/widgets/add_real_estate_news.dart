@@ -10,6 +10,13 @@ class AddRealEstateNews extends StatefulWidget {
 }
 
 class _AddRealEstateNewsState extends State<AddRealEstateNews> {
+
+  @override
+  void initState() {
+    super.initState();
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,38 +35,38 @@ class _AddRealEstateNewsState extends State<AddRealEstateNews> {
             child: Column(
               children: [
 
-                if(false)
-                AdvisorNewsDataItem(
-                  forAdd: true,
-                  councilData: widget.councilData,
-                  showStar: false,
-                  isPost: false,
-                  showOptions: false,
-                  post: PostModel(
-                    id: 0,
-                    post: '',
-                   userName: Constants.userDataModel!.firstName + ' ' + Constants.userDataModel!.lastName,
-                    userImage: Constants.userDataModel!.image,
-                   image: Constants.userDataModel!.image ,
-                    userRate:  0,
-                      userId: Constants.userDataModel!.id,
-                      city: '' ,
-                      country:'',
-                      // city: Constants.userDataModel!.address.isEmpty?'':Constants.userDataModel!.address[0].cityName ,
-                      // country: Constants.userDataModel!.address.isEmpty?'':Constants.userDataModel!.address[0].countryName,
-                    userType: '' ,
-                    userPhone: '' ,
-                    userEmail:'' ,
-                    timeAgo: '',
-                    isFollow: false,
-                    isAgreement: false,
-                    disLike: false,
-                      disLikesCounter: 0,
-                    like: false,
-                    likesCounter: 0,
-                    consults: []
-                  ),
-                ),
+                // if(false)
+                // AdvisorNewsDataItem(
+                //   forAdd: true,
+                //   councilData: widget.councilData,
+                //   showStar: false,
+                //   isPost: false,
+                //   showOptions: false,
+                //   post: PostModel(
+                //     id: 0,
+                //     post: '',
+                //    userName: Constants.userDataModel!.firstName + ' ' + Constants.userDataModel!.lastName,
+                //     userImage: Constants.userDataModel!.image,
+                //    image: Constants.userDataModel!.image ,
+                //     userRate:  0,
+                //       userId: Constants.userDataModel!.id,
+                //       city: '' ,
+                //       country:'',
+                //       // city: Constants.userDataModel!.address.isEmpty?'':Constants.userDataModel!.address[0].cityName ,
+                //       // country: Constants.userDataModel!.address.isEmpty?'':Constants.userDataModel!.address[0].countryName,
+                //     userType: '' ,
+                //     userPhone: '' ,
+                //     userEmail:'' ,
+                //     timeAgo: '',
+                //     isFollow: false,
+                //     isAgreement: false,
+                //     disLike: false,
+                //       disLikesCounter: 0,
+                //     like: false,
+                //     likesCounter: 0,
+                //     consults: []
+                //   ),
+                // ),
 
 
 
@@ -84,82 +91,104 @@ class _AddRealEstateNewsState extends State<AddRealEstateNews> {
                 if(widget.isOpportunity)
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  child:Column(
                     children: [
-                      // InkWell(
-                      //   onTap: (){},
-                      //   child: Row(
-                      //     crossAxisAlignment: CrossAxisAlignment.center,
-                      //     children: [
-                      //       SvgPicture.asset(ImageManager.addLocation,height: 16,width: 16),
-                      //       const AppSizeBox(width: 4,),
-                      //       AppText(
-                      //         title:'AddLocation'.tr(),
-                      //         titleSize: FontSize.s10,
-                      //         titleMaxLines: 10,
-                      //         titleAlign: TextAlign.start,
-                      //         titleColor: ColorManager.black ,
-                      //         titleHeight: 1.4,
-                      //         fontWeightType: FontWeightType.medium,
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-
-
-                       InkWell(
-                          onTap: ()=>Utils().uploadModalBottomSheet(context: context,
-                            onGalleryTap: (photo){
-                              // context.read<AuthProvider>().changeImageProfile(context: context, photo: photo);
-                              setState(()=> widget.councilData.opportunityPicker=photo);
-                            },
-                            onCameraTap: (photo){
-                              // context.read<AuthProvider>().changeImageProfile(context: context, photo: photo);
-                              setState(()=> widget.councilData.opportunityPicker=photo);
-                            },),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            // SvgPicture.asset(ImageManager.camera,height: 16,width: 16),
-                            Icon(Icons.camera_alt_sharp,size: 16,color: ColorManager.red,),
-                            const AppSizeBox(width: 4,),
-                            AppText(
-                              title:'photo'.tr(),
-                              titleSize: FontSize.s10,
-                              titleMaxLines: 10,
-                              titleAlign: TextAlign.start,
-                              titleColor: ColorManager.red ,
-                              titleHeight: 1.4,
-                              fontWeightType: FontWeightType.medium,
-                            ),
-                          ],
-                        ),
+                      MoreLineTextFormField(
+                        controller:widget.councilData.opportunityDesController,
+                        hintTitle: 'WriteRealEstateDesOpportunity'.tr(),
+                        labelTitle: 'WriteRealEstateDesOpportunity'.tr(),
+                        textInputAction: TextInputAction.next,
+                        textInputType: TextInputType.multiline,
+                        hintFontSize: FontSize.s12,
+                        hintStyle: getAppTextStyle(titleColor: ColorManager.textField, fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
+                        textStyle: getAppTextStyle(titleColor: ColorManager.icons,   fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
+                        textSize: FontSize.s12,
+                        fillColor: ColorManager.white,
+                        borderColor: ColorManager.textField,
+                        borderRadius: RadiusManager.r10,
+                        maxLines: 3,
+                        validator: (v) => Validator().validateEmpty(value: v.toString(),),
                       ),
 
+                      const AppSizeBox(height: 12,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          // InkWell(
+                          //   onTap: (){},
+                          //   child: Row(
+                          //     crossAxisAlignment: CrossAxisAlignment.center,
+                          //     children: [
+                          //       SvgPicture.asset(ImageManager.addLocation,height: 16,width: 16),
+                          //       const AppSizeBox(width: 4,),
+                          //       AppText(
+                          //         title:'AddLocation'.tr(),
+                          //         titleSize: FontSize.s10,
+                          //         titleMaxLines: 10,
+                          //         titleAlign: TextAlign.start,
+                          //         titleColor: ColorManager.black ,
+                          //         titleHeight: 1.4,
+                          //         fontWeightType: FontWeightType.medium,
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
 
-                      // InkWell(
-                      //   onTap: (){},
-                      //   child: Row(
-                      //     crossAxisAlignment: CrossAxisAlignment.center,
-                      //     children: [
-                      //       SvgPicture.asset(ImageManager.video,height: 16,width: 16),
-                      //       const AppSizeBox(width: 4,),
-                      //       AppText(
-                      //         title:'video'.tr(),
-                      //         titleSize: FontSize.s10,
-                      //         titleMaxLines: 10,
-                      //         titleAlign: TextAlign.start,
-                      //         titleColor: ColorManager.primary ,
-                      //         titleHeight: 1.4,
-                      //         fontWeightType: FontWeightType.medium,
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
+
+                          InkWell(
+                            onTap: ()=>Utils().uploadModalBottomSheet(context: context,
+                              onGalleryTap: (photo){
+                                // context.read<AuthProvider>().changeImageProfile(context: context, photo: photo);
+                                setState(()=> widget.councilData.opportunityPicker=photo);
+                              },
+                              onCameraTap: (photo){
+                                // context.read<AuthProvider>().changeImageProfile(context: context, photo: photo);
+                                setState(()=> widget.councilData.opportunityPicker=photo);
+                              },),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                // SvgPicture.asset(ImageManager.camera,height: 16,width: 16),
+                                Icon(Icons.camera_alt_sharp,size: 16,color: ColorManager.red,),
+                                const AppSizeBox(width: 4,),
+                                AppText(
+                                  title:'photo'.tr(),
+                                  titleSize: FontSize.s10,
+                                  titleMaxLines: 10,
+                                  titleAlign: TextAlign.start,
+                                  titleColor: ColorManager.red ,
+                                  titleHeight: 1.4,
+                                  fontWeightType: FontWeightType.medium,
+                                ),
+                              ],
+                            ),
+                          ),
+
+
+                          // InkWell(
+                          //   onTap: (){},
+                          //   child: Row(
+                          //     crossAxisAlignment: CrossAxisAlignment.center,
+                          //     children: [
+                          //       SvgPicture.asset(ImageManager.video,height: 16,width: 16),
+                          //       const AppSizeBox(width: 4,),
+                          //       AppText(
+                          //         title:'video'.tr(),
+                          //         titleSize: FontSize.s10,
+                          //         titleMaxLines: 10,
+                          //         titleAlign: TextAlign.start,
+                          //         titleColor: ColorManager.primary ,
+                          //         titleHeight: 1.4,
+                          //         fontWeightType: FontWeightType.medium,
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
+                        ],
+                      ),
                     ],
-                  ),
+                  )
                 ),
 
                 if( widget.isOpportunity&&widget.councilData.opportunityPicker!=null)
@@ -204,6 +233,10 @@ class _AddRealEstateNewsState extends State<AddRealEstateNews> {
                         onPressed: (){
                           FocusScope.of(context).requestFocus( FocusNode());
 
+                          if(widget.councilData.selectedCity==null){
+                            LoadingDialog.showSimpleToast('PleaseSelectCityFirst'.tr());
+                            return;
+                          }
                           if(widget.isOpportunity){
                             if(widget.councilData.opportunityFormKey.currentState!.validate()){
                               // if(councilData.opportunityPicker==null){
@@ -212,11 +245,15 @@ class _AddRealEstateNewsState extends State<AddRealEstateNews> {
                               // }
                               context.read<CouncilProvider>().addOpportunity(context: context,
                                   post: widget.councilData.opportunityController.text,
+                                  description: widget.councilData.opportunityDesController.text,
+                                  cityId: widget.councilData.selectedCity!.id,
                                   image: widget.councilData.opportunityPicker==null?null:File(widget.councilData.opportunityPicker!.path));
                             }
                           }else{
                             if(widget.councilData.newsFormKey.currentState!.validate()){
-                              context.read<CouncilProvider>().addPost(context: context,post: widget.councilData.newsController.text, image: null);
+                              context.read<CouncilProvider>().addPost(
+                                  context: context,post: widget.councilData.newsController.text, image: null,
+                              cityId: widget.councilData.selectedCity!.id);
                             }
                           }
                           // if(councilData.newsFormKey.currentState!.validate()){

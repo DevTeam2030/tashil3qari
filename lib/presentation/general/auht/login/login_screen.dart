@@ -38,8 +38,10 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     super.initState();
     _loginData=LoginData();
-   // _loginData.emailController.text='new-2141-user@gmail.com';
-    //_loginData.passwordController.text='123456';
+   // _loginData.emailController.text='marwaali8686@gmail.com';
+   //  _loginData.passwordController.text='SOofQt74';
+    _loginData.emailController.text='marwa@gmail.com';
+    _loginData.passwordController.text='123456';
 
 
   }

@@ -104,15 +104,13 @@ class _PersonalProfileScreenState extends State<PersonalProfileScreen> {
                                   if(personalProfileData.showDataTab == PersonalDataType.ads)
                                     GridListItem(
                                       showAsList: personalProfileData.showAdsAsList ,
-                                      onTap: (value)=>
-                                          setState(() =>personalProfileData.showAdsAsList=value),
+                                      onTap: (value)=> setState(() =>personalProfileData.showAdsAsList=value),
                                     ),
 
                                   if(personalProfileData.showDataTab == PersonalDataType.favorite)
                                     GridListItem(
                                       showAsList: personalProfileData.showFavoriteAsList ,
-                                      onTap: (value)=>
-                                          setState(() =>personalProfileData.showFavoriteAsList=value),
+                                      onTap: (value)=> setState(() =>personalProfileData.showFavoriteAsList=value),
                                     ),
 
                                 ],

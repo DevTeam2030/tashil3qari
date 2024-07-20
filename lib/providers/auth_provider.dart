@@ -15,6 +15,7 @@ import 'package:tashil_agary/domain/model/models/register_request_body.dart';
 import 'package:tashil_agary/domain/model/models/user_data_model.dart';
 import '../domain/model/models/ProfileModel.dart';
 import '../domain/model/models/auth/register_model.dart';
+import '../domain/model/models/auth/upgrade_user_consultant_model.dart';
 import '../domain/model/models/update_profile_request_body.dart';
 import '../domain/model/notifications_setting_request_model.dart';
 import '../presentation/general/auht/otp/otp_imports.dart';
@@ -147,6 +148,15 @@ class AuthProvider extends ChangeNotifier {
  }
     // if(registerModel!=null)gotoIntroLogin(context: context);
 
+  }
+
+
+  Future<void> requestConsultant({required BuildContext context,required UpgradeUserConsultantModel model}) async {
+    isLoading = true;
+    notifyListeners();
+    await _api.requestConsultant(context: context, model: model);
+    isLoading = false;
+    notifyListeners();
   }
 
   Future<void> deleteAccount({required BuildContext context,}) async {

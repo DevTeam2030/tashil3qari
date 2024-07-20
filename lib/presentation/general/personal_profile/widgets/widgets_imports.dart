@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +10,7 @@ import '../../../../app/contants.dart';
 import '../../../../app/enums.dart';
 import '../../../../app/url_luncher.dart';
 import '../../../../app/utils.dart';
+import '../../../../components/BuildRateWidget.dart';
 import '../../../../components/loading_manager.dart';
 import '../../../../app/validator.dart';
 import '../../../../components/buttons/text_button.dart';
@@ -23,6 +23,7 @@ import '../../../../domain/model/models/finishing_types_model.dart';
 import '../../../../domain/model/models/general_property_model.dart';
 import '../../../../domain/model/models/user_ads_model.dart';
 import '../../../../providers/profile_provider.dart';
+import '../../../../providers/consultant_provider.dart';
 import '../../../../providers/auth_provider.dart';
 import '../../../../utilites/color_manager.dart';
 import '../../../../utilites/font_manager.dart';
@@ -35,6 +36,7 @@ import '../../add_ad/add_ad_imports.dart';
 import '../../auht/widgets/register_as_widget.dart';
 import '../../chats/make_agreement/make_agreement_imports.dart';
 import '../../chats/model/chat_message_model.dart';
+import '../../upgrade_user_to_consultant/upgrade_user_to_consultant_imports.dart';
 import '../../your_consultant/widgets/widgets_imports.dart';
 import '../personal_profile_imports.dart';
 
@@ -45,3 +47,6 @@ part 'ad_actions_drop_down.dart';
 part 'delete_reasons_ad_bottom_sheet.dart';
 part 'agreement_item.dart';
 part 'agreement_details_item.dart';
+part 'rating_widget.dart';
+part 'reply_to_rate_widget.dart';
+part 'add_comment_rate_widget.dart';

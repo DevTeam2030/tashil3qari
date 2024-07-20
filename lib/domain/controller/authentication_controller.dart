@@ -15,6 +15,7 @@ import 'package:tashil_agary/domain/model/social_login_model.dart';
 
 import '../model/models/ProfileModel.dart';
 import '../model/models/auth/register_model.dart';
+import '../model/models/auth/upgrade_user_consultant_model.dart';
 import '../model/models/update_profile_request_body.dart';
 import '../model/notifications_setting_request_model.dart';
 
@@ -254,6 +255,22 @@ class AuthController  {
 
     }
     return userDataModel;
+  }
+
+
+  Future<void> requestConsultant({required BuildContext context,required UpgradeUserConsultantModel model}) async {
+    var res = await _dio.post(url:'${Urls.requestConsultant}?lang=${Constants.langCode}',
+      context: context, body: model.toJson(),);
+    if (res != null) {
+      try{
+        LoadingDialog().titleMessageAlert(context:context,
+            title: 'upgradeTpConsultant'.tr(), message:res['message'].toString());
+      }catch(e){
+        Utils.printData(e.toString());
+      }
+
+    }
+
   }
 
 

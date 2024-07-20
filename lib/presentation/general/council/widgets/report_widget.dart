@@ -3,7 +3,8 @@ part of'widgets_imports.dart';
 
 class ReportWidget extends StatefulWidget {
   final int consultantId ;
-  const ReportWidget({super.key,required this.consultantId});
+  final String? title ;
+  const ReportWidget({super.key,required this.consultantId,this.title});
 
   @override
   State<ReportWidget> createState() => _ReportWidgetState();
@@ -17,6 +18,7 @@ class _ReportWidgetState extends State<ReportWidget> {
   super.initState();
 
   }
+
   @override
   void dispose() {
     reasonController.dispose();
@@ -58,7 +60,7 @@ Widget build(BuildContext context) {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       AppText(
-                        title:'Report'.tr(),
+                        title:widget.title??'Report'.tr(),
                         titleMaxLines: 1,
                         titleSize: FontSize.s16,
                         titleAlign: TextAlign.center,
@@ -73,8 +75,8 @@ Widget build(BuildContext context) {
 
                   MoreLineTextFormField(
                       controller: reasonController,
-                      hintTitle: 'Reason for reporting'.tr(),
-                      labelTitle: 'Reason for reporting'.tr(),
+                      hintTitle:widget.title?? 'Reason for reporting'.tr(),
+                      labelTitle: widget.title??'Reason for reporting'.tr(),
                       textInputType: TextInputType.multiline,
                       textInputAction: TextInputAction.newline,
                       hintFontSize: FontSize.s12,

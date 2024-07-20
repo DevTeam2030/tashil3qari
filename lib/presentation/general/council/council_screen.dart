@@ -27,6 +27,7 @@ class _CouncilScreenState extends State<CouncilScreen> {
     // _controller.dispose();
     councilData.newsController.dispose();
     councilData.opportunityController.dispose();
+    councilData.opportunityDesController.dispose();
     super.dispose();
   }
   @override
@@ -88,8 +89,8 @@ class _CouncilScreenState extends State<CouncilScreen> {
                 child:     TabBarView(
                   children: [
 
-                    RealEstateNewsTab(councilData: councilData,data: provider.posts),
-                    RealEstateOpportunityTab(councilData: councilData,data:provider.opportunities),
+                    RealEstateNewsTab(councilData: councilData,data: provider.posts,isLoading: provider.isLoading),
+                    RealEstateOpportunityTab(councilData: councilData,data:provider.opportunities,isLoading: provider.isLoading),
                   ],
                 ),
             ),

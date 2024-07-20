@@ -327,28 +327,46 @@ Widget build(BuildContext context) {
             ],
           ),
           const AppSizeBox(height: AppSize.s10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              MyTextButton(title: 'DeleteMyAccount'.tr(),
-                size: Size( .65.sw,  42),
-                radius: 8,
-                fontWeightType: FontWeightType.medium,
-                titleSize: FontSize.s18,
-                primaryColor: ColorManager.primary,
-                titleColor: ColorManager.white,
-                onPressed: (){
-                  LoadingDialog().optionalAgreeAlertDialog(context: context,
-                    title: 'delete account'.tr(),
-                    message: 'DeleteAccountMessage'.tr(),
-                    okClick: (){
-                      Navigator.pop(context);
-                      context.read<AuthProvider>().deleteAccount(context: context,);
-                    },
-                  );
-                }),
-            ],
-          ),
+         Row(
+           mainAxisAlignment: MainAxisAlignment.center,
+           children: [
+             MyTextButton(title: 'DeleteMyAccount'.tr(),
+                 size: Size( .65.sw,  42),
+                 radius: 8,
+                 fontWeightType: FontWeightType.medium,
+                 titleSize: FontSize.s18,
+                 primaryColor: ColorManager.primary,
+                 titleColor: ColorManager.white,
+                 onPressed: (){
+                   LoadingDialog().optionalAgreeAlertDialog(context: context,
+                     title: 'delete account'.tr(),
+                     message: 'DeleteAccountMessage'.tr(),
+                     okClick: (){
+                       Navigator.pop(context);
+                       context.read<AuthProvider>().deleteAccount(context: context,);
+                     },
+                   );
+                 }),
+
+           ],
+         ),
+     if(widget.personalProfileData.userType==UserType.user)
+     Padding(padding: const EdgeInsets.only(top: 10),
+     child: Row(
+       mainAxisAlignment: MainAxisAlignment.center,
+       children: [
+         MyTextButton(title: 'upgradeTpConsultant'.tr(),
+             size: Size( .65.sw,  42),
+             radius: 8,
+             fontWeightType: FontWeightType.medium,
+             titleSize: FontSize.s18,
+             primaryColor: ColorManager.primary,
+             titleColor: ColorManager.white,
+             onPressed: (){
+               MyRoute().navigate(context: context, route: const UpgradeUserToConsultantScreen());
+             }),
+       ],
+     ),),
 
           const AppSizeBox(height: AppSize.s20),
 

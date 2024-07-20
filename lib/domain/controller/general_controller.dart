@@ -54,7 +54,7 @@ class GeneralController  {
        settingModel = SettingModel.fromJson(res['data']);
        var data=settingModel.categories;
         settingModel.categories=[];
-        settingModel.categories.add(HomeCatogeryModel(name: 'all'.tr(),id: 0));
+        settingModel.categories.add(HomeCatogeryModel(name: 'all'.tr(),id: 0,options: []));
         settingModel.categories.addAll(data);
      }catch(e){
        Utils.printData(e.toString());

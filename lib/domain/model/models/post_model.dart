@@ -2,6 +2,7 @@
 class PostModel {
   int id;
   String post;
+  String description;
   String image;
   String userName;
   String userType;
@@ -14,6 +15,7 @@ class PostModel {
   String country;
   String timeAgo;
   String userImage;
+  String userCity;
   bool isFollow;
   bool isAgreement;
   List<AgreementsConsultModel>consults;
@@ -21,11 +23,13 @@ class PostModel {
   bool disLike;
   int likesCounter;
   int disLikesCounter;
+  int? cityId;
   // likes_counter: 0, dis_likes_counter: 0, like: false, disLike: false
   PostModel({
     required this.id,
     required this.post,
     required this.image,
+    required this.description,
     required this.userName,
     required this.userType,
     required this.userEmail,
@@ -39,16 +43,19 @@ class PostModel {
     required this.isFollow,
     required this.isAgreement,
     required this.consults,
+    required this.userCity,
     required this.like,
     required this.disLike,
     required this.disLikesCounter,
     required this.likesCounter,
+    required this.cityId,
   });
 
   factory PostModel.fromJson(Map<String, dynamic> json) => PostModel(
     id: json["id"],
     post: json["post"]??'',
     image: json["image"]??'',
+    description: json["description"]??'',
     userName: json["user_name"]??'',
     userType: json["user_type"]??'',
     userEmail: json["user_email"]??'',
@@ -66,6 +73,8 @@ class PostModel {
     like: json["like"]??false,
     likesCounter: json["likes_counter"]??0,
     disLikesCounter: json["dis_likes_counter"]??0,
+    cityId: json["city_id"],
+    userCity: json["user_city"]??'',
   );
 
   // Map<String, dynamic> toJson() => {

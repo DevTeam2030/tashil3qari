@@ -21,6 +21,7 @@ import '../../../components/text_field/general_appbar_logo.dart';
 import '../../../components/text_field/text_field_imports.dart';
 import '../../../domain/model/models/agreements_model.dart';
 import '../../../domain/model/models/consultant_model.dart';
+import '../../../domain/model/models/country_model.dart';
 import '../../../domain/model/models/post_model.dart';
 import '../../../providers/add_property_provider.dart';
 import '../../../providers/agreements_provider.dart';

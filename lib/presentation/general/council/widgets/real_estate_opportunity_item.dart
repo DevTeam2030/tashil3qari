@@ -60,6 +60,15 @@ class RealEstateOpportunityItem extends StatelessWidget {
                     underline: true
                 ),
               ),
+              if(opportunity.description.isNotEmpty)
+                Padding(padding: EdgeInsets.only(top: 4),
+                  child:  AppText(title:opportunity.description,
+                    titleSize: FontSize.s14,
+                    titleMaxLines: 100,
+                    titleHeight: 1.4,
+                    titleAlign: TextAlign.center,
+                    titleColor: ColorManager.titleServiceNameColor,
+                    fontWeightType: FontWeightType.bold,),),
               if(opportunity.image.isNotEmpty)
               Container(
                 height: 220,width: 1.0.sw,

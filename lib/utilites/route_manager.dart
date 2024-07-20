@@ -46,6 +46,7 @@ import '../presentation/general/home_Screen/home_imports.dart';
 import '../presentation/general/personal_profile/personal_profile_imports.dart';
 import '../presentation/general/search_list/search_list_screen.dart';
 import '../presentation/general/services/services_imports.dart';
+import '../presentation/general/upgrade_user_to_consultant/upgrade_user_to_consultant_imports.dart';
 import '../presentation/general/your_consultant/your_consultant_imports.dart';
 
 
@@ -77,6 +78,7 @@ class Routes{
   static const String yourConsultantProfileScreen ='/YourConsultantProfileScreen';
   static const String servicesScreen ='/ServicesScreen';
   static const String personalProfileScreen ='/PersonalProfileScreen';
+  static const String upgradeUserToConsultantScreen ='/UpgradeUserToConsultantScreen';
   static const String adScreen ='/AdScreen';
   static const String allOwnerAds ='/AllOwnerAds';
   static const String editAdScreen ='/EditAdScreen';
@@ -186,7 +188,7 @@ class RouteGenerator{
           id: 0,type: '',image: '',roomsNo: '',propertyTitle: '',currency: '',category: '',gallery: [],published: false,show: false,
           wishlist: false,lastUpadte: '',propertySize: '',price: '',cityId: 0,countryId: 0,rate: 0,bathroomsNo: '',city:'',
            country: '',featured: false,floor: '',kitchensNo: '',latitude: 0,longitude: 0,currencyId: '',
-            propertyDescription: '',video:'',adCreatedAt: '',auction: false,width: '',length: '',license: '',finishingTypeId: 0,finishingType: '',catId: 0
+            propertyDescription: '',haveConsultant: false,video:'',adCreatedAt: '',auction: false,width: '',length: '',license: '',finishingTypeId: 0,finishingType: '',catId: 0
         ),
       ),);
       case Routes.addAdImagesScreen :return MaterialPageRoute(builder: (context) =>   AddAdImagesScreen(addAdtData: AddAdtData()),);
@@ -200,6 +202,7 @@ class RouteGenerator{
       case Routes.yourConsultantProfileScreen :return MaterialPageRoute(builder: (context) => const  YourConsultantProfileScreen(consultantId: 0),);
       case Routes.servicesScreen :return MaterialPageRoute(builder: (context) =>   const ServicesScreen(),);
       case Routes.personalProfileScreen :return MaterialPageRoute(builder: (context) => const  PersonalProfileScreen(),);
+      case Routes.upgradeUserToConsultantScreen :return MaterialPageRoute(builder: (context) => const  UpgradeUserToConsultantScreen(),);
       case Routes.adScreen :return MaterialPageRoute(builder: (context) =>    AdScreen(propertyId: 0,),);
       case Routes.allOwnerAds :return MaterialPageRoute(builder: (context) =>    AllOwnerAds(ownerId: 0,ownerName: '',),);
       case Routes.adPhotoViewScreen :return MaterialPageRoute(builder: (context) =>    AdPhotoViewScreen(propertyInfo: PropertyInfoModel(

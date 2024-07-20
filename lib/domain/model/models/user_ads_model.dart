@@ -31,11 +31,13 @@ class UserAdsModel {
   String lastUpadte;
   bool auction;
   bool published;
+  bool haveConsultant;
   int finishingTypeId;
   int catId;
   String finishingType;
   List<GalleryModel> gallery;
   String video;
+
   UserAdsModel({
     required this.id,
     required this.propertyTitle,
@@ -73,6 +75,7 @@ class UserAdsModel {
     required this.finishingType,
     required this.currencyId,
     required this.video,
+    required this.haveConsultant,
   });
 
   factory UserAdsModel.fromJson(Map<String, dynamic> json) => UserAdsModel(
@@ -111,6 +114,7 @@ class UserAdsModel {
     auction: json["auction"]??false,
     currencyId: json["currency_id"]??'0',
     video: json["video"]??'',
+    haveConsultant: json["have_consultant"]??false,
     gallery:json["gallery"]==null?[]: List<GalleryModel>.from(json["gallery"].map((x) => GalleryModel.fromJson(x))),
 
   );

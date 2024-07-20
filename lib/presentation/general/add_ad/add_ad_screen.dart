@@ -2,8 +2,7 @@ part of'add_ad_imports.dart';
 
 
 class AddAdScreen extends StatefulWidget {
-  final bool isEditAd;
-  const AddAdScreen({Key? key,this.isEditAd=false}) : super(key: key);
+  const AddAdScreen({Key? key,}) : super(key: key);
 
   @override
   State<AddAdScreen> createState() => _AddAdScreenState();
@@ -215,11 +214,11 @@ class _AddAdScreenState extends State<AddAdScreen> {
                     LengthsItem(spaceController1: addAdtData.lengthController,title1: 'Length'.tr(),title2: 'width'.tr(),
                         spaceController2: addAdtData.widthController,title: 'Lengths'.tr(),),
 
-                    if(widget.isEditAd)
-                    TitleValueItem(color: ColorManager.textGrey, title: 'Advertisement number'.tr(),value: '5463512'),
-                    if(widget.isEditAd)
-                    TitleValueItem(color: ColorManager.white, title: 'PostAd'.tr(),value: '2023/11/09/ 09:23 AM',
-                    valueColor: ColorManager.grey,),
+                    // if(widget.isEditAd)
+                    // TitleValueItem(color: ColorManager.textGrey, title: 'Advertisement number'.tr(),value: '5463512'),
+                    // if(widget.isEditAd)
+                    // TitleValueItem(color: ColorManager.white, title: 'PostAd'.tr(),value: '2023/11/09/ 09:23 AM',
+                    // valueColor: ColorManager.grey,),
 
 
                     const AppSizeBox(height: 20,),

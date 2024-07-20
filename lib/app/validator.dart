@@ -70,11 +70,13 @@ class Validator {
       return message ?? fillFields;
     }
     else if (
-    // Constants.isProductionMode&&
+    Constants.isProductionMode&&
         value.length < 8) {
       return message ?? passWordValidateLength;
-    } else if (
-    // Constants.isProductionMode&&
+    }
+
+    else if (
+    Constants.isProductionMode&&
         !regExp.hasMatch(value)) {
       return message ?? passWordValidate;
     }

@@ -4,12 +4,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:tashil_agary/app/extentions.dart';
 import 'package:tashil_agary/components/size_box_height.dart';
-
 import '../../../../app/enums.dart';
 import '../../../../app/url_luncher.dart';
+import '../../../../app/validator.dart';
+import '../../../../components/BuildRateWidget.dart';
 import '../../../../components/buttons/text_button.dart';
 import '../../../../components/cach_image.dart';
 import '../../../../components/call_icon.dart';
+import '../../../../components/loading_manager.dart';
+import '../../../../components/text_field/text_field_imports.dart';
 import '../../../../domain/model/models/consultant_info_model.dart';
 import '../../../../providers/consultant_provider.dart';
 import '../../../../utilites/color_manager.dart';
@@ -17,8 +20,16 @@ import '../../../../utilites/font_manager.dart';
 import '../../../../utilites/image_manager.dart';
 import '../../../../utilites/styles_manager.dart';
 import '../../../../utilites/values_manager.dart';
+import '../../council/widgets/widgets_imports.dart';
+import '../../personal_profile/widgets/widgets_imports.dart';
+import '../../search_list/widgets/ad_grid_item.dart';
+import '../../search_list/widgets/ad_list_item.dart';
 
+part 'add_rate_to_consultant_widget.dart';
 part 'consultant_profile_data_widget.dart';
 part 'follow_widget.dart';
 part 'personal_data_item.dart';
 part 'personal_data_widget.dart';
+part 'your_consultant_ads_tab.dart';
+part 'your_consultant_comments_tab.dart';
+

@@ -98,9 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         minMaxZoomPreference: MinMaxZoomPreference(5, 28),
                         onCameraMove: (CameraPosition position) async{
                           if(position.zoom<=8&&!homeData.showAllMap)homeData.gotToCountries(context: context);
-                          
-                                            
-// //                       // if (position.zoom <5||!saudiBounds.contains(position.target)) {
+                          // //                       // if (position.zoom <5||!saudiBounds.contains(position.target)) {
 // //                       if (position.zoom <6) {
 // //
 // //                         // GoogleMapController controller = await homeData. mapController.future;

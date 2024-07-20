@@ -102,4 +102,8 @@ changePassword({required BuildContext context}){
         )
     );
   }
+
+  hiringRealEstateConsultant({required BuildContext context, required UserAdsModel ad}){
+    MyRoute().navigate(context: context, route: HiringRealEstateConsultantScreen(propertyId: ad.id,));
+  }
 }

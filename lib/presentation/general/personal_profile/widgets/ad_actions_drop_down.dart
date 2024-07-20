@@ -55,6 +55,7 @@ double width=120.0;
           else  if(value=='RemoveFromAuction'.tr())widget.personalProfileData.removeFromAuction(context: context, ad: widget.ad);
           else  if(value=='addToAuction'.tr())widget.personalProfileData.addToAuction(context: context, ad: widget.ad);
           else  if(value=='HighlightAd'.tr()) MyRoute().navigate(context: context, route: AddAdFeaturedScreen(propertyId: widget.ad.id,));
+          else  if(value=='HiringRealEstateConsultant'.tr()) widget.personalProfileData.hiringRealEstateConsultant(context: context, ad: widget.ad);
           else{}
           setState(() {
 
@@ -119,6 +120,8 @@ double width=120.0;
 
     }
     if(!widget.ad.featured)filters.add('HighlightAd'.tr());
+    if(widget.personalProfileData.userType==UserType.user&&
+        !widget.ad.haveConsultant)filters.add('HiringRealEstateConsultant'.tr());
 
     filters.add('Delete'.tr());
   }

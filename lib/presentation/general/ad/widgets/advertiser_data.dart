@@ -10,7 +10,8 @@ class AdvertiserData extends StatelessWidget {
     return InkWell(
       onTap: () =>
       propertyInfo.userType == UserType.consultant?
-          MyRoute().navigate(context: context, route:  YourConsultantProfileScreen(consultantId: propertyInfo.userId,)):null,
+          MyRoute().navigate(context: context, route:  YourConsultantProfileScreen(consultantId: propertyInfo.userId,)):
+          MyRoute().navigate(context: context, route:  UserOwnerAdProfileScreen(propertyInfo: propertyInfo,)),
     child:
       Column(
       children: [
