@@ -38,8 +38,7 @@ class Urls{
  static const getAgreementConsultants='get-agreements-consultant';
  static const getConsultantInfo='get-consultant-info';
  static const followConsultant='follow';
- static const addRateToConsultant='addRateToConsultant';
- static const replyRate='addRateToConsultant';
+
  static const unFollowConsultant='un-follow';
  static const consultantAds='consultant/ads';
  static const updateProfile='update-profile';
@@ -72,6 +71,8 @@ class Urls{
 
 
 
+
+ static const services='services';
 
  static const acceptAgreement='estate-add-agreement';
  static const getEstateAgreements='estate-get-agreements';
@@ -167,6 +168,12 @@ class Urls{
  static const activeSocialAccounts='active-soical-account';
  static const unActiveSocialAccounts='unactive-soical-account';
  static const addRecentlyViewed='add-recently-viewed';
+
+
+
+ static const rateConsultant='rate-consultant';
+ static const replayRate='replay-rate';
+ static  getConsultantRates(int consultantId)=>'get-consultant-rates?consultant_id=$consultantId';
 }
 
 

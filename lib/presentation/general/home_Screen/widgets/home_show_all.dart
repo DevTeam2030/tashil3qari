@@ -29,7 +29,7 @@ class HomeShowAll extends StatelessWidget {
         height: 40,
         decoration: Utils.returnDropdownButtonDecoration(ColorManager.primary,
           ColorManager.primary,10),
-        margin:  EdgeInsets.only(bottom: 110,right: 10,left: 10),
+        margin:  EdgeInsets.only(bottom: 30,right: 10,left: 10),
         padding: EdgeInsets.symmetric(horizontal: 10),
         child: InkWell(
           splashColor: ColorManager.white,

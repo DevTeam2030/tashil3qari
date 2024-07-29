@@ -61,6 +61,41 @@ class TextOnImage extends StatelessWidget {
 }
 
 
+class MoreIcon extends StatelessWidget {
+  const MoreIcon({super.key,});
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          height: 50,
+          width: 50,
+          padding: const EdgeInsets.all(3),
+          decoration: BoxDecoration(
+            color: ColorManager.primary,
+            shape: BoxShape.circle,
+          ),
+          child: Container(
+            height: 40,
+            width: 40,
+            decoration: BoxDecoration(
+              color: ColorManager.white,
+              shape: BoxShape.circle,
+            ),
+            child: Icon(Icons.more_horiz,color: ColorManager.primary,),
+          ),
+        ),
+        Image.asset(
+          ImageManager.polygon,
+          width: 25,
+          height: 25,
+          fit: BoxFit.cover,
+          color: ColorManager.primary)
+      ],
+    );
+  }
+}
 class TextPrice extends StatelessWidget {
   const TextPrice({
     super.key,
@@ -75,11 +110,11 @@ class TextPrice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: const BoxConstraints(
+      constraints:  BoxConstraints(
         maxWidth: 100,
         minWidth: 25,
         minHeight: 30,
-        maxHeight: 75
+        maxHeight:type==MapAdType.premium?100: 75
       ),
       child: Stack(
         fit: StackFit.loose,
@@ -92,7 +127,7 @@ class TextPrice extends StatelessWidget {
 
               Container(
                 margin:
-                    auction==true? EdgeInsets.only(top:type==MapAdType.premium?30:10,left: 10):
+                    auction==true? EdgeInsets.only(top:type==MapAdType.premium?27:10,left: 9):
                 type==MapAdType.premium?
                 const EdgeInsets.only(top:10,left: 10):EdgeInsets.zero,
                 // padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),

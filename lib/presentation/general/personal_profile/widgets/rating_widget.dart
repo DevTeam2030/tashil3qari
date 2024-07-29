@@ -1,8 +1,10 @@
 part of'widgets_imports.dart';
 
 class RatingConsultantWidget extends StatelessWidget {
-  final haveAnswer;
-  const RatingConsultantWidget({super.key,required this.haveAnswer});
+  final ConsultantCommentModel comment;
+  final String consultantName;
+  final int consultantId;
+  const RatingConsultantWidget({super.key,required this.comment,required this.consultantId,required this.consultantName});
 
 @override
 Widget build(BuildContext context) {
@@ -23,46 +25,48 @@ Widget build(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        BuildRateWidget(rate: 4.5,readOnly: true,iconSize: 25),
+        BuildRateWidget(rate: double.tryParse(comment.rate)??0,readOnly: true,iconSize: 25),
         const AppSizeBox(height: 8,),
         AppText(
-            title: 'elsayed fahmy',
+            title: comment.userName,
             titleAlign: TextAlign.center,
             titleMaxLines: 1,fontWeightType: FontWeightType.bold,
             titleSize: FontSize.s14,titleColor: ColorManager.black),
 
         const AppSizeBox(height: 8,),
         AppText(
-            title: 'مستشار جيد انصحكم بالتعامل معه',
+            title: comment.comment,
             titleAlign: TextAlign.center,
             titleMaxLines: 1,fontWeightType: FontWeightType.regular,
             titleSize: FontSize.s12,titleColor: ColorManager.notificationsBody),
 
-        if(haveAnswer)Column(
+        if(comment.replies.isNotEmpty)Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
             const AppSizeBox(height: 12,),
             AppText(
-                title: 'elsayed fahmy',
+                title:consultantName,
                 titleAlign: TextAlign.center,
                 titleMaxLines: 1,fontWeightType: FontWeightType.bold,
                 titleSize: FontSize.s14,titleColor: ColorManager.textPrimaryColor),
 
             const AppSizeBox(height: 8,),
+            for(var item in comment.replies)
             AppText(
-                title: 'مستشار جيد انصحكم بالتعامل معه',
-                titleAlign: TextAlign.center,
-                titleMaxLines: 1,fontWeightType: FontWeightType.regular,
+                title: item.comment,
+                titleAlign: TextAlign.start,
+                titleMaxLines: 100,fontWeightType: FontWeightType.regular,
                 titleSize: FontSize.s12,titleColor: ColorManager.textPrimaryColor.withOpacity(.7)),
           ],
         )
-
-          ///TODO: chek if my consult or no
-        else InkWell(
+          
+        else if(Constants.userDataModel!=null&&consultantId==Constants.userDataModel!.id)
+          InkWell(
           onTap: (){
-            LoadingDialog().widgetAlertDialog(context: context, widget: AddCommentToRateWidget(rateId: 10,));
+            LoadingDialog().widgetAlertDialog(context: context,
+                widget: AddReplyCommentToRateWidget(rateId: comment.id,consultantId: consultantId,));
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -79,6 +83,7 @@ Widget build(BuildContext context) {
             ],
           ),
         )
+        else AppSizeBox(width: 0,)
       ],
     ),
   );

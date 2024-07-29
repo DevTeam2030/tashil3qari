@@ -13,7 +13,7 @@ class HomeData {
   Completer<GoogleMapController> mapController = Completer();
 
   // LatLng p1 = const LatLng(40.153474463955796, 35.33852195739747);
-  LatLng currentLocation = LatLng(23.8859, 45.0792);
+  LatLng currentLocation = const LatLng(23.8859, 45.0792);
   AdType? selectedAdType;
 
   // AdType selectedAdType= AdType.forSale;
@@ -132,9 +132,7 @@ class HomeData {
 
       Constants.buildAllCitiesMarkersBefore = true;
 
-      var city = country.cities.isNotEmpty ? country.cities.first : context
-          .read<GeneralProvider>()
-          .userCity;
+      var city = country.cities.isNotEmpty ? country.cities.first : context.read<GeneralProvider>().userCity;
       currentLocation = LatLng(city.latitude, city.longitude);
       CameraPosition kLake = CameraPosition(
         // bearing: 192.8334901395799,
@@ -149,71 +147,6 @@ class HomeData {
     }
   }
 
-  initDataCitiesMarkers1(
-      {required BuildContext context, bool? isNotify, required Function() afterBuildCitiesMarkers}) async {
-    try {
-      // context.read<HomeProvider>().changeLoading(true,isNotify??false);
-      // allCitiesMarkers = {};
-      var country = context
-          .read<GeneralProvider>()
-          .mapCountry;
-      showAllMap = true;
-      if (allCitiesMarkers.isEmpty) {
-        for (var city in country.cities) {
-          allCitiesMarkers.add(Marker(
-              markerId: MarkerId("${city.id}"),
-              position: LatLng(city.latitude, city.longitude),
-              icon: await TextImage(
-                text: city.name,
-                image: city.image,
-              ).toBitmapDescriptor(
-                // logicalSize: const Size(150, 150),
-                // imageSize: const Size(150, 150)
-              ),
-              onTap: () async {
-                showCitiesMarkers = false;
-                selectedCity.value = city;
-                // showAllMap=false;
-                // context.read<HomeProvider>().properties=[];
-                await context.read<HomeProvider>().getProperties(
-                  context: context,
-                  forSale: selectedAdType == AdType.forSale,
-                  forRent: selectedAdType == AdType.forRent,
-                  cityId: city.id,
-                  isAuction: showAuctionOnMap.value,).then((value) =>
-                    initPropertiesMarkers(context: context));
-              }));
-        }
-      }
-
-
-      final GoogleMapController controller = await mapController.future;
-      // await controller.animateCamera(CameraUpdate.newCameraPosition(kLake));
-      // context.read<HomeProvider>().changeLoading(false);
-      // afterBuildCitiesMarkers();
-      // Future.delayed(const Duration(seconds:3)).then((value)=> context.read<HomeProvider>().changeLoading(false));
-
-      if (!Constants.buildAllCitiesMarkersBefore) {
-        Constants.buildAllCitiesMarkersBefore = true;
-        gotoIntro(context: context);
-      } else {
-        var city = country.cities.isNotEmpty ? country.cities.first : context
-            .read<GeneralProvider>()
-            .userCity;
-        currentLocation = LatLng(city.latitude, city.longitude);
-        CameraPosition kLake = CameraPosition(
-          // bearing: 192.8334901395799,
-          target: currentLocation,
-          //tilt: 59.440717697143555,
-          zoom: 5,
-        );
-        await controller.animateCamera(CameraUpdate.newCameraPosition(kLake));
-        context.read<HomeProvider>().changeLoading(false, true);
-      }
-    } catch (e) {
-
-    }
-  }
 
   gotToCountries({required BuildContext context}) async {
     showCitiesMarkers = true;
@@ -237,7 +170,6 @@ class HomeData {
     Future.delayed(const Duration(seconds: 2)).then((value) =>
     showAllMap = true);
     context.read<HomeProvider>().notifyListeners();
-    // print('----------------------------------------');
   }
 
   getMarkerTap({required BuildContext context, required CityModel city}) async {
@@ -251,30 +183,69 @@ class HomeData {
         initPropertiesMarkers(context: context));
   }
 
+  bool showAllSamePosition=true;
   initPropertiesMarkers({required BuildContext context}) async {
     context.read<HomeProvider>().changeLoading(true, false);
 
     markers = {};
-    for (var prop in context
-        .read<HomeProvider>()
-        .properties) {
-      markers.add(Marker(
-          markerId: MarkerId("${prop.id}"),
-          position: LatLng(prop.latitude, prop.longitude),
-          icon: await TextPrice(price: '${prop.price}',
-            currency: prop.currency,
-            auction: prop.isAuction,
-            type: prop.featured ? MapAdType.premium : (prop.show ? MapAdType
-                .other : MapAdType.primary),
-          ).toBitmapDescriptor(),
-          onTap: () => optionalAlertDialog(context: context, property: prop)));
+    var properties=context.read<HomeProvider>().properties;
+    for (var prop in properties) {
+        var marks=markers.where((element) => element.position.latitude==prop.latitude
+            &&element.position.longitude==prop.longitude).toList();
+        if(marks.isNotEmpty&&showAllSamePosition){
+          Marker  m=marks.first;
+          markers.removeAll(marks);
+          markers.add(Marker(
+              markerId: MarkerId("${m.markerId.value}"),
+              position: LatLng(m.position.latitude, m.position.longitude),
+              icon: await MoreIcon().toBitmapDescriptor(),
+              onTap: (){
+                showAllSamePosition=false;
+                initPropertiesMarkers(context: context);
+              } ));
+        }else{
+          markers.add(Marker(
+              markerId: MarkerId("${prop.id}"),
+              position: LatLng(prop.latitude, prop.longitude),
+              icon: await TextPrice(price: '${prop.price}',
+                currency: prop.currency,
+                auction: prop.isAuction,
+                type: prop.featured ? MapAdType.premium : (prop.show ? MapAdType
+                    .other : MapAdType.primary),
+              ).toBitmapDescriptor(),
+              onTap: () => optionalAlertDialog(context: context, property: prop)));
+        }
+
+        // if(marker.position.latitude==prop.latitude&&marker.position.longitude==prop.longitude&&showAllSamePosition){
+        //   var m=marker;
+        //   markers.remove(marker);
+        //   markers.add(Marker(
+        //       markerId: MarkerId("${m.markerId.value}"),
+        //       position: LatLng(m.position.latitude, m.position.longitude),
+        //       icon: await MoreIcon().toBitmapDescriptor(),
+        //       onTap: (){
+        //         showAllSamePosition=false;
+        //         initPropertiesMarkers(context: context);
+        //       } ));
+        //   break;
+        // }else {
+        //   markers.add(Marker(
+        //     markerId: MarkerId("${prop.id}"),
+        //     position: LatLng(prop.latitude, prop.longitude),
+        //     icon: await TextPrice(price: '${prop.price}',
+        //       currency: prop.currency,
+        //       auction: prop.isAuction,
+        //       type: prop.featured ? MapAdType.premium : (prop.show ? MapAdType
+        //           .other : MapAdType.primary),
+        //     ).toBitmapDescriptor(),
+        //     onTap: () => optionalAlertDialog(context: context, property: prop)));
+        // }
+
+
     }
-    var country = context
-        .read<GeneralProvider>()
-        .mapCountry;
-    var city = country.cities.isNotEmpty ? country.cities.first : context
-        .read<GeneralProvider>()
-        .userCity;
+    var country = context.read<GeneralProvider>().mapCountry;
+    var city = country.cities.isNotEmpty ? country.cities.first : context.read<GeneralProvider>().userCity;
+    // currentLocation =properties.isNotEmpty?LatLng(properties.first.latitude, properties.first.longitude): LatLng(city.latitude, city.longitude);
     currentLocation = LatLng(city.latitude, city.longitude);
     CameraPosition kLake = CameraPosition(
       // bearing: 192.8334901395799,
@@ -337,8 +308,8 @@ class HomeData {
     // context.read<HomeProvider>().changeLoading();
   }
 
-  List<LatLng> pointsPolygon = [
-    LatLng(26.497248, 50.134925),
+  List<LatLng> pointsPolygon =const [
+     LatLng(26.497248, 50.134925),
     LatLng(26.500014, 50.123939),
     LatLng(26.497863, 50.121192),
     LatLng(26.487723, 50.120506),
@@ -429,150 +400,8 @@ class HomeData {
 
 }
 
-final Set<Polygon> polygons = {
-  Polygon(
-    polygonId: PolygonId('saudiArabiaBorders'),
-    points: [
-      LatLng(32.161, 35.719),
-      LatLng(31.889, 36.11),
-      LatLng(31.187, 36.621),
-      LatLng(30.156, 37.999),
-      LatLng(29.353, 39.005),
-      LatLng(29.099, 40.066),
-      LatLng(28.392, 41.054),
-      LatLng(27.489, 42.386),
-      LatLng(26.368, 43.212),
-      LatLng(25.425, 44.178),
-      LatLng(24.537, 45.524),
-      LatLng(23.849, 46.531),
-      LatLng(22.877, 47.209),
-      LatLng(21.715, 48.939),
-      LatLng(20.175, 49.87),
-      LatLng(19.624, 50.201),
-      LatLng(18.672, 50.346),
-      LatLng(18.251, 50.228),
-      LatLng(17.26, 49.512),
-      LatLng(16.414, 48.635),
-      LatLng(16.949, 47.459),
-      LatLng(17.233, 46.466),
-      LatLng(17.264, 45.397),
-      LatLng(17.075, 44.064),
-      LatLng(16.471, 42.779),
-      LatLng(16.264, 42.351),
-      LatLng(17.045, 41.221),
-      LatLng(18.616, 40.094),
-      LatLng(19.488, 39.139),
-      LatLng(20.174, 38.491),
-      LatLng(21.356, 37.209),
-      LatLng(22.555, 36.066),
-      LatLng(23.924, 35.634),
-      LatLng(25.639, 35.140),
-      LatLng(26.632, 34.638),
-      LatLng(28.058, 34.632),
-      LatLng(29.098, 34.497),
-      LatLng(30.232, 34.556),
-      LatLng(31.160, 34.942),
-      LatLng(31.882, 35.556),
-      LatLng(32.161, 35.719),
-    ],
-    strokeWidth: 2,
-    strokeColor: Colors.blue,
-    fillColor: Colors.blue.withOpacity(0.15),
-  ),
-};
 
-List<LatLng> pointsPolygon3 = const [
-  LatLng(28.146010, 34.837805),
-  LatLng(24.283416, 37.474523),
-  LatLng(20.217248, 39.935461),
-  LatLng(16.463896, 42.704016),
-  LatLng(17.598363, 43.451086),
-  LatLng(17.430731, 45.428625),
-  LatLng(17.095006, 47.098547),
-  LatLng(18.142087, 48.109289),
-  LatLng(18.892144, 49.779211),
-  LatLng(20.010923, 54.920813),
-  LatLng(21.980128, 55.667883),
-  LatLng(22.671192, 55.140539),
-  LatLng(22.833295, 52.547766),
-  LatLng(23.962556, 51.449133),
-  LatLng(26.624276, 49.515539),
-  LatLng(28.358915, 48.263098),
-  LatLng(28.496884, 47.631928),
-  LatLng(28.496884, 47.631928),
-  LatLng(29.137913, 44.705364),
-  LatLng(29.910959, 43.607902),
-  LatLng(31.238239, 41.622019),
-  LatLng(31.972624, 39.740656),
-  LatLng(32.105524, 39.296445),
-  LatLng(32.083388, 39.218055),
-  LatLng(31.639531, 37.820098),
-  LatLng(31.395509, 37.259204),
-  LatLng(30.476326, 38.016749),
-  LatLng(30.324931, 37.693407),
-  LatLng(29.981436, 37.517878),
-  LatLng(29.789996, 36.785768),
-  LatLng(29.130212, 36.145582),
-  LatLng(29.290001, 34.975208),
-  LatLng(28.155804, 34.827394),
 
-];
-List<LatLng> pointsPolygon2 = const [
-  LatLng(29.3565, 34.95604),
-  LatLng(29.01835, 34.59394),
-  LatLng(28.60743, 34.49794),
-  LatLng(28.05855, 34.63234),
-  LatLng(27.37129, 34.76837),
-  LatLng(26.44653, 35.71995),
-  LatLng(25.82688, 36.64105),
-  LatLng(24.8591, 37.5175),
-  LatLng(24.12176, 38.34285),
-  LatLng(23.61702, 38.79234),
-  LatLng(22.94313, 39.26611),
-  LatLng(22.14021, 39.80161),
-  LatLng(21.2919, 40.24765),
-  LatLng(20.46429, 40.94029),
-  LatLng(19.75288, 41.75439),
-  LatLng(18.63155, 42.77964),
-  LatLng(17.80832, 43.34876),
-  LatLng(17.42484, 44.06713),
-  LatLng(17.33334, 45.39766),
-  LatLng(17.62984, 46.71708),
-  LatLng(17.723, 47.28999),
-  LatLng(17.87607, 47.46806),
-  LatLng(17.9735, 47.68528),
-  LatLng(18.27062, 47.82562),
-  LatLng(18.73338, 47.8575),
-  LatLng(19.51105, 48.24196),
-  LatLng(20.33845, 49.11667),
-  LatLng(21.292, 50.12059),
-  LatLng(22.49695, 50.32285),
-  LatLng(24.2455, 51.57952),
-  LatLng(25.21841, 52.00001),
-  LatLng(26.37921, 52.00001),
-  LatLng(27.84425, 51.57952),
-  LatLng(28.81452, 50.8101),
-  LatLng(29.98571, 49.23912),
-  LatLng(29.98571, 48.01456),
-  LatLng(29.09943, 47.30262),
-  LatLng(29.09943, 46.56871),
-  LatLng(29.17889, 45.64918),
-  LatLng(29.17889, 44.7095),
-  LatLng(29.09943, 44.00418),
-  LatLng(29.17889, 43.06952),
-  LatLng(28.68935, 42.34956),
-  LatLng(28.45534, 41.53132),
-  LatLng(28.52694, 40.92006),
-  LatLng(28.46181, 40.24765),
-  LatLng(28.52694, 39.67395),
-  LatLng(28.68935, 39.06133),
-  LatLng(28.52726, 38.34755),
-  LatLng(28.2526, 37.48442),
-  LatLng(28.24707, 36.48542),
-  LatLng(28.60743, 35.58787),
-  LatLng(28.94979, 35.43353),
-  LatLng(29.3565, 34.95604)
-];
 
 
 List<LatLng> pointsPolygon = const [
@@ -687,41 +516,5 @@ LatLng(  28.178660, 34.697082),
 LatLng(28.198027, 34.697082),
 LatLng( 28.158685, 34.644897),
   LatLng( 28.135678, 34.727294),
-
-];
-List<LatLng> pointsPolygon1 = const [
-  LatLng(28.146010, 34.837805),
-  LatLng(24.283416, 37.474523),
-  LatLng(20.217248, 39.935461),
-  LatLng(16.463896, 42.704016),
-  LatLng(17.598363, 43.451086),
-  LatLng(17.430731, 45.428625),
-  LatLng(17.095006, 47.098547),
-  LatLng(18.142087, 48.109289),
-  LatLng(18.892144, 49.779211),
-  LatLng(20.010923, 54.920813),
-  LatLng(21.980128, 55.667883),
-  LatLng(22.671192, 55.140539),
-  LatLng(22.833295, 52.547766),
-  LatLng(23.962556, 51.449133),
-  LatLng(26.624276, 49.515539),
-  LatLng(28.358915, 48.263098),
-  LatLng(28.496884, 47.631928),
-  LatLng(28.496884, 47.631928),
-  LatLng(29.137913, 44.705364),
-  LatLng(29.910959, 43.607902),
-  LatLng(31.238239, 41.622019),
-  LatLng(31.972624, 39.740656),
-  LatLng(32.105524, 39.296445),
-  LatLng(32.083388, 39.218055),
-  LatLng(31.639531, 37.820098),
-  LatLng(31.395509, 37.259204),
-  LatLng(30.476326, 38.016749),
-  LatLng(30.324931, 37.693407),
-  LatLng(29.981436, 37.517878),
-  LatLng(29.789996, 36.785768),
-  LatLng(29.130212, 36.145582),
-  LatLng(29.290001, 34.975208),
-  LatLng(28.155804, 34.827394),
 
 ];

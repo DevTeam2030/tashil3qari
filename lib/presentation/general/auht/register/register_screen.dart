@@ -158,6 +158,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   const AppSizeBox(height: AppSize.s8),
                                   ValueListenableBuilder(valueListenable: _registerData.selectedSerialNumber,
                                     builder: (context, value, child) =>   SerialNumbersDropdownButton(
+
                                       selectedSerialNumber: _registerData.selectedSerialNumber.value,
                                       onChanged: (selectedSerialNumber)=>_registerData.selectedSerialNumber.value=selectedSerialNumber,
                                     ),),

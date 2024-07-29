@@ -2,7 +2,7 @@
 class HomeCatogeryModel {
   int id;
   String name;
-  List<HomeCategoryOptionModel> options;
+  HomeCategoryOptionModel options;
 
   HomeCatogeryModel({
     required this.id,
@@ -13,33 +13,66 @@ class HomeCatogeryModel {
   factory HomeCatogeryModel.fromJson(Map<String, dynamic> json) => HomeCatogeryModel(
     id: json["id"],
     name: json["name"]??'',
-    options: List<HomeCategoryOptionModel>.from(json["options"].map((x) => HomeCategoryOptionModel.fromJson(x))),
+    options: HomeCategoryOptionModel.fromJson(json["options"]),
   );
 
 
 }
 
 
+
 class HomeCategoryOptionModel {
-  int id;
-  String name;
-  String type;
+  bool roomsNo;
+  bool bathroomsNo;
+  bool floorsNo;
+  bool receptionsNo;
+  bool floor;
+  bool apartmentsNo;
+  bool direction;
+  bool streetWidth;
+  bool storesNo;
+  bool buildingAge;
+  bool kitchensNo;
 
   HomeCategoryOptionModel({
-    required this.id,
-    required this.name,
-    required this.type,
+    required this.roomsNo,
+    required this.bathroomsNo,
+    required this.floorsNo,
+    required this.receptionsNo,
+    required this.floor,
+    required this.apartmentsNo,
+    required this.direction,
+    required this.streetWidth,
+    required this.storesNo,
+    required this.buildingAge,
+    required this.kitchensNo,
   });
 
   factory HomeCategoryOptionModel.fromJson(Map<String, dynamic> json) => HomeCategoryOptionModel(
-    id: json["id"],
-    name: json["name"]??'',
-    type: json["type"]??'',
+    roomsNo: json["rooms_no"]??false,
+    bathroomsNo: json["bathrooms_no"]??false,
+    floorsNo: json["floors_no"]??false,
+    receptionsNo: json["receptions_no"]??false,
+    floor: json["floor"]??false,
+    apartmentsNo: json["apartments_no"]??false,
+    direction: json["direction"]??false,
+    streetWidth: json["street_width"]??false,
+    storesNo: json["stores_no"]??false,
+    buildingAge: json["building_age"]??false,
+    kitchensNo: json["kitchens_no"]??false,
   );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "type": type,
+    "rooms_no": roomsNo,
+    "bathrooms_no": bathroomsNo,
+    "floors_no": floorsNo,
+    "receptions_no": receptionsNo,
+    "floor": floor,
+    "apartments_no": apartmentsNo,
+    "direction": direction,
+    "street_width": streetWidth,
+    "stores_no": storesNo,
+    "building_age": buildingAge,
+    "kitchens_no": kitchensNo,
   };
 }

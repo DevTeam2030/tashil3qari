@@ -112,9 +112,9 @@ class _YourConsultantProfileScreenState extends State<YourConsultantProfileScree
                         child: NoDataCurrentlyAvailable(),
                       ),
 
-                    if(!showAdsTab)
+                    if(!showAdsTab &&Constants.userDataModel!=null&&widget.consultantId!=Constants.userDataModel!.id)
                       Padding(
-                        padding: const EdgeInsets.only(right:16.0,left: 16,top: 10,bottom: 10),
+                        padding: const EdgeInsets.only(right:16.0,left: 16,top: 14,bottom: 10),
                         child: Row(
 
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -128,8 +128,9 @@ class _YourConsultantProfileScreenState extends State<YourConsultantProfileScree
 
                             InkWell(
                               onTap: ()async{
-                               await LoadingDialog().widgetAlertDialog(context: context, widget: AddRateToConsultantWidget(
-                                  consultantId: widget.consultantId));
+                                  await LoadingDialog().widgetAlertDialog(context: context, widget: AddRateToConsultantWidget(
+                                      consultantId: widget.consultantId));
+
 
                                
                               },
@@ -144,6 +145,13 @@ class _YourConsultantProfileScreenState extends State<YourConsultantProfileScree
                           ],
                         ),
                       ),
+
+                    if (!showAdsTab&& provider.allConsultantRates.isEmpty&&!provider.isLoading)
+                      const Padding(
+                        padding: EdgeInsets.only(top: 40),
+                        child: NoDataCurrentlyAvailable(),
+                      ),
+
 
                   ]),
                 ),

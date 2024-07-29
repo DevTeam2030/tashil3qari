@@ -11,7 +11,7 @@ class AddRateToConsultantWidget extends StatefulWidget {
 class _AddRateToConsultantWidgetState extends State<AddRateToConsultantWidget> {
   final formKey = GlobalKey<FormState>();
   TextEditingController rateController = TextEditingController();
-double rate=5;
+double rate=4;
   @override
   void initState() {
     super.initState();
@@ -88,7 +88,7 @@ double rate=5;
                         onPressed: () {
                           Navigator.pop(context);
                           if (formKey.currentState!.validate()) {
-                            context.read<ConsultantProvider>().addRateToConsultant(
+                            context.read<ConsultantProvider>().addConsultantRate(
                                 context: context,
                                 consultantId: widget.consultantId,
                                 rate: rate,

@@ -50,15 +50,28 @@ class GeneralController  {
         finishingTypes: []);
     var res = await _dio.get(url:'${Urls.settings}?lang=${Constants.langCode}', context: context);
     if (res != null) {
-     try{
+     // try{
        settingModel = SettingModel.fromJson(res['data']);
        var data=settingModel.categories;
         settingModel.categories=[];
-        settingModel.categories.add(HomeCatogeryModel(name: 'all'.tr(),id: 0,options: []));
+        settingModel.categories.add(HomeCatogeryModel(name: 'all'.tr(),id: 0,
+            options: HomeCategoryOptionModel(
+                roomsNo: true,
+                bathroomsNo: true,
+                floorsNo: true,
+                receptionsNo: true,
+                floor: true,
+                apartmentsNo: true,
+                direction: true,
+                streetWidth: true,
+                storesNo: true,
+                buildingAge: true,
+                kitchensNo: true
+            )));
         settingModel.categories.addAll(data);
-     }catch(e){
-       Utils.printData(e.toString());
-     }
+     // }catch(e){
+     //   Utils.printData(e.toString());
+     // }
 
     }
     return settingModel;

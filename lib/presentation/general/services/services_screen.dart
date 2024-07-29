@@ -13,6 +13,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
   @override
   void initState() {
     super.initState();
+    context.read<ServicesProvider>().getServices(notify: false,context: context);
   }
 
 
@@ -24,40 +25,53 @@ class _ServicesScreenState extends State<ServicesScreen> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: HomeBuildAppBar(homeData: homeData,showFilter: false,fromHeight: 70),
-      body:Container(
-        height: 1.0.sh,
-        width: 1.0.sw,
-        padding: const EdgeInsets.symmetric(horizontal: 14,vertical: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+      body: Consumer<ServicesProvider>(
+        builder: (context, provider, child) => ScreenLoading(
+          isLoading: provider.isLoading,
+          height: 1.0.sh,
+          width: 1.0.sw,
+          child:  Container(
+              height: 1.0.sh,
+              width: 1.0.sw,
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
 
-            Padding(
-              padding:  EdgeInsets.only(top:0.3.sh),
-              child: NoDataCurrentlyAvailable(message: 'Will be available soon'.tr(),),
-            )
-            // AppText(
-            //     title: 'Our services'.tr(),
-            //     titleAlign: TextAlign.start,
-            //     titleMaxLines: 1,fontWeightType: FontWeightType.bold,
-            //     titleSize: FontSize.s14,titleColor: ColorManager.black),
-            //
-            // const AppSizeBox(height: 14,),
-            // ServicesItem(title: 'FindPropertyEasily'.tr(), value: 'servicesMessage'.tr(),showSoon: false,image: ImageManager.services1),
-            // ServicesItem(title: 'AdvertisingFeesAndPackages'.tr(), value: 'servicesMessage'.tr(),image: ImageManager.services2),
-            // ServicesItem(title: 'GeometricDesign'.tr(), value: 'servicesMessage'.tr(),image: ImageManager.services3),
-            // ServicesItem(title: 'AdvertisementVideo'.tr(), value: 'servicesMessage'.tr(),image: ImageManager.services4),
-            // ServicesItem(title: 'ConstructionAndContracting'.tr(), value: 'servicesMessage'.tr(),image: ImageManager.services5),
-            // ServicesItem(title: 'ConstructionAccount'.tr(), value: 'servicesMessage'.tr(),image: ImageManager.services6),
-            //
-            //
-            // const AppSizeBox(height: 10,),
-          ],
-        )
+                    if(!provider.isLoading&&provider.services.isEmpty)
+                    Padding(
+                      padding:  EdgeInsets.only(top:0.3.sh),
+                      child: NoDataCurrentlyAvailable(message: 'Will be available soon'.tr(),),
+                    ),
+                    for(var item in provider.services)
+                      ServicesItem(service: item),
+                    // AppText(
+                    //     title: 'Our services'.tr(),
+                    //     titleAlign: TextAlign.start,
+                    //     titleMaxLines: 1,fontWeightType: FontWeightType.bold,
+                    //     titleSize: FontSize.s14,titleColor: ColorManager.black),
+                    //
+                    // const AppSizeBox(height: 14,),
+                    // ServicesItem(title: 'FindPropertyEasily'.tr(), value: 'servicesMessage'.tr(),showSoon: false,image: ImageManager.services1),
+                    // ServicesItem(title: 'AdvertisingFeesAndPackages'.tr(), value: 'servicesMessage'.tr(),image: ImageManager.services2),
+                    // ServicesItem(title: 'GeometricDesign'.tr(), value: 'servicesMessage'.tr(),image: ImageManager.services3),
+                    // ServicesItem(title: 'AdvertisementVideo'.tr(), value: 'servicesMessage'.tr(),image: ImageManager.services4),
+                    // ServicesItem(title: 'ConstructionAndContracting'.tr(), value: 'servicesMessage'.tr(),image: ImageManager.services5),
+                    // ServicesItem(title: 'ConstructionAccount'.tr(), value: 'servicesMessage'.tr(),image: ImageManager.services6),
+                    //
+                    //
+                    // const AppSizeBox(height: 10,),
+                  ],
+                ),
+              )
 
 
 
-      ),
+          ),
+        ),
+      )
+
     );
   }
 }

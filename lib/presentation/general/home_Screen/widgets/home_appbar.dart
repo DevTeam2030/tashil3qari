@@ -76,8 +76,46 @@ class HomeBuildAppBar extends StatelessWidget implements PreferredSizeWidget {
                   )
                 else AppSizeBox(width: .18.sw,),
 
-                if(showLogo)
-                const AppbarLogo(),
+
+                if(showFilter!=false)
+                  ValueListenableBuilder(valueListenable: homeData.openSearch,
+                      builder: (context, value, child) => Container(
+                          width: 120.0,
+                          height: AppSize.s40,
+                          padding: const EdgeInsets.symmetric(horizontal: PaddingManager.p14),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: value?ColorManager.white:ColorManager.primary,
+                              border: value?
+                              const Border(bottom: BorderSide(color:  ColorManager.primary,width: 3),) :
+                              Border.all(color:value?ColorManager.white: ColorManager.primary,width: AppSize.s06),
+                              borderRadius:value?null:  BorderRadius.circular(RadiusManager.r14)
+                          ),
+
+
+                          // padding: EdgeInsets.symmetric(horizontal: PaddingManager.p4),
+                          child:InkWell(
+                              onTap: (){
+                                homeData.openSearch.value=!value;
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  AppText(
+                                      title: 'search'.tr(),
+                                      titleAlign: TextAlign.center,
+                                      titleMaxLines: 1,fontWeightType: FontWeightType.extraBold,
+                                      titleSize: FontSize.s12,titleColor: value?ColorManager.primary:ColorManager.white),
+                                  Icon(value?Icons.keyboard_arrow_up_outlined:Icons.keyboard_arrow_down_outlined,
+                                    color: value?ColorManager.primary:ColorManager.white,size: AppSize.s20,)
+                                ],
+                              ))
+
+
+                      )),
+
+                // if(showLogo)
+                // const AppbarLogo(),
 
 
 
@@ -121,50 +159,51 @@ class HomeBuildAppBar extends StatelessWidget implements PreferredSizeWidget {
                 children: [
 
 
-                  ValueListenableBuilder(valueListenable: homeData.openSearch,
-                      builder: (context, value, child) => Container(
-                          width: 100.0,
-                          height: AppSize.s35,
-                          padding: const EdgeInsets.symmetric(horizontal: PaddingManager.p14),
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                              color: value?ColorManager.white:ColorManager.primary,
-                              border: value?
-                              Border(
-                                bottom: BorderSide(color:  ColorManager.primary,width: 3),
-                              )
-                                  :
-                              Border.all(color:value?ColorManager.white: ColorManager.primary,width: AppSize.s06),
-                              borderRadius:value?null: const BorderRadius.only(
-                                  topLeft: Radius.circular(RadiusManager.r14),
-                                  topRight: Radius.circular(RadiusManager.r14)
-                              )
-                          ),
-
-
-                          // padding: EdgeInsets.symmetric(horizontal: PaddingManager.p4),
-                          child:InkWell(
-                              onTap: (){
-                                homeData.openSearch.value=!value;
-                              },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  AppText(
-                                      title: 'search'.tr(),
-                                      titleAlign: TextAlign.center,
-                                      titleMaxLines: 1,fontWeightType: FontWeightType.extraBold,
-                                      titleSize: FontSize.s12,titleColor: value?ColorManager.primary:ColorManager.white),
-                                  Icon(value?Icons.keyboard_arrow_up_outlined:Icons.keyboard_arrow_down_outlined,
-                                    color: value?ColorManager.primary:ColorManager.white,size: AppSize.s20,)
-                                ],
-                              ))
-
-
-                      )),
+                  // ValueListenableBuilder(valueListenable: homeData.openSearch,
+                  //     builder: (context, value, child) => Container(
+                  //         width: 100.0,
+                  //         height: AppSize.s35,
+                  //         padding: const EdgeInsets.symmetric(horizontal: PaddingManager.p14),
+                  //         alignment: Alignment.center,
+                  //         decoration: BoxDecoration(
+                  //             color: value?ColorManager.white:ColorManager.primary,
+                  //             border: value?
+                  //             Border(
+                  //               bottom: BorderSide(color:  ColorManager.primary,width: 3),
+                  //             )
+                  //                 :
+                  //             Border.all(color:value?ColorManager.white: ColorManager.primary,width: AppSize.s06),
+                  //             borderRadius:value?null: const BorderRadius.only(
+                  //                 topLeft: Radius.circular(RadiusManager.r14),
+                  //                 topRight: Radius.circular(RadiusManager.r14)
+                  //             )
+                  //         ),
+                  //
+                  //
+                  //         // padding: EdgeInsets.symmetric(horizontal: PaddingManager.p4),
+                  //         child:InkWell(
+                  //             onTap: (){
+                  //               homeData.openSearch.value=!value;
+                  //             },
+                  //             child: Row(
+                  //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //               children: [
+                  //                 AppText(
+                  //                     title: 'search'.tr(),
+                  //                     titleAlign: TextAlign.center,
+                  //                     titleMaxLines: 1,fontWeightType: FontWeightType.extraBold,
+                  //                     titleSize: FontSize.s12,titleColor: value?ColorManager.primary:ColorManager.white),
+                  //                 Icon(value?Icons.keyboard_arrow_up_outlined:Icons.keyboard_arrow_down_outlined,
+                  //                   color: value?ColorManager.primary:ColorManager.white,size: AppSize.s20,)
+                  //               ],
+                  //             ))
+                  //
+                  //
+                  //     )),
 
               SizedBox(
-                width: 1.0.sw-140,
+                width: 1.0.sw-40,
+                // width: 1.0.sw-140,
                 child:     Row(
                   children: [
                     Expanded(child: ForSaleOrRentDropdownButton(

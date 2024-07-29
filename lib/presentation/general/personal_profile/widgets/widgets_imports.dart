@@ -19,6 +19,7 @@ import '../../../../components/screen_loading.dart';
 import '../../../../components/text_field/text_field_imports.dart';
 import '../../../../domain/model/agreement/agreement_details_model.dart';
 import '../../../../domain/model/models/agreements_model.dart';
+import '../../../../domain/model/models/comment_model.dart';
 import '../../../../domain/model/models/finishing_types_model.dart';
 import '../../../../domain/model/models/general_property_model.dart';
 import '../../../../domain/model/models/user_ads_model.dart';

@@ -11,10 +11,11 @@ class YourConsultantCommentsTab extends StatelessWidget {
           sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-                  return RatingConsultantWidget(haveAnswer: index==0,);
+                  return RatingConsultantWidget(comment:provider.allConsultantRates[index],
+                    consultantId: provider.consultantInfo!.id,
+                      consultantName: provider.consultantInfo!.firstName+ ' '+provider.consultantInfo!.firstName,);
                 },
-                childCount: 20,
-                // childCount: provider.consultantsAds.length,
+                childCount: provider.allConsultantRates.length,
               )));
   }
 }

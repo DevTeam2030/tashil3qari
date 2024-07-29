@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:typed_data';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:tashil_agary/app/extentions.dart';
@@ -10,6 +11,8 @@ import 'package:tashil_agary/components/no_data_available.dart';
 import 'package:tashil_agary/components/size_box_height.dart';
 import 'package:tashil_agary/presentation/general/search_list/widgets/ad_grid_item.dart';
 import 'package:tashil_agary/presentation/general/search_list/widgets/ad_list_item.dart';
+import 'package:tashil_agary/presentation/general/search_list/widgets/search_appbar.dart';
+import 'package:tashil_agary/presentation/general/search_list/widgets/search_open_search.dart';
 import 'package:tashil_agary/providers/search_provider.dart';
 import 'package:tashil_agary/utilites/color_manager.dart';
 import 'package:tashil_agary/utilites/image_manager.dart';
@@ -39,6 +42,7 @@ class SearchListScreen extends StatefulWidget {
 
 class _SearchListScreenState extends State<SearchListScreen> {
 
+
   SearchListData searchListData=SearchListData();
   var categories=Constants.settingModel.categories;
   
@@ -53,7 +57,7 @@ class _SearchListScreenState extends State<SearchListScreen> {
       context.read<SearchProvider>().allProperties=widget.properties!;
       context.read<SearchProvider>().properties=widget.properties!;
     }else {
-      context.read<SearchProvider>().getProperties(context: context,isNotify: false);
+      context.read<SearchProvider>().getProperties(context: context,isNotify: false,);
     }
   }
 
@@ -82,169 +86,230 @@ class _SearchListScreenState extends State<SearchListScreen> {
       //       child: Icon(Icons.map,color: ColorManager.white,)
       //   ),
       // ),
+        floatingActionButton: ValueListenableBuilder(valueListenable:searchListData.isAuction,
+          builder: (context, value, child) =>   Container(
+            width: 120,
+            height: 40,
+            decoration: Utils.returnDropdownButtonDecoration(ColorManager.primary,
+                ColorManager.primary,10),
+            margin:  EdgeInsets.only(bottom: 30,right: 10,left: 10),
+            padding: EdgeInsets.symmetric(horizontal: 8),
+            child: InkWell(
+              splashColor: ColorManager.white,
+              highlightColor:ColorManager.white ,
+              onTap: (){
+                searchListData.isAuction.value=!value;
+                context.read<SearchProvider>().getProperties(context: context,isNotify: true,isAuction: searchListData.isAuction.value);
+              } ,
+              child: !value? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  AppText(
+                      title:'all'.tr(),
+                      // title:'advertisements'.tr(),
+                      titleAlign: TextAlign.start,
+                      titleMaxLines: 1,fontWeightType: FontWeightType.medium,
+                      titleSize: FontSize.s14,titleColor: ColorManager.white)
+                ],
+
+              ):Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+
+                  CircleAvatar(
+                    radius: 16,
+                    backgroundColor: ColorManager.white,
+                    child: SvgPicture.asset(ImageManager.auctionSvg,height: 18,width: 18,color:ColorManager.primary ,),
+                  ),
+                  const AppSizeBox(width: 8,),
+                  AppText(
+                      title:'Auctions'.tr(),
+                      titleAlign: TextAlign.start,
+                      titleMaxLines: 1,fontWeightType: FontWeightType.medium,
+                      titleSize: FontSize.s14,titleColor: ColorManager.white)
+                ],
+
+              ),
+            ),
+          ),),
+
       body: Consumer<SearchProvider>(
           builder: (context, provider, child) =>ScreenLoading(
             isLoading: provider.isLoading,
-            child:     Container(
-              height: 1.0.sh,
-              width: 1.0.sw,
-              padding: const EdgeInsets.symmetric(horizontal: 14),
-              child: CustomScrollView(
-                // shrinkWrap: true,
-                physics: const ClampingScrollPhysics(),
-                slivers: [
+            child:     Stack(
+              children: [
+                InkWell(
+                  onTap: ()=>searchListData.openSearch.value=false,
+                  child: Container(
+                    height: 1.0.sh,
+                    width: 1.0.sw,
+                    padding: const EdgeInsets.symmetric(horizontal: 14),
+                    child: CustomScrollView(
+                      // shrinkWrap: true,
+                      physics: const ClampingScrollPhysics(),
+                      slivers: [
 
-                  SliverList(
-                    delegate: SliverChildListDelegate([
+                        SliverList(
+                          delegate: SliverChildListDelegate([
+
+                            SearchAppbar(searchListData: searchListData),
 
 
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: DefaultTextFormField(
-                                controller: searchListData.searchController,
-                                hintTitle: 'search'.tr(),
-                                labelTitle: 'search'.tr(),
-                                textInputAction: TextInputAction.search,
-                                textInputType: TextInputType.text,
-                                hintFontSize: FontSize.s12,
-                                hintStyle: getAppTextStyle(titleColor: ColorManager.textField, fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
-                                textStyle: getAppTextStyle(titleColor: ColorManager.icons,   fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
-                                textSize: FontSize.s12,
-                                fillColor: ColorManager.textGrey,
-                                borderColor: ColorManager.textGrey,
-                                borderRadius: RadiusManager.r10,
-                                prefixIcon: const Icon(Icons.search,color: ColorManager.icons,size: AppSize.s20,),
-                                validator: (v) {},
-                                onChanged: (v){
-                                  if(v==null||v.isEmpty){
-                                    provider.properties==provider.allProperties;
-                                }else {
-                                  provider.properties=provider.allProperties.where((element) =>
-                                      element.propertyTitle.contains(v)||
-                                          element.propertyDescription.contains(v)||
-                                          element.category.contains(v)
-                                  ).toList();
-                                }
-                                  provider.notifyListeners();
-                              },
-                              ),
+
+
+                            // Padding(
+                            //   padding: const EdgeInsets.symmetric(vertical: 10),
+                            //   child: Row(
+                            //     children: [
+                            //       Expanded(
+                            //         child: DefaultTextFormField(
+                            //           controller: searchListData.searchController,
+                            //           hintTitle: 'search'.tr(),
+                            //           labelTitle: 'search'.tr(),
+                            //           textInputAction: TextInputAction.search,
+                            //           textInputType: TextInputType.text,
+                            //           hintFontSize: FontSize.s12,
+                            //           hintStyle: getAppTextStyle(titleColor: ColorManager.textField, fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
+                            //           textStyle: getAppTextStyle(titleColor: ColorManager.icons,   fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
+                            //           textSize: FontSize.s12,
+                            //           fillColor: ColorManager.textGrey,
+                            //           borderColor: ColorManager.textGrey,
+                            //           borderRadius: RadiusManager.r10,
+                            //           prefixIcon: const Icon(Icons.search,color: ColorManager.icons,size: AppSize.s20,),
+                            //           validator: (v) {},
+                            //           onChanged: (v){
+                            //             if(v==null||v.isEmpty){
+                            //               provider.properties==provider.allProperties;
+                            //           }else {
+                            //             provider.properties=provider.allProperties.where((element) =>
+                            //                 element.propertyTitle.contains(v)||
+                            //                     element.propertyDescription.contains(v)||
+                            //                     element.category.contains(v)
+                            //             ).toList();
+                            //           }
+                            //             provider.notifyListeners();
+                            //         },
+                            //         ),
+                            //       ),
+                            //
+                            //       const AppSizeBox(width: 10,),
+                            //       InkWell(
+                            //           onTap: ()=>searchListData.onFilterTap(context: context),
+                            //           child: Image.asset(ImageManager.filter,height: 30,width: 30,)),
+                            //     ],
+                            //   ),
+                            // ),
+                            //
+                            // if(false)
+                            // SizedBox(
+                            //     width: 1.0.sw,
+                            //     height: AppSize.s35,
+                            //     child: ListView.builder(
+                            //       itemCount: Constants.settingModel.categories.length,
+                            //       scrollDirection: Axis.horizontal,
+                            //       itemBuilder: (context, index) {
+                            //
+                            //         return ValueListenableBuilder(valueListenable: searchListData.selectedCategory,
+                            //           builder: (context, value, child) => InkWell(
+                            //             onTap: ()=> searchListData.getByCategory(context: context, category: categories[index]),
+                            //             child: Container(
+                            //               margin: const EdgeInsets.symmetric(horizontal: 6,vertical: 0),
+                            //               padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 6),
+                            //               alignment: Alignment.center,
+                            //               decoration: BoxDecoration(
+                            //                 borderRadius: BorderRadius.circular(RadiusManager.r6),
+                            //                 color: value==categories[index]?ColorManager.primary:ColorManager.textGrey,
+                            //                 // boxShadow: Constants.kBoxShadow
+                            //               ),
+                            //               child: AppText(
+                            //                   title: categories[index].name,
+                            //                   titleAlign: TextAlign.center,
+                            //                   titleMaxLines: 1,
+                            //                   fontWeightType: FontWeightType.medium,
+                            //                   titleSize: FontSize.s10,
+                            //                   titleColor:value==categories[index]?ColorManager.white: ColorManager.icons),
+                            //             ),
+                            //           ),);
+                            //       },)),
+
+
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                AppText(
+                                    title: 'SearchOverProperties'.tr().replaceFirst('num', provider.allProperties.length.toString()),
+                                    titleAlign: TextAlign.center,
+                                    titleMaxLines: 1,
+                                    fontWeightType: FontWeightType.medium,
+                                    titleSize: FontSize.s12,
+                                    titleColor:ColorManager.black),
+
+                                GridListItem(
+                                  showAsList: searchListData.showAsList,
+                                  onTap: (value)=>setState(()=>searchListData.showAsList=value),
+                                )
+
+
+
+                              ],
                             ),
 
-                            const AppSizeBox(width: 10,),
-                            InkWell(
-                                onTap: ()=>searchListData.onFilterTap(context: context),
-                                child: Image.asset(ImageManager.filter,height: 30,width: 30,)),
-                          ],
+
+                            if(provider.properties.isEmpty&&!provider.isLoading)Padding(
+                              padding: EdgeInsets.only(top: .24.sh),
+                              child: const NoDataCurrentlyAvailable(),
+                            ),
+                          ]),
                         ),
-                      ),
-
-                      if(false)
-                      SizedBox(
-                          width: 1.0.sw,
-                          height: AppSize.s35,
-                          child: ListView.builder(
-                            itemCount: Constants.settingModel.categories.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-
-                              return ValueListenableBuilder(valueListenable: searchListData.selectedCategory,
-                                builder: (context, value, child) => InkWell(
-                                  onTap: ()=> searchListData.getByCategory(context: context, category: categories[index]),
-                                  child: Container(
-                                    margin: const EdgeInsets.symmetric(horizontal: 6,vertical: 0),
-                                    padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 6),
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(RadiusManager.r6),
-                                      color: value==categories[index]?ColorManager.primary:ColorManager.textGrey,
-                                      // boxShadow: Constants.kBoxShadow
-                                    ),
-                                    child: AppText(
-                                        title: categories[index].name,
-                                        titleAlign: TextAlign.center,
-                                        titleMaxLines: 1,
-                                        fontWeightType: FontWeightType.medium,
-                                        titleSize: FontSize.s10,
-                                        titleColor:value==categories[index]?ColorManager.white: ColorManager.icons),
-                                  ),
-                                ),);
-                            },)),
-
-
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          AppText(
-                              title: 'SearchOverProperties'.tr().replaceFirst('num', provider.allProperties.length.toString()),
-                              titleAlign: TextAlign.center,
-                              titleMaxLines: 1,
-                              fontWeightType: FontWeightType.medium,
-                              titleSize: FontSize.s12,
-                              titleColor:ColorManager.black),
-
-                          GridListItem(
-                            showAsList: searchListData.showAsList,
-                            onTap: (value)=>setState(()=>searchListData.showAsList=value),
-                          )
-
-
-
-                        ],
-                      ),
-
-
-                      if(provider.properties.isEmpty&&!provider.isLoading)Padding(
-                        padding: EdgeInsets.only(top: .24.sh),
-                        child: const NoDataCurrentlyAvailable(),
-                      ),
-                    ]),
-                  ),
 
 
 
 
-                  if(searchListData.showAsList)
-                    SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                              (BuildContext context, int index) {
-                            return AdListItem(property: provider.properties[index],
-                                onFavoriteTap: (prop){
-                                  if(prop.wishlist) provider.removeFromWishlist(context: context, property: prop);
-                                  else provider.addToWishlist(context: context, property: prop);
-                                });
-                          },
-                          childCount: provider.properties.length,
-                        ))
-                  else
-                    SliverGrid(
-                      gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 1,
-                        crossAxisSpacing: 2,
-                        childAspectRatio: .74,
-                      ),
-                      delegate: SliverChildBuilderDelegate(
-                            (context, index) {
-                          return AdGridItem(property: provider.properties[index],
-                            onFavoriteTap: (prop){
-                              if(prop.wishlist) provider.removeFromWishlist(context: context, property: prop);
-                              else provider.addToWishlist(context: context, property: prop);
-                            },);
-                        },
-                        // childCount:widget.cat.subCategories.length,
-                        childCount:provider.properties.length,
-                      ),
+                        if(searchListData.showAsList)
+                          SliverList(
+                              delegate: SliverChildBuilderDelegate(
+                                    (BuildContext context, int index) {
+                                  return AdListItem(property: provider.properties[index],
+                                      onFavoriteTap: (prop){
+                                        if(prop.wishlist) provider.removeFromWishlist(context: context, property: prop);
+                                        else provider.addToWishlist(context: context, property: prop);
+                                      });
+                                },
+                                childCount: provider.properties.length,
+                              ))
+                        else
+                          SliverGrid(
+                            gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              mainAxisSpacing: 1,
+                              crossAxisSpacing: 2,
+                              childAspectRatio: .74,
+                            ),
+                            delegate: SliverChildBuilderDelegate(
+                                  (context, index) {
+                                return AdGridItem(property: provider.properties[index],
+                                  onFavoriteTap: (prop){
+                                    if(prop.wishlist) provider.removeFromWishlist(context: context, property: prop);
+                                    else provider.addToWishlist(context: context, property: prop);
+                                  },);
+                              },
+                              // childCount:widget.cat.subCategories.length,
+                              childCount:provider.properties.length,
+                            ),
+                          ),
+
+
+                      ],
                     ),
 
 
-                ],
-              ),
+                  ),
+                ),
 
-
+                SearchOpenSearch(searchListData: searchListData,),
+              ],
             ),
           )
       )

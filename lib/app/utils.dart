@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -47,7 +48,7 @@ EdgeInsets returnPadding(){
 class Utils{
  static printData(String? message) {
     if(Constants.isProductionMode==false) {
-      debugPrint('$message');
+      log('$message');
     }
   }
 

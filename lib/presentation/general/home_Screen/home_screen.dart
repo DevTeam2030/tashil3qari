@@ -73,7 +73,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Container(
                       height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width,
-
                       // margin: const EdgeInsets.only(top: AppSize.s20),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(AppSize.s20),
@@ -88,6 +87,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         // cameraTargetBounds: CameraTargetBounds(saudiBounds2),
                         cameraTargetBounds: CameraTargetBounds(
                           LatLngBounds(
+                            // southwest: LatLng(26.6, 42.5), // Replace with actual coordinates for the southwest corner
+                            // northeast: LatLng(27.0, 48.0),  // Replace with actual coordinates for the northeast corner
+                            // southwest: LatLng(16.0, 42.0),  // Replace with actual coordinates for the southwest corner
+                            // northeast: LatLng(29.0, 48.0),  // Replace with actual coordinates for the northeast corner
                             southwest: LatLng(18.35, 34.5), // Southern-western coordinate of Saudi Arabia
                             northeast: LatLng(32.15, 55.67), // Northern-eastern coordinate of Saudi Arabia
                           ),
@@ -95,24 +98,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         initialCameraPosition: const CameraPosition(
                           target: LatLng(23.8859, 45.0792), // الموقع الافتراضي للسعودية
                           zoom: 5.0,),
-                        minMaxZoomPreference: MinMaxZoomPreference(5, 28),
+                        minMaxZoomPreference: const MinMaxZoomPreference(5, 28),
                         onCameraMove: (CameraPosition position) async{
                           if(position.zoom<=8&&!homeData.showAllMap)homeData.gotToCountries(context: context);
-                          // //                       // if (position.zoom <5||!saudiBounds.contains(position.target)) {
-// //                       if (position.zoom <6) {
-// //
-// //                         // GoogleMapController controller = await homeData. mapController.future;
-// //                         // controller.animateCamera(CameraUpdate.newLatLngBounds(saudiBounds, 0));
-// //                         CameraPosition kLake = const CameraPosition(
-// //                           target: LatLng(23.8859, 45.0792), zoom: 5,);
-// //                        final  controller = await homeData.mapController.future;
-// //                         await controller.animateCamera(CameraUpdate.newCameraPosition(kLake));
-// //                       }
-//                           },
-//                           onCameraIdle: () async {
-//                             // if (homeData.showCitiesMarkers) {
-//                             //   homeData.initDataCitiesMarkers(context: context);
-//                             // }
                           },
                         // polygons: polygons,
                         polygons: {
@@ -170,9 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 // GetCurrentLocationWidget(
                 //   onTap: ()=>getCurrentLocation(context: context),
                 // ),
-                HomeOpenSearch(
-                  homeData: homeData,
-                ),
+                HomeOpenSearch(homeData: homeData,),
               ],
             ),
           ),
@@ -201,3 +187,12 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 }
+
+
+
+
+
+
+
+
+

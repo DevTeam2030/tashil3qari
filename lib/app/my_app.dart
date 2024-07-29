@@ -27,6 +27,7 @@ import '../providers/consultant_provider.dart';
 import '../providers/council_provider.dart';
 import '../providers/general_provider.dart';
 import '../providers/profile_provider.dart';
+import '../providers/services_provider.dart';
 
 class MyApp extends StatefulWidget {
   // const MyApp({Key? key}) : super(key: key);
@@ -77,6 +78,7 @@ class _MyAppState extends State<MyApp> {
         // ChangeNotifierProvider(create: (context) => ChatProvider()),
 
         ChangeNotifierProvider(create: (context) => ChatAgreementDataProvider()),
+        ChangeNotifierProvider(create: (context) => ServicesProvider()),
 
       ],
       child: MaterialApp(

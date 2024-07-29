@@ -26,6 +26,7 @@ class SelectedCityMap extends StatelessWidget {
 
               child: InkWell(
                 onTap: (){
+                  homeData.showAllSamePosition=true;
                   homeData.showCitiesMarkers=true;
                   homeData.selectedCity.value=null;
                   // homeData.showAllMap=true;

@@ -1,21 +1,20 @@
 part of'widgets_imports.dart';
 
 
-class AddCommentToRateWidget extends StatefulWidget {
-  final int rateId ;
-  const AddCommentToRateWidget({super.key,required this.rateId});
+class AddReplyCommentToRateWidget extends StatefulWidget {
+  final int rateId,consultantId ;
+  const AddReplyCommentToRateWidget({super.key,required this.rateId,required this.consultantId});
 
   @override
-  State<AddCommentToRateWidget> createState() => _AddCommentToRateWidgetState();
+  State<AddReplyCommentToRateWidget> createState() => _AddReplyCommentToRateWidgetState();
 }
 
-class _AddCommentToRateWidgetState extends State<AddCommentToRateWidget> {
+class _AddReplyCommentToRateWidgetState extends State<AddReplyCommentToRateWidget> {
   final formKey = GlobalKey<FormState>();
   TextEditingController reasonController = TextEditingController();
 @override
   void initState() {
   super.initState();
-
   }
 
   @override
@@ -98,8 +97,11 @@ Widget build(BuildContext context) {
                       onPressed: (){
                         Navigator.pop(context);
                         if(formKey.currentState!.validate()){
-                          // context.read<CouncilProvider>().reportConsultant(context: context, consultantId: widget.consultantId,
-                          // message: reasonController.text);
+                          context.read<ConsultantProvider>().addConsultantReplyRate(
+                              context: context,
+                              consultantId:widget.consultantId ,
+                              rateId: widget.rateId,
+                              comment: reasonController.text);
                         }
 
                       }),

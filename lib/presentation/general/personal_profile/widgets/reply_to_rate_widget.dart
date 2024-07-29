@@ -1,8 +1,8 @@
 part of 'widgets_imports.dart';
 
 class ReplyToRateWidget extends StatefulWidget {
-  final int rateId;
-  const ReplyToRateWidget({super.key, required this.rateId, });
+  final int rateId,consultantId;
+  const ReplyToRateWidget({super.key, required this.rateId, required this.consultantId});
 
   @override
   State<ReplyToRateWidget> createState() => _ReplyToRateWidgetState();
@@ -88,6 +88,7 @@ class _ReplyToRateWidgetState extends State<ReplyToRateWidget> {
                     ),
                     const AppSizeBox(height: AppSize.s20),
                     MyTextButton(
+                      
                         title: 'send'.tr(),
                         size: Size(.5.sw, 40),
                         radius: 8,
@@ -98,8 +99,9 @@ class _ReplyToRateWidgetState extends State<ReplyToRateWidget> {
                         onPressed: () {
                           Navigator.pop(context);
                           if (formKey.currentState!.validate()) {
-                            context.read<ConsultantProvider>().replyRate(
+                            context.read<ConsultantProvider>().addConsultantReplyRate(
                                 context: context,
+                                consultantId:widget.consultantId ,
                                 rateId: widget.rateId,
                                 comment: commentController.text);
                           }

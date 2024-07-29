@@ -6,6 +6,7 @@ import '../app/contants.dart';
 import '../domain/controller/general_controller.dart';
 import '../domain/model/models/add_complaint_request_body.dart';
 import '../domain/model/models/country_model.dart';
+import '../domain/model/models/setting_model.dart';
 import '../presentation/dashboard/dash_board_screen.dart';
 import '../utilites/route_manager.dart';
 
@@ -32,7 +33,7 @@ class GeneralProvider extends ChangeNotifier {
 
 
   // to set country for map
-  setUserCountry({required BuildContext context,}){
+  setUserCountry({required SettingModel setting}){
   if(Constants.userDataModel==null) {
     userCountry = Constants.settingModel.countries.first;
     userCity = userCountry.cities.first;
@@ -43,9 +44,10 @@ class GeneralProvider extends ChangeNotifier {
       var countryId = Constants.userDataModel!.address.first.countryId;
       var cityId = Constants.userDataModel!.address.first.cityId;
       try {
-        userCountry = Constants.settingModel.countries.firstWhere((element) => element.id == countryId);
+        userCountry = setting.countries.firstWhere((element) => element.id == countryId);
       } catch (e) {
-        userCountry = Constants.settingModel.countries.first;
+
+        userCountry = setting.countries.first;
       }
 
       try {
@@ -54,7 +56,7 @@ class GeneralProvider extends ChangeNotifier {
         userCity = userCountry.cities.first;
       }
     } else {
-      userCountry = Constants.settingModel.countries.first;
+      userCountry = setting.countries.first;
       userCity = userCountry.cities.first;
     }
 
@@ -139,7 +141,7 @@ class GeneralProvider extends ChangeNotifier {
     //         }));
     //   }
     // }
-    context.read<GeneralProvider>().setUserCountry(context: context);
+   setUserCountry(setting: data);
       // ignore: use_build_context_synchronously
       MyRoute().navigate(context: context, route: const DashBoardScreen(currentIndexScreen: 0),withReplace: true);
 

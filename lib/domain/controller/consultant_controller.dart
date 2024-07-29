@@ -5,6 +5,7 @@ import 'package:tashil_agary/app/utils.dart';
 import 'package:tashil_agary/domain/dio/dio_imports.dart';
 import 'package:tashil_agary/domain/model/models/consultant_model.dart';
 import '../../components/loading_manager.dart';
+import '../model/models/comment_model.dart';
 import '../model/models/consultant_info_model.dart';
 import '../model/models/general_property_model.dart';
 
@@ -43,6 +44,22 @@ class ConsultantController  {
     return data;
   }
 
+  Future<List<ConsultantCommentModel>> getConsultantRates({required BuildContext context,required int consultantId,}) async {
+    List<ConsultantCommentModel> data=[];
+    String url='${Urls.getConsultantRates(consultantId)}&lang=${Constants.langCode}';
+    var res = await _dio.get(url:url, context: context);
+    if (res != null) {
+      try{
+        data = List<ConsultantCommentModel>.from(res['data'].map((x) => ConsultantCommentModel.fromJson(x)));
+
+      }catch(e){
+        Utils.printData(e.toString());
+      }
+
+    }
+    return data;
+  }
+
   Future<ConsultantInfoModel?> getConsultantInfo({required BuildContext context,required int consultantId}) async {
 
     String url='${Urls.getConsultantInfo}?consultant_id=$consultantId&lang=${Constants.langCode}';
@@ -60,6 +77,32 @@ class ConsultantController  {
     return data;
   }
 
+  Future<bool> addConsultantRate({required BuildContext context,required int consultantId,required double rate,
+    required String comment }) async {
+    var res = await _dio.post(url:'${Urls.rateConsultant}?lang=${Constants.langCode}', context: context,
+        body: {
+          "consultant_id":consultantId,
+          "rate":rate,
+          "comment": comment
+        });
+    if (res != null) {
+      if(res['message']!=null) LoadingDialog.showToastNotification(res['message']);
+      return true;
+    }
+    return false;
+  }
+  Future<bool> addConsultantReplyRate({required BuildContext context,required int rateId, required String comment }) async {
+    var res = await _dio.post(url:'${Urls.replayRate}?lang=${Constants.langCode}', context: context,
+        body: {
+          "rate_id":rateId,
+          "comment": comment
+        });
+    if (res != null) {
+      if(res['message']!=null) LoadingDialog.showToastNotification(res['message']);
+      return true;
+    }
+    return false;
+  }
   Future<bool> followConsultant({required BuildContext context,required int consultantId}) async {
     var res = await _dio.post(url:'${Urls.followConsultant}?lang=${Constants.langCode}', context: context,
         body: {
@@ -71,32 +114,7 @@ class ConsultantController  {
     }
     return false;
   }
-  Future<bool> addRateToConsultant({required BuildContext context,required int consultantId,
-    required double rate, required String comment}) async {
-    var res = await _dio.post(url:'${Urls.addRateToConsultant}?lang=${Constants.langCode}', context: context,
-        body: {
-          "consultant_id":consultantId,
-          "rate":rate,
-          "comment":comment
-        });
-    if (res != null) {
-      if(res['message']!=null) LoadingDialog.showToastNotification(res['message']);
-      return true;
-    }
-    return false;
-  }
-  Future<bool> replyRate({required BuildContext context,required int rateId,required String comment}) async {
-    var res = await _dio.post(url:'${Urls.replyRate}?lang=${Constants.langCode}', context: context,
-        body: {
-          "rate_id":rateId,
-          "comment":comment
-        });
-    if (res != null) {
-      if(res['message']!=null) LoadingDialog.showToastNotification(res['message']);
-      return true;
-    }
-    return false;
-  }
+
 
   Future<bool> unFollowConsultant({required BuildContext context,required int consultantId}) async {
     var res = await _dio.post(url:'${Urls.unFollowConsultant}?lang=${Constants.langCode}', context: context,

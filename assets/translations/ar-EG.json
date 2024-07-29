@@ -671,5 +671,7 @@
   "ComplaintSuggestion": "شكوى/إقتراح",
   "Comments": "التعليقات",
   "Comment": "تعليق",
-  "Add your rating": "أضف تقييمك"
+  "Add your rating": "أضف تقييمك",
+  "Choose your number": "اختار رقمك",
+  "Choose your number message": "برجاء اختيار رقم لتسهيل عملية البحث على المستخدمين للعثور على الحساب الشخصى الخاص بك"
 }

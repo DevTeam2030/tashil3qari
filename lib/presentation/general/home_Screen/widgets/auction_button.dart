@@ -30,7 +30,7 @@ class AuctionButton extends StatelessWidget {
         height: 40,
         decoration: Utils.returnDropdownButtonDecoration(ColorManager.primary,
           ColorManager.primary,10),
-        margin:  EdgeInsets.only(bottom: 60,right: 10,left: 10),
+        margin:  EdgeInsets.only(bottom: 80,right: 10,left: 10),
         padding: EdgeInsets.symmetric(horizontal: 8),
         child: ValueListenableBuilder(valueListenable: homeData.showAuctionOnMap,
             builder: (context, value, child) => value?

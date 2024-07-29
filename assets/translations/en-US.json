@@ -650,5 +650,7 @@
  "ComplaintSuggestion": "Complaint/Suggestion",
  "Comments": "Comments",
  "Comment": "Comment",
- "Add your rating": "Add your rating"
+ "Add your rating": "Add your rating",
+ "Choose your number": "Choose your number",
+ "Choose your number message": "Please choose a number to make it easier for users to search to find your personal account"
 }

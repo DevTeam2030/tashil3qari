@@ -65,13 +65,6 @@ int currencyId;
     "city_id": cityId,
     "category_id": categoryId,
     "type": forSale?"sale":"rent",
-    "rooms_no":roomsNo,
-    "bathrooms_no":bathroomsNo,
-    "kitchens_no":kitchensNo,
-    "floor":floor,
-    "property_size":propertySize,
-    "length":length,
-    "width":width,
     "price":price,
     "finishing_type_id":finishingTypeId,
     "longitude":longitude,
@@ -81,6 +74,15 @@ int currencyId;
     "published":published,
     "currency_id":currencyId,
     "video":video,
+
+    "rooms_no":roomsNo,
+    "bathrooms_no":bathroomsNo,
+    "kitchens_no":kitchensNo,
+    "floor":floor,
+    "property_size":propertySize,
+    "length":length,
+    "width":width,
+
 
   };
 }
@@ -169,3 +171,13 @@ class EditPropertyModel {
 
   };
 }
+
+
+
+// floors_no: false,
+// receptions_no: true,
+// apartments_no: false,
+// direction: false,
+// street_width: false,
+// stores_no: false,
+// building_age: false,

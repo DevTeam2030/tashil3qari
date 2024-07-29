@@ -10,6 +10,7 @@ import '../components/loading_manager.dart';
 import '../domain/controller/add_property_controller.dart';
 import '../domain/controller/consultant_controller.dart';
 import '../domain/model/models/add_property_model.dart';
+import '../domain/model/models/comment_model.dart';
 import '../domain/model/models/consultant_info_model.dart';
 import '../domain/model/models/consultant_model.dart';
 import '../domain/model/models/general_property_model.dart';
@@ -21,6 +22,8 @@ import '../utilites/route_manager.dart';
 class ConsultantProvider extends ChangeNotifier {
   final ConsultantController _api=ConsultantController();
 bool isLoading=false;
+
+  List<ConsultantCommentModel> allConsultantRates=[];
 
   List<ConsultantModel> allConsultants=[];
   List<ConsultantModel> filterConsultants=[];
@@ -84,10 +87,39 @@ bool isLoading=false;
     consultantInfo=await _api.getConsultantInfo(context: context,consultantId:consultantId );
     // ignore: use_build_context_synchronously
     consultantsAds=await _api.getConsultantsAds(context: context,consultantId: consultantId);
+    allConsultantRates=await _api.getConsultantRates(context: context,consultantId: consultantId);
     isLoading=false;
     notifyListeners();
     if(consultantInfo==null)Navigator.pop(context);
 
+  }
+
+  Future<void>addConsultantRate({required BuildContext context,required int consultantId,required double rate,
+    required String comment })async{
+    if(Utils.checkIfUserLogin(context: context)==false)return;
+    isLoading=true;
+    notifyListeners();
+
+    bool add=await _api.addConsultantRate(context: context,consultantId: consultantId,comment: comment,rate: rate);
+    if(add) {
+      allConsultantRates=await _api.getConsultantRates(context: context,consultantId: consultantId);
+    }
+    isLoading=false;
+    notifyListeners();
+  }
+
+  Future<void>addConsultantReplyRate({required BuildContext context,required int rateId, required String comment ,
+    required int consultantId})async{
+    if(Utils.checkIfUserLogin(context: context)==false)return;
+    isLoading=true;
+    notifyListeners();
+
+    bool add=await _api.addConsultantReplyRate(context: context,comment: comment,rateId: rateId);
+    if(add) {
+      allConsultantRates=await _api.getConsultantRates(context: context,consultantId: consultantId);
+    }
+    isLoading=false;
+    notifyListeners();
   }
 
   Future<void>followConsultant({required BuildContext context,required  ConsultantInfoModel  consultant})async{
@@ -139,21 +171,5 @@ bool isLoading=false;
   }
 
 
-  Future<void>addRateToConsultant({required BuildContext context,required int consultantId,required double rate,required String comment})async{
-    if(Utils.checkIsLogin()==false)return;
-    isLoading=true;
-    notifyListeners();
-  await _api.addRateToConsultant(context: context,consultantId: consultantId,
-    comment: comment,rate: rate,);
-    isLoading=false;
-    notifyListeners();
-  }
-  Future<void>replyRate({required BuildContext context,required int rateId,required String comment})async{
-    if(Utils.checkIsLogin()==false)return;
-    isLoading=true;
-    notifyListeners();
-    await _api.replyRate(context: context,rateId: rateId, comment: comment);
-    isLoading=false;
-    notifyListeners();
-  }
+
 }
