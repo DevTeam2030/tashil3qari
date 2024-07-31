@@ -15,11 +15,13 @@ import '../../../../utilites/values_manager.dart';
 
 class CategoryItem extends StatelessWidget {
   final ValueNotifier<HomeCatogeryModel>  notifier;
+  final Function()  onNotifierChange;
   final bool enabled ;
   final Color? color,valueColor;
   const CategoryItem({
     Key? key,
    required this.notifier,
+   required this.onNotifierChange,
     this.enabled=true,
     this.color,
     this.valueColor,
@@ -66,7 +68,9 @@ class CategoryItem extends StatelessWidget {
                       onTap: () {
                         FocusScope.of(context).requestFocus( FocusNode());
                         if(enabled){
+                          onNotifierChange();
                           notifier.value = e;
+
                         }
                       },
                       child: Row(

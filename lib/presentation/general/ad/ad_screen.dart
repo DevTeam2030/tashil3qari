@@ -52,7 +52,7 @@ class _AdScreenState extends State<AdScreen> {
                         AddDetails(propertyInfo: provider.propertyInfo!),
                         AdvertiserData(propertyInfo: provider.propertyInfo!),
                         if(provider.propertyInfo!.isAuction)AuctionsData(propertyInfo: provider.propertyInfo!,),
-                        AdInformations(propertyInfo: provider.propertyInfo!,distance: provider.distance,currentLocation: provider.currentLocation),
+                        AdInformations(provider: provider,propertyInfo: provider.propertyInfo!,distance: provider.distance,currentLocation: provider.currentLocation),
                         if(Constants.isLogin&&Constants.userDataModel!.isUser==false&&widget.notificationId!=null)
                           AcceptRejectAd(propertyId: widget.propertyId,notificationId: widget.notificationId!,)
                         else

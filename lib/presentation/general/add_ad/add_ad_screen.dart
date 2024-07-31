@@ -87,7 +87,22 @@ class _AddAdScreenState extends State<AddAdScreen> {
                   children: [
 
                     // if(widget.isEditAd)
-                    CategoryItem(notifier: addAdtData.category,color: ColorManager.white,   valueColor: ColorManager.grey),
+                    CategoryItem(notifier: addAdtData.category,
+                        color: ColorManager.white,   valueColor: ColorManager.grey,
+                    onNotifierChange: (){
+                      addAdtData.streetWidthController.text='';
+                      addAdtData.floor.value=0;
+                      addAdtData.bedrooms.value=0;
+                      addAdtData.bathrooms.value=0;
+                      addAdtData.kitchen.value=0;
+                      addAdtData.receptionsNo.value=0;
+                      addAdtData.apartmentsNo.value=0;
+                      addAdtData.storesNo.value=0;
+                      addAdtData.buildingAge.value=0;
+                      addAdtData.direction.value=Constants.directions.first;
+
+
+                    }),
 
 
                     const AppSizeBox(height: AppSize.s14,),
@@ -151,10 +166,9 @@ class _AddAdScreenState extends State<AddAdScreen> {
                     ),
                     const AppSizeBox(height: AppSize.s14,),
 
-
-
                     SpaceItem(spaceController: addAdtData.priceController,title: 'price'.tr(),
-                        subTitle: addAdtData.selectedCurrency.name,),
+                      fillColor: ColorManager.textGrey,
+                      subTitle: addAdtData.selectedCurrency.name,),
 
                     // const AppSizeBox(height: 14,),
                     // Row(
@@ -201,19 +215,64 @@ class _AddAdScreenState extends State<AddAdScreen> {
                     //         ),
                     //       ),)
                     // ),
-                    PropertyItem(notifier: addAdtData.floor, color: ColorManager.white, title: 'Floor'.tr(),),
+
                     SpaceItem(spaceController: addAdtData.spaceController,title: 'space'.tr(),subTitle: 'meter'.tr(),
-                        isSpaceOptional: true),
-
-                    PropertyItem(notifier: addAdtData.bedrooms, color: ColorManager.white, title: 'bedrooms'.tr(),),
-                    PropertyItem(notifier: addAdtData.bathrooms, color: ColorManager.textGrey, title: 'Bathrooms'.tr(),),
-                    PropertyItem(notifier: addAdtData.kitchen, color: ColorManager.white, title: 'kitchen'.tr(),),
-
-                    FinishingItem(notifier: addAdtData.finishing,),
-
+                        isSpaceOptional: true,color:ColorManager.white,fillColor: ColorManager.textGrey, ),
                     LengthsItem(spaceController1: addAdtData.lengthController,title1: 'Length'.tr(),title2: 'width'.tr(),
-                        spaceController2: addAdtData.widthController,title: 'Lengths'.tr(),),
+                        spaceController2: addAdtData.widthController,title: 'Lengths'.tr(),fillColor: ColorManager.textGrey, ),
 
+                    const AppSizeBox(height: 14,),
+                    ValueListenableBuilder(valueListenable: addAdtData.category,
+                      builder: (context, value, child) => Column(
+                        children: [
+                          if(value.options.direction)
+                            DirectionDropdownButton(
+                              directions: Constants.directions,
+                              notifier: addAdtData.direction,
+                            ),
+
+                          if(value.options.streetWidth)
+                          SpaceItem(spaceController: addAdtData.streetWidthController,title: 'streetWidth'.tr(),
+                            subTitle: 'meter1'.tr(),color: ColorManager.white,fillColor: ColorManager.textGrey, ),
+
+                          if(value.options.floor)
+                          PropertyItem(notifier: addAdtData.floor, color: ColorManager.white, title: 'Floor'.tr(),),
+
+                          if(value.options.roomsNo)
+                          PropertyItem(notifier: addAdtData.bedrooms, color: ColorManager.white, title: 'bedrooms'.tr(),),
+
+                          if(value.options.bathroomsNo)
+                          PropertyItem(notifier: addAdtData.bathrooms, color: ColorManager.white, title: 'Bathrooms'.tr(),),
+
+                          if(value.options.kitchensNo)
+                          PropertyItem(notifier: addAdtData.kitchen, color: ColorManager.white, title: 'kitchen'.tr(),),
+
+                          if(value.options.receptionsNo)
+                          PropertyItem(notifier: addAdtData.receptionsNo, color: ColorManager.white, title: 'receptionsNo'.tr(),),
+
+                          if(value.options.apartmentsNo)
+                          PropertyItem(notifier: addAdtData.apartmentsNo, color: ColorManager.white, title: 'apartmentsNo'.tr(),),
+
+                          if(value.options.storesNo)
+                          PropertyItem(notifier: addAdtData.storesNo, color: ColorManager.white, title: 'storesNo'.tr(),),
+
+                          if(value.options.buildingAge)
+                          PropertyItem(notifier: addAdtData.buildingAge, color: ColorManager.white, title: 'buildingAge'.tr(),),
+                        ],
+                      )),
+
+
+
+
+
+
+
+
+                    // direction: false,
+                    // street_width: false,
+                   // building_age: false,
+
+                    // FinishingItem(notifier: addAdtData.finishing,),
                     // if(widget.isEditAd)
                     // TitleValueItem(color: ColorManager.textGrey, title: 'Advertisement number'.tr(),value: '5463512'),
                     // if(widget.isEditAd)

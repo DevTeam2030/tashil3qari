@@ -5,29 +5,53 @@ import 'dart:io';
 class AddPropertyModel {
   String titleEn;
   String titleAr;
-  String descriptionEn;
-  String descriptionAr;
   int countryId;
   int cityId;
-
   int categoryId;
   bool forSale;
-int roomsNo;
-int bathroomsNo;
-int kitchensNo;
-int floor;
-int finishingTypeId;
-double propertySize;
-double length;
-double width;
-double price;
-double longitude;
-double latitude;
-File image;
-List<File> gallery;
-File? video;
-int published;
-int currencyId;
+  String descriptionEn;
+  String descriptionAr;
+  double propertySize;
+  double price;
+  double longitude;
+  double latitude;
+  File image;
+  List<File> gallery;
+  File? video;
+  int published;
+  int currencyId;
+
+  double length;
+  double width;
+  //----------
+
+  // filter
+  int roomsNo;
+  int bathroomsNo;
+  int kitchensNo;
+  int floor;
+  int finishingTypeId;
+
+  double streetWidth;
+String direction;
+int receptionsNo;
+int apartmentsNo;
+int storesNo;
+int buildingAge;
+
+
+// receptions_no عدد الصالات
+// apartments_no  عدد الشقق
+// direction الواجهه
+// street_width عرض الشارع
+// stores_no عدد المحلات
+// building_age عمر المبنى
+
+
+
+
+
+
 
   AddPropertyModel({
     required this.titleEn,
@@ -54,6 +78,13 @@ int currencyId;
     required this.published,
     required this.currencyId,
     required this.video,
+
+    required this.streetWidth,
+    required this.direction,
+    required this.receptionsNo,
+    required this.apartmentsNo,
+    required this.storesNo,
+    required this.buildingAge
 
   });
   Map<String, dynamic> toJson() => {
@@ -82,6 +113,12 @@ int currencyId;
     "property_size":propertySize,
     "length":length,
     "width":width,
+"receptions_no":receptionsNo,
+"apartments_no":apartmentsNo,
+"direction":direction,
+"street_width":streetWidth,
+"stores_no":storesNo,
+"building_age":buildingAge,
 
 
   };
@@ -114,6 +151,12 @@ class EditPropertyModel {
    int cityId;
    double longitude;
    double latitude;
+   double streetWidth;
+   String direction;
+   int receptionsNo;
+   int apartmentsNo;
+   int storesNo;
+   int buildingAge;
   EditPropertyModel({
     required this.propertyId,
     required this.titleEn,
@@ -140,6 +183,12 @@ class EditPropertyModel {
     required this.longitude,
     required this.latitude,
     required this.video,
+    required this.streetWidth,
+    required this.direction,
+    required this.receptionsNo,
+    required this.apartmentsNo,
+    required this.storesNo,
+    required this.buildingAge
 
   });
   Map<String, dynamic> toJson() => {
@@ -168,16 +217,19 @@ class EditPropertyModel {
     "longitude":longitude,
     "latitude":latitude,
     "video":video,
+    "receptions_no":receptionsNo,
+    "apartments_no":apartmentsNo,
+    "direction":direction,
+    "street_width":streetWidth,
+    "stores_no":storesNo,
+    "building_age":buildingAge,
 
   };
 }
 
 
 
-// floors_no: false,
-// receptions_no: true,
-// apartments_no: false,
-// direction: false,
-// street_width: false,
-// stores_no: false,
-// building_age: false,
+
+
+
+

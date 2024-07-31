@@ -673,5 +673,23 @@
   "Comment": "تعليق",
   "Add your rating": "أضف تقييمك",
   "Choose your number": "اختار رقمك",
-  "Choose your number message": "برجاء اختيار رقم لتسهيل عملية البحث على المستخدمين للعثور على الحساب الشخصى الخاص بك"
+  "Choose your number message": "برجاء اختيار رقم لتسهيل عملية البحث على المستخدمين للعثور على الحساب الشخصى الخاص بك",
+
+
+  "apartmentsNo": "عدد الشقق",
+  "receptionsNo": "عدد الصالات",
+  "direction": "الواجهة",
+  "streetWidth": "عرض الشارع",
+  "storesNo": "عدد المحلات",
+  "buildingAge": "عمر المبنى",
+  "year": "سنه",
+  "east": "شرقى",
+  "south": "جنوبى",
+  "west": "غربى",
+  "north": "شمالى",
+  "southeast": "جنوب شرقى",
+  "southwest": "جنوب غربى",
+  "northeast": "شمال شرقى",
+  "northwest": "شمال غربى"
+
 }

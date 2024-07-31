@@ -5,7 +5,8 @@ class AdInformations extends StatelessWidget {
   final PropertyInfoModel propertyInfo;
   final  double? distance;
   final LatLng? currentLocation;
-  const AdInformations({super.key,required this.propertyInfo,required this.distance,required this.currentLocation});
+  final ProductProvider provider;
+  const AdInformations({super.key,required this.propertyInfo,required this.distance,required this.currentLocation,required this.provider});
 
   @override
   Widget build(BuildContext context) {
@@ -27,22 +28,58 @@ class AdInformations extends StatelessWidget {
         ),
 
 
-
-
-        InformationsItem(title: 'Floor'.tr(),value:propertyInfo.floor,color: ColorManager.white,),
         InformationsItem(title: 'space'.tr(),value:'${propertyInfo.propertySize} ${'meter'.tr()}',color: ColorManager.textGrey,),
-        InformationsItem(title: 'bedrooms'.tr(),value:'${propertyInfo.roomsNo} ${'rooms'.tr()}',color: ColorManager.white,),
-        InformationsItem(title: 'Bathrooms'.tr(),value:'${propertyInfo.bathroomsNo} ${'Bathrooms1'.tr()}',color: ColorManager.textGrey,),
-        InformationsItem(title: 'kitchen'.tr(),value:'${propertyInfo.kitchensNo} ${'kitchen1'.tr()}',color: ColorManager.white,),
-        // InformationsItem(title: 'Finishing'.tr(),value:propertyInfo.finishingType,color: ColorManager.textGrey,),
+
         InformationsItem(title: 'Lengths'.tr(),
           value:'${propertyInfo.length} ${'meter1'.tr()} ${'Length'.tr()} - ${propertyInfo.width} ${'meter1'.tr()} ${'width'.tr()}',
           color: ColorManager.textGrey,),
+
+
+
+
+        if(provider.adCategory!=null)
+          Column(
+            children: [
+              if(provider.adCategory!.options.floor)
+              InformationsItem(title: 'Floor'.tr(),value:propertyInfo.floor,color: ColorManager.white,),
+
+              if(provider.adCategory!.options.roomsNo)
+              InformationsItem(title: 'bedrooms'.tr(),value:'${propertyInfo.roomsNo} ${'rooms'.tr()}',color: ColorManager.white,),
+
+              if(provider.adCategory!.options.bathroomsNo)
+              InformationsItem(title: 'Bathrooms'.tr(),value:'${propertyInfo.bathroomsNo} ${'Bathrooms1'.tr()}',color: ColorManager.textGrey,),
+
+              if(provider.adCategory!.options.kitchensNo)
+              InformationsItem(title: 'kitchen'.tr(),value:'${propertyInfo.kitchensNo} ${'kitchen1'.tr()}',color: ColorManager.white,),
+
+              if(provider.adCategory!.options.receptionsNo)
+              InformationsItem(title: 'receptionsNo'.tr(),value:'${propertyInfo.receptionsNo}',color: ColorManager.white,),
+
+              if(provider.adCategory!.options.apartmentsNo)
+              InformationsItem(title: 'apartmentsNo'.tr(),value:'${propertyInfo.apartmentsNo}',color: ColorManager.white,),
+
+              if(provider.adCategory!.options.storesNo)
+              InformationsItem(title: 'storesNo'.tr(),value:'${propertyInfo.storesNo}',color: ColorManager.white,),
+
+              if(provider.adCategory!.options.buildingAge)
+              InformationsItem(title: 'buildingAge'.tr(),value:'${propertyInfo.buildingAge} ${'year'.tr()}',color: ColorManager.white,),
+
+              if(provider.adCategory!.options.direction)
+              InformationsItem(title: 'direction'.tr(),value:'${propertyInfo.direction.isEmpty?'':'${propertyInfo.direction}'.tr()}',color: ColorManager.white,),
+
+              if(provider.adCategory!.options.streetWidth)
+              InformationsItem(title: 'streetWidth'.tr(),value:'${propertyInfo.streetWidth} ${'meter1'.tr()}',color: ColorManager.white,),
+
+            ],
+          ),
+
+
+        // InformationsItem(title: 'Finishing'.tr(),value:propertyInfo.finishingType,color: ColorManager.textGrey,),
         InformationsItem(title: 'Advertising license'.tr(),value:propertyInfo.license,color: ColorManager.white,),
         InformationsItem(title: 'Advertisement number'.tr(),value:propertyInfo.adNo,color: ColorManager.textGrey,),
         InformationsItem(title: 'Last updated'.tr(),value:propertyInfo.lastUpadte,color: ColorManager.white,),
         InformationsItem(title: 'PostAd'.tr(),value:propertyInfo.timeAgo,color: ColorManager.textGrey,),
-        InformationsItem(title: 'Views'.tr(),value:'${propertyInfo.viewNo}  ${'Views1'.tr()}',color: ColorManager.white,),
+        InformationsItem(title: 'Views'.tr(),value:'${propertyInfo.viewNo}  ${'Views1'.tr()}',color: ColorManager.white,isLAst: true),
 
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14,vertical: 10),

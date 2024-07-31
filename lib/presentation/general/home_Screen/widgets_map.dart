@@ -72,7 +72,7 @@ class MoreIcon extends StatelessWidget {
           height: 50,
           width: 50,
           padding: const EdgeInsets.all(3),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: ColorManager.primary,
             shape: BoxShape.circle,
           ),

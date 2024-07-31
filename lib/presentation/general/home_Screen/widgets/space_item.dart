@@ -15,13 +15,13 @@ class SpaceItem extends StatelessWidget {
   final TextEditingController spaceController ;
   final String title ,subTitle;
   final bool enabled,isSpaceOptional ;
-  final Color? color ;
+  final Color? color,fillColor ;
   const SpaceItem({
     Key? key,
    required this.spaceController,
    required this.title,
    required this.subTitle,
-    this.color,
+    this.color,this.fillColor,
     this.enabled =true,
     this.isSpaceOptional =false
   }) : super(key: key);
@@ -40,8 +40,14 @@ class SpaceItem extends StatelessWidget {
         minHeight: 45,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(RadiusManager.r12),
-        color:color??ColorManager.textGrey,
+        // borderRadius: BorderRadius.circular(RadiusManager.r12),
+        // color:color??ColorManager.textGrey,
+        border: Border(
+          bottom: BorderSide(
+            color: ColorManager.textGrey,
+            width: 1,
+          ),
+        ),
         // boxShadow: Constants.kBoxShadow
       ),
 
@@ -61,7 +67,7 @@ class SpaceItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               SizedBox(
-               width: 80,
+               width: 100,
                 height: 35,
                 child:     DefaultTextFormField(
                   controller: spaceController,
@@ -74,7 +80,7 @@ class SpaceItem extends StatelessWidget {
                   hintStyle: getAppTextStyle(titleColor: ColorManager.textField, fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
                   textStyle: getAppTextStyle(titleColor: ColorManager.icons,   fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
                   textSize: FontSize.s12,
-                  fillColor: ColorManager.white,
+                  fillColor:fillColor?? ColorManager.white,
                   borderColor: ColorManager.white,
                   borderRadius: RadiusManager.r10,
                   validator: (v) =>

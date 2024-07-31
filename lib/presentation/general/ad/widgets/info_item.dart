@@ -4,7 +4,8 @@ part of'widgets_imports.dart';
 class InformationsItem extends StatelessWidget {
   final String title,value ;
   final Color color ;
-  const InformationsItem({super.key,required this.title,required this.value,required this.color});
+  final bool isLAst ;
+  const InformationsItem({super.key,required this.title,required this.value,required this.color,this.isLAst=false});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,15 @@ class InformationsItem extends StatelessWidget {
       // margin: const EdgeInsets.symmetric(vertical: 8),
       padding: const EdgeInsets.symmetric(horizontal: 14,vertical: 10),
       width: 1.0.sw,
-      color: color,
+      decoration: BoxDecoration(
+        // color: color,
+        border: Border(
+          bottom: BorderSide(
+            color: isLAst?ColorManager.white:ColorManager.textGrey,
+            width: 1,
+          ),
+        ),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,

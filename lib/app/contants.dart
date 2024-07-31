@@ -17,7 +17,7 @@ GeneralPropertyModel constantProperty=GeneralPropertyModel(
 class Constants{
  static bool buildAllCitiesMarkersBefore=false;
  // static    ValueNotifier<bool>   isRealLocationSelected= ValueNotifier<bool>(false);
- static  bool isProductionMode=false;
+ static  bool isProductionMode=true;
 
  static SettingModel settingModel=SettingModel(consultantFess: 0,countAllAds: 0,licenseFess: 0,categories: [],countries: [],
      finishingTypes: [],auctionDurations: [],reasons: [],currencies: [],featuredPlans:[],serialNumbers: []);
@@ -55,7 +55,7 @@ class Constants{
  static bool isArabic=false;
  static String langCode='en';
 
-
+ static List<String>directions=[ "east", "south", "west", "north", "southeast", "southwest", "northeast", "northwest"];
 
 static ValueNotifier unReadNotificationCubit =ValueNotifier<int>(0);
  static bool isDarkMode=false;

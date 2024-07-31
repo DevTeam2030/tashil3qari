@@ -1066,6 +1066,19 @@ static Future<void> downloadImage({required BuildContext context,required String
  }
 
 
+static String getDirectionTypeString({required DirectionType type}){
+   if(type==DirectionType.east) return 'east'.tr();
+   else if(type==DirectionType.south) return 'south'.tr();
+   else if(type==DirectionType.west) return 'west'.tr();
+   else if(type==DirectionType.north) return 'north'.tr();
+   else if(type==DirectionType.southeast) return 'southeast'.tr();
+   else if(type==DirectionType.southwest) return 'southwest'.tr();
+   else if(type==DirectionType.northeast) return 'northeast'.tr();
+   else if(type==DirectionType.northwest) return 'northwest'.tr();
+     return '';
+ }
+
+
 }
 
 

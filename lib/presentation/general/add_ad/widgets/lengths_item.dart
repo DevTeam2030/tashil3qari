@@ -6,6 +6,7 @@ class LengthsItem extends StatelessWidget {
   final TextEditingController spaceController2 ;
   final String title1 ,title2 ,title;
   final bool enabled ;
+  final Color? fillColor ;
   const LengthsItem({
     Key? key,
    required this.spaceController1,
@@ -13,7 +14,8 @@ class LengthsItem extends StatelessWidget {
    required this.title1,
    required this.title2,
    required this.title,
-    this.enabled=true
+    this.enabled=true,
+    this.fillColor
 
   }) : super(key: key);
 
@@ -31,10 +33,14 @@ class LengthsItem extends StatelessWidget {
         minHeight: 45,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(RadiusManager.r12),
-        color:ColorManager.textGrey,
-        // color:ColorManager.white,
-        // boxShadow: Constants.kBoxShadow
+        // borderRadius: BorderRadius.circular(RadiusManager.r12),
+        // color:ColorManager.textGrey,
+        border: Border(
+          bottom: BorderSide(
+            color: ColorManager.textGrey,
+            width: 1,
+          ),
+        ),
       ),
 
       child: Row(
@@ -65,9 +71,9 @@ class LengthsItem extends StatelessWidget {
                   hintStyle: getAppTextStyle(titleColor: ColorManager.textField, fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
                   textStyle: getAppTextStyle(titleColor: ColorManager.icons,   fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
                   textSize: FontSize.s12,
-                  fillColor: ColorManager.white,
+                  fillColor: fillColor??ColorManager.white,
                   borderColor: ColorManager.white,
-                  borderRadius: RadiusManager.r16,
+                  borderRadius: RadiusManager.r10,
                   validator: (v) => v.toString().isEmpty?null:
                   Validator().validateEmpty(value: v.toString(),message: 'required'.tr()),
                 ),),
@@ -100,9 +106,9 @@ class LengthsItem extends StatelessWidget {
                   hintStyle: getAppTextStyle(titleColor: ColorManager.textField, fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
                   textStyle: getAppTextStyle(titleColor: ColorManager.icons,   fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
                   textSize: FontSize.s12,
-                  fillColor: ColorManager.white,
+                  fillColor: fillColor??ColorManager.white,
                   borderColor: ColorManager.white,
-                  borderRadius: RadiusManager.r16,
+                  borderRadius: RadiusManager.r10,
                   validator: (v) =>v.toString().isEmpty?null:
                   Validator().validateEmpty(value: v.toString(),message: 'required'.tr()),
                 ),),

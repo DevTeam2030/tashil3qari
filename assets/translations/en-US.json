@@ -652,5 +652,20 @@
  "Comment": "Comment",
  "Add your rating": "Add your rating",
  "Choose your number": "Choose your number",
- "Choose your number message": "Please choose a number to make it easier for users to search to find your personal account"
+ "Choose your number message": "Please choose a number to make it easier for users to search to find your personal account",
+ "apartmentsNo": "Apartments no",
+ "receptionsNo": "Receptions no",
+ "direction": "direction",
+ "streetWidth": "Street width",
+ "storesNo": "Stores no",
+ "buildingAge": "Building age",
+ "year": "Year",
+ "east": "East",
+ "south": "South",
+ "west": "West",
+ "north": "north",
+ "southeast": "South east",
+ "southwest": "South west",
+ "northeast": "North east",
+ "northwest": "North west"
 }

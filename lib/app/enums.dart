@@ -7,6 +7,7 @@ enum RegisterType{email,facebook , google , apple}
 enum AgreementActionType{refuse,show , edit , add,toAccept}
 enum ChatAgreementMessageType{text,agreement }
 enum MakeAgreementActon{create,edit,refuseOrAccept,addConsultant,seeOnly }
+enum DirectionType{east, south, west, north, southeast, southwest, northeast, northwest}
 
 
 enum NotificationType{notification,offer,delivery,}

@@ -19,6 +19,15 @@ class AddAdtData {
   ValueNotifier<int> bedrooms = ValueNotifier<int>(0);
   ValueNotifier<int> bathrooms = ValueNotifier<int>(0);
   ValueNotifier<int> kitchen = ValueNotifier<int>(0);
+
+  TextEditingController streetWidthController = TextEditingController();
+  ValueNotifier<int> receptionsNo = ValueNotifier<int>(0);
+  ValueNotifier<int> apartmentsNo = ValueNotifier<int>(0);
+  ValueNotifier<int> storesNo = ValueNotifier<int>(0);
+  ValueNotifier<int> buildingAge = ValueNotifier<int>(0);
+  ValueNotifier<String> direction = ValueNotifier<String>('east');
+
+
 late  ValueNotifier<FinishingTypesModel> finishing ;
 late  ValueNotifier<HomeCatogeryModel> category ;
   ValueNotifier<List<XFile>> adImages = ValueNotifier<List<XFile>>([]);
@@ -63,24 +72,35 @@ late  ValueNotifier<HomeCatogeryModel> category ;
     countryId: selectedCountries.first.id,
     descriptionAr: detailsController.text,
     descriptionEn: detailsController.text,
-    finishingTypeId: finishing.value.id,
-    floor: floor.value,
+
     forSale: forSale,
     image: File(adImages.value.first.path),
-    kitchensNo: kitchen.value,
+
     latitude: adLocation.latitude,
     longitude: adLocation.longitude,
     price: double.parse(priceController.text),
     propertySize:spaceController.text.isEmpty?0: double.tryParse(spaceController.text)??0,
     titleAr: titleController.text,
     titleEn: titleController.text,
-    bathroomsNo: bathrooms.value,
-    roomsNo: bedrooms.value,
     width: widthController.text.isEmpty?0:double.tryParse(widthController.text)??0,
     length: lengthController.text.isEmpty?0:double.tryParse(lengthController.text)??0,
     gallery: adImages.value.map((e) => File(e.path)).toList(),
     currencyId: selectedCurrency.id,
+
+
+    bathroomsNo:!category.value.options.bathroomsNo?0: bathrooms.value,
+    roomsNo: !category.value.options.roomsNo?0: bedrooms.value,
+    kitchensNo: !category.value.options.kitchensNo?0: kitchen.value,
+    finishingTypeId: finishing.value.id,
+    floor: !category.value.options.floor?0: floor.value,
+    apartmentsNo: !category.value.options.apartmentsNo?0: apartmentsNo.value,
+    buildingAge:!category.value.options.buildingAge?0: buildingAge.value ,
+    direction:!category.value.options.direction?'': direction.value ,
+    receptionsNo: !category.value.options.receptionsNo?0: receptionsNo.value,
+    storesNo:!category.value.options.storesNo?0:  storesNo.value,
+    streetWidth:!category.value.options.streetWidth?0: streetWidthController.text.isEmpty?0:double.tryParse(streetWidthController.text)??0,
   );
+
 
 
 

@@ -40,7 +40,8 @@ class HomeController  {
   }
   Future<List<GeneralPropertyModel>> getProperties({required BuildContext context,int? cityId,int? categoryId,
   int? floor,int? bathroomsNo,int? roomsNo,double? propertySize,double? minPrice,double? maxPrice,
-  int? finishingTypeId,int? ownerId,bool? isAuction, bool? forSale,bool? forRent }) async {
+  int? finishingTypeId,int? ownerId,bool? isAuction, bool? forSale,bool? forRent ,
+  int? kitchensNo, int? receptionsNo,int?apartmentsNo,int? storesNo,int?buildingAge,String? direction,double? streetWidth}) async {
     List<GeneralPropertyModel> data=[];
     String url='${Urls.properties}?lang=${Constants.langCode}&no_page=1';
 
@@ -61,9 +62,20 @@ class HomeController  {
     if(maxPrice!=null&&maxPrice>0)url='$url&max_price=$maxPrice';
     if(minPrice!=null&&minPrice>0)url='$url&min_price=$minPrice';
     if(roomsNo!=null&&roomsNo>0)url='$url&rooms_no=$roomsNo';
+    if(kitchensNo!=null&&kitchensNo>0)url='$url&kitchens_no=$kitchensNo';
     if(bathroomsNo!=null&&bathroomsNo>0)url='$url&bathrooms_no=$bathroomsNo';
     if(floor!=null&&floor>0)url='$url&floor=$floor';
     if(propertySize!=null&&propertySize>0)url='$url&property_size=$propertySize';
+
+
+    if(receptionsNo!=null&&receptionsNo>0)url='$url&receptions_no=$receptionsNo';
+    if(apartmentsNo!=null&&apartmentsNo>0)url='$url&apartments_no=$apartmentsNo';
+    if(storesNo!=null&&storesNo>0)url='$url&stores_no=$storesNo';
+    if(buildingAge!=null&&buildingAge>0)url='$url&building_age=$buildingAge';
+    if(direction!=null&&direction.isNotEmpty)url='$url&direction=$direction';
+    if(streetWidth!=null&&streetWidth>0)url='$url&street_width=$streetWidth';
+
+
 
     var res = await _dio.get(url:url, context: context);
     if (res != null) {

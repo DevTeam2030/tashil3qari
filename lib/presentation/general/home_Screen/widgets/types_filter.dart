@@ -6,15 +6,25 @@ class TypesFilter extends StatefulWidget {
 final  TextEditingController lowestPriceController;
 final  TextEditingController abovePriceController;
 final  TextEditingController spaceController;
+
 final  ValueNotifier<int> floor;
 final  ValueNotifier<int> bedrooms;
 final  ValueNotifier<int> bathrooms;
 final  ValueNotifier<int> kitchen;
 final  ValueNotifier<FinishingTypesModel> finishing;
 final ValueNotifier<bool> open;
+
+ final  TextEditingController streetWidthController;
+ final  ValueNotifier<int> receptionsNo;
+ final  ValueNotifier<int> apartmentsNo;
+ final  ValueNotifier<int> storesNo;
+ final  ValueNotifier<int> buildingAge;
+ final  ValueNotifier<String> direction;
+
    TypesFilter({super.key,required this.formKey,required this.lowestPriceController,
+     required this.streetWidthController,required this.receptionsNo,required this.apartmentsNo,required this.storesNo,required this.buildingAge,
  required this.abovePriceController,required this.spaceController,required this.floor,required this.bedrooms,
-   required this.bathrooms,required this.kitchen,required this.finishing,required this.selectedCategory,required this.open});
+   required this.bathrooms,required this.kitchen,required this.finishing,required this.selectedCategory,required this.open, required this.direction});
 
   @override
   State<TypesFilter> createState() => _TypesFilterState();
@@ -70,7 +80,9 @@ class _TypesFilterState extends State<TypesFilter> {
 
 
                 InkWell(
-                  onTap: () => onSelected(value:widget.selectedCategory.value),
+                  onTap: () {
+                    onSelected(value:widget.selectedCategory.value);
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -195,12 +207,48 @@ class _TypesFilterState extends State<TypesFilter> {
                           ),)
                       ],
                     ),
-                    PropertyItem(notifier: widget.floor, color: ColorManager.white, title: 'Floor'.tr(),),
-                    SpaceItem(spaceController: widget.spaceController,title: 'space'.tr(),subTitle: 'meter'.tr()),
-                    PropertyItem(notifier: widget.bedrooms, color: ColorManager.white, title: 'bedrooms'.tr(),),
-                    PropertyItem(notifier: widget.bathrooms, color: ColorManager.textGrey, title: 'Bathrooms'.tr(),),
-                    PropertyItem(notifier: widget.kitchen, color: ColorManager.white, title: 'kitchen'.tr(),),
-                    FinishingItem(notifier: widget.finishing,),
+
+    SpaceItem(spaceController: widget.spaceController,title: 'space'.tr(),subTitle: 'meter'.tr(),fillColor: ColorManager.textGrey),
+
+                    ValueListenableBuilder(valueListenable:   widget.selectedCategory,
+                        builder: (context, value, child) => Column(
+                          children: [
+                            if(value.options.direction)
+                              DirectionDropdownButton(
+                                directions: Constants.directions,
+                                notifier: widget.direction,
+                              ),
+
+                            if(value.options.streetWidth)
+                              SpaceItem(spaceController: widget.streetWidthController,title: 'streetWidth'.tr(),
+                                subTitle: 'meter1'.tr(),color: ColorManager.white,fillColor: ColorManager.textGrey, ),
+
+                            if(value.options.floor)
+                              PropertyItem(notifier: widget.floor, color: ColorManager.white, title: 'Floor'.tr(),),
+
+                            if(value.options.roomsNo)
+                              PropertyItem(notifier: widget.bedrooms, color: ColorManager.white, title: 'bedrooms'.tr(),),
+
+                            if(value.options.bathroomsNo)
+                              PropertyItem(notifier: widget.bathrooms, color: ColorManager.white, title: 'Bathrooms'.tr(),),
+
+                            if(value.options.kitchensNo)
+                              PropertyItem(notifier: widget.kitchen, color: ColorManager.white, title: 'kitchen'.tr(),),
+
+                            if(value.options.receptionsNo)
+                              PropertyItem(notifier: widget.receptionsNo, color: ColorManager.white, title: 'receptionsNo'.tr(),),
+
+                            if(value.options.apartmentsNo)
+                              PropertyItem(notifier: widget.apartmentsNo, color: ColorManager.white, title: 'apartmentsNo'.tr(),),
+
+                            if(value.options.storesNo)
+                              PropertyItem(notifier: widget.storesNo, color: ColorManager.white, title: 'storesNo'.tr(),),
+
+                            if(value.options.buildingAge)
+                              PropertyItem(notifier: widget.buildingAge, color: ColorManager.white, title: 'buildingAge'.tr(),),
+                          ],
+                        )),
+                    // FinishingItem(notifier: widget.finishing,),
                   ],
                 ),
               )

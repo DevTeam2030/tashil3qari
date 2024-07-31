@@ -14,13 +14,14 @@ class PropertyItem extends StatelessWidget {
   final ValueNotifier<int>  notifier;
   final Color color;
   final String title;
-  final bool enabled ;
+  final bool enabled ,isLAst;
   const PropertyItem({
     Key? key,
    required this.title,
    required this.notifier,
    required this.color,
     this.enabled=true,
+    this.isLAst=false,
   }) : super(key: key);
 
 
@@ -35,8 +36,14 @@ class PropertyItem extends StatelessWidget {
           width: 1.0.sw,
           height: 45,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(RadiusManager.r12),
-            color:color,
+            // borderRadius: BorderRadius.circular(RadiusManager.r12),
+            // color:color,
+            border: Border(
+              bottom: BorderSide(
+                color: isLAst?ColorManager.white:ColorManager.textGrey,
+                width: 1,
+              ),
+            ),
             // boxShadow: Constants.kBoxShadow
           ),
 

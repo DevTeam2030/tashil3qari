@@ -27,7 +27,8 @@ changeLoading([bool? isloading,bool? isNotify]){
 
   Future< List<GeneralPropertyModel>>getProperties({required BuildContext context,bool?isNotify,int? cityId,int? categoryId,
     int? floor,int? bathroomsNo,int? roomsNo,double? propertySize,double? minPrice,double? maxPrice,
-    int? finishingTypeId,required bool isAuction, bool? forSale,bool? forRent})async{
+    int? finishingTypeId,required bool isAuction, bool? forSale,bool? forRent,
+    int? kitchensNo, int? receptionsNo,int?apartmentsNo,int? storesNo,int?buildingAge,String? direction,double? streetWidth})async{
     isLoading=true;
     properties=[];
     if(isNotify!=false) notifyListeners();
@@ -35,7 +36,9 @@ changeLoading([bool? isloading,bool? isNotify]){
     // ignore: use_build_context_synchronously
     properties=await _api.getProperties(context: context,cityId: cityId,categoryId: categoryId,
         floor: floor,bathroomsNo: bathroomsNo,roomsNo: roomsNo,propertySize: propertySize,
-        forRent: forRent,forSale: forSale,
+        receptionsNo: receptionsNo,apartmentsNo: apartmentsNo,storesNo: storesNo,buildingAge: buildingAge,
+        streetWidth: streetWidth,direction: direction,
+        forRent: forRent,forSale: forSale,kitchensNo: kitchensNo,
         minPrice: minPrice,maxPrice: maxPrice,finishingTypeId: finishingTypeId,isAuction:isAuction );
     isLoading=false;
     notifyListeners();

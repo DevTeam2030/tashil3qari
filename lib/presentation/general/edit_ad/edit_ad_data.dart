@@ -17,6 +17,15 @@ class EditAdData {
   ValueNotifier<int> bedrooms = ValueNotifier<int>(0);
   ValueNotifier<int> bathrooms = ValueNotifier<int>(0);
   ValueNotifier<int> kitchen = ValueNotifier<int>(0);
+
+ TextEditingController streetWidthController = TextEditingController();
+ ValueNotifier<int> receptionsNo = ValueNotifier<int>(0);
+ ValueNotifier<int> apartmentsNo = ValueNotifier<int>(0);
+ ValueNotifier<int> storesNo = ValueNotifier<int>(0);
+ ValueNotifier<int> buildingAge = ValueNotifier<int>(0);
+ ValueNotifier<String> direction = ValueNotifier<String>('east');
+
+
 late  ValueNotifier<FinishingTypesModel> finishing ;
  late  ValueNotifier<HomeCatogeryModel> category ;
  late CurrencyModel selectedCurrency;
@@ -41,6 +50,17 @@ late  ValueNotifier<FinishingTypesModel> finishing ;
     kitchen.value=int.tryParse(ad.kitchensNo)??0;
     floor.value=int.tryParse(ad.floor)??0;
 
+    streetWidthController.text=ad.streetWidth;
+    receptionsNo.value=int.tryParse(ad.receptionsNo)??0;
+    apartmentsNo.value=int.tryParse(ad.apartmentsNo)??0;
+    storesNo.value=int.tryParse(ad.storesNo)??0;
+    buildingAge.value=int.tryParse(ad.buildingAge)??0;
+    // direction.value=ad.direction.isEmpty?directions.first:ad.direction;
+
+    if(Constants.directions.contains(ad.direction))direction.value=ad.direction;
+    else direction.value=Constants.directions.first;
+    print(ad.direction.isEmpty?Constants.directions.first:ad.direction);
+    
     var c=Constants.settingModel.currencies.where((element) => element.id==(int.tryParse(userAd.currencyId)??0));
     selectedCurrency= c.isEmpty?Constants.settingModel.currencies.first:c.first;
 
@@ -79,14 +99,10 @@ late  ValueNotifier<FinishingTypesModel> finishing ;
    categoryId: category.value.id,
    descriptionAr: detailsController.text,
    descriptionEn: detailsController.text,
-   finishingTypeId: finishing.value.id,
-   floor: floor.value,
+
    image: adImages.value.isEmpty?null:File(adImages.value.first.path),
-   kitchensNo: kitchen.value,
    price: double.parse(priceController.text),
    titleEn: titleController.text,
-   bathroomsNo: bathrooms.value,
-   roomsNo: bedrooms.value,
    gallery:adImages.value.isEmpty?[]: adImages.value.map((e) => File(e.path)).toList(),
    currencyId: selectedCurrency.id,
    license: licenseAdController.text,
@@ -97,6 +113,20 @@ late  ValueNotifier<FinishingTypesModel> finishing ;
    width: widthController.text.isEmpty?0:double.tryParse(widthController.text)??0,
    length: lengthController.text.isEmpty?0:double.tryParse(lengthController.text)??0,
    propertySize:spaceController.text.isEmpty?0: double.tryParse(spaceController.text)??0,
+
+
+   bathroomsNo:!category.value.options.bathroomsNo?0: bathrooms.value,
+   roomsNo: !category.value.options.roomsNo?0: bedrooms.value,
+   kitchensNo: !category.value.options.kitchensNo?0: kitchen.value,
+   finishingTypeId: finishing.value.id,
+   floor: !category.value.options.floor?0: floor.value,
+   apartmentsNo: !category.value.options.apartmentsNo?0: apartmentsNo.value,
+   buildingAge:!category.value.options.buildingAge?0: buildingAge.value ,
+   direction:!category.value.options.direction?'': direction.value ,
+   receptionsNo: !category.value.options.receptionsNo?0: receptionsNo.value,
+   storesNo:!category.value.options.storesNo?0:  storesNo.value,
+   streetWidth:!category.value.options.streetWidth?0: streetWidthController.text.isEmpty?0:double.tryParse(streetWidthController.text)??0,
+
 
  );
 

@@ -147,7 +147,21 @@ class _AdDetailsDataState extends State<AdDetailsData> {
           EditForSaleWidget(editAdData: widget.editAdData,),
           CategoryItem(notifier: widget.editAdData.category,
             color: ColorManager.white,
-            valueColor: ColorManager.grey,),
+            valueColor: ColorManager.grey,
+              onNotifierChange: (){
+                widget.editAdData.streetWidthController.text='';
+                widget.editAdData.floor.value=0;
+                widget.editAdData.bedrooms.value=0;
+                widget.editAdData.bathrooms.value=0;
+                widget.editAdData.kitchen.value=0;
+                widget.editAdData.receptionsNo.value=0;
+                widget.editAdData.apartmentsNo.value=0;
+                widget.editAdData.storesNo.value=0;
+                widget.editAdData.buildingAge.value=0;
+                widget.editAdData.direction.value=Constants.directions.first;
+
+
+              }),
 
           const AppSizeBox(height: AppSize.s25,),
           Row(
@@ -215,51 +229,58 @@ class _AdDetailsDataState extends State<AdDetailsData> {
           SpaceItem(spaceController: widget.editAdData.priceController,title: 'price'.tr(),
               subTitle: widget.editAdData.selectedCurrency.name),
 
-          
-          // const AppSizeBox(height: 14,),
-          // SizedBox(
-          //     height: 35,
-          //     width: 1.0.sw,
-          //     child: ListView.builder(
-          //       itemCount: Constants.settingModel.currencies.length,
-          //       scrollDirection: Axis.horizontal,
-          //       itemBuilder: (context, index) =>  InkWell(
-          //         onTap: () =>setState(()=>widget.editAdData.selectedCurrency=Constants.settingModel.currencies[index]),
-          //         child: Container(
-          //           height: 35,
-          //           width: .29.sw,
-          //           margin: const EdgeInsets.symmetric(horizontal: 5),
-          //           // padding: const EdgeInsets.symmetric(horizontal: 25,vertical: 12),
-          //           alignment: Alignment.center,
-          //           decoration: BoxDecoration(
-          //               borderRadius:
-          //               BorderRadius.circular(RadiusManager.r4),
-          //               color: widget.editAdData.selectedCurrency==Constants.settingModel.currencies[index]?ColorManager.primary:ColorManager.white,
-          //               border: Border.all(color: ColorManager.textGrey,width: 1.6)
-          //             // boxShadow: Constants.kBoxShadow
-          //           ),
-          //           child: AppText(
-          //               title: Constants.settingModel.currencies[index].name ,
-          //               titleAlign: TextAlign.center,
-          //               titleMaxLines: 1,fontWeightType: FontWeightType.medium,
-          //               titleSize: FontSize.s12,
-          //               titleColor: widget.editAdData.selectedCurrency==Constants.settingModel.currencies[index]?ColorManager.white:ColorManager.black),
-          //         ),
-          //       ),)
-          // ),
-          PropertyItem(notifier: widget.editAdData.floor, color: ColorManager.white, title: 'Floor'.tr() ,),
-
           SpaceItem(spaceController: widget.editAdData.spaceController,title: 'space'.tr(),subTitle: 'meter'.tr(),
               isSpaceOptional: true),
 
-          PropertyItem(notifier: widget.editAdData.bedrooms, color: ColorManager.white, title: 'bedrooms'.tr(), ),
-          PropertyItem(notifier: widget.editAdData.bathrooms, color: ColorManager.textGrey, title: 'Bathrooms'.tr(), ),
-          PropertyItem(notifier: widget.editAdData.kitchen, color: ColorManager.white, title: 'kitchen'.tr(), ),
-
-          FinishingItem(notifier: widget.editAdData.finishing,),
-
           LengthsItem(spaceController1: widget.editAdData.lengthController,title1: 'Length'.tr(),title2: 'width'.tr(),
-              spaceController2: widget.editAdData.widthController,title: 'Lengths'.tr(), ),
+            spaceController2: widget.editAdData.widthController,title: 'Lengths'.tr(), ),
+
+
+          ValueListenableBuilder(valueListenable: widget.editAdData.category,
+              builder: (context, value, child) => Column(
+                children: [
+                  if(value.options.direction)
+                    DirectionDropdownButton(
+                      directions: Constants.directions,
+                      notifier: widget.editAdData.direction,
+                    ),
+
+                  if(value.options.streetWidth)
+                    SpaceItem(spaceController: widget.editAdData.streetWidthController,title: 'streetWidth'.tr(),
+                      subTitle: 'meter1'.tr(),color: ColorManager.white,fillColor: ColorManager.textGrey, ),
+
+                  if(value.options.floor)
+                    PropertyItem(notifier: widget.editAdData.floor, color: ColorManager.white, title: 'Floor'.tr(),),
+
+                  if(value.options.roomsNo)
+                    PropertyItem(notifier: widget.editAdData.bedrooms, color: ColorManager.white, title: 'bedrooms'.tr(),),
+
+                  if(value.options.bathroomsNo)
+                    PropertyItem(notifier: widget.editAdData.bathrooms, color: ColorManager.white, title: 'Bathrooms'.tr(),),
+
+                  if(value.options.kitchensNo)
+                    PropertyItem(notifier: widget.editAdData.kitchen, color: ColorManager.white, title: 'kitchen'.tr(),),
+
+                  if(value.options.receptionsNo)
+                    PropertyItem(notifier: widget.editAdData.receptionsNo, color: ColorManager.white, title: 'receptionsNo'.tr(),),
+
+                  if(value.options.apartmentsNo)
+                    PropertyItem(notifier: widget.editAdData.apartmentsNo, color: ColorManager.white, title: 'apartmentsNo'.tr(),),
+
+                  if(value.options.storesNo)
+                    PropertyItem(notifier: widget.editAdData.storesNo, color: ColorManager.white, title: 'storesNo'.tr(),),
+
+                  if(value.options.buildingAge)
+                    PropertyItem(notifier: widget.editAdData.buildingAge, color: ColorManager.white, title: 'buildingAge'.tr(),),
+                ],
+              )),
+
+
+
+
+
+          // FinishingItem(notifier: widget.editAdData.finishing,),
+
 
 
 

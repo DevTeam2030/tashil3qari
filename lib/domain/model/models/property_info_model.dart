@@ -58,11 +58,31 @@ class PropertyInfoModel {
   bool isAuction;
   List<AuctionUserModel> auctionsUsers;
 
+  String receptionsNo;
+  String apartmentsNo;
+  String direction;
+  String streetWidth;
+  String storesNo;
+  String buildingAge;
 
+
+
+  // receptions_no: "2",
+  // apartments_no: "0",
+  // direction: "east",
+  // street_width: "200.0",
+  // stores_no: "0",
+  // building_age: "1",
 
 
   PropertyInfoModel({
     required this.id,
+    required this.receptionsNo,
+    required this.apartmentsNo,
+    required this.direction,
+    required this.streetWidth,
+    required this.storesNo,
+    required this.buildingAge,
     required this.propertyTitle,
     required this.isAuction,
     required this.image,
@@ -172,6 +192,12 @@ class PropertyInfoModel {
     video: json["video"]??0,
     auctionsUsers: json["auctions"]==null?[]:List<AuctionUserModel>.from(json["auctions"].map((x) => AuctionUserModel.fromJson(x))),
 
+      receptionsNo: json["receptions_no"]??'0',
+    apartmentsNo: json["apartments_no"]??'0',
+    direction: json["direction"]??'',
+    streetWidth: json["street_width"]??'0',
+    storesNo: json["stores_no"]??'0',
+    buildingAge: json["building_age"]??'0',
   );
 
   // Map<String, dynamic> toJson() => {

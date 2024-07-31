@@ -478,7 +478,7 @@ Widget build(BuildContext context) {
                 Container(
                   // height: 20,
                   // width: 20,
-                  margin: const EdgeInsets.symmetric(horizontal:8,vertical: 50),
+                  margin: const EdgeInsets.symmetric(horizontal:8,vertical: 60),
                   padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(RadiusManager.r4),

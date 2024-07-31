@@ -27,6 +27,13 @@ class _HomeOpenSearchState extends State<HomeOpenSearch> {
   ValueNotifier<int> bedrooms = ValueNotifier<int>(0);
   ValueNotifier<int> bathrooms = ValueNotifier<int>(0);
   ValueNotifier<int> kitchen = ValueNotifier<int>(0);
+  TextEditingController streetWidthController = TextEditingController();
+  ValueNotifier<int> receptionsNo = ValueNotifier<int>(0);
+  ValueNotifier<int> apartmentsNo = ValueNotifier<int>(0);
+  ValueNotifier<int> storesNo = ValueNotifier<int>(0);
+  ValueNotifier<int> buildingAge = ValueNotifier<int>(0);
+  ValueNotifier<String> direction = ValueNotifier<String>('east');
+
 late  ValueNotifier<FinishingTypesModel> finishing;
   @override
   void initState() {
@@ -123,6 +130,12 @@ late  ValueNotifier<FinishingTypesModel> finishing;
                       formKey: formKey,
                       open: open,
                       selectedCategory: selectedCategory,
+                      storesNo: storesNo,
+                      receptionsNo: receptionsNo,
+                      apartmentsNo: apartmentsNo,
+                      buildingAge: buildingAge,
+                      direction: direction,
+                      streetWidthController: streetWidthController,
                     ),
 
 
@@ -150,13 +163,23 @@ late  ValueNotifier<FinishingTypesModel> finishing;
                                   cityId: selectedCity.id,categoryId: selectedCategory.value.id,
                               isNotify: true,
                                   isAuction: widget.homeData.showAuctionOnMap.value,
-                                  floor: floor.value,
-                                  bathroomsNo: bathrooms.value,
-                                  roomsNo: bedrooms.value,
                                   propertySize: spaceController.text.isEmpty?null:double.parse(spaceController.text),
                                   minPrice: lowestPriceController.text.isEmpty?null:double.parse(lowestPriceController.text),
                                   maxPrice: abovePriceController.text.isEmpty?null:double.parse(abovePriceController.text),
-                                  finishingTypeId: finishing.value.id
+                                  // finishingTypeId: finishing.value.id,
+
+                                bathroomsNo:!selectedCategory.value.options.bathroomsNo?0: bathrooms.value,
+                                roomsNo: !selectedCategory.value.options.roomsNo?0: bedrooms.value,
+                                kitchensNo: !selectedCategory.value.options.kitchensNo?0: kitchen.value,
+                                finishingTypeId: finishing.value.id,
+                                floor: !selectedCategory.value.options.floor?0: floor.value,
+                                apartmentsNo: !selectedCategory.value.options.apartmentsNo?0: apartmentsNo.value,
+                                buildingAge:!selectedCategory.value.options.buildingAge?0: buildingAge.value ,
+                                direction:!selectedCategory.value.options.direction?'': direction.value ,
+                                receptionsNo: !selectedCategory.value.options.receptionsNo?0: receptionsNo.value,
+                                storesNo:!selectedCategory.value.options.storesNo?0:  storesNo.value,
+                                streetWidth:!selectedCategory.value.options.streetWidth?0: streetWidthController.text.isEmpty?0:double.tryParse(streetWidthController.text)??0,
+
 
                               ).then((value) =>
                                   widget.homeData.initPropertiesMarkers(context: context));

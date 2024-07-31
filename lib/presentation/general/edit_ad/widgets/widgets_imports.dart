@@ -26,6 +26,7 @@ import '../../../../utilites/values_manager.dart';
 import '../../../../app/validator.dart';
 import '../../../../components/text_field/text_field_imports.dart';
 import '../../add_ad/widgets/category_item.dart';
+import '../../add_ad/widgets/direction_widget.dart';
 import '../../add_ad/widgets/widgetImports.dart';
 import '../../home_Screen/widgets/finishing_item.dart';
 import '../../home_Screen/widgets/property_item.dart';

@@ -21,7 +21,9 @@ import '../app/my_app.dart';
 import '../app/utils.dart';
 import '../domain/model/models/auction_data_model.dart';
 import '../domain/model/models/general_property_model.dart';
+import '../domain/model/models/home_catogery_model.dart';
 import '../domain/model/models/property_info_model.dart';
+import '../utilites/color_manager.dart';
 
 class ProductProvider extends ChangeNotifier {
   final ProductController _api=ProductController();
@@ -34,7 +36,7 @@ class ProductProvider extends ChangeNotifier {
   AuctionUserModel? mostAuctionUser;
   double? distance;
   LatLng? currentLocation;
-
+  HomeCatogeryModel? adCategory;
   Future<void>getPropertyInfo({required BuildContext context,required int propertyId,})async{
     isLoading=true;
     isLinkDynamic.value=false;
@@ -42,10 +44,22 @@ class ProductProvider extends ChangeNotifier {
     if(propertyInfo!=null){
       getLocationDistance(latitude: propertyInfo!.latitude,longitude:propertyInfo!.latitude );
       getSimilarProperties(context: context,isNotify: false,categoryId: propertyInfo!.catId);
+      adCategory=Constants.settingModel.categories.firstWhere((element) => element.id==propertyInfo!.catId);
+
+
     }
+
+
     notifyListeners();
   }
 
+
+
+  // InformationsItem(title: 'Advertising license'.tr(),value:propertyInfo.license,color: ColorManager.white,),
+  // InformationsItem(title: 'Advertisement number'.tr(),value:propertyInfo.adNo,color: ColorManager.textGrey,),
+  // InformationsItem(title: 'Last updated'.tr(),value:propertyInfo.lastUpadte,color: ColorManager.white,),
+  // InformationsItem(title: 'PostAd'.tr(),value:propertyInfo.timeAgo,color: ColorManager.textGrey,),
+  // InformationsItem(title: 'Views'.tr(),value:'${propertyInfo.viewNo}  ${'Views1'.tr()}',color: ColorManager.white,),
 
   getLocationDistance({required double latitude,required double longitude}){
     Utils.getCurrentLocationLatLng().then((value) async{
