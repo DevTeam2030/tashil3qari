@@ -24,6 +24,7 @@ class AddAdtData {
   ValueNotifier<int> receptionsNo = ValueNotifier<int>(0);
   ValueNotifier<int> apartmentsNo = ValueNotifier<int>(0);
   ValueNotifier<int> storesNo = ValueNotifier<int>(0);
+  ValueNotifier<int> floorsNo = ValueNotifier<int>(0);
   ValueNotifier<int> buildingAge = ValueNotifier<int>(0);
   ValueNotifier<String> direction = ValueNotifier<String>('east');
 
@@ -98,6 +99,7 @@ late  ValueNotifier<HomeCatogeryModel> category ;
     direction:!category.value.options.direction?'': direction.value ,
     receptionsNo: !category.value.options.receptionsNo?0: receptionsNo.value,
     storesNo:!category.value.options.storesNo?0:  storesNo.value,
+    floorsNo:!category.value.options.floorsNo?0:  floorsNo.value,
     streetWidth:!category.value.options.streetWidth?0: streetWidthController.text.isEmpty?0:double.tryParse(streetWidthController.text)??0,
   );
 

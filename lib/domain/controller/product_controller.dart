@@ -28,12 +28,12 @@ class ProductController  {
     PropertyInfoModel? product;
     var res = await _dio.get(url:'${Urls.getPropertyInfo}?id=$propertyId&lang=${Constants.langCode}', context: context);
     if (res != null) {
-     try{
+     // try{
        product =PropertyInfoModel.fromJson(res['data'][0]);
 
-     }catch(e){
-       Utils.printData(e.toString());
-     }
+     // }catch(e){
+     //   Utils.printData(e.toString());
+     // }
 
     }
     return product;

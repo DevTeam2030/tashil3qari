@@ -18,12 +18,13 @@ final ValueNotifier<bool> open;
  final  ValueNotifier<int> receptionsNo;
  final  ValueNotifier<int> apartmentsNo;
  final  ValueNotifier<int> storesNo;
+ final  ValueNotifier<int> floorsNo;
  final  ValueNotifier<int> buildingAge;
  final  ValueNotifier<String> direction;
 
    TypesFilter({super.key,required this.formKey,required this.lowestPriceController,
      required this.streetWidthController,required this.receptionsNo,required this.apartmentsNo,required this.storesNo,required this.buildingAge,
- required this.abovePriceController,required this.spaceController,required this.floor,required this.bedrooms,
+ required this.abovePriceController,required this.spaceController,required this.floor,required this.bedrooms,required this.floorsNo,
    required this.bathrooms,required this.kitchen,required this.finishing,required this.selectedCategory,required this.open, required this.direction});
 
   @override
@@ -225,6 +226,9 @@ class _TypesFilterState extends State<TypesFilter> {
 
                             if(value.options.floor)
                               PropertyItem(notifier: widget.floor, color: ColorManager.white, title: 'Floor'.tr(),),
+
+                            if(value.options.floorsNo)
+                              PropertyItem(notifier: widget.floorsNo, color: ColorManager.white, title: 'floors_no'.tr(),),
 
                             if(value.options.roomsNo)
                               PropertyItem(notifier: widget.bedrooms, color: ColorManager.white, title: 'bedrooms'.tr(),),

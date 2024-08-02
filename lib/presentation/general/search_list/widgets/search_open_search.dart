@@ -50,6 +50,7 @@ class _SearchOpenSearchState extends State<SearchOpenSearch> {
   ValueNotifier<int> receptionsNo = ValueNotifier<int>(0);
   ValueNotifier<int> apartmentsNo = ValueNotifier<int>(0);
   ValueNotifier<int> storesNo = ValueNotifier<int>(0);
+  ValueNotifier<int> floorsNo = ValueNotifier<int>(0);
   ValueNotifier<int> buildingAge = ValueNotifier<int>(0);
   ValueNotifier<String> direction = ValueNotifier<String>('east');
 late  ValueNotifier<FinishingTypesModel> finishing;
@@ -153,6 +154,7 @@ late  ValueNotifier<FinishingTypesModel> finishing;
                       receptionsNo: receptionsNo,
                       apartmentsNo: apartmentsNo,
                       buildingAge: buildingAge,
+                      floorsNo: floorsNo,
                       direction: direction,
                       streetWidthController: streetWidthController,
                     ),
@@ -195,6 +197,7 @@ late  ValueNotifier<FinishingTypesModel> finishing;
                                 direction:!selectedCategory.value.options.direction?'': direction.value ,
                                 receptionsNo: !selectedCategory.value.options.receptionsNo?0: receptionsNo.value,
                                 storesNo:!selectedCategory.value.options.storesNo?0:  storesNo.value,
+                                floorsNo:!selectedCategory.value.options.floorsNo?0:  floorsNo.value,
                                 streetWidth:!selectedCategory.value.options.streetWidth?0: streetWidthController.text.isEmpty?0:double.tryParse(streetWidthController.text)??0,
 
 

@@ -690,6 +690,7 @@
   "southeast": "جنوب شرقى",
   "southwest": "جنوب غربى",
   "northeast": "شمال شرقى",
-  "northwest": "شمال غربى"
+  "northwest": "شمال غربى",
+  "floors_no": "عدد الأدوار"
 
 }

@@ -41,7 +41,7 @@ class HomeController  {
   Future<List<GeneralPropertyModel>> getProperties({required BuildContext context,int? cityId,int? categoryId,
   int? floor,int? bathroomsNo,int? roomsNo,double? propertySize,double? minPrice,double? maxPrice,
   int? finishingTypeId,int? ownerId,bool? isAuction, bool? forSale,bool? forRent ,
-  int? kitchensNo, int? receptionsNo,int?apartmentsNo,int? storesNo,int?buildingAge,String? direction,double? streetWidth}) async {
+  int? kitchensNo, int? receptionsNo,int?apartmentsNo,int? storesNo,int? floorsNo,int?buildingAge,String? direction,double? streetWidth}) async {
     List<GeneralPropertyModel> data=[];
     String url='${Urls.properties}?lang=${Constants.langCode}&no_page=1';
 
@@ -65,6 +65,7 @@ class HomeController  {
     if(kitchensNo!=null&&kitchensNo>0)url='$url&kitchens_no=$kitchensNo';
     if(bathroomsNo!=null&&bathroomsNo>0)url='$url&bathrooms_no=$bathroomsNo';
     if(floor!=null&&floor>0)url='$url&floor=$floor';
+    if(floorsNo!=null&&floorsNo>0)url='$url&floors_no=$floorsNo';
     if(propertySize!=null&&propertySize>0)url='$url&property_size=$propertySize';
 
 

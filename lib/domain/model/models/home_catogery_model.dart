@@ -24,7 +24,7 @@ class HomeCatogeryModel {
 class HomeCategoryOptionModel {
   bool roomsNo;
   bool bathroomsNo;
-  // bool floorsNo;
+  bool floorsNo;
   bool receptionsNo;
   bool floor;
   bool apartmentsNo;
@@ -37,7 +37,7 @@ class HomeCategoryOptionModel {
   HomeCategoryOptionModel({
     required this.roomsNo,
     required this.bathroomsNo,
-    // required this.floorsNo,
+    required this.floorsNo,
     required this.receptionsNo,
     required this.floor,
     required this.apartmentsNo,
@@ -51,7 +51,7 @@ class HomeCategoryOptionModel {
   factory HomeCategoryOptionModel.fromJson(Map<String, dynamic> json) => HomeCategoryOptionModel(
     roomsNo: json["rooms_no"]??false,
     bathroomsNo: json["bathrooms_no"]??false,
-    // floorsNo: json["floors_no"]??false,
+    floorsNo: json["floors_no"]??false,
     receptionsNo: json["receptions_no"]??false,
     floor: json["floor"]??false,
     apartmentsNo: json["apartments_no"]??false,

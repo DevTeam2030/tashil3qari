@@ -667,5 +667,6 @@
  "southeast": "South east",
  "southwest": "South west",
  "northeast": "North east",
- "northwest": "North west"
+ "northwest": "North west",
+ "floors_no": "Floors no"
 }

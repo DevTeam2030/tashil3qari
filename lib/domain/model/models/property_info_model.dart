@@ -23,7 +23,7 @@ class PropertyInfoModel {
   String propertySize;
   String floor;
   String finishingType;
-  int finishingTypeId;
+  String finishingTypeId;
   List<String> gallery;
   bool wishlist;
   bool featured;
@@ -64,6 +64,7 @@ class PropertyInfoModel {
   String streetWidth;
   String storesNo;
   String buildingAge;
+  String floorsNo;
 
 
 
@@ -133,11 +134,12 @@ class PropertyInfoModel {
     required this.auctionsUsers,
     required this.minimumAuction,
     required this.video,
+    required this.floorsNo,
   });
 
   factory PropertyInfoModel.fromJson(Map<String, dynamic> json) => PropertyInfoModel(
     id: json["id"],
-    propertyTitle: json["property_title"],
+    propertyTitle: json["property_title"]??'',
     image: json["image"]??'',
     country: json["country"]??'',
     countryId: json["country_id"],
@@ -147,13 +149,22 @@ class PropertyInfoModel {
     rate: double.tryParse(json["rate"].toString())??0,
     latitude: double.tryParse(json["latitude"].toString())??0,
     longitude: double.tryParse(json["longitude"].toString())??0,
-    roomsNo: json["rooms_no"]??'0',
-    bathroomsNo: json["bathrooms_no"]??'0',
-    kitchensNo: json["kitchens_no"]??'0',
-    propertySize: json["property_size"]??'0',
-    floor: json["floor"]??'0',
-    finishingType: json["finishing_type"]??'',
-    finishingTypeId: json["finishing_type_id"],
+    roomsNo: json["rooms_no"].toString().isNotEmpty&&json["rooms_no"]!=null?json["rooms_no"].toString():'0',
+      bathroomsNo: json["bathrooms_no"].toString().isNotEmpty&&json["bathrooms_no"]!=null?json["bathrooms_no"].toString():'0',
+      kitchensNo: json["kitchens_no"].toString().isNotEmpty&&json["kitchens_no"]!=null?json["kitchens_no"].toString():'0',
+      propertySize: json["property_size"].toString().isNotEmpty&&json["property_size"]!=null?json["property_size"].toString():'0',
+      floor: json["floor"].toString().isNotEmpty&&json["floor"]!=null?json["floor"].toString():'0',
+      finishingType: json["finishing_type"].toString().isNotEmpty&&json["finishing_type"]!=null?json["finishing_type"].toString():'',
+      finishingTypeId: json["finishing_type_id"].toString().isNotEmpty&&json["finishing_type_id"]!=null?json["finishing_type_id"].toString():'0',
+      receptionsNo: json["receptions_no"].toString().isNotEmpty&&json["receptions_no"]!=null?json["receptions_no"].toString():'0',
+      apartmentsNo: json["apartments_no"].toString().isNotEmpty&&json["apartments_no"]!=null?json["apartments_no"].toString():'0',
+      direction: json["direction"].toString().isNotEmpty&&json["direction"]!=null?json["direction"].toString():'',
+      streetWidth: json["street_width"].toString().isNotEmpty&&json["street_width"]!=null?json["street_width"].toString():'0',
+      storesNo: json["stores_no"].toString().isNotEmpty&&json["stores_no"]!=null?json["stores_no"].toString():'0',
+      buildingAge: json["building_age"].toString().isNotEmpty&&json["building_age"]!=null?json["building_age"].toString():'0',
+      floorsNo: json["floors_no"].toString().isNotEmpty&&json["floors_no"]!=null?json["floors_no"].toString():'0',
+
+
     gallery: List<String>.from(json["gallery"].map((x) => x)),
     wishlist: json["wishlist"]??false,
     featured: json["featured"]??false,
@@ -192,12 +203,7 @@ class PropertyInfoModel {
     video: json["video"]??0,
     auctionsUsers: json["auctions"]==null?[]:List<AuctionUserModel>.from(json["auctions"].map((x) => AuctionUserModel.fromJson(x))),
 
-      receptionsNo: json["receptions_no"]??'0',
-    apartmentsNo: json["apartments_no"]??'0',
-    direction: json["direction"]??'',
-    streetWidth: json["street_width"]??'0',
-    storesNo: json["stores_no"]??'0',
-    buildingAge: json["building_age"]??'0',
+
   );
 
   // Map<String, dynamic> toJson() => {

@@ -238,6 +238,9 @@ class _AddAdScreenState extends State<AddAdScreen> {
                           if(value.options.floor)
                           PropertyItem(notifier: addAdtData.floor, color: ColorManager.white, title: 'Floor'.tr(),),
 
+                          if(value.options.floorsNo)
+                          PropertyItem(notifier: addAdtData.floorsNo, color: ColorManager.white, title: 'floors_no'.tr(),),
+
                           if(value.options.roomsNo)
                           PropertyItem(notifier: addAdtData.bedrooms, color: ColorManager.white, title: 'bedrooms'.tr(),),
 

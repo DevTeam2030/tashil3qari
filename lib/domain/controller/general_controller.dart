@@ -58,7 +58,7 @@ class GeneralController  {
             options: HomeCategoryOptionModel(
                 roomsNo: true,
                 bathroomsNo: true,
-                // floorsNo: true,
+                floorsNo: true,
                 receptionsNo: true,
                 floor: true,
                 apartmentsNo: true,

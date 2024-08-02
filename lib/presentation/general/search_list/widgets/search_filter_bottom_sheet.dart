@@ -44,6 +44,7 @@ class _SearchFilterBottomSheetState extends State<SearchFilterBottomSheet> {
   ValueNotifier<int> bedrooms = ValueNotifier<int>(0);
   ValueNotifier<int> bathrooms = ValueNotifier<int>(0);
   ValueNotifier<int> kitchen = ValueNotifier<int>(0);
+  ValueNotifier<int> floorsNo = ValueNotifier<int>(0);
   late  ValueNotifier<FinishingTypesModel> finishing;
   TextEditingController streetWidthController = TextEditingController();
   ValueNotifier<int> receptionsNo = ValueNotifier<int>(0);
@@ -230,6 +231,7 @@ class _SearchFilterBottomSheetState extends State<SearchFilterBottomSheet> {
                   apartmentsNo: apartmentsNo,
                   buildingAge: buildingAge,
                   direction: direction,
+                  floorsNo: floorsNo,
                   streetWidthController: streetWidthController,
                 ),
 
@@ -269,6 +271,7 @@ class _SearchFilterBottomSheetState extends State<SearchFilterBottomSheet> {
                             direction:!selectedCategory.value.options.direction?'': direction.value ,
                             receptionsNo: !selectedCategory.value.options.receptionsNo?0: receptionsNo.value,
                             storesNo:!selectedCategory.value.options.storesNo?0:  storesNo.value,
+                            floorsNo:!selectedCategory.value.options.floorsNo?0:  floorsNo.value,
                             streetWidth:!selectedCategory.value.options.streetWidth?0: streetWidthController.text.isEmpty?0:double.tryParse(streetWidthController.text)??0,
 
 

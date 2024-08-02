@@ -71,7 +71,10 @@ class _SearchListScreenState extends State<SearchListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: GeneralAppBar(title: 'SearchByList'.tr(),showMapIcon: false),
+      appBar: GeneralAppBar(
+          title: '',
+          // title: 'SearchByList'.tr(),
+          showMapIcon: false),
       // floatingActionButton: Container(
       //   width: 50,
       //   height: 50,
@@ -92,7 +95,7 @@ class _SearchListScreenState extends State<SearchListScreen> {
             height: 40,
             decoration: Utils.returnDropdownButtonDecoration(ColorManager.primary,
                 ColorManager.primary,10),
-            margin:  EdgeInsets.only(bottom: 30,right: 10,left: 10),
+            margin:  const EdgeInsets.only(bottom: 30,right: 10,left: 10),
             padding: EdgeInsets.symmetric(horizontal: 8),
             child: InkWell(
               splashColor: ColorManager.white,
@@ -101,7 +104,7 @@ class _SearchListScreenState extends State<SearchListScreen> {
                 searchListData.isAuction.value=!value;
                 context.read<SearchProvider>().getProperties(context: context,isNotify: true,isAuction: searchListData.isAuction.value);
               } ,
-              child: !value? Row(
+              child: value? Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [

@@ -158,6 +158,7 @@ class _AdDetailsDataState extends State<AdDetailsData> {
                 widget.editAdData.apartmentsNo.value=0;
                 widget.editAdData.storesNo.value=0;
                 widget.editAdData.buildingAge.value=0;
+                widget.editAdData.floorsNo.value=0;
                 widget.editAdData.direction.value=Constants.directions.first;
 
 
@@ -251,6 +252,9 @@ class _AdDetailsDataState extends State<AdDetailsData> {
 
                   if(value.options.floor)
                     PropertyItem(notifier: widget.editAdData.floor, color: ColorManager.white, title: 'Floor'.tr(),),
+
+                  if(value.options.floorsNo)
+                    PropertyItem(notifier: widget.editAdData.floorsNo, color: ColorManager.white, title: 'floors_no'.tr(),),
 
                   if(value.options.roomsNo)
                     PropertyItem(notifier: widget.editAdData.bedrooms, color: ColorManager.white, title: 'bedrooms'.tr(),),

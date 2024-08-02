@@ -38,6 +38,7 @@ int receptionsNo;
 int apartmentsNo;
 int storesNo;
 int buildingAge;
+int floorsNo;
 
 
 // receptions_no عدد الصالات
@@ -84,7 +85,8 @@ int buildingAge;
     required this.receptionsNo,
     required this.apartmentsNo,
     required this.storesNo,
-    required this.buildingAge
+    required this.buildingAge,
+    required this.floorsNo
 
   });
   Map<String, dynamic> toJson() => {
@@ -119,6 +121,7 @@ int buildingAge;
 "street_width":streetWidth,
 "stores_no":storesNo,
 "building_age":buildingAge,
+"floors_no":floorsNo,
 
 
   };
@@ -157,6 +160,7 @@ class EditPropertyModel {
    int apartmentsNo;
    int storesNo;
    int buildingAge;
+   int floorsNo;
   EditPropertyModel({
     required this.propertyId,
     required this.titleEn,
@@ -188,7 +192,8 @@ class EditPropertyModel {
     required this.receptionsNo,
     required this.apartmentsNo,
     required this.storesNo,
-    required this.buildingAge
+    required this.buildingAge,
+    required this.floorsNo
 
   });
   Map<String, dynamic> toJson() => {
@@ -223,6 +228,7 @@ class EditPropertyModel {
     "street_width":streetWidth,
     "stores_no":storesNo,
     "building_age":buildingAge,
+    "floors_no":floorsNo,
 
   };
 }

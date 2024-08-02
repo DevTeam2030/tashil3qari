@@ -23,6 +23,7 @@ class EditAdData {
  ValueNotifier<int> apartmentsNo = ValueNotifier<int>(0);
  ValueNotifier<int> storesNo = ValueNotifier<int>(0);
  ValueNotifier<int> buildingAge = ValueNotifier<int>(0);
+ ValueNotifier<int> floorsNo = ValueNotifier<int>(0);
  ValueNotifier<String> direction = ValueNotifier<String>('east');
 
 
@@ -49,6 +50,7 @@ late  ValueNotifier<FinishingTypesModel> finishing ;
     bedrooms.value=int.tryParse(ad.roomsNo)??0;
     kitchen.value=int.tryParse(ad.kitchensNo)??0;
     floor.value=int.tryParse(ad.floor)??0;
+    floorsNo.value=int.tryParse(ad.floorsNo)??0;
 
     streetWidthController.text=ad.streetWidth;
     receptionsNo.value=int.tryParse(ad.receptionsNo)??0;
@@ -125,6 +127,7 @@ late  ValueNotifier<FinishingTypesModel> finishing ;
    direction:!category.value.options.direction?'': direction.value ,
    receptionsNo: !category.value.options.receptionsNo?0: receptionsNo.value,
    storesNo:!category.value.options.storesNo?0:  storesNo.value,
+   floorsNo:!category.value.options.floorsNo?0:  floorsNo.value,
    streetWidth:!category.value.options.streetWidth?0: streetWidthController.text.isEmpty?0:double.tryParse(streetWidthController.text)??0,
 
 

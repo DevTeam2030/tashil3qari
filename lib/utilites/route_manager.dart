@@ -188,8 +188,9 @@ class RouteGenerator{
             apartmentsNo: '',buildingAge:'' ,direction: '',receptionsNo: '',storesNo: '',streetWidth: '',
           id: 0,type: '',image: '',roomsNo: '',propertyTitle: '',currency: '',category: '',gallery: [],published: false,show: false,
           wishlist: false,lastUpadte: '',propertySize: '',price: '',cityId: 0,countryId: 0,rate: 0,bathroomsNo: '',city:'',
-           country: '',featured: false,floor: '',kitchensNo: '',latitude: 0,longitude: 0,currencyId: '',
-            propertyDescription: '',haveConsultant: false,video:'',adCreatedAt: '',auction: false,width: '',length: '',license: '',finishingTypeId: 0,finishingType: '',catId: 0
+           country: '',featured: false,floor: '',kitchensNo: '',latitude: 0,longitude: 0,currencyId: '',floorsNo: '',
+            propertyDescription: '',haveConsultant: false,video:'',adCreatedAt: '',auction: false,width: '',length: '',
+            license: '',finishingTypeId: '',finishingType: '',catId: 0
         ),
       ),);
       case Routes.addAdImagesScreen :return MaterialPageRoute(builder: (context) =>   AddAdImagesScreen(addAdtData: AddAdtData()),);
@@ -208,11 +209,12 @@ class RouteGenerator{
       case Routes.allOwnerAds :return MaterialPageRoute(builder: (context) =>    AllOwnerAds(ownerId: 0,ownerName: '',),);
       case Routes.adPhotoViewScreen :return MaterialPageRoute(builder: (context) =>    AdPhotoViewScreen(propertyInfo: PropertyInfoModel(
         id: 0,cityId: 0,image: '',countryId: 0,rate: 0,bathroomsNo: '',city: '',country: '',featured: false,finishingType: '',
+        floorsNo: '',
         apartmentsNo: '',buildingAge:'' ,direction: '',receptionsNo: '',storesNo: '',streetWidth: '',
         type: '',price: 0,currency: '',userImage: '',catId: 0,auctionsUsers: [],minimumAuction: '0',video: '',
         endDurationDays: '',endDurationHours: '',endDurationMintues: '',countAuctions: 0,isLive: false,isAuction: false,
         width: '',userType: UserType.user,address:'' ,adCreatedAt: '',license:'' ,
-        finishingTypeId: 0,floor: '',gallery: [],kitchensNo: '',latitude: 0,longitude: 0,propertyTitle: '',
+        finishingTypeId: '',floor: '',gallery: [],kitchensNo: '',latitude: 0,longitude: 0,propertyTitle: '',
         roomsNo: '',wishlist: false,userRate: 0,
         propertyDescription: '',propertySize:'',
       adNo: '',lastUpadte: '',length: '',timeAgo: '',userEmail: '', userId: 0,userLicenseNumber: '',userName: '',

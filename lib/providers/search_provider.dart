@@ -29,7 +29,7 @@ class SearchProvider extends ChangeNotifier {
   Future< List<GeneralPropertyModel>>getProperties({required BuildContext context,bool?isNotify,int? cityId,int? categoryId,
   int? floor,int? bathroomsNo,int? roomsNo,double? propertySize,double? minPrice,double? maxPrice,bool?isAuction,
   int? finishingTypeId,bool? forSale,bool? forRent,
-    int? kitchensNo, int? receptionsNo,int?apartmentsNo,int? storesNo,int?buildingAge,String? direction,double? streetWidth})async{
+    int? kitchensNo, int? receptionsNo,int?apartmentsNo,int? storesNo,int? floorsNo,int?buildingAge,String? direction,double? streetWidth})async{
   isLoading=true;
   allProperties=[];
   properties=[];
@@ -40,7 +40,7 @@ class SearchProvider extends ChangeNotifier {
   floor: floor,bathroomsNo: bathroomsNo,roomsNo: roomsNo,propertySize: propertySize,
   isAuction: isAuction,   receptionsNo: receptionsNo,apartmentsNo: apartmentsNo,storesNo: storesNo,buildingAge: buildingAge,
       streetWidth: streetWidth,direction: direction,
-      forRent: forRent,forSale: forSale,kitchensNo: kitchensNo,
+      forRent: forRent,forSale: forSale,kitchensNo: kitchensNo,floorsNo:floorsNo,
   minPrice: minPrice,maxPrice: maxPrice,finishingTypeId: finishingTypeId,);
   properties=allProperties;
   isLoading=false;

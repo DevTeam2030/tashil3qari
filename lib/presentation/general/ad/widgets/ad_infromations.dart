@@ -43,6 +43,9 @@ class AdInformations extends StatelessWidget {
               if(provider.adCategory!.options.floor)
               InformationsItem(title: 'Floor'.tr(),value:propertyInfo.floor,color: ColorManager.white,),
 
+              if(provider.adCategory!.options.floorsNo)
+              InformationsItem(title: 'floors_no'.tr(),value:propertyInfo.floorsNo,color: ColorManager.white,),
+
               if(provider.adCategory!.options.roomsNo)
               InformationsItem(title: 'bedrooms'.tr(),value:'${propertyInfo.roomsNo} ${'rooms'.tr()}',color: ColorManager.white,),
 
