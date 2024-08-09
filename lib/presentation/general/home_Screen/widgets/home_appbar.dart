@@ -213,6 +213,10 @@ class HomeBuildAppBar extends StatelessWidget implements PreferredSizeWidget {
                         homeData.selectedAdType=type;
                         homeData.getByCategory(context: context, category: homeData.selectedCategory.value);
                       },
+
+                      monthly:   homeData.monthly,
+
+                      inAppbar: true,
                     ),),
 
                     AppSizeBox(width: 10,),

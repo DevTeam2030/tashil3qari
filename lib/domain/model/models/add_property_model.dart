@@ -9,6 +9,7 @@ class AddPropertyModel {
   int cityId;
   int categoryId;
   bool forSale;
+  bool monthly;
   String descriptionEn;
   String descriptionAr;
   double propertySize;
@@ -39,7 +40,19 @@ int apartmentsNo;
 int storesNo;
 int buildingAge;
 int floorsNo;
+bool feminine;
 
+  bool annex;
+  bool carEntrance;
+  bool elevator;
+  bool  airConditioners;
+  bool waterAvailability;
+  bool electricityAvailability;
+  bool swimmingPool;
+  bool  footballField;
+  bool  volleyballCourt;
+  bool  amusementPark;
+  bool familySection;
 
 // receptions_no عدد الصالات
 // apartments_no  عدد الشقق
@@ -65,6 +78,7 @@ int floorsNo;
     required this.latitude,
     required this.categoryId,
     required this.forSale,
+    required this.monthly,
     required this.roomsNo,
     required this.bathroomsNo,
     required this.kitchensNo,
@@ -86,7 +100,19 @@ int floorsNo;
     required this.apartmentsNo,
     required this.storesNo,
     required this.buildingAge,
-    required this.floorsNo
+    required this.feminine,
+    required this.floorsNo,
+    required this.familySection,
+    required this.annex,
+    required this.carEntrance,
+    required this.elevator,
+    required this.airConditioners,
+    required this.waterAvailability,
+    required this.electricityAvailability,
+    required this.swimmingPool,
+    required this.footballField,
+    required this.volleyballCourt,
+    required this.amusementPark,
 
   });
   Map<String, dynamic> toJson() => {
@@ -98,6 +124,7 @@ int floorsNo;
     "city_id": cityId,
     "category_id": categoryId,
     "type": forSale?"sale":"rent",
+    "monthly": monthly?1:0,
     "price":price,
     "finishing_type_id":finishingTypeId,
     "longitude":longitude,
@@ -122,6 +149,18 @@ int floorsNo;
 "stores_no":storesNo,
 "building_age":buildingAge,
 "floors_no":floorsNo,
+"feminine":feminine?1:0,
+    "annex": annex?1:0,
+    "carEntrance": carEntrance?1:0,
+    "elevator": elevator?1:0,
+    "airConditioners": airConditioners?1:0,
+    "waterAvailability": waterAvailability?1:0,
+    "electricityAvailability": electricityAvailability?1:0,
+    "swimmingPool": swimmingPool?1:0,
+    "footballField": footballField?1:0,
+    "volleyballCourt": volleyballCourt?1:0,
+    "amusementPark": amusementPark?1:0,
+    "familySection": familySection?1:0,
 
 
   };
@@ -145,6 +184,7 @@ class EditPropertyModel {
   double width;
   double price;
   bool forSale;
+   bool monthly;
   File? image;
   List<File> gallery;
   File?video;
@@ -161,7 +201,20 @@ class EditPropertyModel {
    int storesNo;
    int buildingAge;
    int floorsNo;
-  EditPropertyModel({
+   bool feminine;
+   bool annex;
+   bool carEntrance;
+   bool elevator;
+   bool  airConditioners;
+   bool waterAvailability;
+   bool electricityAvailability;
+   bool swimmingPool;
+   bool  footballField;
+   bool  volleyballCourt;
+   bool  amusementPark;
+   bool familySection;
+
+   EditPropertyModel({
     required this.propertyId,
     required this.titleEn,
     required this.titleAr,
@@ -169,6 +222,7 @@ class EditPropertyModel {
     required this.descriptionAr,
     required this.categoryId,
     required this.forSale,
+    required this.monthly,
     required this.roomsNo,
     required this.bathroomsNo,
     required this.kitchensNo,
@@ -193,7 +247,19 @@ class EditPropertyModel {
     required this.apartmentsNo,
     required this.storesNo,
     required this.buildingAge,
-    required this.floorsNo
+    required this.feminine,
+    required this.floorsNo,
+     required this.familySection,
+     required this.annex,
+     required this.carEntrance,
+     required this.elevator,
+     required this.airConditioners,
+     required this.waterAvailability,
+     required this.electricityAvailability,
+     required this.swimmingPool,
+     required this.footballField,
+     required this.volleyballCourt,
+     required this.amusementPark,
 
   });
   Map<String, dynamic> toJson() => {
@@ -229,8 +295,23 @@ class EditPropertyModel {
     "stores_no":storesNo,
     "building_age":buildingAge,
     "floors_no":floorsNo,
+    "feminine":feminine?1:0,
+    "monthly": monthly?1:0,
+    "annex": annex?1:0,
+    "carEntrance": carEntrance?1:0,
+    "elevator": elevator?1:0,
+    "airConditioners": airConditioners?1:0,
+    "waterAvailability": waterAvailability?1:0,
+    "electricityAvailability": electricityAvailability?1:0,
+    "swimmingPool": swimmingPool?1:0,
+    "footballField": footballField?1:0,
+    "volleyballCourt": volleyballCourt?1:0,
+    "amusementPark": amusementPark?1:0,
+    "familySection": familySection?1:0,
 
-  };
+
+
+};
 }
 
 

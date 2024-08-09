@@ -691,6 +691,32 @@
   "southwest": "جنوب غربى",
   "northeast": "شمال شرقى",
   "northwest": "شمال غربى",
-  "floors_no": "عدد الأدوار"
+  "floors_no": "عدد الأدوار",
+  "Feminine": "مؤنثة",
+  "verse": "بيت شعر",
+
+  "Annex": "ملحق",
+  "Car entrance": "مدخل سيارة",
+  "Elevator": "مصعد",
+  "Air conditioners": "مكيفات",
+  "Water availability": "توفر ماء",
+  "Electricity availability": "توفر كهرباء",
+  "Lease contract duration": "مده عقد الإيجار",
+  "contract duration": "مده العقد",
+  "Annual": "سنوى",
+  "Monthly": "شهرى",
+  "Swimming pool": "مسبح",
+  "Football field": "ملعب كرة قدم",
+  "Volleyball court": "ملعب كرة طائرة",
+  "Amusement park": "ملاهى",
+  "Family section": "قسم عوائل"
+
+
+
+
+
+
+
+
 
 }

@@ -62,7 +62,8 @@ class TextOnImage extends StatelessWidget {
 
 
 class MoreIcon extends StatelessWidget {
-  const MoreIcon({super.key,});
+  final int number;
+  const MoreIcon({super.key,required this.number});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -79,11 +80,16 @@ class MoreIcon extends StatelessWidget {
           child: Container(
             height: 40,
             width: 40,
+            alignment: Alignment.center,
             decoration: BoxDecoration(
               color: ColorManager.white,
               shape: BoxShape.circle,
             ),
-            child: Icon(Icons.more_horiz,color: ColorManager.primary,),
+            child:    Text(
+              '$number',
+              style: const TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),
+            )
+            // Icon(Icons.more_horiz,color: ColorManager.primary,),
           ),
         ),
         Image.asset(
@@ -96,6 +102,99 @@ class MoreIcon extends StatelessWidget {
     );
   }
 }
+// class MoreTextPrice extends StatelessWidget {
+//   const MoreTextPrice({
+//     super.key,
+//     required this.ads
+//   });
+//   final List<GeneralPropertyModel>ads;
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       constraints:  BoxConstraints(
+//         maxWidth: 100,
+//         minWidth: 25,
+//         minHeight: 30,
+//         maxHeight:type==MapAdType.premium?100: 75
+//       ),
+//       child: Stack(
+//         fit: StackFit.loose,
+//         children: [
+//           Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             crossAxisAlignment: CrossAxisAlignment.center,
+//             mainAxisSize: MainAxisSize.min,
+//             children: [
+//
+//               Container(
+//                 margin:
+//                     auction==true? EdgeInsets.only(top:type==MapAdType.premium?27:10,left: 9):
+//                 type==MapAdType.premium?
+//                 const EdgeInsets.only(top:10,left: 10):EdgeInsets.zero,
+//                 // padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+//                 width: 100,
+//                 height: 40,
+//                 alignment: Alignment.center,
+//                 decoration: BoxDecoration(
+//                   borderRadius: BorderRadius.circular(12),
+//                   color: type==MapAdType.primary?ColorManager.primary:ColorManager.white,
+//                   border: Border.all(
+//                     color: type==MapAdType.premium?ColorManager.premium:
+//                     (type==MapAdType.primary?ColorManager.primary:ColorManager.other),
+//                     width: 1.6,
+//                   ),
+//                 ),
+//                 child:  AppText(
+//                     title: '$price $currency',
+//                     titleAlign: TextAlign.start,
+//                     titleMaxLines: 1,
+//                     fontWeightType: FontWeightType.medium,
+//                     titleSize: FontSize.s14,
+//                     titleColor: type==MapAdType.premium?ColorManager.premium:
+//                     (type==MapAdType.primary?ColorManager.white:ColorManager.other),),
+//               ),
+//               Image.asset(
+//                 ImageManager.polygon,
+//                 width: 25,
+//                 height: 25,
+//                 fit: BoxFit.cover,
+//                 color: type==MapAdType.premium?ColorManager.premium:
+//               (type==MapAdType.primary?ColorManager.primary:ColorManager.other),)
+//             ],
+//           ),
+//
+//           if(type==MapAdType.premium)
+//           Row(
+//             children: [
+//               Image.asset(
+//                 ImageManager.tag,
+//                 width: 30,
+//                 height: 30,
+//                 fit: BoxFit.cover,
+//               )
+//             ],
+//           ),
+//
+//           if(auction==true)
+//           Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             mainAxisAlignment: MainAxisAlignment.end,
+//             children: [
+//               CircleAvatar(
+//                 radius: 12,
+//                 backgroundColor: ColorManager.white,
+//                 child: SvgPicture.asset(ImageManager.applyAuctions,color: ColorManager.primary,),
+//               ),
+//
+//               SizedBox(   height: 10,)
+//             ],
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }
+
 class TextPrice extends StatelessWidget {
   const TextPrice({
     super.key,
@@ -111,10 +210,10 @@ class TextPrice extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints:  BoxConstraints(
-        maxWidth: 100,
-        minWidth: 25,
-        minHeight: 30,
-        maxHeight:type==MapAdType.premium?100: 75
+          maxWidth: 100,
+          minWidth: 25,
+          minHeight: 30,
+          maxHeight:type==MapAdType.premium?100: 75
       ),
       child: Stack(
         fit: StackFit.loose,
@@ -127,7 +226,7 @@ class TextPrice extends StatelessWidget {
 
               Container(
                 margin:
-                    auction==true? EdgeInsets.only(top:type==MapAdType.premium?27:10,left: 9):
+                auction==true? EdgeInsets.only(top:type==MapAdType.premium?27:10,left: 9):
                 type==MapAdType.premium?
                 const EdgeInsets.only(top:10,left: 10):EdgeInsets.zero,
                 // padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -144,13 +243,13 @@ class TextPrice extends StatelessWidget {
                   ),
                 ),
                 child:  AppText(
-                    title: '$price $currency',
-                    titleAlign: TextAlign.start,
-                    titleMaxLines: 1,
-                    fontWeightType: FontWeightType.medium,
-                    titleSize: FontSize.s14,
-                    titleColor: type==MapAdType.premium?ColorManager.premium:
-                    (type==MapAdType.primary?ColorManager.white:ColorManager.other),),
+                  title: '$price $currency',
+                  titleAlign: TextAlign.start,
+                  titleMaxLines: 1,
+                  fontWeightType: FontWeightType.medium,
+                  titleSize: FontSize.s14,
+                  titleColor: type==MapAdType.premium?ColorManager.premium:
+                  (type==MapAdType.primary?ColorManager.white:ColorManager.other),),
               ),
               Image.asset(
                 ImageManager.polygon,
@@ -158,36 +257,36 @@ class TextPrice extends StatelessWidget {
                 height: 25,
                 fit: BoxFit.cover,
                 color: type==MapAdType.premium?ColorManager.premium:
-              (type==MapAdType.primary?ColorManager.primary:ColorManager.other),)
+                (type==MapAdType.primary?ColorManager.primary:ColorManager.other),)
             ],
           ),
 
           if(type==MapAdType.premium)
-          Row(
-            children: [
-              Image.asset(
-                ImageManager.tag,
-                width: 30,
-                height: 30,
-                fit: BoxFit.cover,
-              )
-            ],
-          ),
+            Row(
+              children: [
+                Image.asset(
+                  ImageManager.tag,
+                  width: 30,
+                  height: 30,
+                  fit: BoxFit.cover,
+                )
+              ],
+            ),
 
           if(auction==true)
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              CircleAvatar(
-                radius: 12,
-                backgroundColor: ColorManager.white,
-                child: SvgPicture.asset(ImageManager.applyAuctions,color: ColorManager.primary,),
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                CircleAvatar(
+                  radius: 12,
+                  backgroundColor: ColorManager.white,
+                  child: SvgPicture.asset(ImageManager.applyAuctions,color: ColorManager.primary,),
+                ),
 
-              SizedBox(   height: 10,)
-            ],
-          )
+                SizedBox(   height: 10,)
+              ],
+            )
         ],
       ),
     );

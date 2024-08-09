@@ -9,6 +9,7 @@ import 'package:tashil_agary/app/utils.dart';
 import 'package:tashil_agary/components/cach_image.dart';
 import 'package:tashil_agary/components/size_box_height.dart';
 import 'package:tashil_agary/presentation/general/ad/ad_imports.dart';
+import 'package:tashil_agary/presentation/general/home_Screen/widgets/verse_item.dart';
 import 'package:tashil_agary/providers/auth_provider.dart';
 import 'package:tashil_agary/providers/home_provider.dart';
 import 'package:tashil_agary/utilites/color_manager.dart';

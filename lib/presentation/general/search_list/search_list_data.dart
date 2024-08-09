@@ -15,6 +15,7 @@ class SearchListData {
   TextEditingController searchController = TextEditingController();
   ValueNotifier<HomeCatogeryModel?> selectedCategory = ValueNotifier<HomeCatogeryModel?>(Constants.settingModel.categories.first);
   AdType? selectedAdType;
+  ValueNotifier<bool> monthly = ValueNotifier<bool>(false);
   ValueNotifier<bool> openSearch = ValueNotifier<bool>(false);
   ValueNotifier<CityModel?> selectedCity = ValueNotifier<CityModel?>(null);
 
@@ -33,10 +34,10 @@ class SearchListData {
 
 
 
-  onFilterTap({required BuildContext context,}){
-    Utils.showModalBottomSheetApp(
-        widget: SearchFilterBottomSheet(selectedCategory: selectedCategory,)
-    );
-  }
+  // onFilterTap({required BuildContext context,}){
+  //   Utils.showModalBottomSheetApp(
+  //       widget: SearchFilterBottomSheet(selectedCategory: selectedCategory,)
+  //   );
+  // }
 }
 

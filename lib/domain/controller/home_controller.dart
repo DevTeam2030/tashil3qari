@@ -40,7 +40,9 @@ class HomeController  {
   }
   Future<List<GeneralPropertyModel>> getProperties({required BuildContext context,int? cityId,int? categoryId,
   int? floor,int? bathroomsNo,int? roomsNo,double? propertySize,double? minPrice,double? maxPrice,
-  int? finishingTypeId,int? ownerId,bool? isAuction, bool? forSale,bool? forRent ,
+  int? finishingTypeId,int? ownerId,bool? isAuction, bool? forSale,bool? forRent ,bool? monthly,
+    bool?feminine, bool? annex, bool? carEntrance, bool? elevator, bool?  airConditioners, bool? waterAvailability, bool? electricityAvailability,
+    bool? swimmingPool, bool?  footballField, bool?  volleyballCourt, bool?  amusementPark, bool? familySection,
   int? kitchensNo, int? receptionsNo,int?apartmentsNo,int? storesNo,int? floorsNo,int?buildingAge,String? direction,double? streetWidth}) async {
     List<GeneralPropertyModel> data=[];
     String url='${Urls.properties}?lang=${Constants.langCode}&no_page=1';
@@ -56,6 +58,7 @@ class HomeController  {
       url='$url&type=sale';
     } else if(forRent==true) {
       url='$url&type=rent';
+      if(monthly==true)   url='$url&type=${monthly==true?1:0}';
     } else{}
     if(categoryId!=null&&categoryId!=0)url='$url&category_id=$categoryId';
     if(finishingTypeId!=null)url='$url&finishing_type_id=$finishingTypeId';
@@ -67,6 +70,22 @@ class HomeController  {
     if(floor!=null&&floor>0)url='$url&floor=$floor';
     if(floorsNo!=null&&floorsNo>0)url='$url&floors_no=$floorsNo';
     if(propertySize!=null&&propertySize>0)url='$url&property_size=$propertySize';
+
+    if(feminine!=null)url='$url&feminine=${feminine?1:0}';
+    if(annex!=null)url='$url&annex=${annex?1:0}';
+    if(carEntrance!=null)url='$url&car_entrance=${carEntrance?1:0}';
+    if(elevator!=null)url='$url&elevator=${elevator?1:0}';
+    if(airConditioners!=null)url='$url&air_conditioners=${airConditioners?1:0}';
+    if(waterAvailability!=null)url='$url&waterAvailability=${waterAvailability?1:0}';
+    if(electricityAvailability!=null)url='$url&electricity_availability=${electricityAvailability?1:0}';
+    if(swimmingPool!=null)url='$url&swimming_pool=${swimmingPool?1:0}';
+    if(footballField!=null)url='$url&football_field=${footballField?1:0}';
+    if(volleyballCourt!=null)url='$url&volleyball_court=${volleyballCourt?1:0}';
+    if(amusementPark!=null)url='$url&amusement_park=${amusementPark?1:0}';
+    if(familySection!=null)url='$url&family_section=${familySection?1:0}';
+
+
+
 
 
     if(receptionsNo!=null&&receptionsNo>0)url='$url&receptions_no=$receptionsNo';

@@ -21,8 +21,24 @@ final ValueNotifier<bool> open;
  final  ValueNotifier<int> floorsNo;
  final  ValueNotifier<int> buildingAge;
  final  ValueNotifier<String> direction;
+ final ValueNotifier<bool> feminine ;
 
-   TypesFilter({super.key,required this.formKey,required this.lowestPriceController,
+final ValueNotifier<bool> annex ;
+final ValueNotifier<bool> carEntrance ;
+final ValueNotifier<bool> elevator ;
+final ValueNotifier<bool> airConditioners ;
+final ValueNotifier<bool> waterAvailability ;
+final ValueNotifier<bool> electricityAvailability ;
+final ValueNotifier<bool> swimmingPool ;
+final ValueNotifier<bool> footballField ;
+final ValueNotifier<bool> volleyballCourt ;
+final ValueNotifier<bool> amusementPark ;
+final ValueNotifier<bool> familySection ;
+   TypesFilter({super.key,required this.formKey,required this.lowestPriceController,required this.feminine,
+     required this.annex,required this.carEntrance,required this.elevator,
+     required this.airConditioners,required this.waterAvailability,required this.electricityAvailability,
+     required this.swimmingPool,required this.footballField,required this.volleyballCourt,
+     required this.amusementPark,required this.familySection,
      required this.streetWidthController,required this.receptionsNo,required this.apartmentsNo,required this.storesNo,required this.buildingAge,
  required this.abovePriceController,required this.spaceController,required this.floor,required this.bedrooms,required this.floorsNo,
    required this.bathrooms,required this.kitchen,required this.finishing,required this.selectedCategory,required this.open, required this.direction});
@@ -223,6 +239,45 @@ class _TypesFilterState extends State<TypesFilter> {
                             if(value.options.streetWidth)
                               SpaceItem(spaceController: widget.streetWidthController,title: 'streetWidth'.tr(),
                                 subTitle: 'meter1'.tr(),color: ColorManager.white,fillColor: ColorManager.textGrey, ),
+
+                            if(value.options.feminine)
+                              SwitchItem(notifier: widget.feminine, title: 'feminine'.tr(),),
+
+
+
+
+                            if(value.options.annex)
+                              SwitchItem(notifier: widget.annex, title: 'Annex'.tr(),),
+
+                            if(value.options.carEntrance)
+                              SwitchItem(notifier: widget.carEntrance, title: 'Car entrance'.tr(),),
+
+                            if(value.options.elevator)
+                              SwitchItem(notifier: widget.elevator, title: 'Elevator'.tr(),),
+
+                            if(value.options.airConditioners)
+                              SwitchItem(notifier: widget.airConditioners, title: 'Air conditioners'.tr(),),
+
+                            if(value.options.waterAvailability)
+                              SwitchItem(notifier: widget.waterAvailability, title: 'Water availability'.tr(),),
+
+                            if(value.options.electricityAvailability)
+                              SwitchItem(notifier: widget.electricityAvailability, title: 'Electricity availability'.tr(),),
+
+                            if(value.options.swimmingPool)
+                              SwitchItem(notifier: widget.swimmingPool, title: 'Swimming pool'.tr(),),
+
+                            if(value.options.footballField)
+                              SwitchItem(notifier: widget.footballField, title: 'Football field'.tr(),),
+
+                            if(value.options.volleyballCourt)
+                              SwitchItem(notifier: widget.volleyballCourt, title: 'Volleyball court'.tr(),),
+
+                            if(value.options.amusementPark)
+                              SwitchItem(notifier: widget.amusementPark, title: 'Amusement park'.tr(),),
+
+                            if(value.options.familySection)
+                              SwitchItem(notifier: widget.familySection, title: 'Family section'.tr(),),
 
                             if(value.options.floor)
                               PropertyItem(notifier: widget.floor, color: ColorManager.white, title: 'Floor'.tr(),),

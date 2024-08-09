@@ -159,6 +159,7 @@ class _AdDetailsDataState extends State<AdDetailsData> {
                 widget.editAdData.storesNo.value=0;
                 widget.editAdData.buildingAge.value=0;
                 widget.editAdData.floorsNo.value=0;
+                widget.editAdData.feminine.value=false;
                 widget.editAdData.direction.value=Constants.directions.first;
 
 
@@ -249,6 +250,44 @@ class _AdDetailsDataState extends State<AdDetailsData> {
                   if(value.options.streetWidth)
                     SpaceItem(spaceController: widget.editAdData.streetWidthController,title: 'streetWidth'.tr(),
                       subTitle: 'meter1'.tr(),color: ColorManager.white,fillColor: ColorManager.textGrey, ),
+
+                  if(value.options.feminine)
+                    SwitchItem(notifier: widget.editAdData.feminine, title: 'Feminine'.tr(),),
+
+
+                  if(value.options.annex)
+                    SwitchItem(notifier: widget.editAdData.annex, title: 'Annex'.tr(),),
+
+                  if(value.options.carEntrance)
+                    SwitchItem(notifier: widget.editAdData.carEntrance, title: 'Car entrance'.tr(),),
+
+                  if(value.options.elevator)
+                    SwitchItem(notifier: widget.editAdData.elevator, title: 'Elevator'.tr(),),
+
+                  if(value.options.airConditioners)
+                    SwitchItem(notifier: widget.editAdData.airConditioners, title: 'Air conditioners'.tr(),),
+
+                  if(value.options.waterAvailability)
+                    SwitchItem(notifier: widget.editAdData.waterAvailability, title: 'Water availability'.tr(),),
+
+                  if(value.options.electricityAvailability)
+                    SwitchItem(notifier: widget.editAdData.electricityAvailability, title: 'Electricity availability'.tr(),),
+
+                  if(value.options.swimmingPool)
+                    SwitchItem(notifier: widget.editAdData.swimmingPool, title: 'Swimming pool'.tr(),),
+
+                  if(value.options.footballField)
+                    SwitchItem(notifier: widget.editAdData.footballField, title: 'Football field'.tr(),),
+
+                  if(value.options.volleyballCourt)
+                    SwitchItem(notifier: widget.editAdData.volleyballCourt, title: 'Volleyball court'.tr(),),
+
+                  if(value.options.amusementPark)
+                    SwitchItem(notifier: widget.editAdData.amusementPark, title: 'Amusement park'.tr(),),
+
+                  if(value.options.familySection)
+                    SwitchItem(notifier: widget.editAdData.familySection, title: 'Family section'.tr(),),
+
 
                   if(value.options.floor)
                     PropertyItem(notifier: widget.editAdData.floor, color: ColorManager.white, title: 'Floor'.tr(),),

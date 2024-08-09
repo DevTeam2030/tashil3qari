@@ -44,6 +44,7 @@ import '../auht/widgets/selected_city.dart';
 import '../home_Screen/widgets/finishing_item.dart';
 import '../home_Screen/widgets/property_item.dart';
 import '../home_Screen/widgets/space_item.dart';
+import '../home_Screen/widgets/verse_item.dart';
 
 part 'add_ad_data.dart';
 part 'add_ad_images_screen.dart';

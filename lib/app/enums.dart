@@ -10,6 +10,7 @@ enum MakeAgreementActon{create,edit,refuseOrAccept,addConsultant,seeOnly }
 enum DirectionType{east, south, west, north, southeast, southwest, northeast, northwest}
 
 
+
 enum NotificationType{notification,offer,delivery,}
 enum OrderType{newOrder,pastOrder,}
 

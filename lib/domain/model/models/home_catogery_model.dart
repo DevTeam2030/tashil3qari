@@ -33,6 +33,22 @@ class HomeCategoryOptionModel {
   bool storesNo;
   bool buildingAge;
   bool kitchensNo;
+  bool feminine;
+
+
+  bool annex;
+  bool carEntrance;
+  bool elevator;
+  bool  airConditioners;
+  bool waterAvailability;
+  bool electricityAvailability;
+  bool swimmingPool;
+  bool  footballField;
+  bool  volleyballCourt;
+  bool  amusementPark;
+  bool familySection;
+
+
 
   HomeCategoryOptionModel({
     required this.roomsNo,
@@ -46,6 +62,18 @@ class HomeCategoryOptionModel {
     required this.storesNo,
     required this.buildingAge,
     required this.kitchensNo,
+    required this.feminine,
+    required this. annex,
+    required this. carEntrance,
+    required this. elevator,
+    required this.  airConditioners,
+    required this. waterAvailability,
+    required this. electricityAvailability,
+    required this. swimmingPool,
+    required this.  footballField,
+    required this.  volleyballCourt,
+    required this.  amusementPark,
+    required this. familySection,
   });
 
   factory HomeCategoryOptionModel.fromJson(Map<String, dynamic> json) => HomeCategoryOptionModel(
@@ -60,19 +88,33 @@ class HomeCategoryOptionModel {
     storesNo: json["stores_no"]??false,
     buildingAge: json["building_age"]??false,
     kitchensNo: json["kitchens_no"]??false,
+    feminine: json["feminine"]??false,
+    annex: json["annex"]??false,
+    carEntrance: json["car_entrance"]??false,
+    elevator: json["elevator"]??false,
+    airConditioners: json["air_conditioners"]??false,
+    waterAvailability: json["water_availability"]??false,
+    electricityAvailability: json["electricity_availability"]??false,
+    swimmingPool: json["swimming_pool"]??false,
+    footballField: json["football_field"]??false,
+    volleyballCourt: json["volleyball_court"]??false,
+    amusementPark: json["amusement_park"]??false,
+    familySection: json["family_section"]??false,
+
   );
 
-  Map<String, dynamic> toJson() => {
-    "rooms_no": roomsNo,
-    "bathrooms_no": bathroomsNo,
-    // "floors_no": floorsNo,
-    "receptions_no": receptionsNo,
-    "floor": floor,
-    "apartments_no": apartmentsNo,
-    "direction": direction,
-    "street_width": streetWidth,
-    "stores_no": storesNo,
-    "building_age": buildingAge,
-    "kitchens_no": kitchensNo,
-  };
+  // Map<String, dynamic> toJson() => {
+  //   "rooms_no": roomsNo,
+  //   "bathrooms_no": bathroomsNo,
+  //   // "floors_no": floorsNo,
+  //   "receptions_no": receptionsNo,
+  //   "floor": floor,
+  //   "apartments_no": apartmentsNo,
+  //   "direction": direction,
+  //   "street_width": streetWidth,
+  //   "stores_no": storesNo,
+  //   "building_age": buildingAge,
+  //   "kitchens_no": kitchensNo,
+  //   "feminine": feminine,
+  // };
 }

@@ -103,16 +103,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           if(position.zoom<=8&&!homeData.showAllMap)homeData.gotToCountries(context: context);
                           },
                         // polygons: polygons,
-                        polygons: {
-                          Polygon(
-                            polygonId: PolygonId('saudi_polygon'),
-                            points: pointsPolygon,
-                            // points: homeData.pointsPolygon,
-                            strokeWidth: 2,
-                            fillColor: Colors.transparent,
-                            strokeColor: Colors.red,
-                          ),
-                        },
+                        // polygons: {
+                        //   Polygon(
+                        //     polygonId: PolygonId('saudi_polygon'),
+                        //     points: pointsPolygon,
+                        //     // points: homeData.pointsPolygon,
+                        //     strokeWidth: 2,
+                        //     fillColor: Colors.transparent,
+                        //     strokeColor: Colors.red,
+                        //   ),
+                        // },
                         markers: homeData.showCitiesMarkers
                             ? Constants.buildAllCitiesMarkersBefore
                                 ? homeData.allCitiesMarkers

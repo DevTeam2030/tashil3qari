@@ -5,6 +5,7 @@ class EditAdData {
  late UserAdsModel userAd;
   final formKey = GlobalKey<FormState>();
  bool forSale=true;
+ bool monthly=true;  /// if forSale == false
   TextEditingController priceController = TextEditingController();
  TextEditingController titleController = TextEditingController();
   TextEditingController detailsController = TextEditingController();
@@ -24,6 +25,22 @@ class EditAdData {
  ValueNotifier<int> storesNo = ValueNotifier<int>(0);
  ValueNotifier<int> buildingAge = ValueNotifier<int>(0);
  ValueNotifier<int> floorsNo = ValueNotifier<int>(0);
+ ValueNotifier<bool> feminine = ValueNotifier<bool>(false);
+
+
+ ValueNotifier<bool> annex = ValueNotifier<bool>(false);
+ ValueNotifier<bool> carEntrance = ValueNotifier<bool>(false);
+ ValueNotifier<bool> elevator = ValueNotifier<bool>(false);
+ ValueNotifier<bool> airConditioners = ValueNotifier<bool>(false);
+ ValueNotifier<bool> waterAvailability = ValueNotifier<bool>(false);
+ ValueNotifier<bool> electricityAvailability = ValueNotifier<bool>(false);
+ ValueNotifier<bool> swimmingPool = ValueNotifier<bool>(false);
+ ValueNotifier<bool> footballField = ValueNotifier<bool>(false);
+ ValueNotifier<bool> volleyballCourt = ValueNotifier<bool>(false);
+ ValueNotifier<bool> amusementPark = ValueNotifier<bool>(false);
+ ValueNotifier<bool> familySection = ValueNotifier<bool>(false);
+
+
  ValueNotifier<String> direction = ValueNotifier<String>('east');
 
 
@@ -38,6 +55,7 @@ late  ValueNotifier<FinishingTypesModel> finishing ;
   EditAdData({required UserAdsModel ad}){
     userAd=ad;
     forSale=userAd.type=='sale';
+    monthly=userAd.monthly;
     userType=Constants.userDataModel!.isUser?UserType.user:UserType.consultant;
     titleController.text=ad.propertyTitle;
     detailsController.text=ad.propertyDescription;
@@ -46,11 +64,27 @@ late  ValueNotifier<FinishingTypesModel> finishing ;
     lengthController.text=ad.length;
     widthController.text=ad.width;
     licenseAdController.text=ad.license;
-    floor.value=int.tryParse(ad.floor)??0;
     bedrooms.value=int.tryParse(ad.roomsNo)??0;
     kitchen.value=int.tryParse(ad.kitchensNo)??0;
     floor.value=int.tryParse(ad.floor)??0;
     floorsNo.value=int.tryParse(ad.floorsNo)??0;
+
+    feminine.value=ad.feminine;
+    annex.value=ad.annex;
+    carEntrance.value=ad.carEntrance;
+    elevator.value=ad.elevator;
+    airConditioners.value=ad.airConditioners;
+    waterAvailability.value=ad.waterAvailability;
+    electricityAvailability.value=ad.electricityAvailability;
+    swimmingPool.value=ad.swimmingPool;
+    footballField.value=ad.footballField;
+    volleyballCourt.value=ad.volleyballCourt;
+    amusementPark.value=ad.amusementPark;
+    familySection.value=ad.familySection;
+
+
+
+
 
     streetWidthController.text=ad.streetWidth;
     receptionsNo.value=int.tryParse(ad.receptionsNo)??0;
@@ -97,6 +131,7 @@ late  ValueNotifier<FinishingTypesModel> finishing ;
      video: video.value==null?null:File(video.value!.path),
    propertyId: userAd.id,
    forSale: forSale,
+   monthly: monthly,
    titleAr: titleController.text,
    categoryId: category.value.id,
    descriptionAr: detailsController.text,
@@ -128,8 +163,19 @@ late  ValueNotifier<FinishingTypesModel> finishing ;
    receptionsNo: !category.value.options.receptionsNo?0: receptionsNo.value,
    storesNo:!category.value.options.storesNo?0:  storesNo.value,
    floorsNo:!category.value.options.floorsNo?0:  floorsNo.value,
+   feminine:!category.value.options.feminine?false:  feminine.value,
    streetWidth:!category.value.options.streetWidth?0: streetWidthController.text.isEmpty?0:double.tryParse(streetWidthController.text)??0,
-
+   annex:!category.value.options.annex?false:  annex.value,
+   carEntrance:!category.value.options.carEntrance?false:  carEntrance.value,
+   elevator:!category.value.options.elevator?false:  elevator.value,
+   airConditioners:!category.value.options.airConditioners?false:  airConditioners.value,
+   waterAvailability:!category.value.options.waterAvailability?false:  waterAvailability.value,
+   electricityAvailability:!category.value.options.electricityAvailability?false:  electricityAvailability.value,
+   swimmingPool:!category.value.options.swimmingPool?false:  swimmingPool.value,
+   footballField:!category.value.options.footballField?false:  footballField.value,
+   volleyballCourt:!category.value.options.volleyballCourt?false:  volleyballCourt.value,
+   amusementPark:!category.value.options.amusementPark?false:  amusementPark.value,
+   familySection:!category.value.options.familySection?false:  familySection.value,
 
  );
 

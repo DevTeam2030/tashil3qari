@@ -99,6 +99,7 @@ class _AddAdScreenState extends State<AddAdScreen> {
                       addAdtData.apartmentsNo.value=0;
                       addAdtData.storesNo.value=0;
                       addAdtData.buildingAge.value=0;
+                      addAdtData.feminine.value=false;
                       addAdtData.direction.value=Constants.directions.first;
 
 
@@ -238,6 +239,50 @@ class _AddAdScreenState extends State<AddAdScreen> {
                           if(value.options.floor)
                           PropertyItem(notifier: addAdtData.floor, color: ColorManager.white, title: 'Floor'.tr(),),
 
+                          if(value.options.feminine)
+                            SwitchItem(notifier: addAdtData.feminine, title: 'feminine'.tr(),),
+
+
+                          if(value.options.annex)
+                            SwitchItem(notifier: addAdtData.annex, title: 'Annex'.tr(),),
+
+                          if(value.options.carEntrance)
+                            SwitchItem(notifier: addAdtData.carEntrance, title: 'Car entrance'.tr(),),
+
+                          if(value.options.elevator)
+                            SwitchItem(notifier: addAdtData.elevator, title: 'Elevator'.tr(),),
+
+                          if(value.options.airConditioners)
+                            SwitchItem(notifier: addAdtData.airConditioners, title: 'Air conditioners'.tr(),),
+
+                          if(value.options.waterAvailability)
+                            SwitchItem(notifier: addAdtData.waterAvailability, title: 'Water availability'.tr(),),
+
+                          if(value.options.electricityAvailability)
+                            SwitchItem(notifier: addAdtData.electricityAvailability, title: 'Electricity availability'.tr(),),
+
+                          if(value.options.swimmingPool)
+                            SwitchItem(notifier: addAdtData.swimmingPool, title: 'Swimming pool'.tr(),),
+
+                          if(value.options.footballField)
+                            SwitchItem(notifier: addAdtData.footballField, title: 'Football field'.tr(),),
+
+                          if(value.options.volleyballCourt)
+                            SwitchItem(notifier: addAdtData.volleyballCourt, title: 'Volleyball court'.tr(),),
+
+                          if(value.options.amusementPark)
+                            SwitchItem(notifier: addAdtData.amusementPark, title: 'Amusement park'.tr(),),
+
+                          if(value.options.familySection)
+                            SwitchItem(notifier: addAdtData.familySection, title: 'Family section'.tr(),),
+
+
+
+
+
+
+
+
                           if(value.options.floorsNo)
                           PropertyItem(notifier: addAdtData.floorsNo, color: ColorManager.white, title: 'floors_no'.tr(),),
 
@@ -261,6 +306,10 @@ class _AddAdScreenState extends State<AddAdScreen> {
 
                           if(value.options.buildingAge)
                           PropertyItem(notifier: addAdtData.buildingAge, color: ColorManager.white, title: 'buildingAge'.tr(),),
+
+
+
+
                         ],
                       )),
 

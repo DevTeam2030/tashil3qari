@@ -27,8 +27,10 @@ changeLoading([bool? isloading,bool? isNotify]){
 
   Future< List<GeneralPropertyModel>>getProperties({required BuildContext context,bool?isNotify,int? cityId,int? categoryId,
     int? floor,int? bathroomsNo,int? roomsNo,double? propertySize,double? minPrice,double? maxPrice,
-    int? finishingTypeId,required bool isAuction, bool? forSale,bool? forRent,
-    int? kitchensNo, int? receptionsNo,int?apartmentsNo,int? storesNo,int? floorsNo,int?buildingAge,String? direction,double? streetWidth})async{
+    int? finishingTypeId,required bool isAuction, bool? forSale,bool? forRent,bool? monthly,
+    bool? annex, bool? carEntrance, bool? elevator, bool?  airConditioners, bool? waterAvailability, bool? electricityAvailability,
+    bool? swimmingPool, bool?  footballField, bool?  volleyballCourt, bool?  amusementPark, bool? familySection,
+    int? kitchensNo, int? receptionsNo,int?apartmentsNo,bool?feminine,int? storesNo,int? floorsNo,int?buildingAge,String? direction,double? streetWidth})async{
     isLoading=true;
     properties=[];
     if(isNotify!=false) notifyListeners();
@@ -37,7 +39,11 @@ changeLoading([bool? isloading,bool? isNotify]){
     properties=await _api.getProperties(context: context,cityId: cityId,categoryId: categoryId,
         floor: floor,bathroomsNo: bathroomsNo,roomsNo: roomsNo,propertySize: propertySize,
         receptionsNo: receptionsNo,apartmentsNo: apartmentsNo,storesNo: storesNo,buildingAge: buildingAge,
-        streetWidth: streetWidth,direction: direction,
+        streetWidth: streetWidth,direction: direction,monthly: monthly,
+        waterAvailability: waterAvailability,volleyballCourt: volleyballCourt,
+        swimmingPool: swimmingPool,carEntrance: carEntrance,footballField: footballField,feminine:feminine ,
+        familySection:familySection ,airConditioners: airConditioners,amusementPark: amusementPark,annex:annex,
+        elevator:elevator , electricityAvailability:electricityAvailability ,
         forRent: forRent,forSale: forSale,kitchensNo: kitchensNo,floorsNo: floorsNo,
         minPrice: minPrice,maxPrice: maxPrice,finishingTypeId: finishingTypeId,isAuction:isAuction );
     isLoading=false;

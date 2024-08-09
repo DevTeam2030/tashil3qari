@@ -668,5 +668,23 @@
  "southwest": "South west",
  "northeast": "North east",
  "northwest": "North west",
- "floors_no": "Floors no"
+ "floors_no": "Floors no",
+ "Feminine": "Feminine",
+ "verse": "verse",
+
+ "Annex": "Annex",
+ "Car entrance": "Car entrance",
+ "Elevator": "Elevator",
+ "Air conditioners": "Air conditioners",
+ "Water availability": "Water availability",
+ "Electricity availability": "Electricity availability",
+ "Lease contract duration": "Lease contract duration",
+ "contract duration": "Contract duration",
+ "Annual": "Annual",
+ "Monthly": "Monthly",
+ "Swimming pool": "Swimming pool",
+ "Football field": "Football field",
+ "Volleyball court": "Volleyball court",
+ "Amusement park": "Amusement park",
+ "Family section": "Family section"
 }

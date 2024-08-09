@@ -28,7 +28,9 @@ class SearchProvider extends ChangeNotifier {
 
   Future< List<GeneralPropertyModel>>getProperties({required BuildContext context,bool?isNotify,int? cityId,int? categoryId,
   int? floor,int? bathroomsNo,int? roomsNo,double? propertySize,double? minPrice,double? maxPrice,bool?isAuction,
-  int? finishingTypeId,bool? forSale,bool? forRent,
+  int? finishingTypeId,bool? forSale,bool? forRent,bool?feminine,bool? monthly,
+    bool? annex, bool? carEntrance, bool? elevator, bool?  airConditioners, bool? waterAvailability, bool? electricityAvailability,
+    bool? swimmingPool, bool?  footballField, bool?  volleyballCourt, bool?  amusementPark, bool? familySection,
     int? kitchensNo, int? receptionsNo,int?apartmentsNo,int? storesNo,int? floorsNo,int?buildingAge,String? direction,double? streetWidth})async{
   isLoading=true;
   allProperties=[];
@@ -39,8 +41,12 @@ class SearchProvider extends ChangeNotifier {
   allProperties=await _api.getProperties(context: context,cityId: cityId,categoryId: categoryId,
   floor: floor,bathroomsNo: bathroomsNo,roomsNo: roomsNo,propertySize: propertySize,
   isAuction: isAuction,   receptionsNo: receptionsNo,apartmentsNo: apartmentsNo,storesNo: storesNo,buildingAge: buildingAge,
-      streetWidth: streetWidth,direction: direction,
+      streetWidth: streetWidth,direction: direction,monthly: monthly,
       forRent: forRent,forSale: forSale,kitchensNo: kitchensNo,floorsNo:floorsNo,
+  waterAvailability: waterAvailability,volleyballCourt: volleyballCourt,
+  swimmingPool: swimmingPool,carEntrance: carEntrance,footballField: footballField,feminine:feminine ,
+    familySection:familySection ,airConditioners: airConditioners,amusementPark: amusementPark,annex:annex,
+  elevator:elevator , electricityAvailability:electricityAvailability ,
   minPrice: minPrice,maxPrice: maxPrice,finishingTypeId: finishingTypeId,);
   properties=allProperties;
   isLoading=false;

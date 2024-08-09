@@ -15,7 +15,7 @@ class HomeData {
   // LatLng p1 = const LatLng(40.153474463955796, 35.33852195739747);
   LatLng currentLocation = const LatLng(23.8859, 45.0792);
   AdType? selectedAdType;
-
+  ValueNotifier<bool> monthly = ValueNotifier<bool>(false);
   // AdType selectedAdType= AdType.forSale;
   String googleApikey = Constants.mapKey;
   MapType mapType = MapType.normal;
@@ -192,18 +192,33 @@ class HomeData {
     for (var prop in properties) {
         var marks=markers.where((element) => element.position.latitude==prop.latitude
             &&element.position.longitude==prop.longitude).toList();
+        var numbers=properties.where((element) => element.latitude==prop.latitude
+            &&element.longitude==prop.longitude).toList();
         if(marks.isNotEmpty&&showAllSamePosition){
           Marker  m=marks.first;
           markers.removeAll(marks);
           markers.add(Marker(
               markerId: MarkerId("${m.markerId.value}"),
               position: LatLng(m.position.latitude, m.position.longitude),
-              icon: await MoreIcon().toBitmapDescriptor(),
+              icon: await MoreIcon(number:numbers.length ,).toBitmapDescriptor(),
               onTap: (){
                 showAllSamePosition=false;
                 initPropertiesMarkers(context: context);
               } ));
-        }else{
+        }
+        else{
+
+          marks.isNotEmpty?
+          markers.add(Marker(
+              markerId: MarkerId("${prop.id}"),
+              position: LatLng(prop.latitude, prop.longitude),
+              icon: await TextPrice(price: '${prop.price}',
+                currency: prop.currency,
+                auction: prop.isAuction,
+                type: prop.featured ? MapAdType.premium : (prop.show ? MapAdType
+                    .other : MapAdType.primary),
+              ).toBitmapDescriptor(),
+              onTap: () => optionalAlertDialog(context: context, property: prop))):
           markers.add(Marker(
               markerId: MarkerId("${prop.id}"),
               position: LatLng(prop.latitude, prop.longitude),
@@ -245,8 +260,9 @@ class HomeData {
     }
     var country = context.read<GeneralProvider>().mapCountry;
     var city = country.cities.isNotEmpty ? country.cities.first : context.read<GeneralProvider>().userCity;
-    // currentLocation =properties.isNotEmpty?LatLng(properties.first.latitude, properties.first.longitude): LatLng(city.latitude, city.longitude);
-    currentLocation = LatLng(city.latitude, city.longitude);
+    currentLocation =properties.isNotEmpty?LatLng(properties.first.latitude, properties.first.longitude): 
+    LatLng(city.latitude, city.longitude);
+    // currentLocation = LatLng(city.latitude, city.longitude);
     CameraPosition kLake = CameraPosition(
       // bearing: 192.8334901395799,
       target: currentLocation,

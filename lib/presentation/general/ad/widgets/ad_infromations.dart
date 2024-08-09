@@ -28,6 +28,8 @@ class AdInformations extends StatelessWidget {
         ),
 
 
+        if(propertyInfo.type!='sale'&&propertyInfo.monthly)
+        InformationsItem(title: 'contract duration'.tr(),value:propertyInfo.monthly?'Monthly'.tr():'Annual'.tr(),color: ColorManager.textGrey,),
         InformationsItem(title: 'space'.tr(),value:'${propertyInfo.propertySize} ${'meter'.tr()}',color: ColorManager.textGrey,),
 
         InformationsItem(title: 'Lengths'.tr(),
@@ -72,6 +74,58 @@ class AdInformations extends StatelessWidget {
 
               if(provider.adCategory!.options.streetWidth)
               InformationsItem(title: 'streetWidth'.tr(),value:'${propertyInfo.streetWidth} ${'meter1'.tr()}',color: ColorManager.white,),
+
+
+    // bool annex;
+    // bool carEntrance;
+    // bool elevator;
+    // bool  airConditioners;
+    // bool waterAvailability;
+    // bool electricityAvailability;
+    // bool swimmingPool;
+    // bool  footballField;
+    // bool  volleyballCourt;
+    // bool  amusementPark;
+    // bool familySection;
+
+    if(provider.adCategory!.options.feminine)
+              InformationsItem(title: 'Feminine'.tr(),value:propertyInfo.feminine?'Yes'.tr():'No'.tr(),color: ColorManager.white,),
+
+              if(provider.adCategory!.options.annex)
+              InformationsItem(title: 'Annex'.tr(),value:propertyInfo.annex?'Yes'.tr():'No'.tr(),color: ColorManager.white,),
+
+              if(provider.adCategory!.options.carEntrance)
+              InformationsItem(title: 'Car entrance'.tr(),value:propertyInfo.carEntrance?'Yes'.tr():'No'.tr(),color: ColorManager.white,),
+
+              if(provider.adCategory!.options.feminine)
+              InformationsItem(title: 'Feminine'.tr(),value:propertyInfo.feminine?'Yes'.tr():'No'.tr(),color: ColorManager.white,),
+
+              if(provider.adCategory!.options.elevator)
+              InformationsItem(title: 'Elevator'.tr(),value:propertyInfo.elevator?'Yes'.tr():'No'.tr(),color: ColorManager.white,),
+
+              if(provider.adCategory!.options.airConditioners)
+              InformationsItem(title: 'Air conditioners'.tr(),value:propertyInfo.airConditioners?'Yes'.tr():'No'.tr(),color: ColorManager.white,),
+
+              if(provider.adCategory!.options.waterAvailability)
+              InformationsItem(title: 'Water availability'.tr(),value:propertyInfo.waterAvailability?'Yes'.tr():'No'.tr(),color: ColorManager.white,),
+
+              if(provider.adCategory!.options.electricityAvailability)
+              InformationsItem(title: 'Electricity availability'.tr(),value:propertyInfo.electricityAvailability?'Yes'.tr():'No'.tr(),color: ColorManager.white,),
+
+              if(provider.adCategory!.options.swimmingPool)
+              InformationsItem(title: 'Swimming pool'.tr(),value:propertyInfo.swimmingPool?'Yes'.tr():'No'.tr(),color: ColorManager.white,),
+
+              if(provider.adCategory!.options.footballField)
+              InformationsItem(title: 'Football field'.tr(),value:propertyInfo.footballField?'Yes'.tr():'No'.tr(),color: ColorManager.white,),
+
+              if(provider.adCategory!.options.volleyballCourt)
+              InformationsItem(title: 'Volleyball court'.tr(),value:propertyInfo.volleyballCourt?'Yes'.tr():'No'.tr(),color: ColorManager.white,),
+
+              if(provider.adCategory!.options.amusementPark)
+              InformationsItem(title: 'Amusement park'.tr(),value:propertyInfo.amusementPark?'Yes'.tr():'No'.tr(),color: ColorManager.white,),
+
+
+
 
             ],
           ),

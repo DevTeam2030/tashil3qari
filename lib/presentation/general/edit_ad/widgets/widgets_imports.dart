@@ -31,6 +31,7 @@ import '../../add_ad/widgets/widgetImports.dart';
 import '../../home_Screen/widgets/finishing_item.dart';
 import '../../home_Screen/widgets/property_item.dart';
 import '../../home_Screen/widgets/space_item.dart';
+import '../../home_Screen/widgets/verse_item.dart';
 import '../edit_ad_imports.dart';
 
 

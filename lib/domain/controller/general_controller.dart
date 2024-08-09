@@ -66,7 +66,12 @@ class GeneralController  {
                 streetWidth: true,
                 storesNo: true,
                 buildingAge: true,
-                kitchensNo: true
+                kitchensNo: true,
+                feminine: true,
+                annex: true,airConditioners: true,carEntrance: true,elevator: true,electricityAvailability: true,
+                swimmingPool: true,
+                footballField: true,volleyballCourt: true,amusementPark: true,familySection: true,
+                waterAvailability: true
             )));
         settingModel.categories.addAll(data);
      // }catch(e){

@@ -4,6 +4,7 @@ part of'add_ad_imports.dart';
 class AddAdtData {
 
   bool forSale=true;
+  bool monthly=true;  /// if forSale == false
 
   final formKey = GlobalKey<FormState>();
   List<CurrencyModel>currencies =[];
@@ -14,6 +15,20 @@ class AddAdtData {
   TextEditingController spaceController = TextEditingController();
   TextEditingController lengthController = TextEditingController();
   TextEditingController widthController = TextEditingController();
+
+  ValueNotifier<bool> feminine = ValueNotifier<bool>(false);
+  ValueNotifier<bool> annex = ValueNotifier<bool>(false);
+  ValueNotifier<bool> carEntrance = ValueNotifier<bool>(false);
+  ValueNotifier<bool> elevator = ValueNotifier<bool>(false);
+  ValueNotifier<bool> airConditioners = ValueNotifier<bool>(false);
+  ValueNotifier<bool> waterAvailability = ValueNotifier<bool>(false);
+  ValueNotifier<bool> electricityAvailability = ValueNotifier<bool>(false);
+  ValueNotifier<bool> swimmingPool = ValueNotifier<bool>(false);
+  ValueNotifier<bool> footballField = ValueNotifier<bool>(false);
+  ValueNotifier<bool> volleyballCourt = ValueNotifier<bool>(false);
+  ValueNotifier<bool> amusementPark = ValueNotifier<bool>(false);
+  ValueNotifier<bool> familySection = ValueNotifier<bool>(false);
+
 
   ValueNotifier<int> floor = ValueNotifier<int>(0);
   ValueNotifier<int> bedrooms = ValueNotifier<int>(0);
@@ -75,6 +90,8 @@ late  ValueNotifier<HomeCatogeryModel> category ;
     descriptionEn: detailsController.text,
 
     forSale: forSale,
+    monthly: monthly,
+
     image: File(adImages.value.first.path),
 
     latitude: adLocation.latitude,
@@ -100,7 +117,19 @@ late  ValueNotifier<HomeCatogeryModel> category ;
     receptionsNo: !category.value.options.receptionsNo?0: receptionsNo.value,
     storesNo:!category.value.options.storesNo?0:  storesNo.value,
     floorsNo:!category.value.options.floorsNo?0:  floorsNo.value,
-    streetWidth:!category.value.options.streetWidth?0: streetWidthController.text.isEmpty?0:double.tryParse(streetWidthController.text)??0,
+    feminine:!category.value.options.feminine?false:  feminine.value,
+    streetWidth:!category.value.options.streetWidth?0: streetWidthController.text.isEmpty?0: double.tryParse(streetWidthController.text)??0,
+    annex:!category.value.options.annex?false:  annex.value,
+    carEntrance:!category.value.options.carEntrance?false:  carEntrance.value,
+    elevator:!category.value.options.elevator?false:  elevator.value,
+    airConditioners:!category.value.options.airConditioners?false:  airConditioners.value,
+    waterAvailability:!category.value.options.waterAvailability?false:  waterAvailability.value,
+    electricityAvailability:!category.value.options.electricityAvailability?false:  electricityAvailability.value,
+    swimmingPool:!category.value.options.swimmingPool?false:  swimmingPool.value,
+    footballField:!category.value.options.footballField?false:  footballField.value,
+    volleyballCourt:!category.value.options.volleyballCourt?false:  volleyballCourt.value,
+    amusementPark:!category.value.options.amusementPark?false:  amusementPark.value,
+    familySection:!category.value.options.familySection?false:  familySection.value,
   );
 
 

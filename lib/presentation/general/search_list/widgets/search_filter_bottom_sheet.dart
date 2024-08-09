@@ -30,6 +30,7 @@ class SearchFilterBottomSheet extends StatefulWidget {
 
 class _SearchFilterBottomSheetState extends State<SearchFilterBottomSheet> {
   AdType selectedAdType= AdType.forSale;
+  ValueNotifier<bool> monthly = ValueNotifier<bool>(false);
   // HomeData homeData=HomeData();
   late CountryModel selectedCountry;
   late CityModel selectedCity;
@@ -52,6 +53,18 @@ class _SearchFilterBottomSheetState extends State<SearchFilterBottomSheet> {
   ValueNotifier<int> storesNo = ValueNotifier<int>(0);
   ValueNotifier<int> buildingAge = ValueNotifier<int>(0);
   ValueNotifier<String> direction = ValueNotifier<String>('east');
+  ValueNotifier<bool> feminine = ValueNotifier<bool>(false);
+  ValueNotifier<bool> annex = ValueNotifier<bool>(false);
+  ValueNotifier<bool> carEntrance = ValueNotifier<bool>(false);
+  ValueNotifier<bool> elevator = ValueNotifier<bool>(false);
+  ValueNotifier<bool> airConditioners = ValueNotifier<bool>(false);
+  ValueNotifier<bool> waterAvailability = ValueNotifier<bool>(false);
+  ValueNotifier<bool> electricityAvailability = ValueNotifier<bool>(false);
+  ValueNotifier<bool> swimmingPool = ValueNotifier<bool>(false);
+  ValueNotifier<bool> footballField = ValueNotifier<bool>(false);
+  ValueNotifier<bool> volleyballCourt = ValueNotifier<bool>(false);
+  ValueNotifier<bool> amusementPark = ValueNotifier<bool>(false);
+  ValueNotifier<bool> familySection = ValueNotifier<bool>(false);
   @override
   void initState() {
     super.initState();    selectedCountry= context.read<GeneralProvider>().userCountry;
@@ -188,30 +201,19 @@ class _SearchFilterBottomSheetState extends State<SearchFilterBottomSheet> {
               ),
             ),
                 const AppSizeBox(height: 20,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: PaddingManager.p8),
-                      child: AppText(
-                        title: 'Property type'.tr(),
-                        titleSize: FontSize.s14,
-                        titleAlign: TextAlign.start,
-                        titleColor: ColorManager.black,
-                        fontWeightType: FontWeightType.medium,
-                      ),
-                    ),
+
                     ForSaleOrRentDropdownButton(
                       hint: 'saleRent'.tr(),
                       selectedType:  selectedAdType,
                       color: ColorManager.textGrey,
                       borderColor: ColorManager.grey,
+                      monthly: monthly,
+                      inAppbar: false,
                       onChanged: (type) async{
                         selectedAdType;
                       },
                     ),
-                  ],
-                ),
+
 
                 const AppSizeBox(height: AppSize.s14,),
                 TypesFilter(
@@ -233,6 +235,18 @@ class _SearchFilterBottomSheetState extends State<SearchFilterBottomSheet> {
                   direction: direction,
                   floorsNo: floorsNo,
                   streetWidthController: streetWidthController,
+                  feminine: feminine,
+                  elevator: elevator,
+                  familySection: familySection,
+                  footballField: footballField,
+                  swimmingPool: swimmingPool,
+                  volleyballCourt: volleyballCourt,
+                  waterAvailability:waterAvailability ,
+                  electricityAvailability: electricityAvailability,
+                  annex:annex ,
+                  amusementPark:amusementPark ,
+                  airConditioners:airConditioners ,
+                  carEntrance:carEntrance ,
                 ),
 
                 const AppSizeBox(height: 20,),
@@ -273,6 +287,18 @@ class _SearchFilterBottomSheetState extends State<SearchFilterBottomSheet> {
                             storesNo:!selectedCategory.value.options.storesNo?0:  storesNo.value,
                             floorsNo:!selectedCategory.value.options.floorsNo?0:  floorsNo.value,
                             streetWidth:!selectedCategory.value.options.streetWidth?0: streetWidthController.text.isEmpty?0:double.tryParse(streetWidthController.text)??0,
+                            feminine: !selectedCategory.value.options.feminine?false:  feminine.value,
+                            annex: !selectedCategory.value.options.annex?false:annex.value,
+                            carEntrance: !selectedCategory.value.options.carEntrance?false:carEntrance.value,
+                            elevator: !selectedCategory.value.options.elevator?false:elevator.value,
+                            waterAvailability: !selectedCategory.value.options.waterAvailability?false:waterAvailability.value,
+                            airConditioners: !selectedCategory.value.options.airConditioners?false:airConditioners.value,
+                            electricityAvailability: !selectedCategory.value.options.electricityAvailability?false:electricityAvailability.value,
+                            swimmingPool: !selectedCategory.value.options.swimmingPool?false:swimmingPool.value,
+                            footballField: !selectedCategory.value.options.footballField?false:footballField.value,
+                            volleyballCourt: !selectedCategory.value.options.volleyballCourt?false:volleyballCourt.value,
+                            amusementPark: !selectedCategory.value.options.amusementPark?false:amusementPark.value,
+                            familySection: !selectedCategory.value.options.familySection?false:familySection.value,
 
 
                           );

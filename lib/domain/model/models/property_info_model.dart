@@ -62,9 +62,24 @@ class PropertyInfoModel {
   String apartmentsNo;
   String direction;
   String streetWidth;
+  bool feminine;
   String storesNo;
   String buildingAge;
   String floorsNo;
+  bool monthly;
+
+  bool annex;
+  bool carEntrance;
+  bool elevator;
+  bool  airConditioners;
+  bool waterAvailability;
+  bool electricityAvailability;
+  bool swimmingPool;
+  bool  footballField;
+  bool  volleyballCourt;
+  bool  amusementPark;
+  bool familySection;
+
 
 
 
@@ -135,6 +150,14 @@ class PropertyInfoModel {
     required this.minimumAuction,
     required this.video,
     required this.floorsNo,
+    required this.feminine,
+    required this.monthly,
+    required this.annex,required this.carEntrance,
+    required this.elevator,required this.airConditioners,
+    required this.waterAvailability,required this.volleyballCourt,
+    required this.swimmingPool,required this.footballField,
+    required this.amusementPark,required this.familySection,
+    required this.electricityAvailability,
   });
 
   factory PropertyInfoModel.fromJson(Map<String, dynamic> json) => PropertyInfoModel(
@@ -163,6 +186,7 @@ class PropertyInfoModel {
       storesNo: json["stores_no"].toString().isNotEmpty&&json["stores_no"]!=null?json["stores_no"].toString():'0',
       buildingAge: json["building_age"].toString().isNotEmpty&&json["building_age"]!=null?json["building_age"].toString():'0',
       floorsNo: json["floors_no"].toString().isNotEmpty&&json["floors_no"]!=null?json["floors_no"].toString():'0',
+    feminine: json["feminine"].toString()=='true'||json["feminine"].toString()=='1'?true:false,
 
 
     gallery: List<String>.from(json["gallery"].map((x) => x)),
@@ -201,8 +225,19 @@ class PropertyInfoModel {
     endDurationMintues: json["end_duration_mintues"]??'0',
     countAuctions: json["count_auctions"]??0,
     video: json["video"]??0,
+    monthly: json["monthly"].toString()=='1'||json["monthly"].toString()=='true'?true:false,
     auctionsUsers: json["auctions"]==null?[]:List<AuctionUserModel>.from(json["auctions"].map((x) => AuctionUserModel.fromJson(x))),
-
+    annex: json["annex"].toString()=='true'||json["annex"].toString()=='1'?true:false,
+    carEntrance: json["car_entrance"].toString()=='true'||json["car_entrance"].toString()=='1'?true:false,
+    elevator: json["elevator"].toString()=='true'||json["elevator"].toString()=='1'?true:false,
+    airConditioners: json["air_conditioners"].toString()=='true'||json["air_conditioners"].toString()=='1'?true:false,
+    waterAvailability: json["water_availability"].toString()=='true'||json["water_availability"].toString()=='1'?true:false,
+    electricityAvailability: json["electricity_availability"].toString()=='true'||json["electricity_availability"].toString()=='1'?true:false,
+    swimmingPool: json["swimming_pool"].toString()=='true'||json["swimming_pool"].toString()=='1'?true:false,
+    footballField: json["football_field"].toString()=='true'||json["football_field"].toString()=='1'?true:false,
+    volleyballCourt: json["volleyball_court"].toString()=='true'||json["volleyball_court"].toString()=='1'?true:false,
+    amusementPark: json["amusement_park"].toString()=='true'||json["amusement_park"].toString()=='1'?true:false,
+    familySection: json["family_section"].toString()=='true'||json["family_section"].toString()=='1'?true:false,
 
   );
 

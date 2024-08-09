@@ -71,6 +71,8 @@ class _SearchAppbarState extends State<SearchAppbar> {
               child:     Row(
                 children: [
                   Expanded(child: ForSaleOrRentDropdownButton(
+                    monthly: widget.searchListData.monthly,
+                    inAppbar: true,
                     hint: 'saleRent'.tr(),
                     selectedType:  widget.searchListData.selectedAdType,
                     onChanged: (type) async{
