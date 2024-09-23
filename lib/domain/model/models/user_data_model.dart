@@ -14,6 +14,7 @@ class UserDataModel {
   String registrationType;
   String licenseNumber;
   String idNumber;
+  String nationalityId;
   String nationality;
   String image;
   UserType type;
@@ -44,6 +45,7 @@ class UserDataModel {
   required this.licenseNumber,
   required this.idNumber,
   required this.nationality,
+  required this.nationalityId,
   required this.image,
     required this.type,
     required this.isActive,
@@ -71,6 +73,7 @@ class UserDataModel {
   licenseNumber: json["license_number"]??'',
   idNumber: json["id_number"]??'',
   nationality: json["nationality"]??'',
+    nationalityId: json["nationality_id"].toString(),
   image: json["image"]??'',
       type: json["type"]=='normal'?UserType.user:UserType.consultant,
     isUser: json["type"]=='normal',

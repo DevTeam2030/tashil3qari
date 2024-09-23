@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:tashil_agary/app/extentions.dart';
 import 'package:tashil_agary/components/cach_image.dart';
 import 'package:tashil_agary/components/size_box_height.dart';
@@ -11,6 +12,7 @@ import '../../../../app/enums.dart';
 import '../../../../app/utils.dart';
 import '../../../../domain/model/models/general_property_model.dart';
 import '../../../../domain/model/models/user_ads_model.dart';
+import '../../../../providers/profile_provider.dart';
 import '../../../../utilites/color_manager.dart';
 import '../../../../utilites/font_manager.dart';
 import '../../../../utilites/route_manager.dart';
@@ -58,7 +60,14 @@ Widget build(BuildContext context) {
     ),
     height:height,
     child:  InkWell(
-      onTap: ()=>MyRoute().navigate(context: context, route: AdScreen(propertyId: widget.property.id,)),
+      onTap: ()async{
+        var x=Navigator.push(context, MaterialPageRoute(builder: (context) =>
+            AdScreen(propertyId: widget.property.id,ad: widget.userAd),));
+        if(widget.userAd!=null&&widget.showEdit)
+        context.read<ProfileProvider>().getUserAds(context: context, notify: false);
+
+      },
+      // onTap: ()=>MyRoute().navigate(context: context, route: AdScreen(propertyId: widget.property.id,)),
       child: Stack(
         children: [
           Row(
@@ -115,7 +124,10 @@ Widget build(BuildContext context) {
                          InkWell(
                            splashColor: ColorManager.white,
                            highlightColor:ColorManager.white ,
-                           onTap: (){
+                           onTap: ()async{
+                             // var x=Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                             //     EditAdScreen(userAd: widget.userAd!,),));
+                             // context.read<ProfileProvider>().getUserAds(context: context, notify: false);
                              // if(Utils.checkIsLogin(context))
                              MyRoute().navigate(context: context, route:  EditAdScreen(userAd: widget.userAd!,));
                            } ,
@@ -487,7 +499,10 @@ Widget build(BuildContext context) {
                   child: InkWell(
                       splashColor: ColorManager.white,
                       highlightColor:ColorManager.white ,
-                      onTap: (){
+                      onTap: ()async{
+                        // var x=Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                        //     EditAdScreen(userAd: widget.userAd!,),));
+                        // context.read<ProfileProvider>().getUserAds(context: context, notify: false);
                         MyRoute().navigate(context: context, route:  EditAdScreen(userAd: widget.userAd!,));
                       } ,
                       child: Icon(

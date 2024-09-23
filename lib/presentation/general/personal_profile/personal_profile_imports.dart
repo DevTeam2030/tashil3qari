@@ -17,6 +17,7 @@ import '../../../components/text_field/general_appbar_logo.dart';
 import '../../../components/text_field/text_field_imports.dart';
 import '../../../domain/model/models/consultant_model.dart';
 import '../../../domain/model/models/general_property_model.dart';
+import '../../../domain/model/models/searial_number_model.dart';
 import '../../../domain/model/models/update_profile_request_body.dart';
 import '../../../domain/model/models/user_ads_model.dart';
 import '../../../providers/add_property_provider.dart';

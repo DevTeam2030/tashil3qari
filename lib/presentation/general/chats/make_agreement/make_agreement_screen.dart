@@ -43,6 +43,7 @@ class _MakeAgreementScreenState extends State<MakeAgreementScreen> {
 
 
 
+
   }
 
   @override
@@ -135,7 +136,7 @@ class _MakeAgreementScreenState extends State<MakeAgreementScreen> {
                                 if(value&&enableText) const AppSizeBox(height: AppSize.s10),
                                 if(enableText)
                                   Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      mainAxisAlignment: MainAxisAlignment.start,
                                       children:[
                                         CheckBoxWidget(
                                           checkBoxValue: value,
@@ -203,7 +204,7 @@ class _MakeAgreementScreenState extends State<MakeAgreementScreen> {
                                  if(value&&enableText) const AppSizeBox(height: AppSize.s20),
                                  if(enableText)
                                  Row(
-                                   mainAxisAlignment: MainAxisAlignment.end,
+                                   mainAxisAlignment: MainAxisAlignment.start,
                                      children:[
                                        CheckBoxWidget(
                                          checkBoxValue: value,

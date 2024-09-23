@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
@@ -48,7 +50,16 @@ class AuthController  {
   }
   Future<RegisterModel?> register({required BuildContext context,required RegisterRequestModel model}) async {
     RegisterModel? registerModel;
-    var res = await _dio.post(url:'${Urls.register}?lang=${Constants.langCode}', context: context, body:model.toJson());
+    FormData formData = FormData();
+
+    for(var entry in model.toJson().entries){
+      if(entry.value is File){
+        formData.files.add(MapEntry(entry.key, MultipartFile.fromFileSync(entry.value.path)));
+      }else{
+        formData.fields.add(MapEntry(entry.key, entry.value.toString()));
+      }
+    }
+    var res = await _dio.post(url:'${Urls.register}?lang=${Constants.langCode}', context: context, body:{},formData: formData);
     if (res != null) {
 
      try{
@@ -259,8 +270,24 @@ class AuthController  {
 
 
   Future<void> requestConsultant({required BuildContext context,required UpgradeUserConsultantModel model}) async {
+    Map<String,dynamic>body= model.toJson();
+    // Map<String,dynamic>body= {
+    //   "license_number": model.licenseNumber,
+    //   "serial_number": model.serialNumber,
+    //   "des": model.des,
+    //   "addresses": List<dynamic>.from(model.addresses.map((x) => x.toJson())),
+    // // "addresses":[
+    // //     {
+    // //       "longitude": model.addresses[0].longitude,
+    // //       "latitude": model.addresses[0].latitude,
+    // //     }
+    // //   ],
+    // //   "addresses":"[{longitude:31.3978706,latitude:31.3978706}]"
+    // };
+    // print('------  '+ body.toString());
     var res = await _dio.post(url:'${Urls.requestConsultant}?lang=${Constants.langCode}',
-      context: context, body: model.toJson(),);
+      context: context, body: body);
+
     if (res != null) {
       try{
         LoadingDialog().titleMessageAlert(context:context,
@@ -350,12 +377,12 @@ class AuthController  {
 
 
 
-  Future<UserDataModel?> login({required BuildContext context,required String email, required String password }) async {
+  Future<UserDataModel?> login({required BuildContext context,required String idNumber, required String password }) async {
     UserDataModel? userDataModel;
     var res = await _dio.post(url:'${Urls.login}?lang=${Constants.langCode}',
         context: context,
         body: {
-      "email":email,
+      "id_number":idNumber,
       "password":password,
       "fcm_token":Constants.firebaseToken,
         },
@@ -375,12 +402,12 @@ class AuthController  {
 
 
 
-  Future<bool> forgetPassword({required BuildContext context,required String email,}) async {
+  Future<bool> forgetPassword({required BuildContext context,required String idNumber,}) async {
 
     var res = await _dio.post(url:'${Urls.forgetPassword}?lang=${Constants.langCode}',
         context: context,
         body: {
-            "email":email
+            "id_number":idNumber
 
         },
     );

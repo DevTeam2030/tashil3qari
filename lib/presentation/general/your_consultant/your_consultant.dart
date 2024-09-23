@@ -51,8 +51,8 @@ class _YourConsultantScreenState extends State<YourConsultantScreen> {
                           Expanded(
                             child: DefaultTextFormField(
                               controller: searchController,
-                              hintTitle: 'search'.tr(),
-                              labelTitle: 'search'.tr(),
+                              hintTitle: 'searchSerialAndName'.tr(),
+                              labelTitle: 'searchSerialAndName'.tr(),
                               textInputAction: TextInputAction.search,
                               textInputType: TextInputType.text,
                               hintFontSize: FontSize.s12,

@@ -81,7 +81,7 @@ bool isLoading=false;
 
 
   Future<void>getConsultantInfo({required BuildContext context,bool? notify,required int consultantId})async{
-    consultantInfo=null;
+   consultantInfo=null;
     isLoading=true;
     if(notify==true)notifyListeners();
     consultantInfo=await _api.getConsultantInfo(context: context,consultantId:consultantId );
@@ -128,9 +128,10 @@ bool isLoading=false;
       notifyListeners();
 
     bool follow=await _api.followConsultant(context: context,consultantId: consultant.id);
-    if(follow) {
-      if(consultantInfo!=null&&consultantInfo!.id==consultant.id)consultantInfo!.isFollow=true;
-    }
+    // if(follow) {
+    //   if(consultantInfo!=null&&consultantInfo!.id==consultant.id)consultantInfo!.isFollow=true;
+    // }
+    consultantInfo=await _api.getConsultantInfo(context: context,consultantId:consultant.id );
     isLoading=false;
     notifyListeners();
   }
@@ -141,9 +142,10 @@ bool isLoading=false;
       notifyListeners();
 
     bool follow=await _api.unFollowConsultant(context: context,consultantId: consultant.id);
-    if(follow) {
-      if(consultantInfo!=null&&consultantInfo!.id==consultant.id)consultantInfo!.isFollow=false;
-    }
+    // if(follow) {
+    //   if(consultantInfo!=null&&consultantInfo!.id==consultant.id)consultantInfo!.isFollow=false;
+    // }
+    consultantInfo=await _api.getConsultantInfo(context: context,consultantId:consultant.id );
     isLoading=false;
     notifyListeners();
   }

@@ -12,6 +12,7 @@ class PersonalProfileDataWidget extends StatefulWidget {
 }
 
 class _PersonalProfileDataWidgetState extends State<PersonalProfileDataWidget> {
+  bool showAll=false;
   // List<String>text=['MyAds'.tr(),'Favorite'.tr(),'Agreements'.tr(),'Personal data'.tr()];
   // var types=[PersonalDataType.ads,PersonalDataType.favorite,PersonalDataType.agreements,PersonalDataType.personal];
 @override
@@ -132,13 +133,46 @@ Widget build(BuildContext context) {
               titleAlign: TextAlign.center,
               titleMaxLines: 1,fontWeightType: FontWeightType.extraBold,
               titleSize: FontSize.s14,titleColor: ColorManager.black),
-
+          const AppSizeBox(height: 6,),
           AppText(
               title: Constants.userDataModel!.isUser? 'user'.tr() :"RealEstateConsultant".tr(),
               titleAlign: TextAlign.start,
               titleMaxLines: 1,fontWeightType: FontWeightType.medium,
               titleSize: FontSize.s10,titleColor: ColorManager.black),
+          if(!Constants.userDataModel!.isUser&Constants.userDataModel!.des.isNotEmpty)
+          Container(
+            padding: const EdgeInsets.only(top: 6),
+            width: 0.8.sw,
+            child: Wrap(
+              alignment: WrapAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () => !showAll?null:setState(() => showAll = false),
+                  child: AppText(
+                      title:
+                      showAll?Constants.userDataModel!.des:
+                      Constants.userDataModel!.des.length>30?
+                      Constants.userDataModel!.des.substring(0,29):Constants.userDataModel!.des,
+                      titleAlign: TextAlign.center,
+                      titleHeight: 1.6,
+                      titleMaxLines: 5,
+                      fontWeightType: FontWeightType.medium,
+                      titleSize: FontSize.s12,titleColor: ColorManager.black),
+                ),
 
+                if(Constants.userDataModel!.des.length>30&&!showAll)
+                  InkWell(
+                    onTap: () => setState(() => showAll = true),
+                    child: AppText(
+                        title: 'Show All'.tr(),
+                        titleAlign: TextAlign.center,
+                        titleHeight: 1.3,
+                        titleMaxLines: 2,fontWeightType: FontWeightType.medium,
+                        titleSize: FontSize.s8,titleColor: ColorManager.primary),
+                  ),
+              ],
+            ),
+          ),
 
 
           Padding(
@@ -147,9 +181,17 @@ Widget build(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // FollowWidget(title: 'advertisements'.tr(),value: '${ context.read<ProfileProvider>().profileData?.adsNo??0}',),
-                FollowWidget(title: 'Following'.tr(),value: '${ context.read<ProfileProvider>().profileData?.follwingNo??0}',),
-                const AppSizeBox(width: 10,),
-                FollowWidget(title: 'Followers'.tr(),value: '${ context.read<ProfileProvider>().profileData?.followersNo??0}',),
+                FollowWidget(title: 'Following'.tr(),value: '${ context.read<ProfileProvider>().profileData?.follwingNo??0}',
+                    onTap: ()=>MyRoute().navigate(context: context, route:const  FollowingScreen())),
+                const AppSizeBox(width: 6,),
+                FollowWidget(title: 'Followers'.tr(),value: '${ context.read<ProfileProvider>().profileData?.followersNo??0}',
+                    onTap: ()=>MyRoute().navigate(context: context, route: const FollowersScreen())),
+
+             const AppSizeBox(width: 6,),
+                FollowWidget(title: 'Bids'.tr(),value: '',
+                    onTap: ()=>MyRoute().navigate(context: context, route:  const MyBidsScreen())),
+
+
               ],
             ),
           ),

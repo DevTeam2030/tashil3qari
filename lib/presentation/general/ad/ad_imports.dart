@@ -14,6 +14,7 @@ import '../../../components/screen_loading.dart';
 import '../../../components/size_box_height.dart';
 import '../../../components/text_field/general_appbar_logo.dart';
 import '../../../domain/model/models/property_info_model.dart';
+import '../../../domain/model/models/user_ads_model.dart';
 import '../../../providers/product_provider.dart';
 import '../../../utilites/color_manager.dart';
 import '../../../utilites/font_manager.dart';

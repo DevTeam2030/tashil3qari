@@ -74,7 +74,8 @@ class _SearchListScreenState extends State<SearchListScreen> {
       appBar: GeneralAppBar(
           title: '',
           // title: 'SearchByList'.tr(),
-          showMapIcon: false),
+          showMapIcon: false,
+          showHomeButton:true),
       // floatingActionButton: Container(
       //   width: 50,
       //   height: 50,

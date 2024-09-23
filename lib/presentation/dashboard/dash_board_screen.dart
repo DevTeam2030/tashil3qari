@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -69,90 +71,107 @@ List<String>titles=['Main'.tr(),
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: CircleAvatar(
-        radius: 27,
-        backgroundColor: ColorManager.primary.withOpacity(.6),
-        child: InkWell(
-          onTap: () {
-            // _fabAnimationController.reset();
-            // _borderRadiusAnimationController.reset();
-            // _borderRadiusAnimationController.forward();
-            // _fabAnimationController.forward();
-            // screenIndex=4;
-            if(Utils.checkIfUserLogin(context: context)){
-              
-            var  userType=Constants.userDataModel!.isUser?UserType.user:UserType.consultant;
-            bool documented=Constants.userDataModel!.documented;
-            if(userType==UserType.user){
-              MyRoute().navigate(context: context, route: const AddAdScreen());
-            }else{
-              if(documented) {
-                MyRoute().navigate(context: context, route: const AddAdScreen());
-              } else{
-                LoadingDialog().titleMessageAlert(
-                  context: context,
-                  title: 'AddAd'.tr(),
-                  message: 'PleaseWaitForAccountVerification'.tr(),
-                );
-              }
-            }
+    return WillPopScope(
+      onWillPop: () async {
+        if(screenIndex!=0){
+          setState(()=>screenIndex=0);
+          return false;
+        }
+        LoadingDialog().optionalAgreeAlertDialog(context: context,
+          title: 'ExitApplication'.tr(),
+          message: 'CloseApp'.tr(),
+          okClick: (){
+            exit(0);
 
-            }
           },
-          child: Icon(
-            Icons.add,
-            size: 30,
-            color: ColorManager.white,
+        );
+        return false;
+      },
+      child: Scaffold(
+        floatingActionButton: CircleAvatar(
+          radius: 27,
+          backgroundColor: ColorManager.primary.withOpacity(.6),
+          child: InkWell(
+            onTap: () {
+              // _fabAnimationController.reset();
+              // _borderRadiusAnimationController.reset();
+              // _borderRadiusAnimationController.forward();
+              // _fabAnimationController.forward();
+              // screenIndex=4;
+              if(Utils.checkIfUserLogin(context: context)){
+
+              var  userType=Constants.userDataModel!.isUser?UserType.user:UserType.consultant;
+              bool documented=Constants.userDataModel!.documented;
+              if(userType==UserType.user){
+                MyRoute().navigate(context: context, route: const AddAdScreen());
+              }else{
+                if(documented) {
+                  MyRoute().navigate(context: context, route: const AddAdScreen());
+                } else{
+                  LoadingDialog().titleMessageAlert(
+                    context: context,
+                    title: 'AddAd'.tr(),
+                    message: 'PleaseWaitForAccountVerification'.tr(),
+                  );
+                }
+              }
+
+              }
+            },
+            child: Icon(
+              Icons.add,
+              size: 30,
+              color: ColorManager.white,
+            ),
+          ),
+
+        ),
+        // floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: AnimatedBottomNavigationBar.builder(
+          itemCount: images.length,
+          height: 60,
+          tabBuilder: (int index, bool isActive) {
+              return DashBoardItem2(
+                title: titles[index],
+                image: images[index],
+                isActive: screenIndex==index,
+                onTap: (){
+                  if(index==0) {
+                    setState(()=>screenIndex=index);
+                  } else if(Utils.checkIfUserLogin(context: context)) {
+                    setState(()=>screenIndex=index);
+                  }
+                },
+              );
+          },
+          backgroundColor: ColorManager.white,
+          activeIndex: screenIndex,
+          // splashColor: ColorManager.activeNavigationBarColor,
+          // notchAndCornersAnimation: borderRadiusAnimation,
+          splashSpeedInMilliseconds: 300,
+          notchSmoothness: NotchSmoothness.defaultEdge,
+          gapLocation: GapLocation.center,
+          leftCornerRadius: 32,
+          rightCornerRadius: 32,
+          onTap: (index) => setState(() => screenIndex = index),
+          // hideAnimationController: _hideBottomBarAnimationController,
+          shadow: const BoxShadow(
+            offset: Offset(0, 1),
+            blurRadius: 12,
+            spreadRadius: 0.5,
+            color: ColorManager.grey,
           ),
         ),
 
+          body: Container(
+            height: 1.0.sh,
+            width: 1.0.sw,
+            color: ColorManager.fff.withOpacity(.1),
+            child: screens[screenIndex],
+          ),
+        // body:screens[screenIndex]
       ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: AnimatedBottomNavigationBar.builder(
-        itemCount: images.length,
-        height: 60,
-        tabBuilder: (int index, bool isActive) {
-            return DashBoardItem2(
-              title: titles[index],
-              image: images[index],
-              isActive: screenIndex==index,
-              onTap: (){
-                if(index==0) {
-                  setState(()=>screenIndex=index);
-                } else if(Utils.checkIfUserLogin(context: context)) {
-                  setState(()=>screenIndex=index);
-                }
-              },
-            );
-        },
-        backgroundColor: ColorManager.white,
-        activeIndex: screenIndex,
-        // splashColor: ColorManager.activeNavigationBarColor,
-        // notchAndCornersAnimation: borderRadiusAnimation,
-        splashSpeedInMilliseconds: 300,
-        notchSmoothness: NotchSmoothness.defaultEdge,
-        gapLocation: GapLocation.center,
-        leftCornerRadius: 32,
-        rightCornerRadius: 32,
-        onTap: (index) => setState(() => screenIndex = index),
-        // hideAnimationController: _hideBottomBarAnimationController,
-        shadow: const BoxShadow(
-          offset: Offset(0, 1),
-          blurRadius: 12,
-          spreadRadius: 0.5,
-          color: ColorManager.grey,
-        ),
-      ),
-
-        body: Container(
-          height: 1.0.sh,
-          width: 1.0.sw,
-          color: ColorManager.fff.withOpacity(.1),
-          child: screens[screenIndex],
-        ),
-      // body:screens[screenIndex]
     );
   }
 

@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +65,7 @@ class AuthProvider extends ChangeNotifier {
   Future< RegisterModel? > register({required BuildContext context, required RegisterRequestModel model,}) async {
     isLoading = true;
     notifyListeners();
-    RegisterModel? registerModel = await _api.register(context: context, model: model);
+    RegisterModel? registerModel = await _api.register(context: context, model: model,);
 
     isLoading = false;
     notifyListeners();
@@ -154,6 +157,8 @@ class AuthProvider extends ChangeNotifier {
   Future<void> requestConsultant({required BuildContext context,required UpgradeUserConsultantModel model}) async {
     isLoading = true;
     notifyListeners();
+
+
     await _api.requestConsultant(context: context, model: model);
     isLoading = false;
     notifyListeners();
@@ -178,12 +183,12 @@ class AuthProvider extends ChangeNotifier {
 
   Future<void> login(
       {required BuildContext context,
-      required String email,
+      required String idNumber,
       required String password,
       }) async {
     isLoading = true;
     notifyListeners();
-    UserDataModel? user = await _api.login(context: context, email: email, password: password, );
+    UserDataModel? user = await _api.login(context: context, idNumber: idNumber, password: password, );
     isLoading = false;
     notifyListeners();
     if (user != null){
@@ -244,10 +249,10 @@ class AuthProvider extends ChangeNotifier {
 
 
 
-  Future<void> forgetPassword({required BuildContext context, required String email}) async {
+  Future<void> forgetPassword({required BuildContext context, required String idNumber}) async {
     isLoading = true;
     notifyListeners();
-    bool isSend = await _api.forgetPassword(context: context, email: email);
+    bool isSend = await _api.forgetPassword(context: context, idNumber: idNumber);
     isLoading = false;
     notifyListeners();
   }

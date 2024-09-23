@@ -45,12 +45,12 @@ class GeneralController  {
 
 
   Future<SettingModel> getSettingData({required BuildContext context,}) async {
-    SettingModel settingModel=SettingModel(consultantFess: 0,countAllAds: 0,licenseFess: 0,categories: [],countries: [],
-        auctionDurations: [],reasons: [],currencies: [],featuredPlans: [],serialNumbers: [],
-        finishingTypes: []);
+    SettingModel settingModel=SettingModel(consultantFess: 0,countAllAds: 0,licenseFess: 0,categories: [],countries: [],nationalities: [],
+        auctionDurations: [],reasons: [],currencies: [],featuredPlans: [],serialNumbers: [],servicesAboutAr: '',servicesAboutEn: '',
+        finishingTypes: [],  appValueAfterSelling: 0,);
     var res = await _dio.get(url:'${Urls.settings}?lang=${Constants.langCode}', context: context);
     if (res != null) {
-     // try{
+     try{
        settingModel = SettingModel.fromJson(res['data']);
        var data=settingModel.categories;
         settingModel.categories=[];
@@ -74,9 +74,9 @@ class GeneralController  {
                 waterAvailability: true
             )));
         settingModel.categories.addAll(data);
-     // }catch(e){
-     //   Utils.printData(e.toString());
-     // }
+     }catch(e){
+       Utils.printData(e.toString());
+     }
 
     }
     return settingModel;

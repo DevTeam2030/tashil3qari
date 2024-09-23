@@ -22,7 +22,8 @@ import 'package:flutter/material.dart';
 class LoginData{
   final formKey = GlobalKey<FormState>();
   // TextEditingController userNameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
+  TextEditingController idNumberController = TextEditingController();
+  // TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   bool rememberPassword=false;
@@ -32,9 +33,7 @@ class LoginData{
     FocusScope.of(context).requestFocus( FocusNode());
 
     if(formKey.currentState!.validate()){
-      // emailController.text="new-2141-user@gmail.com";
-      // passwordController.text="123456";
-      context.read<AuthProvider>().login(context: context, email: emailController.text.trim(),
+      context.read<AuthProvider>().login(context: context, idNumber: idNumberController.text.trim(),
           password: passwordController.text.trim(),);
     }
   }

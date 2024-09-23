@@ -6,7 +6,10 @@ class AdInformations extends StatelessWidget {
   final  double? distance;
   final LatLng? currentLocation;
   final ProductProvider provider;
-  const AdInformations({super.key,required this.propertyInfo,required this.distance,required this.currentLocation,required this.provider});
+  final UserAdsModel? ad;
+  const AdInformations({super.key,required this.propertyInfo,
+    required this.ad,
+    required this.distance,required this.currentLocation,required this.provider});
 
   @override
   Widget build(BuildContext context) {
@@ -294,7 +297,7 @@ class AdInformations extends StatelessWidget {
             ],
           ),
         ),
-        if(Constants.userDataModel!=null&&Constants.userDataModel!.isUser!=false)
+        if(Constants.userDataModel!=null&&Constants.userDataModel!.isUser!=false&&propertyInfo.userId!=Constants.userDataModel!.id)
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -326,6 +329,49 @@ class AdInformations extends StatelessWidget {
                 onPressed: (){
                   MyRoute().navigate(context: context, route: AddComplaintScreen(propertyId: propertyInfo.id,));
                 }),
+          ],
+        ),
+        if(Constants.userDataModel!=null&&propertyInfo.userId==Constants.userDataModel!.id)
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                if(ad!=null)
+                const AppSizeBox(height: 10,),
+                if(ad!=null)
+                MyTextButton(title: 'edit'.tr(),
+                    size: Size( 0.9.sw,  50),
+                    radius: 14,
+                    fontWeightType: FontWeightType.medium,
+                    titleSize: FontSize.s20,
+                    primaryColor: ColorManager.white,
+                    titleColor: ColorManager.icons4,
+                    borderColor: ColorManager.icons4,
+                   
+                    onPressed: (){
+                      var x=Navigator.push(context, MaterialPageRoute(builder: (context) =>EditAdScreen(userAd:ad!,),));
+                      context.read<ProductProvider>().getPropertyInfo(context: context,propertyId: propertyInfo.id,);
+                      // MyRoute().navigate(context: context, route:  EditAdScreen(userAd:ad!,),withReplace: true);
+
+                    }),
+                const AppSizeBox(height: 10,),
+
+
+                MyTextButton(title: 'Delete'.tr(),
+                    size: Size( 0.9.sw,  50),
+                    radius: 14,
+                    fontWeightType: FontWeightType.medium,
+                    titleSize: FontSize.s20,
+                    primaryColor: ColorManager.white,
+                    titleColor: ColorManager.red,
+                    borderColor: ColorManager.red,
+                    onPressed: ()=>provider.deleteMyAd(propertyId: propertyInfo.id,propertyType: propertyInfo.type,context: context)),
+              ],
+            ),
           ],
         ),
 

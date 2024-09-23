@@ -18,7 +18,11 @@ class RegisterRequestModel {
     required this.passwordConfirmation,
     required this.lang,
     required this.serialNumber,
-
+    required this.image,
+    required this.phone,
+    required this.firstName,
+    required this.lastName,
+    required this.des,
   });
 
   UserType userType;
@@ -31,6 +35,11 @@ class RegisterRequestModel {
   String passwordConfirmation;
   String lang;
   String serialNumber;
+  File image;
+  String phone;
+  String firstName;
+  String des;
+  String lastName;
 
 
 
@@ -45,6 +54,12 @@ class RegisterRequestModel {
     "password_confirmation":passwordConfirmation,
     "lang":lang,
     "serial_number":serialNumber,
+    "phone":phone,
+    "first_name":firstName,
+    "last_name":lastName,
+    "des":des,
+    "image":image,
+
 
   };
 }

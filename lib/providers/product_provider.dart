@@ -19,15 +19,19 @@ import 'package:tashil_agary/providers/wishlist_provider.dart';
 
 import '../app/my_app.dart';
 import '../app/utils.dart';
+import '../domain/controller/profile_controller.dart';
 import '../domain/model/models/auction_data_model.dart';
 import '../domain/model/models/general_property_model.dart';
 import '../domain/model/models/home_catogery_model.dart';
 import '../domain/model/models/property_info_model.dart';
+import '../domain/model/models/user_ads_model.dart';
+import '../presentation/general/personal_profile/widgets/widgets_imports.dart';
 import '../utilites/color_manager.dart';
 
 class ProductProvider extends ChangeNotifier {
   final ProductController _api=ProductController();
   final HomeController _apiHome=HomeController();
+  final ProfileController _apiProfile = ProfileController();
   bool isLoading=false;
   List<GeneralPropertyModel>similarProperties=[];
   List<GeneralPropertyModel>ownerProperties=[];
@@ -144,4 +148,21 @@ class ProductProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  deleteMyAd({required BuildContext context, required int propertyId,required String propertyType}){
+    Utils.showModalBottomSheetApp(
+        widget: DeleteReasonsAdBottomSheet(
+          adId: propertyId,
+          adType: propertyType,
+          onDeleteAd:(adId,reasonId)=>deleteProperty(propertyId: propertyId, reasonId: reasonId,context: context
+        )
+    ));
+  }
+  Future<void> deleteProperty({required BuildContext context,required int propertyId,required int reasonId}) async {
+    isLoading = true;
+    notifyListeners();
+    bool isDeleted= await _apiProfile.deleteProperty(context: context,propertyId: propertyId,reasonId: reasonId);
+    if(isDeleted)Navigator.pop(Constants.navigatorAppKey.currentState!.context);
+    isLoading = false;
+    notifyListeners();
+  }
 }

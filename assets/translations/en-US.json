@@ -479,7 +479,6 @@
  "servicesMessage":"Tasheel Real Estate is a real estate marketing website in Saudi Arabia that aims to improve the experience of real estate searchers",
  "AdvertisingFeesAndPackages": "Advertising fees and packages",
  "GeometricDesign": "Geometric design",
- "soon" : "Soon",
  "AdvertisementVideo": "Advertisement video",
 "ConstructionAndContracting": "Construction and contracting",
  "ConstructionAccount": "Construction account",
@@ -671,7 +670,7 @@
  "floors_no": "Floors no",
  "Feminine": "Feminine",
  "verse": "verse",
-
+"soon": "Soon",
  "Annex": "Annex",
  "Car entrance": "Car entrance",
  "Elevator": "Elevator",
@@ -686,5 +685,13 @@
  "Football field": "Football field",
  "Volleyball court": "Volleyball court",
  "Amusement park": "Amusement park",
- "Family section": "Family section"
+ "Family section": "Family section",
+ "idNumberUser":"ID/residence number",
+ "idNumberCons":"ID/residency/commercial registry number",
+ "idNumberPassword":"Enter your ID/residency/commercial registry number to continue",
+ "CloseApp": "Do you want to exit application ?",
+ "ExitApplication": "Exit application",
+ "pledgeMessage": "I pledge to pay num riyals after selling or renting",
+ "pledgeAlert": "Please select the pledge",
+ "searchSerialAndName": "Search by serial number or advisor name"
 }

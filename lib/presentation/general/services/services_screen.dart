@@ -39,20 +39,31 @@ class _ServicesScreenState extends State<ServicesScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
 
-                    if(!provider.isLoading&&provider.services.isEmpty)
+
+
+
+                    if(Constants.settingModel.servicesAboutAr.isNotEmpty&&Constants.settingModel.servicesAboutEn.isNotEmpty)
                     Padding(
-                      padding:  EdgeInsets.only(top:0.3.sh),
-                      child: NoDataCurrentlyAvailable(message: 'Will be available soon'.tr(),),
+                      padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 12),
+                      child: AppText(
+                          title: Constants.isArabic?Constants.settingModel.servicesAboutAr:Constants.settingModel.servicesAboutEn,
+                          titleAlign: TextAlign.center,
+                          titleHeight: 1.5,
+                          titleMaxLines: 10,fontWeightType: FontWeightType.medium,
+                          titleSize: FontSize.s14,titleColor: ColorManager.black),
                     ),
+
+
+
+                    if(!provider.isLoading&&provider.services.isEmpty)
+                      Padding(
+                        padding:  EdgeInsets.only(top:0.3.sh),
+                        child: NoDataCurrentlyAvailable(message: 'Will be available soon'.tr(),),
+                      ),
                     for(var item in provider.services)
                       ServicesItem(service: item),
-                    // AppText(
-                    //     title: 'Our services'.tr(),
-                    //     titleAlign: TextAlign.start,
-                    //     titleMaxLines: 1,fontWeightType: FontWeightType.bold,
-                    //     titleSize: FontSize.s14,titleColor: ColorManager.black),
-                    //
-                    // const AppSizeBox(height: 14,),
+
+
                     // ServicesItem(title: 'FindPropertyEasily'.tr(), value: 'servicesMessage'.tr(),showSoon: false,image: ImageManager.services1),
                     // ServicesItem(title: 'AdvertisingFeesAndPackages'.tr(), value: 'servicesMessage'.tr(),image: ImageManager.services2),
                     // ServicesItem(title: 'GeometricDesign'.tr(), value: 'servicesMessage'.tr(),image: ImageManager.services3),

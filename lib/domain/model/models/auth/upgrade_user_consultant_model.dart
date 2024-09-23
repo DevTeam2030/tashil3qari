@@ -22,6 +22,7 @@ class UpgradeUserConsultantModel {
     "serial_number": serialNumber,
     "des": des,
     "addresses": List<dynamic>.from(addresses.map((x) => x.toJson())),
+
   };
 }
 

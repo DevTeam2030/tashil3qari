@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:tashil_agary/presentation/general/add_ad/widgets/direction_widget.dart';
 
 import '../../../components/no_data_available.dart';
+import '../../../components/remember_password.dart';
 import '../../../components/screen_loading.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';

@@ -222,6 +222,7 @@ Widget build(BuildContext context) {
                     else {
                       context.read<ConsultantProvider>().followConsultant(context: context,consultant: widget.consultantInfo);
                     }
+
                   }),
 
               MyTextButton(title: 'ComplaintSuggestion'.tr(),

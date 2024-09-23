@@ -18,7 +18,7 @@ class ConsultantInfoModel {
   int followersNo;
   int followingNo;
   bool isFollow;
-
+  bool canRate  ;
 
   ConsultantInfoModel({
     required this.id,
@@ -39,6 +39,7 @@ class ConsultantInfoModel {
     required this.followingNo,
     required this.rate,
     required this.isFollow,
+    required this.canRate,
   });
 
   factory ConsultantInfoModel.fromJson(Map<String, dynamic> json) => ConsultantInfoModel(
@@ -60,6 +61,7 @@ class ConsultantInfoModel {
     followingNo: json["follwing_no"]??0,
     isFollow: json["is_follow"]??false,
     rate: double.tryParse(json["rate"].toString())??0,
+    canRate: json["can_rate  "].toString()=='true'||json["can_rate  "].toString()=='1'?true:false,
   );
 
 }

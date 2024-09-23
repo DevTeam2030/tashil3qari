@@ -16,6 +16,10 @@ class SettingModel {
     required this.currencies,
     required this.featuredPlans,
     required this.serialNumbers,
+    required this.nationalities,
+    required this.appValueAfterSelling,
+    required this.servicesAboutEn,
+    required this.servicesAboutAr,
   });
   List<HomeCatogeryModel> categories;
   List<CountryModel> countries;
@@ -25,9 +29,13 @@ class SettingModel {
   List<CurrencyModel> currencies;
   List<FeaturedPlansModel> featuredPlans;
   List<SerialNumberModel> serialNumbers;
+  List<NationalityModel> nationalities;
   double consultantFess;
   double licenseFess;
+  double appValueAfterSelling;
   int countAllAds;
+  String servicesAboutAr;
+  String servicesAboutEn;
 
   factory SettingModel.fromJson(Map<String, dynamic> json) => SettingModel(
     categories: List<HomeCatogeryModel>.from(json["categories"].map((x) => HomeCatogeryModel.fromJson(x))),
@@ -38,9 +46,13 @@ class SettingModel {
     currencies: List<CurrencyModel>.from(json["currencies"].map((x) => CurrencyModel.fromJson(x))),
     featuredPlans: List<FeaturedPlansModel>.from(json["featuredPlans"].map((x) => FeaturedPlansModel.fromJson(x))),
     serialNumbers: List<SerialNumberModel>.from(json["serialNmbers"].map((x) => SerialNumberModel.fromJson(x))),
+    nationalities: List<NationalityModel>.from(json["nationalities"].map((x) => NationalityModel.fromJson(x))),
     consultantFess : double.tryParse(json["consultant_fess"].toString())??0,
     licenseFess : double.tryParse(json["license_fess"].toString())??0,
+    appValueAfterSelling : double.tryParse(json["app_value_after_selling"].toString())??0,
     countAllAds : int.tryParse(json["count_all_ads"].toString())??0,
+      servicesAboutAr: json["services_about_ar"]??'',
+      servicesAboutEn: json["services_about_en"]??'',
 
   );
 

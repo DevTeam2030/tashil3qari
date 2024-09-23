@@ -39,7 +39,7 @@ makeAgreementInFireBase({required BuildContext context,bool? editAgreement})asyn
         secondPersonId: receiverId,
         agreementTitle: titleController.text,
         agreementDetails: detailsController.text,
-        totalCommission: addTotalAmount.value?0:double.parse(totalCommissionController.text),
+        totalCommission: addTotalAmount.value?double.parse(totalCommissionController.text):0,
           firstPersonPercentage: firstPersonPercentage,
         secondPersonPercentage: secondPersonPercentage,
         refusedReason:editAgreement==true?'': rejectRasonController.text.isEmpty?'':rejectRasonController.text,

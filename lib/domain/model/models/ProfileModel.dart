@@ -11,6 +11,7 @@ class ProfileModel {
   String licenseNumber;
   String idNumber;
   String nationality;
+  String nationalityId;
   String des;
   int adsNo;
   int followersNo;
@@ -28,6 +29,7 @@ class ProfileModel {
     required this.licenseNumber,
     required this.idNumber,
     required this.nationality,
+    required this.nationalityId,
     required this.adsNo,
     required this.followersNo,
     required this.follwingNo,
@@ -48,6 +50,7 @@ class ProfileModel {
     licenseNumber: json["license_number"]??'',
     idNumber: json["id_number"]??'',
     nationality: json["nationality"]??'',
+    nationalityId: json["nationality_id"].toString(),
     adsNo: int.tryParse(json["ads_no"].toString())??0,
     followersNo: int.tryParse(json["followers_no"].toString())??0,
     follwingNo: int.tryParse(json["follwing_no"].toString())??0,
@@ -64,6 +67,7 @@ class ProfileModel {
     "license_number": licenseNumber,
     "id_number": idNumber,
     "nationality": nationality,
+    "nationality_id": nationalityId,
     "ads_no": adsNo,
     "followers_no": followersNo,
     "follwing_no": follwingNo,

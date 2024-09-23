@@ -330,7 +330,7 @@ class TextBoxWidget extends StatelessWidget {
               child:AppText(
                   title: text,
                   titleAlign: TextAlign.center,
-                  titleMaxLines: 1,
+                  titleMaxLines: 2,
                   fontWeightType: FontWeightType.extraBold,
                   titleSize: FontSize.s12,
                   titleColor: ColorManager.white),),

@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void dispose() {
     super.dispose();
     _loginData.passwordController.dispose();
-    _loginData.emailController.dispose();
+    _loginData.idNumberController.dispose();
   }
   @override
   Widget build(BuildContext context) {
@@ -104,11 +104,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
                           DefaultTextFormField(
-                            controller: _loginData.emailController,
-                            hintTitle: 'Email'.tr(),
-                            labelTitle: 'Email'.tr(),
+                            controller: _loginData.idNumberController,
+                            hintTitle: 'idNumberCons'.tr(),
+                            labelTitle: 'idNumberCons'.tr(),
                             textInputAction: TextInputAction.next,
-                            textInputType: TextInputType.emailAddress,
+                            textInputType: TextInputType.text,
                             hintFontSize: FontSize.s12,
                             hintStyle: getAppTextStyle(titleColor: ColorManager.textField, fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
                             textStyle: getAppTextStyle(titleColor: ColorManager.icons,   fontWeightType: FontWeightType.medium,titleSize: FontSize.s16,underline: false),
@@ -117,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             borderColor: ColorManager.textGrey,
                             // borderRadius: RadiusManager.r10,
                             prefixIcon: const Icon(Icons.email_outlined,color: ColorManager.icons,size: AppSize.s20,),
-                            validator: (v) => Validator().validateEmail(value: v.toString(),),
+                            validator: (v) => Validator().validateEmpty(value: v.toString(),),
                           ),
 
 
@@ -138,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             textInputAction: TextInputAction.next,
                             isPasswordTextFieldForm: true,
                             textInputType: TextInputType.visiblePassword,
-                            validator: (v) => Validator().validatePassword(value: v.toString(),),
+                            validator: (v) => Validator().validateEmpty(value: v.toString(),),
                           ),
 
 

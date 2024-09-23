@@ -2,7 +2,8 @@ part of'widgets_imports.dart';
 
 class FollowWidget extends StatelessWidget {
   final String title,value;
-  const FollowWidget({super.key,required this.title,required this.value});
+  final Function()? onTap;
+  const FollowWidget({super.key,required this.title,required this.value,this.onTap});
 
 @override
 Widget build(BuildContext context) {
@@ -18,24 +19,30 @@ Widget build(BuildContext context) {
       // boxShadow: kElevationToShadow[4],
       // color: Theme.of(context).bottomAppBarColor,
     ),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        AppText(
-            title: value,
-            titleAlign: TextAlign.center,
-            titleMaxLines: 1,fontWeightType: FontWeightType.extraBold,
-            titleSize: FontSize.s14,titleColor: ColorManager.black),
+    child: InkWell(
+      onTap: (){
+        if(onTap!=null) onTap!();
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          if(value.isNotEmpty)
+            AppText(
+                title: value,
+                titleAlign: TextAlign.center,
+                titleMaxLines: 1,fontWeightType: FontWeightType.extraBold,
+                titleSize: FontSize.s14,titleColor: ColorManager.black),
 
-        const AppSizeBox(height: 6,),
-        AppText(
-            title: title,
-            titleAlign: TextAlign.center,
-            titleMaxLines: 1,fontWeightType: FontWeightType.bold,
-            titleSize: FontSize.s12,titleColor: ColorManager.black),
-      ],
-    ),
+          const AppSizeBox(height: 6,),
+          AppText(
+              title: title,
+              titleAlign: TextAlign.center,
+              titleMaxLines: 1,fontWeightType: FontWeightType.bold,
+              titleSize: FontSize.s12,titleColor: ColorManager.black),
+        ],
+      ),
+    )
   );
 }
 }

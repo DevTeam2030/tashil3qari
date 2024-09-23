@@ -14,7 +14,7 @@ class _AddAdLocationScreenState extends State<AddAdLocationScreen> {
   late AddAdtData addAdtData;
   TextEditingController searchController = TextEditingController();
   bool selectedLocationFromMap = false;
-
+  ValueNotifier<bool> agreePledge= ValueNotifier<bool>(false);
   // final ValueNotifier<bool> openMap = ValueNotifier<bool>(false);
 
   Set<Marker> markers = {};
@@ -84,15 +84,17 @@ addCity(){
                   primaryColor: ColorManager.primary,
                   titleColor: ColorManager.white,
                   onPressed: () {
-                    if (selectedCountries.isNotEmpty &&
-                        selectedCities.isNotEmpty) {
+                    if (selectedCountries.isNotEmpty && selectedCities.isNotEmpty) {
+                      if(agreePledge.value==false&&Constants.settingModel.appValueAfterSelling>0){
+                        LoadingDialog.showToastNotification('pledgeAlert'.tr());
+                        return;
+                      }
                       addAdtData.selectedCountries = selectedCountries;
                       addAdtData.selectedCities = selectedCities;
                       addAdtData.adLocation = currentLocation;
                       MyRoute().navigate(context: context, route: AddAdRequirementsScreen(addAdtData: addAdtData,));
                     } else {
-                      LoadingDialog.showToastNotification(
-                          'PleaseEnterAllDataCorrectly'.tr());
+                      LoadingDialog.showToastNotification('PleaseEnterAllDataCorrectly'.tr());
                     }
                   }),
             ],
@@ -232,9 +234,9 @@ addCity(){
                             ],
                           ),
                         ),
-                      const AppSizeBox(
-                        height: 20,
-                      ),
+                      // const AppSizeBox(
+                      //   height: 20,
+                      // ),
 
                       // DefaultTextFormField(
                       //   controller: searchController,
@@ -256,7 +258,7 @@ addCity(){
                       Container(
                         height: .4.sh,
                         width: 1.0.sw,
-                        margin: const EdgeInsets.only(top: AppSize.s20),
+                        margin: const EdgeInsets.only(top: AppSize.s10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(AppSize.s20),
                           color: ColorManager.textGrey,
@@ -374,9 +376,18 @@ addCity(){
                       //     ),
                       //   ),
 
-                      const AppSizeBox(
-                        height: 10,
-                      ),
+                      const AppSizeBox(height: 10,),
+                      if(Constants.settingModel.appValueAfterSelling>0)
+                      ValueListenableBuilder(valueListenable: agreePledge,
+                        builder: (context, value, child) =>    CheckBoxWidget(
+                          checkBoxValue: value,
+                          title: 'pledgeMessage'.tr().replaceFirst('num', Constants.settingModel.appValueAfterSelling.toString()),
+                          checkBoxFunction: (v)=>agreePledge.value=v!,
+                        ),),
+
+
+
+                      const AppSizeBox(height: 10,),
                     ],
                   ),
                 ))));

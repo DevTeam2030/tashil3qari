@@ -3,9 +3,10 @@ part of'widgets_imports.dart';
 
 
 class DeleteReasonsAdBottomSheet extends StatefulWidget {
-  final PersonalProfileData personalProfileData;
-  final UserAdsModel ad;
-  const DeleteReasonsAdBottomSheet({super.key, required this.personalProfileData,required this.ad});
+  final Function(int adId,int reasonId)onDeleteAd ;
+  final int adId;
+  final String adType ;
+  const DeleteReasonsAdBottomSheet({super.key, required this.adType,required this.adId,required this.onDeleteAd});
 
 
   @override
@@ -14,10 +15,20 @@ class DeleteReasonsAdBottomSheet extends StatefulWidget {
 
 class _DeleteReasonsAdBottomSheetState extends State<DeleteReasonsAdBottomSheet> {
 
+  List<ReasonModel>reasons=[];
   ReasonModel selectedReason = Constants.settingModel.reasons.first;
   @override
   void initState() {
-    super.initState();   }
+    super.initState();
+  if(widget.adType=='rent'){
+    reasons=Constants.settingModel.reasons.where((element) => element.type=='rent').toList();
+  }else  if(widget.adType=='sale'){
+    reasons=Constants.settingModel.reasons.where((element) => element.type=='rent').toList();
+  }else{
+    reasons=Constants.settingModel.reasons;
+  }
+     selectedReason = reasons.first;
+  }
   @override
   void dispose() {
     super.dispose();
@@ -70,7 +81,7 @@ class _DeleteReasonsAdBottomSheetState extends State<DeleteReasonsAdBottomSheet>
                  child: Column(
                    crossAxisAlignment: CrossAxisAlignment.start,
                    children: [
-                     for(var reason in Constants.settingModel.reasons)
+                     for(var reason in reasons)
                        Padding(
                          padding: const EdgeInsets.symmetric(vertical: 8),
                          child: InkWell(
@@ -126,7 +137,7 @@ class _DeleteReasonsAdBottomSheetState extends State<DeleteReasonsAdBottomSheet>
                     titleColor: ColorManager.white,
                     onPressed: ()async{
                   Navigator.pop(context);
-                  widget.personalProfileData.deleteProperty(ad: widget.ad, reasonId: selectedReason.id);
+                  widget.onDeleteAd(widget.adId, selectedReason.id);
                     }),
                 const AppSizeBox(height: 14,),
 

@@ -24,6 +24,9 @@ class Urls{
  static const finishingTypes='finishing-types';
  static const properties='properties';
  static const categories='categories';
+ static const getFollowersUsers='consultant/get-followers';
+ static const getFollowingUsers='consultant/get-follwing';
+ static const getAuctionAds='consultant/get-auction-ads';
 
  static const getWishlist='user-wishlist';
  static const wishlistProduct='wishlist';

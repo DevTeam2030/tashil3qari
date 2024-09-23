@@ -112,7 +112,8 @@ class _YourConsultantProfileScreenState extends State<YourConsultantProfileScree
                         child: NoDataCurrentlyAvailable(),
                       ),
 
-                    if(!showAdsTab &&Constants.userDataModel!=null&&widget.consultantId!=Constants.userDataModel!.id)
+                    if(!showAdsTab &&Constants.userDataModel!=null&&
+                        widget.consultantId!=Constants.userDataModel!.id&&provider.consultantInfo!.canRate)
                       Padding(
                         padding: const EdgeInsets.only(right:16.0,left: 16,top: 14,bottom: 10),
                         child: Row(
@@ -144,7 +145,7 @@ class _YourConsultantProfileScreenState extends State<YourConsultantProfileScree
                             ),
                           ],
                         ),
-                      ),
+                      )else const AppSizeBox(height: 14),
 
                     if (!showAdsTab&& provider.allConsultantRates.isEmpty&&!provider.isLoading)
                       const Padding(

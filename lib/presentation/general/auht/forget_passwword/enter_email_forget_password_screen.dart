@@ -29,10 +29,12 @@ class EnterEmailForgetPasswordScreen extends StatefulWidget {
 class _EnterEmailForgetPasswordScreenState extends State<EnterEmailForgetPasswordScreen> {
   final formKey = GlobalKey<FormState>();
 
-  TextEditingController emailController = TextEditingController();
+  // TextEditingController emailController = TextEditingController();
+  TextEditingController idController = TextEditingController();
   @override
   void dispose() {
-    emailController.dispose();
+    // emailController.dispose();
+    idController.dispose();
     super.dispose();
   }
 
@@ -71,7 +73,8 @@ class _EnterEmailForgetPasswordScreenState extends State<EnterEmailForgetPasswor
                   const AppSizeBox(height: AppSize.s30),
                   BarTitleValue(
                     title: 'Forget password1'.tr(),
-                    subtitle:'Enter your email to continue'.tr(),
+                    subtitle:'idNumberPassword'.tr(),
+                    // subtitle:'Enter your email to continue'.tr(),
                   ),
 
 
@@ -80,11 +83,11 @@ class _EnterEmailForgetPasswordScreenState extends State<EnterEmailForgetPasswor
 
 
                   DefaultTextFormField(
-                    controller: emailController,
-                    hintTitle: 'Email'.tr(),
-                    labelTitle: 'Email'.tr(),
+                    controller: idController,
+                    hintTitle: 'idNumberCons'.tr(),
+                    labelTitle: 'idNumberCons'.tr(),
                     textInputAction: TextInputAction.next,
-                    textInputType: TextInputType.emailAddress,
+                    textInputType: TextInputType.text,
                     hintFontSize: FontSize.s12,
                     hintStyle: getAppTextStyle(titleColor: ColorManager.textField, fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
                     textStyle: getAppTextStyle(titleColor: ColorManager.icons,   fontWeightType: FontWeightType.medium,titleSize: FontSize.s16,underline: false),
@@ -93,8 +96,24 @@ class _EnterEmailForgetPasswordScreenState extends State<EnterEmailForgetPasswor
                     borderColor: ColorManager.textGrey,
                     // borderRadius: RadiusManager.r10,
                     prefixIcon: const Icon(Icons.email_outlined,color: ColorManager.icons,size: AppSize.s20,),
-                    validator: (v) => Validator().validateEmail(value: v.toString(),),
+                    validator: (v) => Validator().validateEmpty(value: v.toString(),),
                   ),
+                  // DefaultTextFormField(
+                  //   controller: emailController,
+                  //   hintTitle: 'Email'.tr(),
+                  //   labelTitle: 'Email'.tr(),
+                  //   textInputAction: TextInputAction.next,
+                  //   textInputType: TextInputType.emailAddress,
+                  //   hintFontSize: FontSize.s12,
+                  //   hintStyle: getAppTextStyle(titleColor: ColorManager.textField, fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
+                  //   textStyle: getAppTextStyle(titleColor: ColorManager.icons,   fontWeightType: FontWeightType.medium,titleSize: FontSize.s16,underline: false),
+                  //   textSize: FontSize.s12,
+                  //   fillColor: ColorManager.textGrey,
+                  //   borderColor: ColorManager.textGrey,
+                  //   // borderRadius: RadiusManager.r10,
+                  //   prefixIcon: const Icon(Icons.email_outlined,color: ColorManager.icons,size: AppSize.s20,),
+                  //   validator: (v) => Validator().validateEmail(value: v.toString(),),
+                  // ),
 
 
                   const AppSizeBox(height: AppSize.s40),
@@ -114,7 +133,7 @@ class _EnterEmailForgetPasswordScreenState extends State<EnterEmailForgetPasswor
                       FocusScope.of(context).requestFocus( FocusNode());
                       if(formKey.currentState!.validate()){
                         context.read<AuthProvider>().forgetPassword(context: context,
-                          email: emailController.text.trim(),);
+                          idNumber: idController.text.trim(),);
                       }
                     }),
 

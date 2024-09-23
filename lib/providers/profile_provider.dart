@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -12,8 +10,10 @@ import 'package:tashil_agary/domain/model/models/user_data_model.dart';
 import 'package:tashil_agary/providers/wishlist_provider.dart';
 import '../app/utils.dart';
 import '../domain/controller/agreements_controller.dart';
+import '../domain/controller/home_controller.dart';
 import '../domain/controller/profile_controller.dart';
 import '../domain/model/agreement/agreement_details_model.dart';
+import '../domain/model/following_user_model.dart';
 import '../domain/model/models/ProfileModel.dart';
 import '../domain/model/models/agreements_model.dart';
 import '../domain/model/models/general_property_model.dart';
@@ -24,12 +24,19 @@ import '../domain/model/models/user_ads_model.dart';
 
 class ProfileProvider extends ChangeNotifier {
   final ProfileController _api = ProfileController();
+  final HomeController _apiHome=HomeController();
   final AgreementsController _agreementsController=AgreementsController();
   bool isLoading = false;
   ProfileModel?  profileData;
   List<UserAdsModel>userAds=[];
   List<GeneralPropertyModel>userWishList=[];
   List<AgreementDetailsModel> agreements=[];
+  List<GeneralPropertyModel>bids=[];
+  List<FollowingUserModel>followingUsers=[];
+  List<FollowingUserModel>followersUsers=[];
+
+
+
   Future<void>getAllProfileData({required BuildContext context,bool?notify,})async{
     isLoading=true;
     userWishList=[];
@@ -52,6 +59,7 @@ class ProfileProvider extends ChangeNotifier {
       user.documented=profileData!.documented;
       user.des=profileData!.des;
       user.idNumber=profileData!.idNumber;
+      user.nationalityId=profileData!.nationalityId;
       user.nationality=profileData!.nationality;
 
       CacheHelper.saveDataToUserModel(userDataModel: user);
@@ -63,6 +71,31 @@ class ProfileProvider extends ChangeNotifier {
   }
 
 
+  Future<void>getBids({required BuildContext context,bool? isNotify})async{
+    isLoading=true;
+    bids.clear();
+    if(isNotify!=false) notifyListeners();
+    bids=await _apiHome.getBids(context: context,);
+    isLoading=false;
+    notifyListeners();
+  }
+  Future<void>getFollowingUsers({required BuildContext context,bool? isNotify})async{
+    isLoading=true;
+    followingUsers.clear();
+    if(isNotify!=false) notifyListeners();
+    followingUsers=await _apiHome.getFollowingUsers(context: context,);
+    isLoading=false;
+    notifyListeners();
+  }
+
+ Future<void>getFollowersUsers({required BuildContext context,bool? isNotify})async{
+    isLoading=true;
+    followersUsers.clear();
+    if(isNotify!=false) notifyListeners();
+    followersUsers=await _apiHome.getFollowersUsers(context: context,);
+    isLoading=false;
+    notifyListeners();
+  }
 
   Future<void>getAgreements({required BuildContext context,required bool notify})async{
     isLoading=true;
@@ -92,6 +125,7 @@ class ProfileProvider extends ChangeNotifier {
       user.des=profileData!.des;
       user.idNumber=profileData!.idNumber;
       user.nationality=profileData!.nationality;
+      user.nationalityId=profileData!.nationalityId;
 
       CacheHelper.saveDataToUserModel(userDataModel: user);
 
@@ -161,6 +195,7 @@ class ProfileProvider extends ChangeNotifier {
       user.licenseNumber=profileData!.licenseNumber;
       user.idNumber=profileData!.idNumber;
       user.nationality=profileData!.nationality;
+      user.nationalityId=profileData!.nationalityId;
 
       CacheHelper.saveDataToUserModel(userDataModel: user);
 
@@ -227,10 +262,11 @@ class ProfileProvider extends ChangeNotifier {
   Future<void> changeImageProfile({
     required BuildContext context,
     required XFile photo,
+
   }) async {
     isLoading = true;
     notifyListeners();
-    String url = await _api.updateImageProfile(context: context, photo: photo);
+    String url = await _api.updateImageProfile(context: context, photo: photo,);
     // if (user != null) Utils.login(context: context, userDataModel: user);
     if(url.isNotEmpty){
 

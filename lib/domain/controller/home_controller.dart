@@ -16,6 +16,7 @@ import 'package:tashil_agary/domain/dio/dio_imports.dart';
 import 'package:tashil_agary/domain/model/model/home_model.dart';
 import 'package:tashil_agary/domain/model/models/user_data_model.dart';
 
+import '../model/following_user_model.dart';
 import '../model/models/finishing_types_model.dart';
 import '../model/models/general_property_model.dart';
 import '../model/models/home_catogery_model.dart';
@@ -38,7 +39,57 @@ class HomeController  {
     }
     return data;
   }
-  Future<List<GeneralPropertyModel>> getProperties({required BuildContext context,int? cityId,int? categoryId,
+
+  Future<List<GeneralPropertyModel>> getBids({required BuildContext context}) async {
+    List<GeneralPropertyModel> data=[];
+    String url='${Urls.getAuctionAds}?lang=${Constants.langCode}&no_page=1';
+    var res = await _dio.get(url:url, context: context);
+    if (res != null) {
+      try{
+        data = List<GeneralPropertyModel>.from(res['data'].map((x) => GeneralPropertyModel.fromJson(x)));
+
+      }catch(e){
+        Utils.printData(e.toString());
+      }
+
+    }
+    return data;
+  }
+  Future<List<FollowingUserModel>> getFollowersUsers({required BuildContext context}) async {
+    List<FollowingUserModel> data=[];
+    String url='${Urls.getFollowersUsers}?lang=${Constants.langCode}&no_page=1';
+    var res = await _dio.get(url:url, context: context);
+    if (res != null) {
+      try{
+        data = List<FollowingUserModel>.from(res['data'].map((x) => FollowingUserModel.fromJson(x)));
+
+      }catch(e){
+        Utils.printData(e.toString());
+      }
+
+    }
+    return data;
+  }
+
+  Future<List<FollowingUserModel>> getFollowingUsers({required BuildContext context}) async {
+    List<FollowingUserModel> data=[];
+    String url='${Urls.getFollowingUsers}?lang=${Constants.langCode}&no_page=1';
+    var res = await _dio.get(url:url, context: context);
+    if (res != null) {
+      try{
+        data = List<FollowingUserModel>.from(res['data'].map((x) => FollowingUserModel.fromJson(x)));
+
+      }catch(e){
+        Utils.printData(e.toString());
+      }
+
+    }
+    return data;
+  }
+
+
+
+    Future<List<GeneralPropertyModel>> getProperties({required BuildContext context,int? cityId,int? categoryId,
   int? floor,int? bathroomsNo,int? roomsNo,double? propertySize,double? minPrice,double? maxPrice,
   int? finishingTypeId,int? ownerId,bool? isAuction, bool? forSale,bool? forRent ,bool? monthly,
     bool?feminine, bool? annex, bool? carEntrance, bool? elevator, bool?  airConditioners, bool? waterAvailability, bool? electricityAvailability,
@@ -109,6 +160,10 @@ class HomeController  {
     }
     return data;
   }
+
+
+
+
   Future<List<HomeCatogeryModel>> getCategories({required BuildContext context,}) async {
     List<HomeCatogeryModel> data=[];
     var res = await _dio.get(url:'${Urls.categories}?lang=${Constants.langCode}', context: context);

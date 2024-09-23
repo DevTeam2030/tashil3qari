@@ -493,7 +493,6 @@
   "servicesMessage":"تسهيل عقارى هو موقع إلكتروني لتسويق العقارات في السعودية يهدف إلى تحسين تجربة الباحثين عن العقارات",
   " AdvertisingFeesAndPackages": "رسوم الاعلانات والباقات",
   "GeometricDesign": "تصميم هندسي",
-  "soon" : "قريبً",
   "AdvertisementVideo": "فيديو اعلاني",
   "ConstructionAndContracting": "البناء والمقاولات",
   "ConstructionAccount": "الحساب البناء",
@@ -612,7 +611,7 @@
   "Will be available soon": "سوف تتوفر قريبا",
   "problemTitle": "عنوان المشكله",
   "Theproblem": "المشكلة",
-
+"soon": "قريباً",
   "Do you want to feature the ad": "هل تريد تمييز الأعلان ؟",
   "ChooseDuration": "اختر المدة",
   "Feature your ad": "ميز إعلانك",
@@ -709,12 +708,15 @@
   "Football field": "ملعب كرة قدم",
   "Volleyball court": "ملعب كرة طائرة",
   "Amusement park": "ملاهى",
-  "Family section": "قسم عوائل"
-
-
-
-
-
+  "Family section": "قسم عوائل",
+  "idNumberUser":"رقم الهوية/ الإقامة",
+  "idNumberCons":"رقم الهوية / الاقامة / السجل التجارى",
+  "idNumberPassword":"أدخل رقم الهوية/ الإقامة /السجل التجارى للمتابعة",
+  "CloseApp": "هل تريد الخروج من التطبيق ؟",
+  "ExitApplication": "الخروج من التطبيق",
+  "pledgeMessage": "أتعهد بدفع num ريال بعد البيع أو الإيجار",
+  "pledgeAlert": "برجاء تحديد التعهد",
+  "searchSerialAndName": "البحث بالرقم التسلسلي او اسم المستشار"
 
 
 

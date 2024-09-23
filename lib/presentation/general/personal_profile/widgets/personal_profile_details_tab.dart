@@ -56,6 +56,29 @@ Widget build(BuildContext context) {
           const AppSizeBox(height: AppSize.s10),
           Row(
             children: [
+              AppText(title:'Nationality'.tr(),
+                titleSize: FontSize.s12,
+                titleMaxLines: 2,
+                titleAlign: TextAlign.start,
+                titleColor: ColorManager.icons,
+                fontWeightType: FontWeightType.medium,),
+            ],
+          ),
+          const AppSizeBox(height: AppSize.s10),
+
+          NationalityDropdownButton(
+            nationality: widget.personalProfileData.nationality,
+            onChanged: (nationality) {
+              setState(() {
+                widget.personalProfileData..nationality=nationality;
+              });
+            },
+          ),
+
+
+          const AppSizeBox(height: AppSize.s10),
+          Row(
+            children: [
               AppText(title:'lastName'.tr(),
                 titleSize: FontSize.s12,
                 titleMaxLines: 2,
@@ -81,6 +104,45 @@ Widget build(BuildContext context) {
             // prefixIcon: const Icon(Icons.email_outlined,color: ColorManager.icons,size: AppSize.s20,),
             validator: (v) => Validator().validateEmpty(value: v.toString(),),
           ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const AppSizeBox(height: AppSize.s10),
+              Row(
+                children: [
+                  AppText(
+                    title: widget.personalProfileData.userType==UserType.consultant?"idNumberCons".tr(): "idNumberUser".tr(),
+                    // title:'National Identification Number'.tr(),
+                    titleSize: FontSize.s12,
+                    titleMaxLines: 2,
+                    titleAlign: TextAlign.start,
+                    titleColor: ColorManager.icons,
+                    fontWeightType: FontWeightType.medium,),
+                ],
+              ),
+              const AppSizeBox(height: AppSize.s10),
+
+              DefaultTextFormField(
+                controller: widget.personalProfileData.idController,
+                hintTitle:  widget.personalProfileData.userType==UserType.consultant?"idNumberCons".tr(): "idNumberUser".tr(),
+                labelTitle: widget.personalProfileData.userType==UserType.consultant?"idNumberCons".tr(): "idNumberUser".tr(),
+                // hintTitle: 'Enter national ID number'.tr(),
+                // labelTitle: 'Enter national ID number'.tr(),
+                textInputAction: TextInputAction.next,
+                textInputType: TextInputType.phone,
+                hintFontSize: FontSize.s12,
+                hintStyle: getAppTextStyle(titleColor: ColorManager.textField, fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
+                textStyle: getAppTextStyle(titleColor: ColorManager.icons,   fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
+                textSize: FontSize.s12,
+                fillColor: ColorManager.textGrey,
+                borderColor: ColorManager.textGrey,
+                borderRadius: RadiusManager.r10,
+                // prefixIcon: const Icon(Icons.phone,color: ColorManager.icons,size: AppSize.s20,),
+                validator: (v) => Validator().validateEmpty(value: v.toString(),),
+              ),
+            ],
+          ),
+
 
 
           const AppSizeBox(height: AppSize.s10),
@@ -183,15 +245,42 @@ Widget build(BuildContext context) {
               ],
             ),
           ),
+          const AppSizeBox(height: AppSize.s10),
 
           // if(Constants.userDataModel!.isUser==false)
             if(widget.personalProfileData.userType==UserType.consultant)
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if(widget.personalProfileData.userType==UserType.consultant)
-                  Column(
-                    children: [
+                Row(
+                  children: [
+                    AppText(title:'licenseNumber'.tr(),
+                      titleSize: FontSize.s12,
+                      titleMaxLines: 2,
+                      titleAlign: TextAlign.start,
+                      titleColor: ColorManager.icons,
+                      fontWeightType: FontWeightType.medium,),
+                  ],
+                ),
+                const AppSizeBox(height: AppSize.s10),
+
+                DefaultTextFormField(
+                  controller: widget.personalProfileData.licenseNumberController,
+                  hintTitle: 'licenseNumber'.tr(),
+                  labelTitle: 'licenseNumber'.tr(),
+                  textInputAction: TextInputAction.next,
+                  textInputType: TextInputType.phone,
+                  hintFontSize: FontSize.s12,
+                  hintStyle: getAppTextStyle(titleColor: ColorManager.textField, fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
+                  textStyle: getAppTextStyle(titleColor: ColorManager.icons,   fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
+                  textSize: FontSize.s12,
+                  fillColor: ColorManager.textGrey,
+                  borderColor: ColorManager.textGrey,
+                  borderRadius: RadiusManager.r10,
+                  // prefixIcon: const Icon(Icons.phone,color: ColorManager.icons,size: AppSize.s20,),
+                  validator: (v) => Validator().validateEmpty(value: v.toString(),),
+                ),
+
                       const AppSizeBox(height: AppSize.s10),
                       Row(
                         children: [
@@ -223,76 +312,12 @@ Widget build(BuildContext context) {
                         // prefixIcon: const Icon(Icons.phone,color: ColorManager.icons,size: AppSize.s20,),
                         validator: (v) => Validator().validateEmpty(value: v.toString(),),
                       ),
-                    ],
-                  ),
 
-                const AppSizeBox(height: AppSize.s10),
-                Row(
-                  children: [
-                    AppText(title:'licenseNumber'.tr(),
-                      titleSize: FontSize.s12,
-                      titleMaxLines: 2,
-                      titleAlign: TextAlign.start,
-                      titleColor: ColorManager.icons,
-                      fontWeightType: FontWeightType.medium,),
-                  ],
-                ),
-                const AppSizeBox(height: AppSize.s10),
 
-                DefaultTextFormField(
-                  controller: widget.personalProfileData.licenseNumberController,
-                  hintTitle: 'licenseNumber'.tr(),
-                  labelTitle: 'licenseNumber'.tr(),
-                  textInputAction: TextInputAction.next,
-                  textInputType: TextInputType.phone,
-                  hintFontSize: FontSize.s12,
-                  hintStyle: getAppTextStyle(titleColor: ColorManager.textField, fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
-                  textStyle: getAppTextStyle(titleColor: ColorManager.icons,   fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
-                  textSize: FontSize.s12,
-                  fillColor: ColorManager.textGrey,
-                  borderColor: ColorManager.textGrey,
-                  borderRadius: RadiusManager.r10,
-                  // prefixIcon: const Icon(Icons.phone,color: ColorManager.icons,size: AppSize.s20,),
-                  validator: (v) => Validator().validateEmpty(value: v.toString(),),
-                ),
+
               ],
             ),
 
-
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const AppSizeBox(height: AppSize.s10),
-                Row(
-                  children: [
-                    AppText(title:'National Identification Number'.tr(),
-                      titleSize: FontSize.s12,
-                      titleMaxLines: 2,
-                      titleAlign: TextAlign.start,
-                      titleColor: ColorManager.icons,
-                      fontWeightType: FontWeightType.medium,),
-                  ],
-                ),
-                const AppSizeBox(height: AppSize.s10),
-
-                DefaultTextFormField(
-                  controller: widget.personalProfileData.idController,
-                  hintTitle: 'Enter national ID number'.tr(),
-                  labelTitle: 'Enter national ID number'.tr(),
-                  textInputAction: TextInputAction.next,
-                  textInputType: TextInputType.phone,
-                  hintFontSize: FontSize.s12,
-                  hintStyle: getAppTextStyle(titleColor: ColorManager.textField, fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
-                  textStyle: getAppTextStyle(titleColor: ColorManager.icons,   fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
-                  textSize: FontSize.s12,
-                  fillColor: ColorManager.textGrey,
-                  borderColor: ColorManager.textGrey,
-                  borderRadius: RadiusManager.r10,
-                  // prefixIcon: const Icon(Icons.phone,color: ColorManager.icons,size: AppSize.s20,),
-                  validator: (v) => Validator().validateEmpty(value: v.toString(),),
-                ),
-              ],
-            ),
 
 
 

@@ -163,11 +163,14 @@ class ProfileController  {
     return user;
   }
 
-  Future<String> updateImageProfile({required BuildContext context, required XFile photo}) async {
+  Future<String> updateImageProfile({required BuildContext context, required XFile photo,}) async {
     var formData = FormData();
     // UserDataModel?  userDataModel;
     MapEntry<String, MultipartFile> pic = MapEntry('image', MultipartFile.fromFileSync(photo.path, filename: photo.path.split("/").last),);
     formData.files.add(pic);
+    // formData.fields.add(MapEntry('email', email));
+    // formData.fields.add(MapEntry('phone', phone));
+    // formData.fields.add(MapEntry('id_number', idNumber));
 
 
     var res = await DioHelper().post(url: '${Urls.updateProfile}?lang=${Constants.langCode}', context: context,body: {},formData:formData);

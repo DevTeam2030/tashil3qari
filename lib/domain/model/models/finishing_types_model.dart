@@ -43,21 +43,24 @@ class AuctionDurationsModel {
 class ReasonModel {
   int id;
   String name;
+  String type;
 
   ReasonModel({
     required this.id,
     required this.name,
+    required this.type,
   });
 
   factory ReasonModel.fromJson(Map<String, dynamic> json) => ReasonModel(
     id: json["id"],
     name: json["name"]??'',
+    type: json["type"]??'',
   );
 
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-  };
+  // Map<String, dynamic> toJson() => {
+  //   "id": id,
+  //   "name": name,
+  // };
 }
 class CurrencyModel {
   int id;

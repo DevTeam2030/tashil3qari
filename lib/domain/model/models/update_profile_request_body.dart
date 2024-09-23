@@ -9,6 +9,7 @@ class UpdateProfileRequestModel {
     required this.des,
     required this.licenseNumber,
     required this.idNumber,
+    required this.nationality,
     // required this.image,
 
 
@@ -21,6 +22,7 @@ class UpdateProfileRequestModel {
   String des;
   String licenseNumber;
   String idNumber;
+  String nationality;
   // File? image;
 
 
@@ -32,6 +34,7 @@ class UpdateProfileRequestModel {
     "id_number": idNumber,
     "des": des,
     "license_number": licenseNumber,
+    "nationality": nationality,
     // "image": image,
   };
 }

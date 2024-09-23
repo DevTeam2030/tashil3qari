@@ -52,6 +52,7 @@ class _FillPersonalDataRegisterScreenState extends State<FillPersonalDataRegiste
     _fillData.phoneController.dispose();
     _fillData.firstNameController.dispose();
     _fillData.lastNameController.dispose();
+    _fillData.desController.dispose();
   }
   @override
   Widget build(BuildContext context) {

@@ -17,3 +17,21 @@ class SerialNumberModel {
   );
 
 }
+
+
+class NationalityModel {
+  int id;
+  String name;
+
+  NationalityModel({
+    required this.id,
+    required this.name
+  });
+
+  factory NationalityModel.fromJson(Map<String, dynamic> json) => NationalityModel(
+    id: json["id"],
+    name: json["name"].toString(),
+
+  );
+
+}

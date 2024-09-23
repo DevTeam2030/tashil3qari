@@ -10,7 +10,7 @@ import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
 import 'package:tashil_agary/app/extentions.dart';
 import 'package:tashil_agary/components/size_box_height.dart';
-
+import 'package:tashil_agary/domain/model/models/user_ads_model.dart';
 import '../../../../app/contants.dart';
 import '../../../../app/enums.dart';
 import '../../../../app/url_luncher.dart';
@@ -32,6 +32,7 @@ import '../../../../utilites/values_manager.dart';
 import '../../add_ad/add_ad_imports.dart';
 import '../../add_bid/bid_imports.dart';
 import '../../add_complaint/add_complaint_imports.dart';
+import '../../edit_ad/edit_ad_imports.dart';
 import '../../search_list/widgets/ad_grid_item.dart';
 import '../../your_consultant/your_consultant_imports.dart';
 import '../ad_imports.dart';

@@ -12,6 +12,7 @@ class ConsultantModel {
   String serialCode;
   int countAds;
   double rate;
+  bool canRate  ;
   bool dealingConsultant;
 
   ConsultantModel({
@@ -28,6 +29,7 @@ class ConsultantModel {
     required this.dealingConsultant,
     required this.countryId,
     required this.serialCode,
+    required this.canRate,
   });
 
   factory ConsultantModel.fromJson(Map<String, dynamic> json) => ConsultantModel(
@@ -42,6 +44,7 @@ class ConsultantModel {
     country: json["country"]??'',
     serialCode: json["serial_code"]??'',
     countAds: json["count_ads"]??0,
+      canRate: json["can_rate  "].toString()=='true'||json["can_rate  "].toString()=='1'?true:false,
       dealingConsultant: json["dealingConsultant"]??false,
     rate: double.tryParse(json["rate"].toString())??0.0
   );

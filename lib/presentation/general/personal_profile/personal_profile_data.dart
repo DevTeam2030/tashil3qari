@@ -16,7 +16,7 @@ class PersonalProfileData{
   TextEditingController newPasswordController = TextEditingController();
   TextEditingController confirmNewPasswordController = TextEditingController();
 
-
+  NationalityModel nationality=Constants.settingModel.nationalities.first;
 
   bool showAdsAsList = true;
   bool showFavoriteAsList = true;
@@ -37,7 +37,9 @@ class PersonalProfileData{
     idController.text=Constants.userDataModel!.idNumber;
     licenseNumberController.text=Constants.userDataModel!.licenseNumber;
     desController.text=Constants.userDataModel!.des;
-
+    nationality=Constants.settingModel.nationalities.firstWhere((element) =>
+    element.id.toString()==Constants.userDataModel!.nationalityId,
+        orElse: ()=>Constants.settingModel.nationalities.first);
 
   }
 
@@ -53,7 +55,8 @@ class PersonalProfileData{
         phone: phoneController.text.trim(),
         idNumber: idController.text.trim(),
           des:userType==UserType.consultant ?desController.text.trim():'',
-        licenseNumber: licenseNumberController.text
+        licenseNumber: licenseNumberController.text,
+        nationality:  nationality.id.toString(),
         // image: imagePicker==null?null:File(imagePicker!.path),
       );
    await  context.read<ProfileProvider>().updateProfile(context: context, model: model);
@@ -64,7 +67,7 @@ class PersonalProfileData{
   changeImageProfile({required BuildContext context,required XFile image})async{
 
     FocusScope.of(context).requestFocus( FocusNode());
-   await  context.read<ProfileProvider>().changeImageProfile(context: context,photo: image);
+   await  context.read<ProfileProvider>().changeImageProfile(context: context,photo: image,);
 
   }
 
@@ -97,8 +100,9 @@ changePassword({required BuildContext context}){
   deleteMyAd({required BuildContext context, required UserAdsModel ad}){
     Utils.showModalBottomSheetApp(
         widget: DeleteReasonsAdBottomSheet(
-          ad: ad,
-          personalProfileData: this,
+          adId: ad.id,
+          adType: ad.type,
+          onDeleteAd:(adId,reasonId)=>deleteProperty(ad: ad, reasonId: reasonId),
         )
     );
   }
