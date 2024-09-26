@@ -315,7 +315,7 @@ class TextBoxWidget extends StatelessWidget {
 
             Container(
               // padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              width: 50,height: 50,
+              width: 38,height: 38,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
@@ -331,13 +331,13 @@ class TextBoxWidget extends StatelessWidget {
                   title: text,
                   titleAlign: TextAlign.center,
                   titleMaxLines: 2,
-                  fontWeightType: FontWeightType.extraBold,
-                  titleSize: FontSize.s12,
+                  fontWeightType: FontWeightType.medium,
+                  titleSize: FontSize.s10,
                   titleColor: ColorManager.white),),
             Image.asset(
               ImageManager.polygon,
-              width: 30,
-              height: 30,
+              width: 24,
+              height: 24,
               fit: BoxFit.cover,
               color:ColorManager.primary
 
