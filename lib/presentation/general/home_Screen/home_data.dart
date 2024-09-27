@@ -8,6 +8,7 @@ class HomeData {
   //         image: user.image,type: user.type==UserType.user?'normal':"consultant");
   //   }
   // }
+  double cameraZoom=6;
   Set<Marker> markers = {};
   Set<Marker> allCitiesMarkers = {};
   Completer<GoogleMapController> mapController = Completer();
@@ -138,7 +139,7 @@ class HomeData {
         // bearing: 192.8334901395799,
         target: currentLocation,
         //tilt: 59.440717697143555,
-        zoom: 5,
+        zoom: cameraZoom,
       );
       await controller.animateCamera(CameraUpdate.newCameraPosition(kLake));
       context.read<HomeProvider>().changeLoading(false, true);
@@ -163,7 +164,7 @@ class HomeData {
       // bearing: 192.8334901395799,
       target: currentLocation,
       //tilt: 59.440717697143555,
-      zoom: 5,
+      zoom: cameraZoom,
     );
     final GoogleMapController controller = await mapController.future;
     await controller.animateCamera(CameraUpdate.newCameraPosition(kLake));

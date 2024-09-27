@@ -95,9 +95,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             northeast: LatLng(32.15, 55.67), // Northern-eastern coordinate of Saudi Arabia
                           ),
                         ),
-                        initialCameraPosition: const CameraPosition(
+                        initialCameraPosition:  CameraPosition(
                           target: LatLng(23.8859, 45.0792), // الموقع الافتراضي للسعودية
-                          zoom: 5.0,),
+                          zoom: homeData.cameraZoom,),
                         minMaxZoomPreference: const MinMaxZoomPreference(5, 28),
                         onCameraMove: (CameraPosition position) async{
                           if(position.zoom<=8&&!homeData.showAllMap)homeData.gotToCountries(context: context);
