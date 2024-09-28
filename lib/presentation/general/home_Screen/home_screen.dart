@@ -82,22 +82,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         mapType: homeData.mapType,
                         myLocationButtonEnabled:false,
                         myLocationEnabled: false,
-                        zoomGesturesEnabled: true,
+                        scrollGesturesEnabled: !homeData.showCitiesMarkers,
+                        zoomGesturesEnabled: !homeData.showCitiesMarkers,
+                        zoomControlsEnabled: !homeData.showCitiesMarkers,
                         compassEnabled: false,
                         // cameraTargetBounds: CameraTargetBounds(saudiBounds2),
                         cameraTargetBounds: CameraTargetBounds(
                           LatLngBounds(
-                            // southwest: LatLng(26.6, 42.5), // Replace with actual coordinates for the southwest corner
-                            // northeast: LatLng(27.0, 48.0),  // Replace with actual coordinates for the northeast corner
-                            // southwest: LatLng(16.0, 42.0),  // Replace with actual coordinates for the southwest corner
-                            // northeast: LatLng(29.0, 48.0),  // Replace with actual coordinates for the northeast corner
-                            southwest: LatLng(18.35, 34.5), // Southern-western coordinate of Saudi Arabia
-                            northeast: LatLng(32.15, 55.67), // Northern-eastern coordinate of Saudi Arabia
+                            southwest:const LatLng(18.35, 34.5), // Southern-western coordinate of Saudi Arabia
+                            northeast:const LatLng(32.15, 55.67), // Northern-eastern coordinate of Saudi Arabia
                           ),
                         ),
                         initialCameraPosition:  CameraPosition(
-                          target: LatLng(23.8859, 45.0792), // الموقع الافتراضي للسعودية
-                          zoom: homeData.cameraZoom,),
+                          target: homeData.currentLocation, // الموقع الافتراضي للسعودية
+                          // target: LatLng(23.8859, 45.0792), // الموقع الافتراضي للسعودية
+                          zoom: homeData.cameraZoom,
+                        ),
                         minMaxZoomPreference: const MinMaxZoomPreference(5, 28),
                         onCameraMove: (CameraPosition position) async{
                           if(position.zoom<=8&&!homeData.showAllMap)homeData.gotToCountries(context: context);

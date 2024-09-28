@@ -8,7 +8,7 @@ class HomeData {
   //         image: user.image,type: user.type==UserType.user?'normal':"consultant");
   //   }
   // }
-  double cameraZoom=6;
+  double cameraZoom=4.2;
   Set<Marker> markers = {};
   Set<Marker> allCitiesMarkers = {};
   Completer<GoogleMapController> mapController = Completer();
@@ -132,11 +132,11 @@ class HomeData {
       // Future.delayed(const Duration(seconds:3)).then((value)=> context.read<HomeProvider>().changeLoading(false));
 
       Constants.buildAllCitiesMarkersBefore = true;
-
-      var city = country.cities.isNotEmpty ? country.cities.first : context.read<GeneralProvider>().userCity;
-      currentLocation = LatLng(city.latitude, city.longitude);
+      // var city = country.cities.isNotEmpty ? country.cities.first : context.read<GeneralProvider>().userCity;
+      // currentLocation = LatLng(city.latitude, city.longitude);
       CameraPosition kLake = CameraPosition(
         // bearing: 192.8334901395799,
+        // target: currentLocation,
         target: currentLocation,
         //tilt: 59.440717697143555,
         zoom: cameraZoom,
@@ -152,14 +152,10 @@ class HomeData {
   gotToCountries({required BuildContext context}) async {
     showCitiesMarkers = true;
 
-    selectedCity.value = null;
-    var country = context
-        .read<GeneralProvider>()
-        .mapCountry;
-    var city = country.cities.isNotEmpty ? country.cities.first : context
-        .read<GeneralProvider>()
-        .userCity;
-    var currentLocation = LatLng(city.latitude, city.longitude);
+    // selectedCity.value = null;
+    // var country = context.read<GeneralProvider>().mapCountry;
+    // var city = country.cities.isNotEmpty ? country.cities.first : context.read<GeneralProvider>().userCity;
+    // var currentLocation = LatLng(city.latitude, city.longitude);
     CameraPosition kLake = CameraPosition(
       // bearing: 192.8334901395799,
       target: currentLocation,
