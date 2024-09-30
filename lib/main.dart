@@ -25,17 +25,9 @@ void main() async {
       systemNavigationBarColor: ColorManager.white, // navigation bar color
       statusBarColor: ColorManager.white,
       statusBarBrightness: Brightness.dark // Dark == white status bar -- for IOS.
-
   ));
-
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown
-  ]);
-
-
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]);
-
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   runApp(
     EasyLocalization(
@@ -51,7 +43,7 @@ void main() async {
 
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
   MyRoute().navigate(context: Constants.navigatorAppKey.currentContext!, route: const NotificationsScreen());
 }
 

@@ -30,9 +30,11 @@ class ConsultantNotificationItem extends StatelessWidget {
     return  InkWell(
       onTap: (){
         int? propertyId=int.tryParse(notification.propertyId);
-        if(notification.type=='consultant'&&propertyId!=null){
+        if(propertyId==null)return;
+        if(notification.type=='consultant'){
           MyRoute().navigate(context: context, route:  AdScreen(propertyId:propertyId,notificationId: notification.id,));
         }
+        else  MyRoute().navigate(context: context, route:  AdScreen(propertyId:propertyId,));
       },
       child: Container(
         width: 1.0..sw,

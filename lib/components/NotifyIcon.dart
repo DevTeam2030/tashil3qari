@@ -18,7 +18,7 @@ class NotifyIcon extends StatefulWidget {
 class _NotifyIconState extends State<NotifyIcon> {
   @override
   Widget build(BuildContext context) {
-    // var count = context.watch<NotifyCubit>().state.count;
+
     return InkWell(
         splashColor: ColorManager.white,
         highlightColor:ColorManager.white ,
@@ -31,8 +31,9 @@ class _NotifyIconState extends State<NotifyIcon> {
           Image.asset(ImageManager.notifications,height: 22,width: 22,fit: BoxFit.fill,),
           ValueListenableBuilder(valueListenable: Constants.notificationsCounter,
               builder: (context, value, child) =>value>0? CircleAvatar(
-                radius: 3,
+                radius: 7,
                 backgroundColor: ColorManager.red,
+                child: Text('${value>=100?'+99':value}',style: TextStyle(color: ColorManager.white,fontSize: 11),),
               ):AppSizeBox(width: 0),)
 
         ],

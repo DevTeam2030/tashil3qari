@@ -24,7 +24,7 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
       onTap: ()=>   widget.checkBoxFunction(!widget.checkBoxValue),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             margin: const EdgeInsets.only(top: 2),
@@ -42,14 +42,11 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
                 side:  const BorderSide(color: ColorManager.starGryColor,style: BorderStyle.solid,width: 2)),
           ),
 
-          const AppSizeBox(width: AppSize.s4,),
-          Padding(
-            padding: const EdgeInsets.only(top: 5),
-            child: widget.child??
-                AppText(title: widget.title, titleSize: FontSize.s16,
-                    titleAlign: TextAlign.start,titleHeight: 1.2,
-                    titleMaxLines: 1,titleColor: ColorManager.black),
-          ),
+          const AppSizeBox(width: AppSize.s8,),
+          widget.child??
+              AppText(title: widget.title, titleSize: FontSize.s16,
+                  titleAlign: TextAlign.start,titleHeight: 1.2,
+                  titleMaxLines: 1,titleColor: ColorManager.black),
         ],
       ),
     );

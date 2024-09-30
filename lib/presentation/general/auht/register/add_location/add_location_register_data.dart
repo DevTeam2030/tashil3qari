@@ -4,23 +4,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:tashil_agary/app/extentions.dart';
-import 'package:tashil_agary/components/size_box_height.dart';
 import '../../../../../app/contants.dart';
-import '../../../../../app/enums.dart';
 import '../../../../../components/loading_manager.dart';
 import '../../../../../domain/model/models/auth/register_model.dart';
 import '../../../../../domain/model/models/country_model.dart';
 import '../../../../../domain/model/models/register_request_body.dart';
 import '../../../../../providers/auth_provider.dart';
-import '../../../../../utilites/color_manager.dart';
-import '../../../../../utilites/font_manager.dart';
-import '../../../../../utilites/image_manager.dart';
-import '../../../../../utilites/route_manager.dart';
-import '../../../../../utilites/styles_manager.dart';
-import '../../../../../utilites/values_manager.dart';
-import '../../../../dashboard/dash_board_screen.dart';
-import '../fill_personal_data/fill_personal_data_register_data.dart';
 
 class AddLocationRegisterData {
   late RegisterModel registerModel;

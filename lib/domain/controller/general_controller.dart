@@ -46,7 +46,8 @@ class GeneralController  {
 
   Future<SettingModel> getSettingData({required BuildContext context,}) async {
     SettingModel settingModel=SettingModel(consultantFess: 0,countAllAds: 0,licenseFess: 0,categories: [],countries: [],nationalities: [],
-        auctionDurations: [],reasons: [],currencies: [],featuredPlans: [],serialNumbers: [],servicesAboutAr: '',servicesAboutEn: '',
+        auctionDurations: [],reasons: [],currencies: [],featuredPlans: [],serialNumbers: [],servicesAboutAr: '',
+      pledgeMessage: '',policyPrivacy: '',terms: '', servicesAboutEn: '',
         finishingTypes: [],  appValueAfterSelling: 0,);
     var res = await _dio.get(url:'${Urls.settings}?lang=${Constants.langCode}', context: context);
     if (res != null) {

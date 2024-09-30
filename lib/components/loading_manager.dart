@@ -287,16 +287,17 @@ class LoadingDialog {
   static showToastNotification(msg, {Color? color, Color? textColor, Alignment? alignment,int? durationTime}) {
     BotToast.showSimpleNotification(
         title: msg,
-        align: alignment ?? Alignment.bottomCenter,
-        backgroundColor: color ?? ColorManager.primary,
-        titleStyle: TextStyle(color: textColor ?? ColorManager.white,),
+        align: alignment ?? Alignment.center,
+        backgroundColor: color ?? ColorManager.black,
+        titleStyle: TextStyle(color: textColor ?? ColorManager.white,fontSize: 12),
         duration:durationTime==null? Constants.splashDuration:Duration(seconds: durationTime),
-        hideCloseButton: false,
-        closeIcon:  Icon(
-          Icons.close,
-          size: 25,
-          color: ColorManager.white,
-        ));
+        hideCloseButton: true,
+        // closeIcon:  Icon(
+        //   Icons.close,
+        //   size: 25,
+        //   color: ColorManager.white,
+        // )
+    );
   }
 
   static showSimpleToast(msg) {

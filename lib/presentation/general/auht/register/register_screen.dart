@@ -23,6 +23,7 @@ import 'package:tashil_agary/utilites/styles_manager.dart';
 import 'package:tashil_agary/utilites/values_manager.dart';
 
 import '../../../../app/contants.dart';
+import '../widgets/agree_terms.dart';
 import '../widgets/bar_title_value.dart';
 import '../widgets/loginImage.dart';
 import '../widgets/nationality_widget.dart';
@@ -393,6 +394,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
 
 
+                              const AppSizeBox(height: AppSize.s25),
+                              AgreeTerms(registerData: _registerData),
                               const AppSizeBox(height: AppSize.s25),
                               MyTextButton(title: 'Create Account'.tr(),
                                 size: Size( .8.sw,  47),

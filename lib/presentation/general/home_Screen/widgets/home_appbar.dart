@@ -57,6 +57,7 @@ class HomeBuildAppBar extends StatelessWidget implements PreferredSizeWidget {
                //   ],
                // ),
 
+                const HomeDropdownButton(),
                 if(Constants.isLogin&& Constants.userDataModel!.isUser==false&&isFromHome==true)
                   Consumer<ProfileProvider>(
                     builder: (context, provider, child) => Padding(

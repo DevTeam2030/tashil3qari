@@ -79,6 +79,7 @@
 "iAgreeToThe": "I agree to the",
 "privacyPolicy1": "Privacy Policy , ",
 "TermsOfUSe": "Terms of Use",
+ "Terms and Conditions": "Terms and Conditions",
 "privacyPolicyTerms": "Privacy Policy, Terms",
 "ofUse": "of Use",
 "and": "and",
@@ -693,5 +694,6 @@
  "ExitApplication": "Exit application",
  "pledgeMessage": "I pledge to pay num riyals after selling or renting",
  "pledgeAlert": "Please select the pledge",
- "searchSerialAndName": "Search by serial number or advisor name"
+ "searchSerialAndName": "Search by serial number or advisor name",
+ "agreeTermsMessage": "You must agree to the terms , conditions and pledge"
 }

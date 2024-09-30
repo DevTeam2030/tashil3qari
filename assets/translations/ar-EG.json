@@ -92,6 +92,7 @@
   "password": "كلمة المرو",
   "IAgreeMarketingNotification": "أوافق على تلقي إشعار تسويقي بالعروض والأخبار",
   "iAgreeToThe": "أوافق على",
+  "Terms and Conditions": "الشروط والاحكام",
   "privacyPolicyTerms": "سياسة الخصوصية ",
   "ofUse": "وشروط الاستخدام",
   "privacyPolicy1": " سياسة الخصوصية و",
@@ -716,7 +717,8 @@
   "ExitApplication": "الخروج من التطبيق",
   "pledgeMessage": "أتعهد بدفع num ريال بعد البيع أو الإيجار",
   "pledgeAlert": "برجاء تحديد التعهد",
-  "searchSerialAndName": "البحث بالرقم التسلسلي او اسم المستشار"
+  "searchSerialAndName": "البحث بالرقم التسلسلي او اسم المستشار",
+  "agreeTermsMessage": "برجاء الموافقه على الشروط والاحكام والتعهد"
 
 
 

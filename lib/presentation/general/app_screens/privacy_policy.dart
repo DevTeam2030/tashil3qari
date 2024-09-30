@@ -9,6 +9,9 @@ import 'package:tashil_agary/components/screen_loading.dart';
 import 'package:tashil_agary/providers/home_provider.dart';
 import 'package:tashil_agary/utilites/values_manager.dart';
 
+import '../../../app/contants.dart';
+import '../../../components/text_field/general_appbar_logo.dart';
+
 
 
 class PrivacyPolicyScreen extends StatefulWidget {
@@ -27,34 +30,27 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(title: 'PrivacyPolicy'.tr()),
-        body:  Consumer<HomeProvider>(
-          builder: (context, provider, child) => ScreenLoading(
-              isLoading: provider.isLoading,
-              height: 1.0.sh,
-              width: 1.0.sw,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: PaddingManager.p20,vertical: PaddingManager.p20),
-                height: 1.0.sh,
-                width: 1.0.sw,
-                child: SingleChildScrollView(
-                  child: HtmlWidget(
-                  'provider.privacyModel.content',
-                    textStyle:  TextStyle(fontFamily: GoogleFonts.tajawal().fontFamily),
-                    enableCaching: true,
-                    onTapUrl: (url)async{
-                      // Utils.openUrlInBrowser(context: context,uri: url);
-                      return true;
-                    },
-                    // renderMode: RenderMode.column,
-                    webView: true,
+        appBar: GeneralAppBar(title: 'PrivacyPolicy'.tr(),showChatNotify: false,showDivider: false),
+        body: Container(
+          padding: const EdgeInsets.symmetric(horizontal: PaddingManager.p20,vertical: PaddingManager.p20),
+          height: 1.0.sh,
+          width: 1.0.sw,
+          child: SingleChildScrollView(
+            child: HtmlWidget(
+              Constants.settingModel.policyPrivacy,
+              textStyle:  TextStyle(fontFamily: GoogleFonts.tajawal().fontFamily),
+              // enableCaching: true,
+              onTapUrl: (url)async{
+                // Utils.openUrlInBrowser(context: context,uri: url);
+                return true;
+              },
+              // renderMode: RenderMode.column,
+              webView: true,
 
 
-                  ),
-                ),
-              ),
+            ),
           ),
-        )
+        ),
     );
   }
 }

@@ -20,6 +20,9 @@ class SettingModel {
     required this.appValueAfterSelling,
     required this.servicesAboutEn,
     required this.servicesAboutAr,
+    required this.terms,
+    required this.policyPrivacy,
+    required this.pledgeMessage,
   });
   List<HomeCatogeryModel> categories;
   List<CountryModel> countries;
@@ -36,6 +39,9 @@ class SettingModel {
   int countAllAds;
   String servicesAboutAr;
   String servicesAboutEn;
+  String terms;
+  String policyPrivacy;
+  String pledgeMessage ;
 
   factory SettingModel.fromJson(Map<String, dynamic> json) => SettingModel(
     categories: List<HomeCatogeryModel>.from(json["categories"].map((x) => HomeCatogeryModel.fromJson(x))),
@@ -53,6 +59,9 @@ class SettingModel {
     countAllAds : int.tryParse(json["count_all_ads"].toString())??0,
       servicesAboutAr: json["services_about_ar"]??'',
       servicesAboutEn: json["services_about_en"]??'',
+    pledgeMessage : json["pledge_message "]??'',
+    terms: json["terms"]??'',
+    policyPrivacy: json["policy_privacy"]??'',
 
   );
 

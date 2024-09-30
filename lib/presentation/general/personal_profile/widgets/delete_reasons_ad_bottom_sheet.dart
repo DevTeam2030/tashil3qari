@@ -23,7 +23,7 @@ class _DeleteReasonsAdBottomSheetState extends State<DeleteReasonsAdBottomSheet>
   if(widget.adType=='rent'){
     reasons=Constants.settingModel.reasons.where((element) => element.type=='rent').toList();
   }else  if(widget.adType=='sale'){
-    reasons=Constants.settingModel.reasons.where((element) => element.type=='rent').toList();
+    reasons=Constants.settingModel.reasons.where((element) => element.type=='sale').toList();
   }else{
     reasons=Constants.settingModel.reasons;
   }

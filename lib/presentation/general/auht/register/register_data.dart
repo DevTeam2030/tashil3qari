@@ -31,6 +31,8 @@ class RegisterData{
   UserType userType=UserType.user;
   NationalityModel nationality=Constants.settingModel.nationalities.first;
   XFile? imagePicker;
+
+  ValueNotifier<bool> agreeTerms= ValueNotifier<bool>(false);
   register({required BuildContext context})async{
     // MyRoute().navigate(context: context, route: FillPersonalDataRegisterScreen(registerData: this,));
     // return;
@@ -42,7 +44,10 @@ class RegisterData{
         LoadingDialog.showToastNotification('PleaseEnterPicture'.tr());
         return;
       }
-
+      if(agreeTerms.value==false){
+        LoadingDialog.showToastNotification('agreeTermsMessage'.tr());
+        return;
+      }
       if(userType==UserType.consultant){
        if(selectedSerialNumber.value==null||selectedSerialNumber.value!.booked){
          LoadingDialog.showToastNotification('ChooseSerialNumberMessge'.tr());

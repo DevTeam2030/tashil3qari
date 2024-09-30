@@ -85,6 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         scrollGesturesEnabled: !homeData.showCitiesMarkers,
                         zoomGesturesEnabled: !homeData.showCitiesMarkers,
                         zoomControlsEnabled: !homeData.showCitiesMarkers,
+                        rotateGesturesEnabled: !homeData.showCitiesMarkers,
                         compassEnabled: false,
                         // cameraTargetBounds: CameraTargetBounds(saudiBounds2),
                         cameraTargetBounds: CameraTargetBounds(
@@ -98,9 +99,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           // target: LatLng(23.8859, 45.0792), // الموقع الافتراضي للسعودية
                           zoom: homeData.cameraZoom,
                         ),
-                        minMaxZoomPreference: const MinMaxZoomPreference(5, 28),
+                        minMaxZoomPreference:  MinMaxZoomPreference(homeData.cameraZoom, 28),
                         onCameraMove: (CameraPosition position) async{
-                          if(position.zoom<=8&&!homeData.showAllMap)homeData.gotToCountries(context: context);
+                          if(position.zoom<=homeData.cameraZoom&&!homeData.showAllMap)homeData.gotToCountries(context: context);
+                          // if(position.zoom<=8&&!homeData.showAllMap)homeData.gotToCountries(context: context);
                           },
                         // polygons: polygons,
                         // polygons: {

@@ -79,7 +79,7 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
                   isPassword = !isPassword;
                 });
               },
-              child: Icon(isPassword
+              child: Icon(!isPassword
                   ? Icons.visibility
                   : Icons.visibility_off,
                 color:isPassword?ColorManager.grey:ColorManager.grey ,size: AppSize.s20.w,)),

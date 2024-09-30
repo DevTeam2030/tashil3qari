@@ -29,6 +29,8 @@ import '../../../../providers/general_provider.dart';
 import '../../../../providers/profile_provider.dart';
 import '../../../../providers/wishlist_provider.dart';
 import '../../add_ad/widgets/direction_widget.dart';
+import '../../app_screens/privacy_policy.dart';
+import '../../app_screens/terms_of_use_screen.dart';
 import '../../favorites/favorites_screen.dart';
 import '../home_imports.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -42,6 +44,7 @@ import 'finishing_item.dart';
 
 
 
+part 'home_drop_down.dart';
 part 'ad_alert_widget.dart';
 part'categories_drop_down.dart';
 part 'cities_drop_down.dart';

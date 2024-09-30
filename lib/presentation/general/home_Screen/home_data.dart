@@ -8,7 +8,7 @@ class HomeData {
   //         image: user.image,type: user.type==UserType.user?'normal':"consultant");
   //   }
   // }
-  double cameraZoom=4.2;
+  double cameraZoom=4.7;
   Set<Marker> markers = {};
   Set<Marker> allCitiesMarkers = {};
   Completer<GoogleMapController> mapController = Completer();
@@ -93,9 +93,7 @@ class HomeData {
     try {
       // context.read<HomeProvider>().changeLoading(true,isNotify??false);
       // allCitiesMarkers = {};
-      var country = context
-          .read<GeneralProvider>()
-          .mapCountry;
+      var country = context.read<GeneralProvider>().mapCountry;
       showAllMap = true;
       if (allCitiesMarkers.isEmpty) {
         for (var city in country.cities) {
@@ -118,8 +116,7 @@ class HomeData {
                   forSale: selectedAdType == AdType.forSale,
                   forRent: selectedAdType == AdType.forRent,
                   cityId: city.id,
-                  isAuction: showAuctionOnMap.value,).then((value) =>
-                    initPropertiesMarkers(context: context));
+                  isAuction: showAuctionOnMap.value,).then((value) => initPropertiesMarkers(context: context));
               }));
         }
       }
@@ -181,9 +178,8 @@ class HomeData {
   }
 
   bool showAllSamePosition=true;
-  initPropertiesMarkers({required BuildContext context}) async {
+  initPropertiesMarkers({required BuildContext context,}) async {
     context.read<HomeProvider>().changeLoading(true, false);
-
     markers = {};
     var properties=context.read<HomeProvider>().properties;
     for (var prop in properties) {
@@ -228,37 +224,14 @@ class HomeData {
               onTap: () => optionalAlertDialog(context: context, property: prop)));
         }
 
-        // if(marker.position.latitude==prop.latitude&&marker.position.longitude==prop.longitude&&showAllSamePosition){
-        //   var m=marker;
-        //   markers.remove(marker);
-        //   markers.add(Marker(
-        //       markerId: MarkerId("${m.markerId.value}"),
-        //       position: LatLng(m.position.latitude, m.position.longitude),
-        //       icon: await MoreIcon().toBitmapDescriptor(),
-        //       onTap: (){
-        //         showAllSamePosition=false;
-        //         initPropertiesMarkers(context: context);
-        //       } ));
-        //   break;
-        // }else {
-        //   markers.add(Marker(
-        //     markerId: MarkerId("${prop.id}"),
-        //     position: LatLng(prop.latitude, prop.longitude),
-        //     icon: await TextPrice(price: '${prop.price}',
-        //       currency: prop.currency,
-        //       auction: prop.isAuction,
-        //       type: prop.featured ? MapAdType.premium : (prop.show ? MapAdType
-        //           .other : MapAdType.primary),
-        //     ).toBitmapDescriptor(),
-        //     onTap: () => optionalAlertDialog(context: context, property: prop)));
-        // }
+
 
 
     }
-    var country = context.read<GeneralProvider>().mapCountry;
-    var city = country.cities.isNotEmpty ? country.cities.first : context.read<GeneralProvider>().userCity;
-    currentLocation =properties.isNotEmpty?LatLng(properties.first.latitude, properties.first.longitude): 
-    LatLng(city.latitude, city.longitude);
+    // var country = context.read<GeneralProvider>().mapCountry;
+    // var city = country.cities.isNotEmpty ? country.cities.first : context.read<GeneralProvider>().userCity;
+    // currentLocation =properties.isNotEmpty?LatLng(properties.first.latitude, properties.first.longitude): LatLng(city.latitude, city.longitude);
+    currentLocation = LatLng(selectedCity.value!.latitude, selectedCity.value!.longitude);
     // currentLocation = LatLng(city.latitude, city.longitude);
     CameraPosition kLake = CameraPosition(
       // bearing: 192.8334901395799,
