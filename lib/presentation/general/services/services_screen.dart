@@ -64,6 +64,31 @@ class _ServicesScreenState extends State<ServicesScreen> {
                       ServicesItem(service: item),
 
 
+                    const AppSizeBox(height: AppSize.s25),
+                    InkWell(
+                        onTap: ()=>
+                            MyRoute().navigate(context: context, route:  const TermsOfUseScreen()),
+                        child:
+                        AppText(
+                            title: 'Terms and Conditions'.tr(),
+                            titleColor: ColorManager.primary,
+                            fontWeightType: FontWeightType.medium,
+                            titleSize:FontSize.s20,underline: true)),
+
+
+                    const AppSizeBox(height: AppSize.s20),
+                    InkWell(
+                        onTap: ()=>
+                            MyRoute().navigate(context: context, route:  const PrivacyPolicyScreen()),
+                        child:
+                        AppText(
+                            title: 'PrivacyPolicy'.tr(),
+                            titleColor: ColorManager.primary,
+                            fontWeightType: FontWeightType.medium,
+                            titleSize:FontSize.s20,underline: true)),
+
+                    const AppSizeBox(height: AppSize.s30),
+
                     // ServicesItem(title: 'FindPropertyEasily'.tr(), value: 'servicesMessage'.tr(),showSoon: false,image: ImageManager.services1),
                     // ServicesItem(title: 'AdvertisingFeesAndPackages'.tr(), value: 'servicesMessage'.tr(),image: ImageManager.services2),
                     // ServicesItem(title: 'GeometricDesign'.tr(), value: 'servicesMessage'.tr(),image: ImageManager.services3),

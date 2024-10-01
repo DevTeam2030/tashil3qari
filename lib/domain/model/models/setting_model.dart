@@ -59,7 +59,7 @@ class SettingModel {
     countAllAds : int.tryParse(json["count_all_ads"].toString())??0,
       servicesAboutAr: json["services_about_ar"]??'',
       servicesAboutEn: json["services_about_en"]??'',
-    pledgeMessage : json["pledge_message "]??'',
+    pledgeMessage : json["pledge_message"]??'',
     terms: json["terms"]??'',
     policyPrivacy: json["policy_privacy"]??'',
 

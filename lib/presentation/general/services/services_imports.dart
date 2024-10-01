@@ -11,7 +11,11 @@ import '../../../components/size_box_height.dart';
 import '../../../providers/services_provider.dart';
 import '../../../utilites/color_manager.dart';
 import '../../../utilites/font_manager.dart';
+import '../../../utilites/route_manager.dart';
 import '../../../utilites/styles_manager.dart';
+import '../../../utilites/values_manager.dart';
+import '../app_screens/privacy_policy.dart';
+import '../app_screens/terms_of_use_screen.dart';
 import '../home_Screen/home_imports.dart';
 import '../home_Screen/widgets/widget_imports.dart';
 
