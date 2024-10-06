@@ -34,7 +34,9 @@ class ConsultantNotificationItem extends StatelessWidget {
         if(notification.type=='consultant'){
           MyRoute().navigate(context: context, route:  AdScreen(propertyId:propertyId,notificationId: notification.id,));
         }
-        else  MyRoute().navigate(context: context, route:  AdScreen(propertyId:propertyId,));
+        else {
+          MyRoute().navigate(context: context, route:  AdScreen(propertyId:propertyId,));
+        }
       },
       child: Container(
         width: 1.0..sw,

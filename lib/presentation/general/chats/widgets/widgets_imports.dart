@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:provider/provider.dart';
 import 'package:tashil_agary/app/contants.dart';
 import 'package:tashil_agary/app/enums.dart';

@@ -47,6 +47,7 @@ class _BidScreenState extends State<BidScreen> {
                   child: Column(
                     children: [
                       BidSlider(auctionData: provider.auctionData!,propertyId: widget.adId),
+
                       RemainingTime(auctionData: provider.auctionData!),
                       BidWidget(bidData: bidData,auctionData: provider.auctionData!,mostAuctionUser: provider.mostAuctionUser,),
 

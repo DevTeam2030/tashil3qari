@@ -195,7 +195,7 @@ class Utils{
              maximumSize: Size(.3.sw, AppSize.s40),
              // textStyle: getAppTextStyle(titleColor: ColorManager.white,
              //     titleSize: FontSize.s14,fontWeightType: FontWeightType.medium,underline: false),
-             primary: ColorManager.white, // button text color
+             // primary: ColorManager.white, // button text color
            ),
          ),
        ),
@@ -247,7 +247,7 @@ class Utils{
              maximumSize: Size(.3.sw, AppSize.s40),
              // textStyle: getAppTextStyle(titleColor: ColorManager.white,
              //     titleSize: FontSize.s14,fontWeightType: FontWeightType.medium,underline: false),
-             primary: ColorManager.white, // button text color
+             // primary: ColorManager.white, // button text color
            ),
          ),
        ),
@@ -857,9 +857,9 @@ print(e.toString());
    final temp = await getTemporaryDirectory();
    final path = '${temp.path}/image1.jpg';
    File(path).writeAsBytesSync(imageByte.buffer.asUint8List());
-   await Share.shareFiles([path],
-
-       text:text,subject: 'Atc');
+   await Share.shareXFiles([XFile(path),],text: text);
+   // await Share.shareFiles([path],
+       // text:text,subject: text');
 
  }
  static String  getDateTimeText({required DateTime? dateTime}){

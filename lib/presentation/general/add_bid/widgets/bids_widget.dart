@@ -64,138 +64,144 @@ class BidWidget extends StatelessWidget {
 
             const AppSizeBox(height: 10,),
 
-            Row(
+            if(Constants.userDataModel!=null&&auctionData.userId!=Constants.userDataModel!.id)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                AppText(
-                  title:'Please enter bid value'.tr(),
-                  titleMaxLines: 2,
-                  titleHeight: 1.3,
-                  titleSize: FontSize.s12,
-                  titleAlign: TextAlign.start,
-                  titleColor: ColorManager.black,
-                  fontWeightType: FontWeightType.medium,
-                ),
-                const AppSizeBox(width: 4,),
-                Container(
-                  height: 30,
-                  width: 30,
-               decoration: BoxDecoration(
-                 borderRadius: BorderRadius.only(
-                    topLeft: Constants.isArabic?const Radius.circular(0):const Radius.circular(10),
-                    bottomLeft: Constants.isArabic?const Radius.circular(0):const Radius.circular(10),
-                    topRight: Constants.isArabic?const Radius.circular(10):const Radius.circular(0),
-                    bottomRight: Constants.isArabic?const Radius.circular(10):const Radius.circular(0),
-                 ),
-                 border: Border.all(color: ColorManager.black,width: 1)
-               ),
-               child: Icon(Icons.add,color: ColorManager.black,size: 20,),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(
-                    height: 30,
-                    child: DefaultTextFormField(
-                      controller: bidData.priceController,
-                      hintTitle: 'Bid value'.tr(),
-                      labelTitle: 'Bid value'.tr(),
-                      textInputAction: TextInputAction.next,
-                      textInputType: TextInputType.number,
-                      hintFontSize: FontSize.s12,
-                      hintStyle: getAppTextStyle(titleColor: ColorManager.textField, fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
-                      textStyle: getAppTextStyle(titleColor: ColorManager.icons,   fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
-                      textSize: FontSize.s12,
-                      fillColor: ColorManager.white,
-                      borderColor: ColorManager.black,
-                      borderRadius: 0,
-
-                      validator: (v) => Validator().validatePrice(value: v.toString(),),
+                Row(
+                  children: [
+                    AppText(
+                      title:'Please enter bid value'.tr(),
+                      titleMaxLines: 2,
+                      titleHeight: 1.3,
+                      titleSize: FontSize.s12,
+                      titleAlign: TextAlign.start,
+                      titleColor: ColorManager.black,
+                      fontWeightType: FontWeightType.medium,
                     ),
-                  ),
-                ),
-
-                Container(
-                  height: 30,
-                  width: 30,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Constants.isArabic?const Radius.circular(10):const Radius.circular(0),
-                        bottomLeft: Constants.isArabic?const Radius.circular(10):const Radius.circular(0),
-                        topRight: Constants.isArabic?const Radius.circular(0):const Radius.circular(10),
-                        bottomRight: Constants.isArabic?const Radius.circular(0):const Radius.circular(10),
-                      ),
-                      border: Border.all(color: ColorManager.black,width: 1)
-                  ),
-                  child: Icon(Icons.remove,color: ColorManager.black,size: 20,),
-                ),
-
-              ],
-            ),
-
-            Padding(
-                padding:const EdgeInsets.only(top:18.0),
-                child: AppText(
-                    title: 'currencyMessage2'.tr().replaceFirst('c', auctionData.currency) ,
-                    titleAlign: TextAlign.center,
-                    titleMaxLines: 1,fontWeightType: FontWeightType.medium,
-                    titleSize: FontSize.s12,
-                    titleColor: ColorManager.icons3)),
-            const AppSizeBox(height: 20,),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                MyTextButton(
-                    title: '${'Confirm  bid of'.tr()} ${bidData.priceController.text} ${auctionData.currency}',
-                    size: Size( 0.8.sw,  60),
-                    radius: 14,
-                    fontWeightType: FontWeightType.medium,
-                    titleSize: FontSize.s12,
-                    primaryColor: ColorManager.primary,
-                    titleColor: ColorManager.white,
-                    borderColor: ColorManager.primary,
-                    content: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-
-                        CircleAvatar(
-                          radius: 14,
-                          backgroundColor: ColorManager.white,
-                          child: CircleAvatar(
-                            radius: 12,
-                            backgroundColor: ColorManager.primary,
-                            child: SvgPicture.asset(ImageManager.applyAuctions),
+                    const AppSizeBox(width: 4,),
+                    Container(
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Constants.isArabic?const Radius.circular(0):const Radius.circular(10),
+                            bottomLeft: Constants.isArabic?const Radius.circular(0):const Radius.circular(10),
+                            topRight: Constants.isArabic?const Radius.circular(10):const Radius.circular(0),
+                            bottomRight: Constants.isArabic?const Radius.circular(10):const Radius.circular(0),
                           ),
-                        ),
-
-                        const AppSizeBox(width: 4,),
-                        Flexible(child: AppText(
-                          title: 'Confirm  bid of'.tr() +' ${bidData.priceController.text} ${auctionData.currency}',
-                          titleMaxLines: 4,
-                          titleHeight: 1.6,
-                          titleSize: FontSize.s16,
-                          titleAlign: TextAlign.start,
-                          titleColor: ColorManager.white,
-                          fontWeightType: FontWeightType.medium,
-                        ),)
-                      ],
+                          border: Border.all(color: ColorManager.black,width: 1)
+                      ),
+                      child: Icon(Icons.add,color: ColorManager.black,size: 20,),
                     ),
-                    onPressed: (){
-                      if(!bidData.formKey.currentState!.validate()) return;
-                      double adPrice=double.tryParse(auctionData.minimumAuction)??0;
-                      double value=double.tryParse(bidData.priceController.text)??0;
-                      if(value<adPrice){
-                        LoadingDialog.showToastNotification('currencyMessage3'.tr());
-                        return;
-                      }
-                      LoadingDialog().optionalAlertDialog(context:context,
-                          message: 'Confirm  bid of'.tr() +' ${bidData.priceController.text} ${auctionData.currency}',
-                          title:'areYouSure'.tr(),
-                          okClick: (){
-                        Navigator.pop(context);
-                        bidData.addAuction(context: context,price: bidData.priceController.text,
-                            currencyId: auctionData.currencyId);
-                          });
-                    }),
+                    Expanded(
+                      flex: 1,
+                      child: SizedBox(
+                        height: 30,
+                        child: DefaultTextFormField(
+                          controller: bidData.priceController,
+                          hintTitle: 'Bid value'.tr(),
+                          labelTitle: 'Bid value'.tr(),
+                          textInputAction: TextInputAction.next,
+                          textInputType: TextInputType.number,
+                          hintFontSize: FontSize.s12,
+                          hintStyle: getAppTextStyle(titleColor: ColorManager.textField, fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
+                          textStyle: getAppTextStyle(titleColor: ColorManager.icons,   fontWeightType: FontWeightType.medium,titleSize: FontSize.s12,underline: false),
+                          textSize: FontSize.s12,
+                          fillColor: ColorManager.white,
+                          borderColor: ColorManager.black,
+                          borderRadius: 0,
+
+                          validator: (v) => Validator().validatePrice(value: v.toString(),),
+                        ),
+                      ),
+                    ),
+
+                    Container(
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Constants.isArabic?const Radius.circular(10):const Radius.circular(0),
+                            bottomLeft: Constants.isArabic?const Radius.circular(10):const Radius.circular(0),
+                            topRight: Constants.isArabic?const Radius.circular(0):const Radius.circular(10),
+                            bottomRight: Constants.isArabic?const Radius.circular(0):const Radius.circular(10),
+                          ),
+                          border: Border.all(color: ColorManager.black,width: 1)
+                      ),
+                      child: Icon(Icons.remove,color: ColorManager.black,size: 20,),
+                    ),
+
+                  ],
+                ),
+
+                Padding(
+                    padding:const EdgeInsets.only(top:18.0),
+                    child: AppText(
+                        title: 'currencyMessage2'.tr().replaceFirst('c', auctionData.currency) ,
+                        titleAlign: TextAlign.center,
+                        titleMaxLines: 1,fontWeightType: FontWeightType.medium,
+                        titleSize: FontSize.s12,
+                        titleColor: ColorManager.icons3)),
+                const AppSizeBox(height: 20,),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    MyTextButton(
+                        title: '${'Confirm  bid of'.tr()} ${bidData.priceController.text} ${auctionData.currency}',
+                        size: Size( 0.8.sw,  60),
+                        radius: 14,
+                        fontWeightType: FontWeightType.medium,
+                        titleSize: FontSize.s12,
+                        primaryColor: ColorManager.primary,
+                        titleColor: ColorManager.white,
+                        borderColor: ColorManager.primary,
+                        content: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+
+                            CircleAvatar(
+                              radius: 14,
+                              backgroundColor: ColorManager.white,
+                              child: CircleAvatar(
+                                radius: 12,
+                                backgroundColor: ColorManager.primary,
+                                child: SvgPicture.asset(ImageManager.applyAuctions),
+                              ),
+                            ),
+
+                            const AppSizeBox(width: 4,),
+                            Flexible(child: AppText(
+                              title: 'Confirm  bid of'.tr() +' ${bidData.priceController.text} ${auctionData.currency}',
+                              titleMaxLines: 4,
+                              titleHeight: 1.6,
+                              titleSize: FontSize.s16,
+                              titleAlign: TextAlign.start,
+                              titleColor: ColorManager.white,
+                              fontWeightType: FontWeightType.medium,
+                            ),)
+                          ],
+                        ),
+                        onPressed: (){
+                          if(!bidData.formKey.currentState!.validate()) return;
+                          double adPrice=double.tryParse(auctionData.minimumAuction)??0;
+                          double value=double.tryParse(bidData.priceController.text)??0;
+                          if(value<adPrice){
+                            LoadingDialog.showToastNotification('currencyMessage3'.tr());
+                            return;
+                          }
+                          LoadingDialog().optionalAlertDialog(context:context,
+                              message: 'Confirm  bid of'.tr() +' ${bidData.priceController.text} ${auctionData.currency}',
+                              title:'areYouSure'.tr(),
+                              okClick: (){
+                                Navigator.pop(context);
+                                bidData.addAuction(context: context,price: bidData.priceController.text,
+                                    currencyId: auctionData.currencyId);
+                              });
+                        }),
+                  ],
+                ),
               ],
             ),
 

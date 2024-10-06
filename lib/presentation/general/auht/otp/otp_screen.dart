@@ -9,8 +9,8 @@ class OtpScreen extends StatefulWidget {
   State<OtpScreen> createState() => _OtpScreenState();
 }
 
-class _OtpScreenState extends State<OtpScreen> with OtPData ,CodeAutoFill{
-
+class _OtpScreenState extends State<OtpScreen> {
+ final OtPData otpData = OtPData();
 
    Timer? timer;
 
@@ -20,26 +20,21 @@ class _OtpScreenState extends State<OtpScreen> with OtPData ,CodeAutoFill{
   void initState() {
     super.initState();
     startTimer();
-    getAppsSignature();
-    errorController = StreamController<ErrorAnimationType>();
+    // getAppsSignature();
+    otpData.errorController = StreamController<ErrorAnimationType>();
   }
   @override
   void dispose() {
-    SmsAutoFill().unregisterListener();
-    cancel();
+    // otpData.SmsAutoFill().unregisterListener();
+    // otpData.cancel();
     timer!.cancel();
-    codeController.dispose();
-    errorController?.close();
+    otpData.codeController.dispose();
+    otpData.errorController?.close();
     super.dispose();
 
 
   }
-  // +23koB4y70U
-  getAppsSignature()async{
-    signature = await SmsAutoFill().getAppSignature;
-    Utils.printData('signature=============== $signature');
-    SmsAutoFill().listenForCode;
-  }
+
   void startTimer() {
     const oneSec = Duration(seconds: 1);
     secondsCount.value=60;
@@ -57,18 +52,6 @@ class _OtpScreenState extends State<OtpScreen> with OtPData ,CodeAutoFill{
         }
       },
     );
-  }
-
-  @override
-  void codeUpdated() {
-    if(code!=null) {
-
-      setState(() {
-        otpCode = code!;
-        codeController.text=otpCode;
-
-      });
-    }
   }
 
 
@@ -95,7 +78,7 @@ class _OtpScreenState extends State<OtpScreen> with OtPData ,CodeAutoFill{
                       titleColor: ColorManager.white,
                       onPressed: (){
                         timer!.cancel();
-                        validateFromRegister(context: context, registerModel: widget.registerModel);
+                        otpData.validateFromRegister(context: context, registerModel: widget.registerModel);
 
                       }),
                 ],
@@ -116,7 +99,7 @@ class _OtpScreenState extends State<OtpScreen> with OtPData ,CodeAutoFill{
                     margin:const EdgeInsets.symmetric(horizontal: PaddingManager.p16),
                     child:SingleChildScrollView(
                       child: Form(
-                        key: formKey,
+                        key: otpData.formKey,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -179,7 +162,7 @@ class _OtpScreenState extends State<OtpScreen> with OtPData ,CodeAutoFill{
                               child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: PaddingManager.p18.w),
                                   child: PinCodeTextField(
-                                    errorAnimationController: errorController,
+                                    errorAnimationController: otpData.errorController,
                                     appContext: context,
                                     pastedTextStyle: const TextStyle(
                                       color: ColorManager.primary,
@@ -209,7 +192,7 @@ class _OtpScreenState extends State<OtpScreen> with OtPData ,CodeAutoFill{
                                         fieldOuterPadding: EdgeInsets.zero),
                                     cursorColor: ColorManager.starColor,
                                     animationDuration: const Duration(milliseconds: 300),
-                                    controller: codeController,
+                                    controller: otpData.codeController,
                                     keyboardType: TextInputType.number,
                                     textStyle: const TextStyle(
                                         fontSize: FontSize.s14,
@@ -218,7 +201,7 @@ class _OtpScreenState extends State<OtpScreen> with OtPData ,CodeAutoFill{
                                     onCompleted: (v) {
                                       // printLog(v);
                                       setState(() {
-                                        otpCode = v;
+                                        otpData.otpCode = v;
                                       });
                                       // verifyCode( context,widget.moreData,email!,widget.moreData.textEditingController!.text);
                                     },
@@ -251,10 +234,9 @@ class _OtpScreenState extends State<OtpScreen> with OtPData ,CodeAutoFill{
                               onTap: (){
                                 timer!.cancel();
                                 startTimer();
-                                sendVerificationCode(context: context,registerModel:widget.registerModel);
+                                otpData.sendVerificationCode(context: context,registerModel:widget.registerModel);
                               },
                               child: RichText(
-
                                 text:  TextSpan(
                                   text:"didntReceiveCode".tr(),
                                   style:getAppTextStyle(titleColor: ColorManager.text,

@@ -91,7 +91,7 @@ class _MyAppState extends State<MyApp> {
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         onGenerateRoute: RouteGenerator.getRoute,
-
+        navigatorObservers: [BotToastNavigatorObserver()],
         // initialRoute: Routes.logoScreen,
         home: const SplashScreen(),
         // home:const SplashScreen(),

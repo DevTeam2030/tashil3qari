@@ -79,17 +79,6 @@ class AdInformations extends StatelessWidget {
               InformationsItem(title: 'streetWidth'.tr(),value:'${propertyInfo.streetWidth} ${'meter1'.tr()}',color: ColorManager.white,),
 
 
-    // bool annex;
-    // bool carEntrance;
-    // bool elevator;
-    // bool  airConditioners;
-    // bool waterAvailability;
-    // bool electricityAvailability;
-    // bool swimmingPool;
-    // bool  footballField;
-    // bool  volleyballCourt;
-    // bool  amusementPark;
-    // bool familySection;
 
     if(provider.adCategory!.options.feminine)
               InformationsItem(title: 'Feminine'.tr(),value:propertyInfo.feminine?'Yes'.tr():'No'.tr(),color: ColorManager.white,),

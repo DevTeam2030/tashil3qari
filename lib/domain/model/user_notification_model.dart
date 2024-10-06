@@ -43,7 +43,7 @@ class NotificationModel {
   factory NotificationModel.fromJson(Map<String, dynamic> json) => NotificationModel(
     id: json["id"],
     image: json["image"]??'',
-    propertyId: json["property_id"]??'',
+    propertyId: json["property_id"].toString(),
     notTitle: json["not_title"]??'',
     message: json["message"]??'',
     date: DateTime.tryParse(json["date"])??DateTime.now(),

@@ -1,11 +1,9 @@
 import 'dart:async';
 import 'dart:ui' as ui;
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
-import 'package:sms_autofill/sms_autofill.dart';
 import 'package:tashil_agary/app/enums.dart';
 import 'package:tashil_agary/app/extentions.dart';
 import 'package:tashil_agary/app/utils.dart';

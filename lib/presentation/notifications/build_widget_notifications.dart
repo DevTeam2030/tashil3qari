@@ -51,8 +51,8 @@ class _BuildWidgetNotificationsState extends State<BuildWidgetNotifications> {
         element.date.month==date.month&&element.date.day==date.day ).toList();
 
     previousList=widget.notifications.where((element) => !todayList.contains(element)).toList();
-    print('todayList.length ${todayList.length}');
-    print('previousList.length ${todayList.length}');
+    // print('todayList.length ${todayList.length}');
+    // print('previousList.length ${todayList.length}');
     return  Container(
       height: 1.0.sh,
       width: 1.0.sw,

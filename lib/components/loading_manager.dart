@@ -10,7 +10,8 @@ import 'package:tashil_agary/utilites/styles_manager.dart';
 import 'package:tashil_agary/utilites/values_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:flutter_animated_dialog_updated/flutter_animated_dialog.dart';
+// import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 
 
 class LoadingDialog {

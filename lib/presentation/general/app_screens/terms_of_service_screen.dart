@@ -51,7 +51,7 @@ class _TermsOfServiceScreenState extends State<TermsOfServiceScreen> {
                     return true;
                   },
                   // renderMode: RenderMode.column,
-                  webView: true,
+                  // webView: true,
 
 
                 ),

@@ -3,6 +3,7 @@ class AuctionDataModel {
   String minimumAuction;
   String price;
   String currencyId;
+  int userId;
   String currency;
   bool isLive;
   String endDurationDays;
@@ -25,12 +26,14 @@ class AuctionDataModel {
     required this.auctionsUsers,
     required this.gallery,
     required this.wishlist,
+    required this.userId,
   });
 
   factory AuctionDataModel.fromJson(Map<String, dynamic> json) => AuctionDataModel(
     minimumAuction: json["minimum_auction"]??'',
     price: json["price"]??'',
     currencyId: json["currency_id"]??'',
+    userId: int.tryParse(json["user_id"].toString())??0,
     currency: json["currency"]??'',
     isLive: json["is_live"]??false,
     endDurationDays: json["end_duration_days"]??'0',

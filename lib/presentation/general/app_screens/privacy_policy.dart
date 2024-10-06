@@ -45,7 +45,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                 return true;
               },
               // renderMode: RenderMode.column,
-              webView: true,
+              // webView: true,
 
 
             ),

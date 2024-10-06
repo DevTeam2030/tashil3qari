@@ -26,8 +26,6 @@ ThemeData getApplicationThemeData({required Brightness brightness}){
     primaryColorLight: ColorManager.modeDarkColor,
     brightness:brightness,
     disabledColor: ColorManager.transparent,
-    // splashColor: ColorManager.secondary.withOpacity(.4),
-      backgroundColor: ColorManager.white,
 
 
 
@@ -38,6 +36,7 @@ ThemeData getApplicationThemeData({required Brightness brightness}){
     useMaterial3: true,
     highlightColor:  ColorManager.transparent,
     splashColor: ColorManager.transparent,
+    // colorScheme: ColorScheme(background: ColorManager.white),
 
     // colorScheme: ColorScheme.fromSwatch().copyWith(secondary: ColorManager.grey1),
 

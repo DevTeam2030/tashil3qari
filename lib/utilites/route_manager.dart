@@ -242,10 +242,10 @@ class RouteGenerator{
 
 
 
-      case Routes.searchScreen :return MaterialPageRoute(builder: (context) =>  const SearchScreen(cat: null, subCat: null,),);
-      case Routes.subCategoriesScreen :return MaterialPageRoute(builder: (context) =>   SubCategoriesScreen(
-          cat: HomeMainCategoryModel(id: 0, name: '', image: '', background: '',countSubCats: 0,
-          subCategories: [])),);
+      // case Routes.searchScreen :return MaterialPageRoute(builder: (context) =>  const SearchScreen(cat: null, subCat: null,),);
+      // case Routes.subCategoriesScreen :return MaterialPageRoute(builder: (context) =>   SubCategoriesScreen(
+      //     cat: HomeMainCategoryModel(id: 0, name: '', image: '', background: '',countSubCats: 0,
+      //     subCategories: [])),);
       // case Routes.oneCategoryScreen :return MaterialPageRoute(builder: (context) =>   OneCategoryScreen(
       //   cat: HomeMainCategoryModel(id: 0, name: '', image: '', background: '',countSubCats: 0,subCategories: [])),);
       case Routes.searchFilterScreen :return MaterialPageRoute(builder: (context) =>  SearchFilterScreen(onSearch: (){},));

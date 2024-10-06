@@ -123,6 +123,7 @@ Widget build(BuildContext context) {
               const AppSizeBox(height: AppSize.s10),
 
               DefaultTextFormField(
+                enabled: false,
                 controller: widget.personalProfileData.idController,
                 hintTitle:  widget.personalProfileData.userType==UserType.consultant?"idNumberCons".tr(): "idNumberUser".tr(),
                 labelTitle: widget.personalProfileData.userType==UserType.consultant?"idNumberCons".tr(): "idNumberUser".tr(),

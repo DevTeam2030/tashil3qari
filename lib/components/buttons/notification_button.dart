@@ -1,8 +1,6 @@
 import 'package:badges/badges.dart' as badge;
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tashil_agary/app/contants.dart';
 import 'package:tashil_agary/app/enums.dart';
 import 'package:tashil_agary/app/utils.dart';
 import 'package:tashil_agary/presentation/notifications/notifications_screen.dart';
@@ -32,7 +30,9 @@ class NotificationsButton extends StatelessWidget {
           builder: (context, provider, child) =>
               provider.countUnreadNotification>0?
               badge.Badge(
-                badgeColor: ColorManager.redShade700,
+                badgeStyle: badge.BadgeStyle(
+                  badgeColor: ColorManager.redShade700,
+                ),
             position: badge.BadgePosition.topEnd(),
             // padding: EdgeInsets.symmetric(horizontal: 1),
             badgeContent:   AppText(
