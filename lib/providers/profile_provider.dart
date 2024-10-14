@@ -222,10 +222,12 @@ class ProfileProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> deleteProperty({required BuildContext context,required UserAdsModel property,required int reasonId}) async {
+  Future<void> deleteProperty({required BuildContext context,required UserAdsModel property,
+    required int reasonId,required String otherReasonOptional}) async {
     isLoading = true;
     notifyListeners();
-    bool isDeleted= await _api.deleteProperty(context: context,propertyId: property.id,reasonId: reasonId);
+    bool isDeleted= await _api.deleteProperty(context: context,propertyId: property.id,reasonId: reasonId
+    ,otherReasonOptional: otherReasonOptional);
     if(isDeleted)userAds.removeWhere((element) => element.id==property.id);
     isLoading = false;
     notifyListeners();

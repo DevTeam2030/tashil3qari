@@ -53,7 +53,7 @@ class _SearchOpenSearchState extends State<SearchOpenSearch> {
   ValueNotifier<int> storesNo = ValueNotifier<int>(0);
   ValueNotifier<int> floorsNo = ValueNotifier<int>(0);
   ValueNotifier<int> buildingAge = ValueNotifier<int>(0);
-  ValueNotifier<String> direction = ValueNotifier<String>('east');
+  ValueNotifier<List<String>> direction = ValueNotifier<List<String>>([Constants.directions.first]);
 late  ValueNotifier<FinishingTypesModel> finishing;
   ValueNotifier<bool> feminine = ValueNotifier<bool>(false);
   ValueNotifier<bool> annex = ValueNotifier<bool>(false);
@@ -209,7 +209,7 @@ late  ValueNotifier<FinishingTypesModel> finishing;
                                 floor: !selectedCategory.value.options.floor?0: floor.value,
                                 apartmentsNo: !selectedCategory.value.options.apartmentsNo?0: apartmentsNo.value,
                                 buildingAge:!selectedCategory.value.options.buildingAge?0: buildingAge.value ,
-                                direction:!selectedCategory.value.options.direction?'': direction.value ,
+                                direction:!selectedCategory.value.options.direction?[]: direction.value ,
                                 receptionsNo: !selectedCategory.value.options.receptionsNo?0: receptionsNo.value,
                                 storesNo:!selectedCategory.value.options.storesNo?0:  storesNo.value,
                                 floorsNo:!selectedCategory.value.options.floorsNo?0:  floorsNo.value,

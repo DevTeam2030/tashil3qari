@@ -116,7 +116,20 @@ class _MakeAgreementScreenState extends State<MakeAgreementScreen> {
                             builder: (context, value, child) =>  Column(
                               children: [
 
+                                if(enableText)
+                                  Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children:[
+                                        CheckBoxWidget(
+                                          checkBoxValue: value,
+                                          title: 'Specify an amount'.tr(),
+                                          checkBoxFunction: (v)=>_agreementData.addTotalAmount.value=v!,
+                                        ),
 
+
+                                      ]
+                                  ),
+                                if(value&&enableText) const AppSizeBox(height: AppSize.s10),
                                 if(value)
                                   DefaultTextFormField(
                                     controller: _agreementData.totalCommissionController,
@@ -133,20 +146,8 @@ class _MakeAgreementScreenState extends State<MakeAgreementScreen> {
                                     borderColor: ColorManager.textGrey,
                                     validator: (v) => Validator().validatePrice(value: v.toString(),),
                                   ),
-                                if(value&&enableText) const AppSizeBox(height: AppSize.s10),
-                                if(enableText)
-                                  Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children:[
-                                        CheckBoxWidget(
-                                          checkBoxValue: value,
-                                          title: 'Specify an amount'.tr(),
-                                          checkBoxFunction: (v)=>_agreementData.addTotalAmount.value=v!,
-                                        ),
 
 
-                                      ]
-                                  ),
                               ],
                             ),),
 
@@ -155,6 +156,20 @@ class _MakeAgreementScreenState extends State<MakeAgreementScreen> {
                              builder: (context, value, child) =>  Column(
                                children: [
 
+                                 if(enableText)
+                                   Row(
+                                       mainAxisAlignment: MainAxisAlignment.start,
+                                       children:[
+                                         CheckBoxWidget(
+                                           checkBoxValue: value,
+                                           title: 'Add percentage'.tr(),
+                                           checkBoxFunction: (v)=>_agreementData.addPercentage.value=v!,
+                                         ),
+
+
+                                       ]
+                                   ),
+                                 if(value&&enableText) const AppSizeBox(height: AppSize.s20),
 
                                  if(value)
                                  Row(
@@ -201,20 +216,7 @@ class _MakeAgreementScreenState extends State<MakeAgreementScreen> {
 
                                    ],
                                  ),
-                                 if(value&&enableText) const AppSizeBox(height: AppSize.s20),
-                                 if(enableText)
-                                 Row(
-                                   mainAxisAlignment: MainAxisAlignment.start,
-                                     children:[
-                                       CheckBoxWidget(
-                                         checkBoxValue: value,
-                                         title: 'Add percentage'.tr(),
-                                         checkBoxFunction: (v)=>_agreementData.addPercentage.value=v!,
-                                       ),
 
-
-                                     ]
-                                 ),
                                ],
                              ),),
 

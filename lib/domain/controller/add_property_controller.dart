@@ -52,8 +52,13 @@ class AddPropertyController  {
       else if(value is List<File>){
         for(int i=0;i<value.length;i++) {
           formData.files.add(
-              MapEntry(key+'[$i]', MultipartFile.fromFileSync(value[i].path)));
+              MapEntry('$key[$i]', MultipartFile.fromFileSync(value[i].path)));
         }}
+      else if(value is List<String>){
+        for(int i=0;i<value.length;i++) {
+          formData.fields.add(MapEntry('$key$i', value[i]));
+        }
+      }
       else {
           formData.fields.add(MapEntry(key, value.toString()));
 
@@ -89,8 +94,13 @@ class AddPropertyController  {
       else if(value is List<File>){
         for(int i=0;i<value.length;i++) {
           formData.files.add(
-              MapEntry(key+'[$i]', MultipartFile.fromFileSync(value[i].path)));
+              MapEntry('$key[$i]', MultipartFile.fromFileSync(value[i].path)));
         }}
+      else if(value is List<String>){
+        for(int i=0;i<value.length;i++) {
+              formData.fields.add(MapEntry('$key$i', value[i]));
+        }
+      }
       else {
           formData.fields.add(MapEntry(key, value.toString()));
 

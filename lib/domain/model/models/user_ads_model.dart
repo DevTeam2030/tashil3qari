@@ -42,7 +42,7 @@ class UserAdsModel {
 
   String receptionsNo;
   String apartmentsNo;
-  String direction;
+  List<String> direction;
   String streetWidth;
   String storesNo;
   String buildingAge;
@@ -140,7 +140,8 @@ class UserAdsModel {
     finishingTypeId: json["finishing_type_id"].toString().isNotEmpty&&json["finishing_type_id"]!=null?json["finishing_type_id"].toString():'0',
     receptionsNo: json["receptions_no"].toString().isNotEmpty&&json["receptions_no"]!=null?json["receptions_no"].toString():'0',
     apartmentsNo: json["apartments_no"].toString().isNotEmpty&&json["apartments_no"]!=null?json["apartments_no"].toString():'0',
-    direction: json["direction"].toString().isNotEmpty&&json["direction"]!=null?json["direction"].toString():'',
+    // direction: json["direction"].toString().isNotEmpty&&json["direction"]!=null?json["direction"].toString():'',
+    direction:json["direction"]==null?[]: List<String>.from(json["direction"].map((x) => x)),
     streetWidth: json["street_width"].toString().isNotEmpty&&json["street_width"]!=null?json["street_width"].toString():'0',
     storesNo: json["stores_no"].toString().isNotEmpty&&json["stores_no"]!=null?json["stores_no"].toString():'0',
     buildingAge: json["building_age"].toString().isNotEmpty&&json["building_age"]!=null?json["building_age"].toString():'0',

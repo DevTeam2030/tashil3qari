@@ -46,7 +46,7 @@ class _HomeOpenSearchState extends State<HomeOpenSearch> {
   ValueNotifier<bool> volleyballCourt = ValueNotifier<bool>(false);
   ValueNotifier<bool> amusementPark = ValueNotifier<bool>(false);
   ValueNotifier<bool> familySection = ValueNotifier<bool>(false);
-  ValueNotifier<String> direction = ValueNotifier<String>('east');
+  ValueNotifier<List<String>> direction = ValueNotifier<List<String>>([Constants.directions.first]);
 
 late  ValueNotifier<FinishingTypesModel> finishing;
   @override
@@ -200,7 +200,7 @@ late  ValueNotifier<FinishingTypesModel> finishing;
                                 floor: !selectedCategory.value.options.floor?0: floor.value,
                                 apartmentsNo: !selectedCategory.value.options.apartmentsNo?0: apartmentsNo.value,
                                 buildingAge:!selectedCategory.value.options.buildingAge?0: buildingAge.value ,
-                                direction:!selectedCategory.value.options.direction?'': direction.value ,
+                                direction:!selectedCategory.value.options.direction?[]: direction.value ,
                                 receptionsNo: !selectedCategory.value.options.receptionsNo?0: receptionsNo.value,
                                 storesNo:!selectedCategory.value.options.storesNo?0:  storesNo.value,
                                 floorsNo:!selectedCategory.value.options.floorsNo?0:  floorsNo.value,

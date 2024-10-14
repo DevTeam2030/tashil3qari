@@ -100,7 +100,8 @@ class _AddAdScreenState extends State<AddAdScreen> {
                       addAdtData.storesNo.value=0;
                       addAdtData.buildingAge.value=0;
                       addAdtData.feminine.value=false;
-                      addAdtData.direction.value=Constants.directions.first;
+                      addAdtData.direction.value=[Constants.directions.first];
+
 
 
                     }),
@@ -228,6 +229,7 @@ class _AddAdScreenState extends State<AddAdScreen> {
                         children: [
                           if(value.options.direction)
                             DirectionDropdownButton(
+                              fromSearch: false,
                               directions: Constants.directions,
                               notifier: addAdtData.direction,
                             ),
@@ -240,7 +242,7 @@ class _AddAdScreenState extends State<AddAdScreen> {
                           PropertyItem(notifier: addAdtData.floor, color: ColorManager.white, title: 'Floor'.tr(),),
 
                           if(value.options.feminine)
-                            SwitchItem(notifier: addAdtData.feminine, title: 'feminine'.tr(),),
+                            SwitchItem(notifier: addAdtData.feminine, title: 'Feminine'.tr(),),
 
 
                           if(value.options.annex)

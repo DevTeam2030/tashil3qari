@@ -61,14 +61,20 @@ class ProfileController  {
 
   }
 
-  Future<bool> deleteProperty({required BuildContext context,required int propertyId,required int reasonId}) async {
+  Future<bool> deleteProperty({required BuildContext context,required int propertyId,required int reasonId,
+    required String otherReasonOptional}) async {
 
+    Map<String,dynamic> body= {
+      "property_id":propertyId,
+      "reason_id":reasonId
+    };
+    if(otherReasonOptional.isNotEmpty){
+      body['other_reason']=otherReasonOptional;
+
+    }
     var res = await _dio.post(url:'${Urls.deleteProperty}?lang=${Constants.langCode}',
         context: context,
-        body: {
-          "property_id":propertyId,
-          "reason_id":reasonId
-        },
+        body: body,
     );
     if (res != null) {
      try{

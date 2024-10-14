@@ -41,7 +41,7 @@ class AddAdtData {
   ValueNotifier<int> storesNo = ValueNotifier<int>(0);
   ValueNotifier<int> floorsNo = ValueNotifier<int>(0);
   ValueNotifier<int> buildingAge = ValueNotifier<int>(0);
-  ValueNotifier<String> direction = ValueNotifier<String>('east');
+  ValueNotifier<List<String>> direction = ValueNotifier<List<String>>([Constants.directions.first]);
 
 
 late  ValueNotifier<FinishingTypesModel> finishing ;
@@ -113,7 +113,7 @@ late  ValueNotifier<HomeCatogeryModel> category ;
     floor: !category.value.options.floor?0: floor.value,
     apartmentsNo: !category.value.options.apartmentsNo?0: apartmentsNo.value,
     buildingAge:!category.value.options.buildingAge?0: buildingAge.value ,
-    direction:!category.value.options.direction?'': direction.value ,
+    direction:!category.value.options.direction?[]: direction.value ,
     receptionsNo: !category.value.options.receptionsNo?0: receptionsNo.value,
     storesNo:!category.value.options.storesNo?0:  storesNo.value,
     floorsNo:!category.value.options.floorsNo?0:  floorsNo.value,

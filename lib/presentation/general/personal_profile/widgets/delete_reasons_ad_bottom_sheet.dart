@@ -3,7 +3,7 @@ part of'widgets_imports.dart';
 
 
 class DeleteReasonsAdBottomSheet extends StatefulWidget {
-  final Function(int adId,int reasonId)onDeleteAd ;
+  final Function(int adId,int reasonId,String otherReasonOptional)onDeleteAd ;
   final int adId;
   final String adType ;
   const DeleteReasonsAdBottomSheet({super.key, required this.adType,required this.adId,required this.onDeleteAd});
@@ -20,14 +20,17 @@ class _DeleteReasonsAdBottomSheetState extends State<DeleteReasonsAdBottomSheet>
   @override
   void initState() {
     super.initState();
-  if(widget.adType=='rent'){
+
+  if(widget.adType=='rent'||widget.adType=='all'){
     reasons=Constants.settingModel.reasons.where((element) => element.type=='rent').toList();
-  }else  if(widget.adType=='sale'){
+  }else  if(widget.adType=='sale'||widget.adType=='all'){
     reasons=Constants.settingModel.reasons.where((element) => element.type=='sale').toList();
   }else{
     reasons=Constants.settingModel.reasons;
   }
      selectedReason = reasons.first;
+
+
   }
   @override
   void dispose() {
@@ -137,7 +140,17 @@ class _DeleteReasonsAdBottomSheetState extends State<DeleteReasonsAdBottomSheet>
                     titleColor: ColorManager.white,
                     onPressed: ()async{
                   Navigator.pop(context);
-                  widget.onDeleteAd(widget.adId, selectedReason.id);
+                  if(selectedReason.type=='all') {
+                    LoadingDialog().widgetAlertDialog(context: context,
+                        widget: DeleteAdReasonWidget(reason: selectedReason,
+                        onDeleteAd:widget.onDeleteAd ,
+                        adId: widget.adId,
+                        ));
+                  } else{
+                    widget.onDeleteAd(widget.adId, selectedReason.id,'');
+                  }
+
+
                     }),
                 const AppSizeBox(height: 14,),
 

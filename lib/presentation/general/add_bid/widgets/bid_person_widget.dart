@@ -45,7 +45,9 @@ class BidPersonWidget extends StatelessWidget {
                     ),
 
                     AppText(
-                      title:user.createdAt,
+                      title:DateTime.tryParse(user.createdAt)==null?user.createdAt:
+                     ( DateFormat('yyyy-MM-dd').format(DateTime.tryParse(user.createdAt)!)+
+                      '  '+DateFormat('hh:mm a').format(DateTime.tryParse(user.createdAt)!)),
                       titleSize: FontSize.s9,
                       titleAlign: TextAlign.start,
                       titleColor: ColorManager.black,

@@ -83,8 +83,9 @@ class PersonalProfileData{
   addToAuction({required BuildContext context,required UserAdsModel ad})
   => MyRoute().navigate(context: ctx, route: AddAdBidScreen(propertyId: ad.id,isPropertyFeatured: ad.featured,));
 
-  deleteProperty({required UserAdsModel ad,required int reasonId})
-  async=> ctx.read<ProfileProvider>().deleteProperty(context: ctx,property: ad,reasonId: reasonId);
+  deleteProperty({required UserAdsModel ad,required int reasonId,required String otherReasonOptional,})
+  async=> ctx.read<ProfileProvider>().deleteProperty(context: ctx,property: ad,
+      reasonId: reasonId,otherReasonOptional: otherReasonOptional);
 
 
 
@@ -97,12 +98,13 @@ changePassword({required BuildContext context}){
         currentPassword: oldPasswordController.text.trim());
   }
 }
-  deleteMyAd({required BuildContext context, required UserAdsModel ad}){
+  deleteMyAd({required BuildContext context, required UserAdsModel ad,}){
     Utils.showModalBottomSheetApp(
         widget: DeleteReasonsAdBottomSheet(
           adId: ad.id,
           adType: ad.type,
-          onDeleteAd:(adId,reasonId)=>deleteProperty(ad: ad, reasonId: reasonId),
+          onDeleteAd:(adId,reasonId,otherReasonOptional)=>deleteProperty(ad: ad, reasonId: reasonId,
+          otherReasonOptional: otherReasonOptional),
         )
     );
   }

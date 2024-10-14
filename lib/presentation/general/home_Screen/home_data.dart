@@ -8,7 +8,7 @@ class HomeData {
   //         image: user.image,type: user.type==UserType.user?'normal':"consultant");
   //   }
   // }
-  double cameraZoom=4.7;
+  double cameraZoom=4.3;
   Set<Marker> markers = {};
   Set<Marker> allCitiesMarkers = {};
   Completer<GoogleMapController> mapController = Completer();

@@ -25,12 +25,17 @@ changeLoading([bool? isloading,bool? isNotify]){
 
 
 
-  Future< List<GeneralPropertyModel>>getProperties({required BuildContext context,bool?isNotify,int? cityId,int? categoryId,
+  Future< List<GeneralPropertyModel>>getProperties({required BuildContext context,bool?isNotify,
+    int? cityId,int? categoryId,
     int? floor,int? bathroomsNo,int? roomsNo,double? propertySize,double? minPrice,double? maxPrice,
     int? finishingTypeId,required bool isAuction, bool? forSale,bool? forRent,bool? monthly,
-    bool? annex, bool? carEntrance, bool? elevator, bool?  airConditioners, bool? waterAvailability, bool? electricityAvailability,
-    bool? swimmingPool, bool?  footballField, bool?  volleyballCourt, bool?  amusementPark, bool? familySection,
-    int? kitchensNo, int? receptionsNo,int?apartmentsNo,bool?feminine,int? storesNo,int? floorsNo,int?buildingAge,String? direction,double? streetWidth})async{
+    bool? annex, bool? carEntrance, bool? elevator, bool?  airConditioners, bool? waterAvailability,
+    bool? electricityAvailability,
+    bool? swimmingPool, bool?  footballField, bool?  volleyballCourt, bool?  amusementPark,
+    bool? familySection,
+    int? kitchensNo, int? receptionsNo,int?apartmentsNo,bool?feminine,int? storesNo,int? floorsNo,
+    int?buildingAge,
+    List<String>? direction,double? streetWidth})async{
     isLoading=true;
     properties=[];
     if(isNotify!=false) notifyListeners();

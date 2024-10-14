@@ -160,7 +160,7 @@ class _AdDetailsDataState extends State<AdDetailsData> {
                 widget.editAdData.buildingAge.value=0;
                 widget.editAdData.floorsNo.value=0;
                 widget.editAdData.feminine.value=false;
-                widget.editAdData.direction.value=Constants.directions.first;
+                widget.editAdData.direction.value=[Constants.directions.first];
 
 
               }),
@@ -243,6 +243,7 @@ class _AdDetailsDataState extends State<AdDetailsData> {
                 children: [
                   if(value.options.direction)
                     DirectionDropdownButton(
+                      fromSearch: false,
                       directions: Constants.directions,
                       notifier: widget.editAdData.direction,
                     ),

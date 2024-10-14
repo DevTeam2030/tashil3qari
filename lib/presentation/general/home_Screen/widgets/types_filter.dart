@@ -20,7 +20,7 @@ final ValueNotifier<bool> open;
  final  ValueNotifier<int> storesNo;
  final  ValueNotifier<int> floorsNo;
  final  ValueNotifier<int> buildingAge;
- final  ValueNotifier<String> direction;
+ final  ValueNotifier<List<String>> direction;
  final ValueNotifier<bool> feminine ;
 
 final ValueNotifier<bool> annex ;
@@ -232,6 +232,7 @@ class _TypesFilterState extends State<TypesFilter> {
                           children: [
                             if(value.options.direction)
                               DirectionDropdownButton(
+                                fromSearch: true,
                                 directions: Constants.directions,
                                 notifier: widget.direction,
                               ),
@@ -241,7 +242,7 @@ class _TypesFilterState extends State<TypesFilter> {
                                 subTitle: 'meter1'.tr(),color: ColorManager.white,fillColor: ColorManager.textGrey, ),
 
                             if(value.options.feminine)
-                              SwitchItem(notifier: widget.feminine, title: 'feminine'.tr(),),
+                              SwitchItem(notifier: widget.feminine, title: 'Feminine'.tr(),),
 
 
 

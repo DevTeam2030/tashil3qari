@@ -185,7 +185,7 @@ class RouteGenerator{
       case Routes.addAdScreen :return MaterialPageRoute(builder: (context) =>  const AddAdScreen(),);
       case Routes.editAdScreen :return MaterialPageRoute(builder: (context) =>   EditAdScreen(
         userAd: UserAdsModel(
-            apartmentsNo: '',buildingAge:'' ,direction: '',receptionsNo: '',storesNo: '',streetWidth: '',feminine: false,
+            apartmentsNo: '',buildingAge:'' ,direction: [],receptionsNo: '',storesNo: '',streetWidth: '',feminine: false,
           id: 0,type: '',image: '',roomsNo: '',propertyTitle: '',currency: '',category: '',gallery: [],published: false,show: false,
           wishlist: false,lastUpadte: '',propertySize: '',price: '',cityId: 0,countryId: 0,rate: 0,bathroomsNo: '',city:'',
            country: '',featured: false,floor: '',kitchensNo: '',latitude: 0,longitude: 0,currencyId: '',floorsNo: '',
@@ -215,7 +215,7 @@ class RouteGenerator{
       case Routes.adPhotoViewScreen :return MaterialPageRoute(builder: (context) =>    AdPhotoViewScreen(propertyInfo: PropertyInfoModel(
         id: 0,cityId: 0,image: '',countryId: 0,rate: 0,bathroomsNo: '',city: '',feminine: false,country: '',featured: false,finishingType: '',
         floorsNo: '',
-        apartmentsNo: '',buildingAge:'' ,direction: '',receptionsNo: '',storesNo: '',streetWidth: '',
+        apartmentsNo: '',buildingAge:'' ,direction: [],receptionsNo: '',storesNo: '',streetWidth: '',
         type: '',price: 0,currency: '',userImage: '',catId: 0,auctionsUsers: [],minimumAuction: '0',video: '',
         monthly: true,
           airConditioners: false,amusementPark: false,annex: false,carEntrance: false,electricityAvailability: false,

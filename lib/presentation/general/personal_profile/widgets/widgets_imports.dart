@@ -57,3 +57,4 @@ part 'rating_widget.dart';
 part 'reply_to_rate_widget.dart';
 part 'add_comment_rate_widget.dart';
 part 'following_user_widgets.dart';
+part 'delete_ad_reason_widget.dart';

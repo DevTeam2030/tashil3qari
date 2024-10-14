@@ -29,9 +29,11 @@ class SearchProvider extends ChangeNotifier {
   Future< List<GeneralPropertyModel>>getProperties({required BuildContext context,bool?isNotify,int? cityId,int? categoryId,
   int? floor,int? bathroomsNo,int? roomsNo,double? propertySize,double? minPrice,double? maxPrice,bool?isAuction,
   int? finishingTypeId,bool? forSale,bool? forRent,bool?feminine,bool? monthly,
-    bool? annex, bool? carEntrance, bool? elevator, bool?  airConditioners, bool? waterAvailability, bool? electricityAvailability,
+    bool? annex, bool? carEntrance, bool? elevator, bool?  airConditioners, bool? waterAvailability,
+    bool? electricityAvailability,
     bool? swimmingPool, bool?  footballField, bool?  volleyballCourt, bool?  amusementPark, bool? familySection,
-    int? kitchensNo, int? receptionsNo,int?apartmentsNo,int? storesNo,int? floorsNo,int?buildingAge,String? direction,double? streetWidth})async{
+    int? kitchensNo, int? receptionsNo,int?apartmentsNo,int? storesNo,int? floorsNo,int?buildingAge,
+    List<String>? direction,double? streetWidth})async{
   isLoading=true;
   allProperties=[];
   properties=[];

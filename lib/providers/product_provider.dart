@@ -153,14 +153,17 @@ class ProductProvider extends ChangeNotifier {
         widget: DeleteReasonsAdBottomSheet(
           adId: propertyId,
           adType: propertyType,
-          onDeleteAd:(adId,reasonId)=>deleteProperty(propertyId: propertyId, reasonId: reasonId,context: context
+          onDeleteAd:(adId,reasonId,otherReasonOptional)=>deleteProperty(
+              propertyId: propertyId, reasonId: reasonId,context: context,otherReasonOptional: otherReasonOptional
         )
     ));
   }
-  Future<void> deleteProperty({required BuildContext context,required int propertyId,required int reasonId}) async {
+  Future<void> deleteProperty({required BuildContext context,
+    required int propertyId,required int reasonId,required String otherReasonOptional}) async {
     isLoading = true;
     notifyListeners();
-    bool isDeleted= await _apiProfile.deleteProperty(context: context,propertyId: propertyId,reasonId: reasonId);
+    bool isDeleted= await _apiProfile.deleteProperty(context: context,
+        propertyId: propertyId,reasonId: reasonId,otherReasonOptional: otherReasonOptional);
     if(isDeleted)Navigator.pop(Constants.navigatorAppKey.currentState!.context);
     isLoading = false;
     notifyListeners();

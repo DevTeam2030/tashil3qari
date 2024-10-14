@@ -74,7 +74,7 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
              // ),
 
 
-             if(showAgreementButton)
+             if(showAgreementButton&&receiverId!=Constants.userDataModel!.id)
              SizedBox(
                height: 35,
                child: MyTextButton(title:'Make agreement'.tr(),

@@ -94,7 +94,8 @@ class HomeController  {
   int? finishingTypeId,int? ownerId,bool? isAuction, bool? forSale,bool? forRent ,bool? monthly,
     bool?feminine, bool? annex, bool? carEntrance, bool? elevator, bool?  airConditioners, bool? waterAvailability, bool? electricityAvailability,
     bool? swimmingPool, bool?  footballField, bool?  volleyballCourt, bool?  amusementPark, bool? familySection,
-  int? kitchensNo, int? receptionsNo,int?apartmentsNo,int? storesNo,int? floorsNo,int?buildingAge,String? direction,double? streetWidth}) async {
+  int? kitchensNo, int? receptionsNo,int?apartmentsNo,int? storesNo,int? floorsNo,int?buildingAge,
+      List<String>? direction,double? streetWidth}) async {
     List<GeneralPropertyModel> data=[];
     String url='${Urls.properties}?lang=${Constants.langCode}&no_page=1';
 
@@ -143,7 +144,7 @@ class HomeController  {
     if(apartmentsNo!=null&&apartmentsNo>0)url='$url&apartments_no=$apartmentsNo';
     if(storesNo!=null&&storesNo>0)url='$url&stores_no=$storesNo';
     if(buildingAge!=null&&buildingAge>0)url='$url&building_age=$buildingAge';
-    if(direction!=null&&direction.isNotEmpty)url='$url&direction=$direction';
+    if(direction!=null&&direction.isNotEmpty)url='$url&direction=${direction.first}';
     if(streetWidth!=null&&streetWidth>0)url='$url&street_width=$streetWidth';
 
 

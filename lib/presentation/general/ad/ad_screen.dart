@@ -57,6 +57,7 @@ class _AdScreenState extends State<AdScreen> {
                       children: [
                         AddSlider(propertyInfo: provider.propertyInfo!,),
                         AddDetails(propertyInfo: provider.propertyInfo!),
+                        if(Constants.userDataModel==null||Constants.userDataModel!.id!= provider.propertyInfo!.userId)
                         AdvertiserData(propertyInfo: provider.propertyInfo!),
                         if(provider.propertyInfo!.isAuction)AuctionsData(propertyInfo: provider.propertyInfo!,),
 

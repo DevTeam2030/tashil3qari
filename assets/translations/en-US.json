@@ -695,5 +695,7 @@
  "pledgeMessage": "I pledge to pay num riyals after selling or renting",
  "pledgeAlert": "Please select the pledge",
  "searchSerialAndName": "Search by serial number or advisor name",
- "agreeTermsMessage": "You must agree to the terms , conditions and pledge"
+ "agreeTermsMessage": "You must agree to the terms , conditions and pledge",
+ "YouCantMessageYourself": "You can't message yourself",
+ "YouCannotMakeAgreementYourself": "You cannot make an agreement yourself"
 }

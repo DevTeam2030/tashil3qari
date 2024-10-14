@@ -73,7 +73,10 @@ class AdInformations extends StatelessWidget {
               InformationsItem(title: 'buildingAge'.tr(),value:'${propertyInfo.buildingAge} ${'year'.tr()}',color: ColorManager.white,),
 
               if(provider.adCategory!.options.direction)
-              InformationsItem(title: 'direction'.tr(),value:'${propertyInfo.direction.isEmpty?'':'${propertyInfo.direction}'.tr()}',color: ColorManager.white,),
+              InformationsItem(title: 'direction'.tr(),
+                value:propertyInfo.direction.isEmpty?'':
+                propertyInfo.direction.map((e) => e.tr()).join(' - '),
+                color: ColorManager.white,),
 
               if(provider.adCategory!.options.streetWidth)
               InformationsItem(title: 'streetWidth'.tr(),value:'${propertyInfo.streetWidth} ${'meter1'.tr()}',color: ColorManager.white,),

@@ -1,7 +1,9 @@
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../app/contants.dart';
 import '../app/enums.dart';
 import '../app/url_luncher.dart';
 import '../app/utils.dart';
@@ -9,6 +11,7 @@ import '../presentation/general/chats/chat/chat.dart';
 import '../presentation/general/chats/chat/chat_agreement.dart';
 import '../utilites/image_manager.dart';
 import '../utilites/route_manager.dart';
+import 'loading_manager.dart';
 
 class CallIcon extends StatelessWidget {
   final String phoneNo;
@@ -34,13 +37,20 @@ class ChatIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return   InkWell(
         onTap: () {
-          if(Utils.checkIfUserLogin(context: context)){
-            MyRoute().navigate(context: context, route: ChatAgreementScreen(
-              receiverId: receiverId,
-              receiverName: receiverName,
-              receiverImage: receiverImage,
-              receiverType: receiverType,
-            ));
+          if(Utils.checkIfUserLogin(context: context)) {
+
+            if(receiverId==Constants.userDataModel!.id){
+              LoadingDialog.showSimpleToast('YouCantMessageYourself'.tr());
+
+            }else{
+                MyRoute().navigate(context: context, route: ChatAgreementScreen(
+                  receiverId: receiverId,
+                  receiverName: receiverName,
+                  receiverImage: receiverImage,
+                  receiverType: receiverType,
+                ));
+          }
+
         }
         },
         // onTap: () => MyRoute().navigate(context: context, route: ChatScreen(

@@ -102,12 +102,18 @@ Widget build(BuildContext context) {
                     InkWell(
                       onTap: (){
                         if(Utils.checkIfUserLogin(context: context)){
-                          MyRoute().navigate(context: context, route: ChatAgreementScreen(
-                            receiverId: consultant.id,
-                            receiverName: consultant.name,
-                            receiverImage: consultant.image,
-                            receiverType: UserType.consultant,
-                          ));
+                          if(consultant.id==Constants.userDataModel!.id){
+                            LoadingDialog.showSimpleToast('YouCantMessageYourself'.tr());
+
+                          }else{
+                            MyRoute().navigate(context: context, route: ChatAgreementScreen(
+                              receiverId: consultant.id,
+                              receiverName: consultant.name,
+                              receiverImage: consultant.image,
+                              receiverType: UserType.consultant,
+                            ));
+                          }
+                         
                         }
                         },
                       child:CircleAvatar(

@@ -41,7 +41,7 @@ class EditAdData {
  ValueNotifier<bool> familySection = ValueNotifier<bool>(false);
 
 
- ValueNotifier<String> direction = ValueNotifier<String>('east');
+ ValueNotifier<List<String>> direction = ValueNotifier<List<String>>([Constants.directions.first]);
 
 
 late  ValueNotifier<FinishingTypesModel> finishing ;
@@ -93,10 +93,19 @@ late  ValueNotifier<FinishingTypesModel> finishing ;
     buildingAge.value=int.tryParse(ad.buildingAge)??0;
     // direction.value=ad.direction.isEmpty?directions.first:ad.direction;
 
-    if(Constants.directions.contains(ad.direction))direction.value=ad.direction;
-    else direction.value=Constants.directions.first;
-    print(ad.direction.isEmpty?Constants.directions.first:ad.direction);
-    
+
+
+
+    direction.value.clear();
+    for(var item in ad.direction){
+      if(Constants.directions.contains(item)&&!direction.value.contains(item)){
+        direction.value.add(item);
+      }
+    }
+    if(direction.value.isEmpty){
+      direction.value=[Constants.directions.first];
+    }
+
     var c=Constants.settingModel.currencies.where((element) => element.id==(int.tryParse(userAd.currencyId)??0));
     selectedCurrency= c.isEmpty?Constants.settingModel.currencies.first:c.first;
 
@@ -159,7 +168,7 @@ late  ValueNotifier<FinishingTypesModel> finishing ;
    floor: !category.value.options.floor?0: floor.value,
    apartmentsNo: !category.value.options.apartmentsNo?0: apartmentsNo.value,
    buildingAge:!category.value.options.buildingAge?0: buildingAge.value ,
-   direction:!category.value.options.direction?'': direction.value ,
+   direction:!category.value.options.direction?[]: direction.value ,
    receptionsNo: !category.value.options.receptionsNo?0: receptionsNo.value,
    storesNo:!category.value.options.storesNo?0:  storesNo.value,
    floorsNo:!category.value.options.floorsNo?0:  floorsNo.value,

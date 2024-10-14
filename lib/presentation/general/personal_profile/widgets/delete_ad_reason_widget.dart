@@ -1,15 +1,17 @@
 part of'widgets_imports.dart';
 
 
-class RejectReasonAgreementWidget extends StatefulWidget {
-  final MakeAgreementData makeAgreementData;
-  const RejectReasonAgreementWidget({super.key,required this.makeAgreementData});
+class DeleteAdReasonWidget extends StatefulWidget {
+  final ReasonModel reason;
+  final int adId;
+  final Function(int adId,int reasonId,String otherReasonOptional)onDeleteAd ;
+  const DeleteAdReasonWidget({super.key,required this.reason,required this.onDeleteAd,required this.adId});
 
   @override
-  State<RejectReasonAgreementWidget> createState() => _RejectReasonAgreementWidgetState();
+  State<DeleteAdReasonWidget> createState() => _DeleteAdReasonWidgetState();
 }
 
-class _RejectReasonAgreementWidgetState extends State<RejectReasonAgreementWidget> {
+class _DeleteAdReasonWidgetState extends State<DeleteAdReasonWidget> {
   final formKey = GlobalKey<FormState>();
   TextEditingController reasonController = TextEditingController();
 @override
@@ -55,14 +57,14 @@ Widget build(BuildContext context) {
                Row(
                  mainAxisAlignment: MainAxisAlignment.center,
                  children: [
-                   // AppText(
-                   //   title:'reason of refuse'.tr(),
-                   //   titleMaxLines: 1,
-                   //   titleSize: FontSize.s16,
-                   //   titleAlign: TextAlign.center,
-                   //   titleColor: ColorManager.black,
-                   //   fontWeightType: FontWeightType.medium,
-                   // ),
+                   AppText(
+                     title:'reason of refuse'.tr(),
+                     titleMaxLines: 1,
+                     titleSize: FontSize.s16,
+                     titleAlign: TextAlign.center,
+                     titleColor: ColorManager.black,
+                     fontWeightType: FontWeightType.medium,
+                   ),
                    AppText(
                      title:'('+'optional'.tr()+')',
                      titleMaxLines: 1,
@@ -102,7 +104,9 @@ Widget build(BuildContext context) {
                     titleColor: ColorManager.white,
                     onPressed: (){
                   Navigator.pop(context);
-               widget.makeAgreementData.refuseAgreementInFireBase(refuseReason: reasonController.text);
+                  widget.onDeleteAd(widget.adId, widget.reason.id,
+                  reasonController.text);
+
                  }),
               ],
             )

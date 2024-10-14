@@ -57,7 +57,9 @@ class Constants{
  static bool isArabic=false;
  static String langCode='en';
 
- static List<String>directions=[ "east", "south", "west", "north", "southeast", "southwest", "northeast", "northwest"];
+ static List<String>directions=[ "east", "south", "west", "north",
+  // "southeast", "southwest", "northeast", "northwest"
+ ];
 
 static ValueNotifier unReadNotificationCubit =ValueNotifier<int>(0);
  static bool isDarkMode=false;

@@ -34,7 +34,7 @@ class AddPropertyModel {
   int finishingTypeId;
 
   double streetWidth;
-String direction;
+List<String> direction;
 int receptionsNo;
 int apartmentsNo;
 int storesNo;
@@ -195,7 +195,7 @@ class EditPropertyModel {
    double longitude;
    double latitude;
    double streetWidth;
-   String direction;
+   List<String> direction;
    int receptionsNo;
    int apartmentsNo;
    int storesNo;
