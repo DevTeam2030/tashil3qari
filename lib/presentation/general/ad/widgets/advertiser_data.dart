@@ -9,6 +9,7 @@ class AdvertiserData extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () =>
+          // MyRoute().navigate(context: context, route: AllOwnerAds(ownerId: propertyInfo.userId, ownerName: propertyInfo.userName,)),
       propertyInfo.userType == UserType.consultant?
           MyRoute().navigate(context: context, route:  YourConsultantProfileScreen(consultantId: propertyInfo.userId,)):
           MyRoute().navigate(context: context, route:  UserOwnerAdProfileScreen(propertyInfo: propertyInfo,)),
@@ -48,12 +49,18 @@ class AdvertiserData extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          CachedImage(
-                            url: propertyInfo.userImage,
-                            height: 65,
-                            width: 65,
-                            fit: BoxFit.cover,
-                            boxShape: BoxShape.circle,
+                          InkWell(
+                            // onTap: () =>
+                            // propertyInfo.userType == UserType.consultant?
+                            // MyRoute().navigate(context: context, route:  YourConsultantProfileScreen(consultantId: propertyInfo.userId,)):
+                            // MyRoute().navigate(context: context, route:  UserOwnerAdProfileScreen(propertyInfo: propertyInfo,)),
+                            child: CachedImage(
+                              url: propertyInfo.userImage,
+                              height: 65,
+                              width: 65,
+                              fit: BoxFit.cover,
+                              boxShape: BoxShape.circle,
+                            ),
                           ),
                           const AppSizeBox(
                             width: 10,
@@ -107,24 +114,19 @@ class AdvertiserData extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              const AppSizeBox(
-                                height: 4,
-                              ),
-                              InkWell(
-                                onTap: () => MyRoute().navigate(
-                                    context: context,
-                                    route: AllOwnerAds(
-                                      ownerId: propertyInfo.userId,
-                                      ownerName: propertyInfo.userName,
-                                    )),
-                                child: AppText(
-                                    title: 'See all ads'.tr(),
-                                    titleAlign: TextAlign.start,
-                                    titleMaxLines: 1,
-                                    fontWeightType: FontWeightType.extraBold,
-                                    titleSize: FontSize.s9,
-                                    titleColor: ColorManager.primary),
-                              ),
+                              // const AppSizeBox(
+                              //   height: 4,
+                              // ),
+                              // InkWell(
+                              //   onTap: () => MyRoute().navigate(context: context, route: AllOwnerAds(ownerId: propertyInfo.userId, ownerName: propertyInfo.userName,)),
+                              //   child: AppText(
+                              //       title: 'See all ads'.tr(),
+                              //       titleAlign: TextAlign.start,
+                              //       titleMaxLines: 1,
+                              //       fontWeightType: FontWeightType.extraBold,
+                              //       titleSize: FontSize.s9,
+                              //       titleColor: ColorManager.primary),
+                              // ),
                               const AppSizeBox(
                                 height: 4,
                               ),

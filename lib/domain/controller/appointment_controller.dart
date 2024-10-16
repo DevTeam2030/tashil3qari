@@ -87,7 +87,7 @@ class AppointmentController  {
           "services":services,
         });
     if (res != null) {
-      if(res['message']!=null) LoadingDialog.showToastNotification(res['message']);
+      if(res['message']!=null) LoadingDialog.showSimpleToast(res['message']);
       return true;
     } else {
       return false;

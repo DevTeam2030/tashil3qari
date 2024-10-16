@@ -149,7 +149,7 @@ class DioHelper {
     Utils.printData("response  ${response!.data.toString()}");
     if (response == null) {
       //  Utils.printData("failed response Check Server");
-      LoadingDialog.showToastNotification("checkNet".tr());
+      LoadingDialog.showSimpleToast("checkNet".tr());
     } else {
 
 
@@ -166,31 +166,31 @@ class DioHelper {
 
             case 500:
 
-              LoadingDialog.showToastNotification('errorTryAgainLater'.tr());
+              LoadingDialog.showSimpleToast('errorTryAgainLater'.tr());
             break;
 
 
           default:
 
             if(data["message"].toString().contains('The email has already been taken.')) {
-              LoadingDialog.showToastNotification('ThisEmailHasAlreadyBeenTaken'.tr());
+              LoadingDialog.showSimpleToast('ThisEmailHasAlreadyBeenTaken'.tr());
             }
            else  if(data["message"].toString().contains('Wrong email-or password')) {
-              LoadingDialog.showToastNotification('WrongEmailOrPassword'.tr());
+              LoadingDialog.showSimpleToast('WrongEmailOrPassword'.tr());
             }
            else  if(data["message"].toString().contains('The selected promo code is invalid')) {
-              LoadingDialog.showToastNotification('PromoCodeIsInvalid'.tr());
+              LoadingDialog.showSimpleToast('PromoCodeIsInvalid'.tr());
             }
             else if(data["message"].toString().isNotEmpty) {
-              LoadingDialog.showToastNotification(data["message"].toString());
+              LoadingDialog.showSimpleToast(data["message"].toString());
             } else {
-              LoadingDialog.showToastNotification('errorTryAgainLater'.tr());
+              LoadingDialog.showSimpleToast('errorTryAgainLater'.tr());
             }
             break;
         }
       }catch(e){
         Utils.printData(e.toString());
-        LoadingDialog.showToastNotification('errorTryAgainLater'.tr());
+        LoadingDialog.showSimpleToast('errorTryAgainLater'.tr());
       }
 
     }

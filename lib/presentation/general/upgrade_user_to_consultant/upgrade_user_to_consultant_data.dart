@@ -15,11 +15,11 @@ class UpgradeUserToConsultantData{
     FocusScope.of(context).requestFocus(FocusNode());
     if(formKey.currentState!.validate()){
         if(selectedSerialNumber.value==null||selectedSerialNumber.value!.booked){
-          LoadingDialog.showToastNotification('ChooseSerialNumberMessge'.tr());
+          LoadingDialog.showSimpleToast('ChooseSerialNumberMessge'.tr());
           return;
         }
         if(selectedCities.isEmpty){
-          LoadingDialog.showToastNotification('PleaseEnterCountriesCities'.tr());
+          LoadingDialog.showSimpleToast('PleaseEnterCountriesCities'.tr());
           return;
         }
 

@@ -47,6 +47,7 @@ import '../screens/following_screen.dart';
 import '../screens/my_bids_screen.dart';
 
 
+part 'delete_reason_widget_alert.dart';
 part 'peronal_data_widget.dart';
 part 'personal_profile_details_tab.dart';
 part 'ad_actions_drop_down.dart';

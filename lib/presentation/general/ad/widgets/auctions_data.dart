@@ -7,7 +7,7 @@ class AuctionsData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: ()=> MyRoute().navigate(context: context, route:  BidScreen(adId: propertyInfo.id,)),
+      onTap: ()=> MyRoute().navigate(context: context, route:  BidScreen(adId: propertyInfo.id,isBidBefore: propertyInfo.isAuctionBefore,)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

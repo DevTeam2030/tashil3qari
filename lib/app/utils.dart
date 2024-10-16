@@ -346,7 +346,7 @@ static Future<void> setCurrentLocation()async{
 
  static bool checkIfUserLogin({required BuildContext context}) {
    if(Constants.isLogin&&Constants.userDataModel!=null)return true;
-   // LoadingDialog.showToastNotification('youMustLogInFirst'.tr());
+   // LoadingDialog.showSimpleToast('youMustLogInFirst'.tr());
 
    LoadingDialog().optionalAlertDialog(
      context: context,
@@ -1054,14 +1054,14 @@ static Future<void> downloadImage({required BuildContext context,required String
      var raf = file.openSync(mode: FileMode.write);
      // response.data is List<int> type
      raf.writeFromSync(response.data);
-     LoadingDialog.showToastNotification('fileDownloadedSuccessfully'.tr());
+     LoadingDialog.showSimpleToast('fileDownloadedSuccessfully'.tr());
 
 
 
      await raf.close();
    } catch (e) {
      debugPrint(e.toString());
-     LoadingDialog.showToastNotification('errorDownloadingFile'.tr());
+     LoadingDialog.showSimpleToast('errorDownloadingFile'.tr());
    }
  }
 

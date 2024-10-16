@@ -304,48 +304,48 @@ class TextBoxWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Stack(
+    return  Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
 
 
-            Container(
-              // padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              width: 30,height: 30,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: ColorManager.primary.withOpacity(.8),
-                border: Border.all(
-                  color: ColorManager.primary,
-                  width: 1,
-                ),
-              ),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 1),
+          // height: 30,
+          // width: 30,
+          // alignment: Alignment.center,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: ColorManager.primary.withOpacity(.8),
+            border: Border.all(
+              color: ColorManager.primary,
+              width: 1,
+            ),
+          ),
 
 
-              child:AppText(
-                  title: text,
-                  titleAlign: TextAlign.center,
-                  titleMaxLines: 2,
-                  fontWeightType: FontWeightType.medium,
-                  titleSize: FontSize.s8,
-                  titleColor: ColorManager.white),),
+          child:AppText(
+              title: text,
+              titleAlign: TextAlign.center,
+              titleMaxLines: 2,
+              titleHeight: 1.4,
+              fontWeightType: FontWeightType.medium,
+              titleSize: FontSize.s12,
+              titleColor: ColorManager.white),),
             Image.asset(
-              ImageManager.polygon,
-              width: 24,
-              height: 24,
-              fit: BoxFit.cover,
+              ImageManager.polygon2,
+              width: 20,
+              height: 20,
+              fit: BoxFit.fill,
               color:ColorManager.primary
 
         ),
 
 
-      ],
-    )]);
+          ],
+        );
   }
 }
 class TextImage extends StatelessWidget {

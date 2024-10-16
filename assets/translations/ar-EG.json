@@ -720,8 +720,8 @@
   "searchSerialAndName": "البحث بالرقم التسلسلي او اسم المستشار",
   "agreeTermsMessage": "برجاء الموافقه على الشروط والاحكام والتعهد",
 "YouCantMessageYourself": "لا يمكنك مراسلة نفسك",
-  "YouCannotMakeAgreementYourself": "لا يمكنك إبرام اتفاقية مع نفسك"
-
-
-
+  "YouCannotMakeAgreementYourself": "لا يمكنك إبرام اتفاقية مع نفسك",
+  "IsBidBefore": "تم المزايده مسبقا",
+  "reason num fees": "سيتم دفع رسوم num ريال سعودى",
+  "DeleteAdMessage": "هل تريد حذف الإعلان ؟"
 }

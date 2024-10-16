@@ -52,7 +52,7 @@ class NotificationsController  {
           "body":body
         });
     if (res != null) {
-      // if(res['message']!=null) LoadingDialog.showToastNotification(res['message']);
+      // if(res['message']!=null) LoadingDialog.showSimpleToast(res['message']);
       return true;
     }
     return false;
@@ -66,7 +66,7 @@ class NotificationsController  {
           "not_id":notificationId
         });
     if (res != null) {
-      if(res['message']!=null) LoadingDialog.showToastNotification(res['message']);
+      if(res['message']!=null) LoadingDialog.showSimpleToast(res['message']);
       return true;
     }
     return false;
@@ -80,7 +80,7 @@ class NotificationsController  {
           "status":isAccept?"approved":"rejected"
         });
     if (res != null) {
-      if(res['message']!=null) LoadingDialog.showToastNotification(res['message']);
+      if(res['message']!=null) LoadingDialog.showSimpleToast(res['message']);
       return true;
     }
     return false;
@@ -92,7 +92,7 @@ class NotificationsController  {
           "not_id":notificationId
         });
     if (res != null) {
-      if(res['message']!=null) LoadingDialog.showToastNotification(res['message']);
+      if(res['message']!=null) LoadingDialog.showSimpleToast(res['message']);
       return true;
     }
     return false;

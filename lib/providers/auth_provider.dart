@@ -338,7 +338,7 @@ class AuthProvider extends ChangeNotifier {
           }
         } catch (e) {
           Utils.printData(e.toString());
-          LoadingDialog.showToastNotification('errorTryAgainLater'.tr());
+          LoadingDialog.showSimpleToast('errorTryAgainLater'.tr());
         }
       }
     } catch (e) {
@@ -404,24 +404,24 @@ class AuthProvider extends ChangeNotifier {
 
         }
         else {
-          LoadingDialog.showToastNotification('errorTryAgainLater'.tr());
+          LoadingDialog.showSimpleToast('errorTryAgainLater'.tr());
         }
         break;
       case FacebookLoginStatus.cancel:
          Utils.printData('---------------------------------------- cancelledByUser');
-        LoadingDialog.showToastNotification('errorTryAgainLater'.tr());
+        LoadingDialog.showSimpleToast('errorTryAgainLater'.tr());
 
         break;
       case FacebookLoginStatus.error:
          Utils.printData('-------------error--------------------------- ${result.error}');
         // Alert.showAlert(alertType: AlertType.error.tr, message: '${result.error.toString()}');
-        LoadingDialog.showToastNotification('errorTryAgainLater'.tr());
+        LoadingDialog.showSimpleToast('errorTryAgainLater'.tr());
 
         break;
     }
   }catch(e){
      Utils.printData(e.toString());
-    LoadingDialog.showToastNotification('errorTryAgainLater'.tr());
+    LoadingDialog.showSimpleToast('errorTryAgainLater'.tr());
   }
 
 
@@ -493,7 +493,7 @@ class AuthProvider extends ChangeNotifier {
       }
     });
   } catch (e) {
-    LoadingDialog.showToastNotification('errorTryAgainLater'.tr());
+    LoadingDialog.showSimpleToast('errorTryAgainLater'.tr());
     return false;
   }
   // return await FirebaseAuth.instance.signInWithCredential(oauthCredential);

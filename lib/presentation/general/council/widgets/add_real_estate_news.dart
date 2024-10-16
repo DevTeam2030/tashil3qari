@@ -240,7 +240,7 @@ class _AddRealEstateNewsState extends State<AddRealEstateNews> {
                           if(widget.isOpportunity){
                             if(widget.councilData.opportunityFormKey.currentState!.validate()){
                               // if(councilData.opportunityPicker==null){
-                              //   LoadingDialog.showToastNotification('PleaseEnterPicture'.tr());
+                              //   LoadingDialog.showSimpleToast('PleaseEnterPicture'.tr());
                               //   return;
                               // }
                               context.read<CouncilProvider>().addOpportunity(context: context,

@@ -273,7 +273,7 @@ class ProfileProvider extends ChangeNotifier {
     if(url.isNotEmpty){
 
 
-      LoadingDialog.showToastNotification('YourDataHasBeenEditedSuccessfully'.tr());
+      LoadingDialog.showSimpleToast('YourDataHasBeenEditedSuccessfully'.tr());
 
       UserDataModel user=Constants.userDataModel!;
       // user.image=url;

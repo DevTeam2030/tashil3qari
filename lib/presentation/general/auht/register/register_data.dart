@@ -41,16 +41,16 @@ class RegisterData{
 
     if(formKey.currentState!.validate()){
       if(imagePicker==null){
-        LoadingDialog.showToastNotification('PleaseEnterPicture'.tr());
+        LoadingDialog.showSimpleToast('PleaseEnterPicture'.tr());
         return;
       }
       if(agreeTerms.value==false){
-        LoadingDialog.showToastNotification('agreeTermsMessage'.tr());
+        LoadingDialog.showSimpleToast('agreeTermsMessage'.tr());
         return;
       }
       if(userType==UserType.consultant){
        if(selectedSerialNumber.value==null||selectedSerialNumber.value!.booked){
-         LoadingDialog.showToastNotification('ChooseSerialNumberMessge'.tr());
+         LoadingDialog.showSimpleToast('ChooseSerialNumberMessge'.tr());
          return;
        }
      }

@@ -3,7 +3,8 @@ part of'bid_imports.dart';
 
 class BidScreen extends StatefulWidget {
   final int adId;
-  const BidScreen({Key? key,required this.adId}) : super(key: key);
+  final bool isBidBefore;
+  const BidScreen({Key? key,required this.adId,required this.isBidBefore}) : super(key: key);
 
   @override
   State<BidScreen> createState() => _BidScreenState();
@@ -49,7 +50,9 @@ class _BidScreenState extends State<BidScreen> {
                       BidSlider(auctionData: provider.auctionData!,propertyId: widget.adId),
 
                       RemainingTime(auctionData: provider.auctionData!),
-                      BidWidget(bidData: bidData,auctionData: provider.auctionData!,mostAuctionUser: provider.mostAuctionUser,),
+                      BidWidget(bidData: bidData,auctionData: provider.auctionData!,
+                        isBidBefore: widget.isBidBefore,
+                        mostAuctionUser: provider.mostAuctionUser,),
 
 
 

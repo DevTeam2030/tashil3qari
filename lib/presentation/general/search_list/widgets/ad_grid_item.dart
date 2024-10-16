@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+import 'package:tashil_agary/app/contants.dart';
 import 'package:tashil_agary/app/extentions.dart';
 import 'package:tashil_agary/components/cach_image.dart';
 import 'package:tashil_agary/components/size_box_height.dart';
@@ -377,6 +378,8 @@ Widget build(BuildContext context) {
                       ),
 
                       const AppSizeBox(height: 4,),
+                      if(Constants.userDataModel!=null&&Constants.userDataModel!.id!=widget.property.userId
+                      &&!widget.property.isAuctionBefore)
                       Container(
                         height: 30,
                         width: .4.sw,
@@ -386,7 +389,9 @@ Widget build(BuildContext context) {
                         ),
                         child: InkWell(
                           onTap: (){
-                            MyRoute().navigate(context: context, route:  BidScreen(adId: widget.property.id,));
+                            if(Utils.checkIsLogin())
+                            MyRoute().navigate(context: context, route:  BidScreen(adId: widget.property.id,
+                            isBidBefore: widget.property.isAuctionBefore,));
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,

@@ -8,12 +8,13 @@ class HomeData {
   //         image: user.image,type: user.type==UserType.user?'normal':"consultant");
   //   }
   // }
-  double cameraZoom=4.3;
+  double cameraZoom=5;
   Set<Marker> markers = {};
   Set<Marker> allCitiesMarkers = {};
   Completer<GoogleMapController> mapController = Completer();
 
   // LatLng p1 = const LatLng(40.153474463955796, 35.33852195739747);
+  LatLng locationCustom = const LatLng(23.8859, 45.0792);
   LatLng currentLocation = const LatLng(23.8859, 45.0792);
   AdType? selectedAdType;
   ValueNotifier<bool> monthly = ValueNotifier<bool>(false);
@@ -231,7 +232,13 @@ class HomeData {
     // var country = context.read<GeneralProvider>().mapCountry;
     // var city = country.cities.isNotEmpty ? country.cities.first : context.read<GeneralProvider>().userCity;
     // currentLocation =properties.isNotEmpty?LatLng(properties.first.latitude, properties.first.longitude): LatLng(city.latitude, city.longitude);
-    currentLocation = LatLng(selectedCity.value!.latitude, selectedCity.value!.longitude);
+
+
+    currentLocation =
+    selectedCity.value!=null?
+    LatLng(selectedCity.value!.latitude, selectedCity.value!.longitude):
+    properties.isNotEmpty?
+    LatLng(properties.first.latitude, properties.first.longitude): locationCustom;
     // currentLocation = LatLng(city.latitude, city.longitude);
     CameraPosition kLake = CameraPosition(
       // bearing: 192.8334901395799,

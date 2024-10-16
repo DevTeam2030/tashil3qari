@@ -1,9 +1,6 @@
-import 'dart:async';
-import 'dart:typed_data';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:tashil_agary/app/extentions.dart';
 import 'package:tashil_agary/app/utils.dart';
@@ -16,20 +13,15 @@ import 'package:tashil_agary/presentation/general/search_list/widgets/search_ope
 import 'package:tashil_agary/providers/search_provider.dart';
 import 'package:tashil_agary/utilites/color_manager.dart';
 import 'package:tashil_agary/utilites/image_manager.dart';
-import 'package:tashil_agary/utilites/values_manager.dart';
 
 import '../../../app/contants.dart';
 import '../../../app/enums.dart';
 import '../../../components/gridListItem.dart';
 import '../../../components/screen_loading.dart';
 import '../../../components/text_field/general_appbar_logo.dart';
-import '../../../components/text_field/text_field_imports.dart';
 import '../../../domain/model/models/general_property_model.dart';
-import '../../../domain/model/models/home_catogery_model.dart';
 import '../../../utilites/font_manager.dart';
 import '../../../utilites/styles_manager.dart';
-import '../home_Screen/home_imports.dart';
-import '../home_Screen/widgets/widget_imports.dart';
 import 'search_list_data.dart';
 
 class SearchListScreen extends StatefulWidget {

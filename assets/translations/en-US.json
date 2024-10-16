@@ -697,5 +697,8 @@
  "searchSerialAndName": "Search by serial number or advisor name",
  "agreeTermsMessage": "You must agree to the terms , conditions and pledge",
  "YouCantMessageYourself": "You can't message yourself",
- "YouCannotMakeAgreementYourself": "You cannot make an agreement yourself"
+ "YouCannotMakeAgreementYourself": "You cannot make an agreement yourself",
+ "reason num fees": "A fee of num Saudi Riyals will be paid",
+ "IsBidBefore": "It has already been bid",
+ "DeleteAdMessage": "Are you sure you want to delete the ad ?"
 }

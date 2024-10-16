@@ -145,7 +145,7 @@ Widget build(BuildContext context) {
                           ],
                         ),
                       ),
-                    
+
                     if(widget.property.isAuction)
                       Padding(
                         padding: const EdgeInsets.all(8),
@@ -285,14 +285,14 @@ Widget build(BuildContext context) {
                     if(widget.property.isAuction)
                     Padding(
                       padding:const EdgeInsets.only(bottom: 4),
-                      child: Row(
+                      child: Wrap(
                         children: [
                           CircleAvatar(radius: 2,backgroundColor:  ColorManager.green,),
                           // AppSizeBox(width: 2,),
                           AppText(
                             title:'Remaining until the end of the auction'.tr()+'(',
                             titleSize: FontSize.s6,
-                            titleMaxLines: 1,
+                            titleMaxLines: 2,
                             titleHeight: 1.4,
                             titleAlign: TextAlign.start,
                             titleColor: ColorManager.notificationsBody,
@@ -396,6 +396,8 @@ Widget build(BuildContext context) {
                       children: [
 
 
+                        if(Constants.userDataModel!=null&&Constants.userDataModel!.id!=widget.property.userId
+                        &&!widget.property.isAuctionBefore)
                         Container(
                           height: 30,
                           width: 60,
@@ -405,7 +407,9 @@ Widget build(BuildContext context) {
                           ),
                           child: InkWell(
                             onTap: (){
-                              MyRoute().navigate(context: context, route:  BidScreen(adId: widget.property.id,));
+                              if(Utils.checkIsLogin())
+                              MyRoute().navigate(context: context, route:  BidScreen(adId: widget.property.id,
+                              isBidBefore: widget.property.isAuctionBefore,));
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,

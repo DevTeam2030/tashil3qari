@@ -232,7 +232,6 @@ class _TypesFilterState extends State<TypesFilter> {
                           children: [
                             if(value.options.direction)
                               DirectionDropdownButton(
-                                fromSearch: true,
                                 directions: Constants.directions,
                                 notifier: widget.direction,
                               ),

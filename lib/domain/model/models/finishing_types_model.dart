@@ -44,17 +44,20 @@ class ReasonModel {
   int id;
   String name;
   String type;
+  double fees;
 
   ReasonModel({
     required this.id,
     required this.name,
     required this.type,
+    required this.fees,
   });
 
   factory ReasonModel.fromJson(Map<String, dynamic> json) => ReasonModel(
     id: json["id"],
     name: json["name"]??'',
     type: json["type"]??'',
+    fees: double.tryParse(json["fees"].toString())??0,
   );
 
   // Map<String, dynamic> toJson() => {

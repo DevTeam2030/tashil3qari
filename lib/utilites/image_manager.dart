@@ -39,6 +39,7 @@ class ImageManager{
   static const  String winPng='${_initPath}winPng.png';
   static const  String tag='${_initPath}tag.png';
   static const  String polygon='${_initPath}polygon.png';
+  static const  String polygon2='${_initPath}polygon.png';
   static const  String loginButtomImage='${_initPath}loginButtomImage.png';
   static const  String saveAdImage='${_initPath}saveAdImage.png';
   static const  String deleteIcons='${_initPath}deleteIcons.PNG';

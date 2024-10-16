@@ -47,7 +47,7 @@ class _AddAdImagesScreenState extends State<AddAdImagesScreen> {
                   MyRoute().navigate(context: context, route: AddAdLocationScreen(addAdtData: addAdtData,));
               }else{
                 MyRoute().navigate(context: context, route: AddAdLocationScreen(addAdtData: addAdtData,));
-                LoadingDialog.showToastNotification('PleaseEnterAllDataCorrectly'.tr());
+                LoadingDialog.showSimpleToast('PleaseEnterAllDataCorrectly'.tr());
               }
                 }),
           ],

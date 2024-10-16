@@ -173,6 +173,8 @@ class _PersonalProfileScreenState extends State<PersonalProfileScreen> {
                                         (BuildContext context, int index) {
                                       GeneralPropertyModel ad=GeneralPropertyModel(
                                         endDuration: '',
+                                        isAuctionBefore: provider.userAds[index].isAuctionBefore ,
+                                        userId: provider.userAds[index].userId,
                                         gallery: provider.userAds[index].gallery.map((e) => e.url).toList(),
                                         id: provider.userAds[index].id,
                                         type: provider.userAds[index].type,
@@ -247,6 +249,8 @@ class _PersonalProfileScreenState extends State<PersonalProfileScreen> {
                                     (context, index) {
                                   GeneralPropertyModel ad=GeneralPropertyModel(
                                     endDuration: '',
+                                    isAuctionBefore: provider.userAds[index].isAuctionBefore ,
+                                    userId: provider.userAds[index].userId,
                                     isAuction: provider.userAds[index].auction,
                                     gallery: provider.userAds[index].gallery.map((e) => e.url).toList(),
                                     id: provider.userAds[index].id,

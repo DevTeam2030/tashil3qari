@@ -7,6 +7,7 @@ class UserAdsModel {
   int countryId;
   String city;
   int cityId;
+  int userId;
   String propertyDescription;
   double rate;
   bool featured;
@@ -59,6 +60,7 @@ class UserAdsModel {
   bool  volleyballCourt;
   bool  amusementPark;
   bool familySection;
+  bool isAuctionBefore;
 
   UserAdsModel({
     required this.id,
@@ -113,6 +115,8 @@ class UserAdsModel {
     required this.swimmingPool,required this.footballField,
     required this.amusementPark,required this.familySection,
     required this.electricityAvailability,
+    required this.userId,
+    required this.isAuctionBefore,
 
 
   });
@@ -154,12 +158,14 @@ class UserAdsModel {
     category: json["category"]??'',
     type:json["type"]??'',
     length: json["length"]??'0',
+    userId: json["user_id"]??0,
     width: json["width"]??'0',
     license: json["license"]??'',
     currency: json["currency"]??'',
     adCreatedAt: json["ad_created_at"]??'',
     lastUpadte: json["last_upadte"]??'',
     published: json["published"]??false,
+    isAuctionBefore: json["is_auction_before"]??false,
     auction: json["auction"]??false,
     currencyId: json["currency_id"]??'0',
     video: json["video"]??'',

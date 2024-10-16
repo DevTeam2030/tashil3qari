@@ -53,7 +53,7 @@ class AddLocationRegisterData {
       }) async {
     FocusScope.of(context).requestFocus(FocusNode());
     if(cities.isEmpty){
-      LoadingDialog.showToastNotification('PleaseEnterCountriesCities'.tr());
+      LoadingDialog.showSimpleToast('PleaseEnterCountriesCities'.tr());
       return;
     }
     UpdateLocationRequestModel updateLocationRequestModel = UpdateLocationRequestModel(

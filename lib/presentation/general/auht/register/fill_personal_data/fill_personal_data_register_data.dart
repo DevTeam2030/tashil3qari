@@ -44,7 +44,7 @@ late  RegisterModel registerModel;
     // return;
     if(formKey.currentState!.validate()){
       if(imagePicker==null){
-        LoadingDialog.showToastNotification('PleaseEnterPicture'.tr());
+        LoadingDialog.showSimpleToast('PleaseEnterPicture'.tr());
         return;
       }
 

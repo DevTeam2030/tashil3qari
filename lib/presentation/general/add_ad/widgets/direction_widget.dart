@@ -16,9 +16,8 @@ import '../../../../domain/model/models/country_model.dart';
 class DirectionDropdownButton extends StatefulWidget {
     final ValueNotifier<List<String>>  notifier;
   final    List<String>directions;
-  final   bool fromSearch;
   const DirectionDropdownButton({super.key,required this.notifier,required this.directions,
-  required this.fromSearch
+
   });
 
   @override
@@ -98,13 +97,13 @@ double width=1.0.sw;
                       padding: const EdgeInsets.only(bottom: 8),
                       child: InkWell(
                         onTap: () {
-                          if(widget.fromSearch){
-                            selectedDirections=[dir];
-                            widget.notifier.value=selectedDirections;
-                            open.value=false;
-                            setState(() {});
-                            return;
-                          }
+                          // if(widget.fromSearch){
+                          //   selectedDirections=[dir];
+                          //   widget.notifier.value=selectedDirections;
+                          //   open.value=false;
+                          //   setState(() {});
+                          //   return;
+                          // }
                           if(selectedDirections.contains(dir)){
                             selectedDirections.remove(dir);
                           }else{

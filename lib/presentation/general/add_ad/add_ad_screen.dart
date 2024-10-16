@@ -59,7 +59,7 @@ class _AddAdScreenState extends State<AddAdScreen> {
                     route: AddAdImagesScreen(addAdtData: addAdtData,));
               }
               else{
-                LoadingDialog.showToastNotification('PleaseEnterAllDataCorrectly'.tr());
+                LoadingDialog.showSimpleToast('PleaseEnterAllDataCorrectly'.tr());
               }
                 }),
           ],
@@ -229,7 +229,7 @@ class _AddAdScreenState extends State<AddAdScreen> {
                         children: [
                           if(value.options.direction)
                             DirectionDropdownButton(
-                              fromSearch: false,
+
                               directions: Constants.directions,
                               notifier: addAdtData.direction,
                             ),

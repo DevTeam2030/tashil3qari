@@ -1,12 +1,19 @@
 part of'widgets_imports.dart';
 
 
-class BidWidget extends StatelessWidget {
+class BidWidget extends StatefulWidget {
   final BidData bidData;
+  final bool isBidBefore;
   final   AuctionDataModel auctionData;
  final AuctionUserModel? mostAuctionUser;
-  const BidWidget({super.key,required this.bidData,required this.auctionData,required this.mostAuctionUser}) ;
+  const BidWidget({super.key,required this.bidData,required this.auctionData,required this.mostAuctionUser,
+  required this.isBidBefore}) ;
 
+  @override
+  State<BidWidget> createState() => _BidWidgetState();
+}
+
+class _BidWidgetState extends State<BidWidget> {
   @override
   Widget build(BuildContext context) {
 
@@ -14,7 +21,7 @@ class BidWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Form(
-        key: bidData.formKey,
+        key: widget.bidData.formKey,
         child: Column(
           children: [
             const AppSizeBox(height: 24,),
@@ -45,7 +52,7 @@ class BidWidget extends StatelessWidget {
                 ),
 
                 AppText(
-                  title:' ${auctionData.auctionsUsers.length} ${'people bid'.tr()}',
+                  title:' ${widget.auctionData.auctionsUsers.length} ${'people bid'.tr()}',
                   titleMaxLines: 2,
                   titleHeight: 1.3,
                   titleSize: FontSize.s12,
@@ -57,14 +64,30 @@ class BidWidget extends StatelessWidget {
 
               const AppSizeBox(height: 4,),
 
-            if(mostAuctionUser!=null)BidPersonWidget(isWin: true,user: mostAuctionUser!),
+            if(widget.mostAuctionUser!=null)BidPersonWidget(isWin: true,user: widget.mostAuctionUser!),
 
-            for(var item in auctionData.auctionsUsers.where((element) => element!=mostAuctionUser))
+            for(var item in widget.auctionData.auctionsUsers.where((element) => element!=widget.mostAuctionUser))
              BidPersonWidget(isWin: false,user: item),
 
             const AppSizeBox(height: 10,),
 
-            if(Constants.userDataModel!=null&&auctionData.userId!=Constants.userDataModel!.id)
+            if(Constants.userDataModel!=null&&widget.auctionData.userId!=Constants.userDataModel!.id)
+              // widget.isBidBefore? Padding(
+              //   padding: const EdgeInsets.only(top: 20),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: [
+              //       AppText(
+              //         title:'IsBidBefore'.tr(),
+              //         titleMaxLines: 2,
+              //         titleHeight: 1.3,
+              //         titleSize: FontSize.s16,
+              //         titleAlign: TextAlign.center,
+              //         titleColor: ColorManager.red,
+              //       ),
+              //     ],
+              //   ),
+              // ):
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -99,7 +122,7 @@ class BidWidget extends StatelessWidget {
                       child: SizedBox(
                         height: 30,
                         child: DefaultTextFormField(
-                          controller: bidData.priceController,
+                          controller: widget.bidData.priceController,
                           hintTitle: 'Bid value'.tr(),
                           labelTitle: 'Bid value'.tr(),
                           textInputAction: TextInputAction.next,
@@ -111,7 +134,9 @@ class BidWidget extends StatelessWidget {
                           fillColor: ColorManager.white,
                           borderColor: ColorManager.black,
                           borderRadius: 0,
-
+                          onChanged: (v){
+                            setState(() {});
+                          },
                           validator: (v) => Validator().validatePrice(value: v.toString(),),
                         ),
                       ),
@@ -138,7 +163,7 @@ class BidWidget extends StatelessWidget {
                 Padding(
                     padding:const EdgeInsets.only(top:18.0),
                     child: AppText(
-                        title: 'currencyMessage2'.tr().replaceFirst('c', auctionData.currency) ,
+                        title: 'currencyMessage2'.tr().replaceFirst('c', widget.auctionData.currency) ,
                         titleAlign: TextAlign.center,
                         titleMaxLines: 1,fontWeightType: FontWeightType.medium,
                         titleSize: FontSize.s12,
@@ -149,7 +174,7 @@ class BidWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     MyTextButton(
-                        title: '${'Confirm  bid of'.tr()} ${bidData.priceController.text} ${auctionData.currency}',
+                        title: '${'Confirm  bid of'.tr()} ${widget.bidData.priceController.text} ${widget.auctionData.currency}',
                         size: Size( 0.8.sw,  60),
                         radius: 14,
                         fontWeightType: FontWeightType.medium,
@@ -173,7 +198,7 @@ class BidWidget extends StatelessWidget {
 
                             const AppSizeBox(width: 4,),
                             Flexible(child: AppText(
-                              title: 'Confirm  bid of'.tr() +' ${bidData.priceController.text} ${auctionData.currency}',
+                              title: 'Confirm  bid of'.tr() +' ${widget.bidData.priceController.text} ${widget.auctionData.currency}',
                               titleMaxLines: 4,
                               titleHeight: 1.6,
                               titleSize: FontSize.s16,
@@ -184,20 +209,20 @@ class BidWidget extends StatelessWidget {
                           ],
                         ),
                         onPressed: (){
-                          if(!bidData.formKey.currentState!.validate()) return;
-                          double adPrice=double.tryParse(auctionData.minimumAuction)??0;
-                          double value=double.tryParse(bidData.priceController.text)??0;
+                          if(!widget.bidData.formKey.currentState!.validate()) return;
+                          double adPrice=double.tryParse(widget.auctionData.minimumAuction)??0;
+                          double value=double.tryParse(widget.bidData.priceController.text)??0;
                           if(value<adPrice){
-                            LoadingDialog.showToastNotification('currencyMessage3'.tr());
+                            LoadingDialog.showSimpleToast('currencyMessage3'.tr());
                             return;
                           }
                           LoadingDialog().optionalAlertDialog(context:context,
-                              message: 'Confirm  bid of'.tr() +' ${bidData.priceController.text} ${auctionData.currency}',
+                              message: 'Confirm  bid of'.tr() +' ${widget.bidData.priceController.text} ${widget.auctionData.currency}',
                               title:'areYouSure'.tr(),
                               okClick: (){
                                 Navigator.pop(context);
-                                bidData.addAuction(context: context,price: bidData.priceController.text,
-                                    currencyId: auctionData.currencyId);
+                                widget.bidData.addAuction(context: context,price: widget.bidData.priceController.text,
+                                    currencyId: widget.auctionData.currencyId);
                               });
                         }),
                   ],

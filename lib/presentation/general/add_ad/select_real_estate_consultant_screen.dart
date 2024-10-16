@@ -60,7 +60,7 @@ class _SelectRealEstateConsultantScreenState extends State<SelectRealEstateConsu
 
                   }
                   else{
-                    LoadingDialog.showToastNotification('PleaseEnterAllDataCorrectly'.tr());
+                    LoadingDialog.showSimpleToast('PleaseEnterAllDataCorrectly'.tr());
                   }
                 }),
           ],

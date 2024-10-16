@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import '../domain/model/models/general_property_model.dart';
 
 GeneralPropertyModel constantProperty=GeneralPropertyModel(
- endDuration: '',
+ endDuration: '',userId: 0,
+  isAuctionBefore: false,
   propertyDescription: '',longitude: 0,latitude: 0,kitchensNo: '',
  isAuction: false,
  gallery: [],floor: '',featured: false,country: '',city: '',bathroomsNo: '',rate: 0,countryId: 0,image: '',
@@ -17,7 +18,7 @@ GeneralPropertyModel constantProperty=GeneralPropertyModel(
 class Constants{
  static bool buildAllCitiesMarkersBefore=false;
  // static    ValueNotifier<bool>   isRealLocationSelected= ValueNotifier<bool>(false);
- static  bool isProductionMode=true;
+ static  bool isProductionMode=false;
 
  static SettingModel settingModel=SettingModel(consultantFess: 0,countAllAds: 0,licenseFess: 0,categories: [],countries: [],
      appValueAfterSelling: 0,servicesAboutAr: '',servicesAboutEn: '',

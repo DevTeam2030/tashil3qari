@@ -86,7 +86,7 @@ class ConsultantController  {
           "comment": comment
         });
     if (res != null) {
-      if(res['message']!=null) LoadingDialog.showToastNotification(res['message']);
+      if(res['message']!=null) LoadingDialog.showSimpleToast(res['message']);
       return true;
     }
     return false;
@@ -98,7 +98,7 @@ class ConsultantController  {
           "comment": comment
         });
     if (res != null) {
-      if(res['message']!=null) LoadingDialog.showToastNotification(res['message']);
+      if(res['message']!=null) LoadingDialog.showSimpleToast(res['message']);
       return true;
     }
     return false;
@@ -109,7 +109,7 @@ class ConsultantController  {
           "follower_id":consultantId
         });
     if (res != null) {
-      if(res['message']!=null) LoadingDialog.showToastNotification(res['message']);
+      if(res['message']!=null) LoadingDialog.showSimpleToast(res['message']);
       return true;
     }
     return false;
@@ -122,7 +122,7 @@ class ConsultantController  {
           "follower_id":consultantId
         });
     if (res != null) {
-      if(res['message']!=null) LoadingDialog.showToastNotification(res['message']);
+      if(res['message']!=null) LoadingDialog.showSimpleToast(res['message']);
       return true;
     }
     return false;

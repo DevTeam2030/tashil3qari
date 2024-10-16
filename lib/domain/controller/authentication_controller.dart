@@ -70,11 +70,11 @@ class AuthController  {
        //   title: 'signIn'.tr(),
        //   message:res['message'].toString(),
        // );
-       // LoadingDialog.showToastNotification(res['message'].toString());
+       // LoadingDialog.showSimpleToast(res['message'].toString());
        // ignore: use_build_context_synchronously
        // LoadingDialog().titleMessageAlert(context:context,
        //   title: 'Create Account'.tr(), message:res['message'].toString());
-       LoadingDialog.showToastNotification(res['message'].toString());
+       LoadingDialog.showSimpleToast(res['message'].toString());
 
      }catch(e){
        Utils.printData(e.toString());
@@ -106,7 +106,7 @@ class AuthController  {
         registerModel = RegisterModel.fromJson(res['data']);
         // LoadingDialog().titleMessageAlert(context:context,
         //     title: 'Create Account'.tr(), message:res['message'].toString());
-        LoadingDialog.showToastNotification(res['message'].toString(),);
+        LoadingDialog.showSimpleToast(res['message'].toString(),);
 
 
 
@@ -135,7 +135,7 @@ class AuthController  {
        registerModel = RegisterModel.fromJson(res['data']);
        // LoadingDialog().titleMessageAlert(context:context,
        //   title: 'Create Account'.tr(), message:res['message'].toString());
-       LoadingDialog.showToastNotification(res['message'].toString());
+       LoadingDialog.showSimpleToast(res['message'].toString());
 
      }catch(e){
        Utils.printData(e.toString());
@@ -156,7 +156,7 @@ class AuthController  {
     if (res != null) {
 
      try{
-       LoadingDialog.showToastNotification(res['message'].toString());
+       LoadingDialog.showSimpleToast(res['message'].toString());
 
      }catch(e){
        Utils.printData(e.toString());
@@ -332,7 +332,7 @@ class AuthController  {
        //   title: 'signIn'.tr(),
        //   message:res['message'].toString(),
        // );
-       // LoadingDialog.showToastNotification(res['message'].toString());
+       // LoadingDialog.showSimpleToast(res['message'].toString());
        // ignore: use_build_context_synchronously
        LoadingDialog().titleMessageAlert(context:context,
          title: 'Create Account'.tr(), message:res['message'].toString());

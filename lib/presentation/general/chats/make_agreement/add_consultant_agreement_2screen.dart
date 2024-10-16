@@ -61,7 +61,7 @@ class _AddAgreementConsultant2ScreenState extends State<AddAgreementConsultant2S
                     context.read<ChatAgreementDataProvider>().addConsultantEstateAgreement(context: context,model: model);
                   }
                   else{
-                    LoadingDialog.showToastNotification('PleaseEnterAllDataCorrectly'.tr());
+                    LoadingDialog.showSimpleToast('PleaseEnterAllDataCorrectly'.tr());
                   }
                 }),
           ],

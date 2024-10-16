@@ -285,24 +285,25 @@ class LoadingDialog {
 
 
 
-  static showToastNotification(msg, {Color? color, Color? textColor, Alignment? alignment,int? durationTime}) {
-    BotToast.showSimpleNotification(
-        title: msg,
-        align: alignment ?? Alignment.center,
-        backgroundColor: color ?? ColorManager.black,
-        titleStyle: TextStyle(color: textColor ?? ColorManager.white,fontSize: 12),
-        duration:durationTime==null? Constants.splashDuration:Duration(seconds: durationTime),
-        hideCloseButton: true,
-        // closeIcon:  Icon(
-        //   Icons.close,
-        //   size: 25,
-        //   color: ColorManager.white,
-        // )
-    );
-  }
+  // static showToastNotification(msg, {Color? color, Color? textColor, Alignment? alignment,int? durationTime}) {
+  //   BotToast.showSimpleNotification(
+  //       title: msg,
+  //       align: alignment ?? Alignment.center,
+  //       backgroundColor: color ?? ColorManager.black,
+  //       titleStyle: TextStyle(color: textColor ?? ColorManager.white,fontSize: 12),
+  //       duration:durationTime==null? Constants.splashDuration:Duration(seconds: durationTime),
+  //       hideCloseButton: true,
+  //       // closeIcon:  Icon(
+  //       //   Icons.close,
+  //       //   size: 25,
+  //       //   color: ColorManager.white,
+  //       // )
+  //   );
+  // }
 
   static showSimpleToast(msg) {
     BotToast.showText(text: msg,
+      align: Alignment.center,
       duration: const Duration(seconds: 8),
       textStyle:  TextStyle(color: ColorManager.white,fontSize: FontSize.s16,
            fontWeight: FontWeightManager.regular),);

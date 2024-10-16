@@ -20,11 +20,11 @@ class _DeleteReasonsAdBottomSheetState extends State<DeleteReasonsAdBottomSheet>
   @override
   void initState() {
     super.initState();
-
-  if(widget.adType=='rent'||widget.adType=='all'){
-    reasons=Constants.settingModel.reasons.where((element) => element.type=='rent').toList();
-  }else  if(widget.adType=='sale'||widget.adType=='all'){
-    reasons=Constants.settingModel.reasons.where((element) => element.type=='sale').toList();
+    
+  if(widget.adType=='rent'){
+    reasons=Constants.settingModel.reasons.where((element) => element.type=='rent'||element.type=='all').toList();
+  }else  if(widget.adType=='sale'){
+    reasons=Constants.settingModel.reasons.where((element) => element.type=='sale'||element.type=='all').toList();
   }else{
     reasons=Constants.settingModel.reasons;
   }
@@ -92,6 +92,7 @@ class _DeleteReasonsAdBottomSheetState extends State<DeleteReasonsAdBottomSheet>
                              if(selectedReason!=reason)setState(()=>selectedReason=reason);
                            },
                            child: Row(
+                             crossAxisAlignment: CrossAxisAlignment.start,
                              mainAxisSize: MainAxisSize.min,
                              children: [
                                CircleAvatar(
@@ -108,16 +109,35 @@ class _DeleteReasonsAdBottomSheetState extends State<DeleteReasonsAdBottomSheet>
                                ),
 
                                const AppSizeBox(width: 4,),
-                               Flexible(
-                                 child: AppText(
-                                   title: reason.name,
-                                   titleSize: FontSize.s16,
-                                   titleAlign: TextAlign.start,
-                                   titleMaxLines: 4,
-                                   titleColor:
-                                   ColorManager.black,
-                                   fontWeightType: FontWeightType.regular,
-                                 ),
+                               Column(
+                                 mainAxisSize: MainAxisSize.min,
+                                 crossAxisAlignment: CrossAxisAlignment.start,
+                                 children: [
+                                   Flexible(
+                                     child: AppText(
+                                       title: reason.name,
+                                       titleSize: FontSize.s16,
+                                       titleAlign: TextAlign.start,
+                                       titleMaxLines: 4,
+                                       titleColor:
+                                       ColorManager.black,
+                                       fontWeightType: FontWeightType.regular,
+                                     ),
+                                   ),
+                                   const AppSizeBox(height: 8,),
+                                   if(reason.fees>0&&selectedReason==reason)
+                                   Flexible(
+                                     child: AppText(
+                                       title: '(${'reason num fees'.tr().replaceFirst('num', '${reason.fees}')})',
+                                       titleSize: FontSize.s16,
+                                       titleAlign: TextAlign.center,
+                                       titleMaxLines: 4,
+                                       titleColor:
+                                       ColorManager.red,
+                                       fontWeightType: FontWeightType.regular,
+                                     ),
+                                   ),
+                                 ],
                                ),
                              ],
                            ),
@@ -131,7 +151,7 @@ class _DeleteReasonsAdBottomSheetState extends State<DeleteReasonsAdBottomSheet>
                 const AppSizeBox(height: 20,),
 
 
-                MyTextButton(title: 'Delete'.tr(),
+                MyTextButton(title: 'next'.tr(),
                     size: Size( .8.sw,  47),
                     radius: 6,
                     fontWeightType: FontWeightType.bold,
@@ -140,6 +160,12 @@ class _DeleteReasonsAdBottomSheetState extends State<DeleteReasonsAdBottomSheet>
                     titleColor: ColorManager.white,
                     onPressed: ()async{
                   Navigator.pop(context);
+                  LoadingDialog().widgetAlertDialog(context:context,
+                      widget:  DeleteReasonWidgetAlert(reason: selectedReason,
+                        onDeleteAd:widget.onDeleteAd ,
+                        adId: widget.adId,),);
+
+                  return;
                   if(selectedReason.type=='all') {
                     LoadingDialog().widgetAlertDialog(context: context,
                         widget: DeleteAdReasonWidget(reason: selectedReason,

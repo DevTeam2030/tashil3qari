@@ -1,5 +1,6 @@
 part of'home_imports.dart';
 
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -9,6 +10,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   HomeData homeData = HomeData();
+  bool showLocationPermiosion=false;
   LatLngBounds saudiBounds1 = LatLngBounds(
     southwest: const LatLng(15.0, 34.0), // الزاوية الجنوبية الغربية للسعودية
     northeast: const LatLng(32.0, 56.0), // الزاوية الشمالية الشرقية للسعودية
@@ -16,8 +18,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    // getCurrentLocation();
+
     super.initState();
+
 
     // // homeData.initDataChat(context: context);
     // context.read<NotificationsProvider>().getCountUnreadNotification(context: context,);
@@ -28,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     try {
       context.read<NotificationsProvider>().getCountUnreadNotification(context: context);
-
+      // if(!showLocationPermiosion) getCurrentLocation(context: context);
       homeData.initDataCitiesMarkers(
           context: context,
           afterBuildCitiesMarkers: () {
@@ -82,9 +85,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         mapType: homeData.mapType,
                         myLocationButtonEnabled:false,
                         myLocationEnabled: false,
-                        scrollGesturesEnabled: !homeData.showCitiesMarkers,
-                        zoomGesturesEnabled: !homeData.showCitiesMarkers,
-                        zoomControlsEnabled: !homeData.showCitiesMarkers,
+                        // scrollGesturesEnabled:true,
+                        // zoomGesturesEnabled: true,
+                        // zoomControlsEnabled: true,
+                        scrollGesturesEnabled: !homeData.showCitiesMarkers||showLocationPermiosion,
+                        zoomGesturesEnabled: !homeData.showCitiesMarkers||showLocationPermiosion,
+                        zoomControlsEnabled: !homeData.showCitiesMarkers||showLocationPermiosion,
                         rotateGesturesEnabled: !homeData.showCitiesMarkers,
                         compassEnabled: false,
                         // cameraTargetBounds: CameraTargetBounds(saudiBounds2),
@@ -135,10 +141,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   setState(() {});
                   },
                 ),
-                // if(provider.properties.isNotEmpty)
+                if(provider.properties.isNotEmpty && homeData.selectedCity.value != null)
                 HomeShowAll(properties: provider.properties),
-                if (provider.properties.isNotEmpty &&
-                    homeData.selectedCity.value != null)
+                if (provider.properties.isNotEmpty && homeData.selectedCity.value != null)
                   AuctionButton(
                       homeData: homeData,
                       onTap: (value) async {
@@ -157,9 +162,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 context: context));
                       }),
                 SelectedCityMap(homeData: homeData),
-                // GetCurrentLocationWidget(
-                //   onTap: ()=>getCurrentLocation(context: context),
-                // ),
+                GetCurrentLocationWidget(
+                  onTap: ()=>getCurrentLocation(context: context),
+                ),
                 HomeOpenSearch(homeData: homeData,),
               ],
             ),
@@ -172,16 +177,17 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> getCurrentLocation({required BuildContext context}) async {
     try {
       LatLng? latLng = await Utils.getCurrentLocationLatLng();
+      showLocationPermiosion=true;
+      setState(() {});
       if (latLng == null) return;
 
       homeData.currentLocation = latLng;
       CameraPosition kLake = CameraPosition(
         target: latLng,
-        zoom: 12,
+        zoom: 10,
       );
 
-      final GoogleMapController controller =
-          await homeData.mapController.future;
+      final GoogleMapController controller = await homeData.mapController.future;
       await controller.animateCamera(CameraUpdate.newCameraPosition(kLake));
     } catch (e) {
       // Handle errors gracefully

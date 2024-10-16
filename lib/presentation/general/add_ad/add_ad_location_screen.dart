@@ -86,7 +86,7 @@ addCity(){
                   onPressed: () {
                     if (selectedCountries.isNotEmpty && selectedCities.isNotEmpty) {
                       if(agreePledge.value==false&&Constants.settingModel.appValueAfterSelling>0){
-                        LoadingDialog.showToastNotification('pledgeAlert'.tr());
+                        LoadingDialog.showSimpleToast('pledgeAlert'.tr());
                         return;
                       }
                       addAdtData.selectedCountries = selectedCountries;
@@ -94,7 +94,7 @@ addCity(){
                       addAdtData.adLocation = currentLocation;
                       MyRoute().navigate(context: context, route: AddAdRequirementsScreen(addAdtData: addAdtData,));
                     } else {
-                      LoadingDialog.showToastNotification('PleaseEnterAllDataCorrectly'.tr());
+                      LoadingDialog.showSimpleToast('PleaseEnterAllDataCorrectly'.tr());
                     }
                   }),
             ],

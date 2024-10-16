@@ -56,6 +56,7 @@ class PropertyInfoModel {
   String video;
   int countAuctions;
   bool isAuction;
+  bool isAuctionBefore;
   List<AuctionUserModel> auctionsUsers;
 
   String receptionsNo;
@@ -158,6 +159,7 @@ class PropertyInfoModel {
     required this.swimmingPool,required this.footballField,
     required this.amusementPark,required this.familySection,
     required this.electricityAvailability,
+    required this.isAuctionBefore,
   });
 
   factory PropertyInfoModel.fromJson(Map<String, dynamic> json) => PropertyInfoModel(
@@ -197,7 +199,7 @@ class PropertyInfoModel {
     price: double.tryParse(json["price"]??'0')??0,
     currency: json["currency"]??'',
     catId: json["cat_id"]??0,
-
+    isAuctionBefore: json["is_auction_before"]??false,
 
 
     address: json["address"]??'',

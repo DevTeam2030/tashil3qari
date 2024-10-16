@@ -5,6 +5,7 @@ class GeneralPropertyModel {
   String image;
   String country;
   int countryId;
+  int userId;
   String city;
   int cityId;
   String propertyDescription;
@@ -25,6 +26,7 @@ class GeneralPropertyModel {
   String floor;
   String endDuration;
   bool isAuction;
+  bool isAuctionBefore;
   // String endDurationDays;
   // String endDurationHours;
   List<String> gallery;
@@ -56,6 +58,8 @@ class GeneralPropertyModel {
     required this.gallery,
     required this.endDuration,
     required this.isAuction,
+    required this.userId,
+    required this.isAuctionBefore,
   });
 
   factory GeneralPropertyModel.fromJson(Map<String, dynamic> json) => GeneralPropertyModel(
@@ -84,6 +88,8 @@ class GeneralPropertyModel {
     floor: json["floor"]??'0',
     endDuration: json["end_duration"]??'',
     isAuction: json["is_auction"]??false,
+    isAuctionBefore: json["is_auction_before"]??false,
+    userId: json["user_id"]??0,
     gallery: json["gallery"]==null?[]:List<String>.from(json["gallery"].map((x) => x)),
   );
 

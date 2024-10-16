@@ -185,9 +185,11 @@ class RouteGenerator{
       case Routes.addAdScreen :return MaterialPageRoute(builder: (context) =>  const AddAdScreen(),);
       case Routes.editAdScreen :return MaterialPageRoute(builder: (context) =>   EditAdScreen(
         userAd: UserAdsModel(
-            apartmentsNo: '',buildingAge:'' ,direction: [],receptionsNo: '',storesNo: '',streetWidth: '',feminine: false,
+          isAuctionBefore: false,
+            apartmentsNo: '',buildingAge:'' ,
+            direction: [],receptionsNo: '',storesNo: '',streetWidth: '',feminine: false,
           id: 0,type: '',image: '',roomsNo: '',propertyTitle: '',currency: '',category: '',gallery: [],published: false,show: false,
-          wishlist: false,lastUpadte: '',propertySize: '',price: '',cityId: 0,countryId: 0,rate: 0,bathroomsNo: '',city:'',
+          wishlist: false,lastUpadte: '',userId: 0,propertySize: '',price: '',cityId: 0,countryId: 0,rate: 0,bathroomsNo: '',city:'',
            country: '',featured: false,floor: '',kitchensNo: '',latitude: 0,longitude: 0,currencyId: '',floorsNo: '',
             propertyDescription: '',haveConsultant: false,video:'',adCreatedAt: '',auction: false,width: '',length: '',
             license: '',finishingTypeId: '',finishingType: '',catId: 0,
@@ -213,7 +215,7 @@ class RouteGenerator{
       case Routes.adScreen :return MaterialPageRoute(builder: (context) =>    AdScreen(propertyId: 0,),);
       case Routes.allOwnerAds :return MaterialPageRoute(builder: (context) =>    AllOwnerAds(ownerId: 0,ownerName: '',),);
       case Routes.adPhotoViewScreen :return MaterialPageRoute(builder: (context) =>    AdPhotoViewScreen(propertyInfo: PropertyInfoModel(
-        id: 0,cityId: 0,image: '',countryId: 0,rate: 0,bathroomsNo: '',city: '',feminine: false,country: '',featured: false,finishingType: '',
+        id: 0,cityId: 0,image: '',countryId: 0,rate: 0,bathroomsNo: '',city: '',feminine: false,isAuctionBefore: false,country: '',featured: false,finishingType: '',
         floorsNo: '',
         apartmentsNo: '',buildingAge:'' ,direction: [],receptionsNo: '',storesNo: '',streetWidth: '',
         type: '',price: 0,currency: '',userImage: '',catId: 0,auctionsUsers: [],minimumAuction: '0',video: '',
@@ -231,7 +233,7 @@ class RouteGenerator{
         userPhone: '',viewNo: 0
       )));
       case Routes.auctionsScreen :return MaterialPageRoute(builder: (context) =>    AuctionsScreen(),);
-      case Routes.bidScreen :return MaterialPageRoute(builder: (context) =>    BidScreen(adId: 0),);
+      case Routes.bidScreen :return MaterialPageRoute(builder: (context) =>    BidScreen(adId: 0,isBidBefore: false,),);
       case Routes.homeAddLocationScreen :return MaterialPageRoute(builder: (context) =>    HomeAddLocationScreen(),);
       case Routes.addComplaintScreen :return MaterialPageRoute(builder: (context) =>    AddComplaintScreen(propertyId: 0),);
       case Routes.councilScreen :return MaterialPageRoute(builder: (context) =>    const CouncilScreen(),);

@@ -243,7 +243,6 @@ class _AdDetailsDataState extends State<AdDetailsData> {
                 children: [
                   if(value.options.direction)
                     DirectionDropdownButton(
-                      fromSearch: false,
                       directions: Constants.directions,
                       notifier: widget.editAdData.direction,
                     ),
