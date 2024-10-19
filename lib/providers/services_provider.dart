@@ -21,8 +21,11 @@ class ServicesProvider extends ChangeNotifier {
   List<ServiceModel> services=[];
 
   Future<void>getServices({required BuildContext context,required bool notify})async{
-    isLoading=true;
-    if(notify)notifyListeners();
+    if(services.isEmpty) {
+      isLoading=true;
+      if(notify)notifyListeners();
+    }
+
     services=await _api.getServices(context: context,);
     isLoading=false;
     notifyListeners();

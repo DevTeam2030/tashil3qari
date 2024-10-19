@@ -378,25 +378,26 @@ Widget build(BuildContext context) {
                       ),
 
                       const AppSizeBox(height: 4,),
-                      if(Constants.userDataModel!=null&&Constants.userDataModel!.id!=widget.property.userId
-                      &&!widget.property.isAuctionBefore)
+                      if(Constants.userDataModel!=null&&Constants.userDataModel!.id!=widget.property.userId)
                       Container(
                         height: 30,
                         width: .4.sw,
                         // margin: const EdgeInsets.only(top: 3),
                         decoration:Utils.returnDropdownButtonDecoration(
-                            ColorManager.primary,ColorManager.primary,RadiusManager.r8
+                            widget.property.isAuctionBefore? ColorManager.primary.withOpacity(.5): ColorManager.primary,
+                            widget.property.isAuctionBefore? ColorManager.primary.withOpacity(.5): ColorManager.primary,
+                            RadiusManager.r8
                         ),
                         child: InkWell(
                           onTap: (){
-                            if(Utils.checkIsLogin())
+                            if(Utils.checkIsLogin()&&!widget.property.isAuctionBefore)
                             MyRoute().navigate(context: context, route:  BidScreen(adId: widget.property.id,
                             isBidBefore: widget.property.isAuctionBefore,));
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              AppText(title:'Bid now'.tr(),
+                              AppText(title:widget.property.isAuctionBefore?'subscribed'.tr():'Bid now'.tr(),
                                 titleSize: FontSize.s10,
                                 titleMaxLines: 2,
                                 titleAlign: TextAlign.start,

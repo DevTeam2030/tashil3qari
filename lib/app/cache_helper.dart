@@ -11,10 +11,6 @@ class CacheHelper{
     prefs = await SharedPreferences.getInstance();
     getUserDataModel();
 
-
-
-
-
   }
 
 

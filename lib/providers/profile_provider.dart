@@ -38,10 +38,14 @@ class ProfileProvider extends ChangeNotifier {
 
 
   Future<void>getAllProfileData({required BuildContext context,bool?notify,})async{
-    isLoading=true;
-    userWishList=[];
-    userAds=[];
-    if(notify!=false) notifyListeners();
+    if(userWishList.isEmpty&&userAds.isEmpty){
+    // if(userWishList.isEmpty&&userAds.isEmpty&&profileData==null&&agreements.isEmpty){
+      isLoading=true;
+      if(notify!=false) notifyListeners();
+    }
+
+    // userWishList=[];
+    // userAds=[];
     profileData = await _api.getProfileData(context: context);
     userAds=await _api.getUserAds(context: context,);
     userWishList=await _api.getUserWishList(context: context,);

@@ -1,12 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:tashil_agary/components/size_box_height.dart';
 import 'package:tashil_agary/utilites/image_manager.dart';
 
 import '../../../../app/contants.dart';
 import '../../../../app/enums.dart';
 import '../../../../app/utils.dart';
+import '../../../../providers/home_provider.dart';
 import '../../../../utilites/color_manager.dart';
 import '../../../../utilites/font_manager.dart';
 import '../../../../utilites/styles_manager.dart';
@@ -17,9 +19,8 @@ import '../home_imports.dart';
 
 
 class AuctionButton extends StatelessWidget {
-  final  HomeData homeData;
   final  Function(bool) onTap;
-  const AuctionButton({super.key,required this.homeData,required this.onTap});
+  const AuctionButton({super.key,required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class AuctionButton extends StatelessWidget {
           ColorManager.primary,10),
         margin:  EdgeInsets.only(bottom: 80,right: 10,left: 10),
         padding: EdgeInsets.symmetric(horizontal: 8),
-        child: ValueListenableBuilder(valueListenable: homeData.showAuctionOnMap,
+        child: ValueListenableBuilder(valueListenable:  context.read<HomeProvider>().showAuctionOnMap,
             builder: (context, value, child) => value?
             InkWell(
               splashColor: ColorManager.white,

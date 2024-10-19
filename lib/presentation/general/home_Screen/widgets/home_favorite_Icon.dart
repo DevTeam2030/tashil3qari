@@ -4,9 +4,8 @@ part of'widget_imports.dart';
 
 
 class HomeFavoriteIcon extends StatelessWidget {
-  final HomeData homeData;
   final Function() onSatelliteSelected;
-  const HomeFavoriteIcon({super.key,required this.homeData,required this.onSatelliteSelected});
+  const HomeFavoriteIcon({super.key,required this.onSatelliteSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +16,7 @@ class HomeFavoriteIcon extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ValueListenableBuilder(valueListenable: homeData.selectedCity,
+            ValueListenableBuilder(valueListenable: context.read<HomeProvider>().selectedCity,
                 builder: (context, value, child) => value==null?  AppSizeBox(height: 20,): CircleAvatar(
                   radius: 18,
                   backgroundColor: ColorManager.primary,
@@ -26,7 +25,7 @@ class HomeFavoriteIcon extends StatelessWidget {
                     highlightColor:ColorManager.white ,
                     onTap: ()=>onSatelliteSelected() ,
                     child:Icon(Icons.satellite_alt,
-                      color: homeData.mapType== MapType.normal?ColorManager.white:ColorManager.red,size: 18,) ,
+                      color:  context.read<HomeProvider>().mapType== MapType.normal?ColorManager.white:ColorManager.red,size: 18,) ,
                   ),
                 ),
             ),

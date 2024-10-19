@@ -29,26 +29,23 @@ class _HomeScreenState extends State<HomeScreen> {
     // homeData.getDocumented(context: context);
     // // homeData.initMarkers(context: context);
 
-    try {
+    if(mounted) {
+      try {
       context.read<NotificationsProvider>().getCountUnreadNotification(context: context);
       // if(!showLocationPermiosion) getCurrentLocation(context: context);
-      homeData.initDataCitiesMarkers(
-          context: context,
-          afterBuildCitiesMarkers: () {
-            if (mounted) {
-              setState(() {});
-            }
-          });
+      // if(context.read<HomeProvider>().allCitiesMarkers.isEmpty)
+      context.read<HomeProvider>().initDataCitiesMarkers(context: context,);
       homeData.getDocumented(context: context);
     } catch (e) {
       // Handle errors gracefully
       print('Error during initialization: $e');
     }
+    }
   }
 
   @override
   void dispose() {
-    homeData.mapController.future.then((controller) => controller.dispose());
+    // homeData.mapController.future.then((controller) => controller.dispose());
     super.dispose();
   }
 
@@ -57,9 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
     //  homeData.initDataCitiesMarkers(context: context);
     return Consumer<HomeProvider>(builder: (context, provider, child) {
       return Scaffold(
-        appBar: HomeBuildAppBar(
-          homeData: homeData,
-        ),
+        appBar: HomeBuildAppBar(),
         body: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
@@ -82,16 +77,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ColorManager.textGrey,
                       ),
                       child: GoogleMap(
-                        mapType: homeData.mapType,
+                        mapType: provider.mapType,
                         myLocationButtonEnabled:false,
                         myLocationEnabled: false,
                         // scrollGesturesEnabled:true,
                         // zoomGesturesEnabled: true,
                         // zoomControlsEnabled: true,
-                        scrollGesturesEnabled: !homeData.showCitiesMarkers||showLocationPermiosion,
-                        zoomGesturesEnabled: !homeData.showCitiesMarkers||showLocationPermiosion,
-                        zoomControlsEnabled: !homeData.showCitiesMarkers||showLocationPermiosion,
-                        rotateGesturesEnabled: !homeData.showCitiesMarkers,
+                        scrollGesturesEnabled: !provider.showCitiesMarkers||showLocationPermiosion,
+                        zoomGesturesEnabled: !provider.showCitiesMarkers||showLocationPermiosion,
+                        zoomControlsEnabled: !provider.showCitiesMarkers||showLocationPermiosion,
+                        rotateGesturesEnabled: !provider.showCitiesMarkers,
                         compassEnabled: false,
                         // cameraTargetBounds: CameraTargetBounds(saudiBounds2),
                         cameraTargetBounds: CameraTargetBounds(
@@ -101,71 +96,74 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         initialCameraPosition:  CameraPosition(
-                          target: homeData.currentLocation, // الموقع الافتراضي للسعودية
+                          target: provider.currentLocation, // الموقع الافتراضي للسعودية
                           // target: LatLng(23.8859, 45.0792), // الموقع الافتراضي للسعودية
-                          zoom: homeData.cameraZoom,
+                          zoom: provider.cameraZoom,
                         ),
-                        minMaxZoomPreference:  MinMaxZoomPreference(homeData.cameraZoom, 28),
+                        minMaxZoomPreference:  MinMaxZoomPreference(provider.cameraZoom, 28),
                         onCameraMove: (CameraPosition position) async{
-                          if(position.zoom<=homeData.cameraZoom&&!homeData.showAllMap)homeData.gotToCountries(context: context);
-                          // if(position.zoom<=8&&!homeData.showAllMap)homeData.gotToCountries(context: context);
+                          if(position.zoom<=provider.cameraZoom&&!provider.showAllMap)provider.gotToCountries(context: context);
+                          // if(position.zoom<=8&&!provider.showAllMap)provider.gotToCountries(context: context);
                           },
                         // polygons: polygons,
                         // polygons: {
                         //   Polygon(
                         //     polygonId: PolygonId('saudi_polygon'),
                         //     points: pointsPolygon,
-                        //     // points: homeData.pointsPolygon,
+                        //     // points: provider.pointsPolygon,
                         //     strokeWidth: 2,
                         //     fillColor: Colors.transparent,
                         //     strokeColor: Colors.red,
                         //   ),
                         // },
-                        markers: homeData.showCitiesMarkers
-                            ? Constants.buildAllCitiesMarkersBefore
-                                ? homeData.allCitiesMarkers
-                                : {}
-                            : homeData.markers,
+                        markers: provider.showCitiesMarkers
+                            // ? Constants.buildAllCitiesMarkersBefore
+                                ? provider.allCitiesMarkers
+                                // : {}
+                            : provider.markers,
                         onMapCreated: (GoogleMapController controller) {
-                          homeData.mapController.complete(controller);
+                         try{
+                           provider.mapController.complete(controller);
+                         }catch(e){
+                           print('Error during map creation: $e');
+                         }
                           // setState(() {});
                         },
                       )),
                 ),
 
-                HomeFavoriteIcon(homeData: homeData,
+                HomeFavoriteIcon(
                   onSatelliteSelected: (){
-                    homeData.mapType= homeData.mapType == MapType.normal
+                    provider.mapType= provider.mapType == MapType.normal
                       ? MapType.satellite
                       : MapType.normal;
                   setState(() {});
                   },
                 ),
-                if(provider.properties.isNotEmpty && homeData.selectedCity.value != null)
+                if(provider.properties.isNotEmpty && provider.selectedCity.value != null)
                 HomeShowAll(properties: provider.properties),
-                if (provider.properties.isNotEmpty && homeData.selectedCity.value != null)
+                if (provider.properties.isNotEmpty && provider.selectedCity.value != null)
                   AuctionButton(
-                      homeData: homeData,
                       onTap: (value) async {
-                        homeData.showAuctionOnMap.value = value;
+                        provider.showAuctionOnMap.value = value;
                         await context
                             .read<HomeProvider>()
                             .getProperties(
                                 context: context,
                                 forSale:
-                                    homeData.selectedAdType == AdType.forSale,
+                                    provider.selectedAdType == AdType.forSale,
                                 forRent:
-                                    homeData.selectedAdType == AdType.forRent,
-                                cityId: homeData.selectedCity.value?.id,
+                                    provider.selectedAdType == AdType.forRent,
+                                cityId: provider.selectedCity.value?.id,
                                 isAuction: value)
-                            .then((value) => homeData.initPropertiesMarkers(
+                            .then((value) => provider.initPropertiesMarkers(
                                 context: context));
                       }),
-                SelectedCityMap(homeData: homeData),
+                SelectedCityMap(),
                 GetCurrentLocationWidget(
                   onTap: ()=>getCurrentLocation(context: context),
                 ),
-                HomeOpenSearch(homeData: homeData,),
+                HomeOpenSearch(),
               ],
             ),
           ),
@@ -181,13 +179,13 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {});
       if (latLng == null) return;
 
-      homeData.currentLocation = latLng;
+      context.read<HomeProvider>().currentLocation = latLng;
       CameraPosition kLake = CameraPosition(
         target: latLng,
         zoom: 10,
       );
 
-      final GoogleMapController controller = await homeData.mapController.future;
+      final GoogleMapController controller = await  context.read<HomeProvider>().mapController.future;
       await controller.animateCamera(CameraUpdate.newCameraPosition(kLake));
     } catch (e) {
       // Handle errors gracefully

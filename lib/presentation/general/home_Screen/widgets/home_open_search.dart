@@ -3,8 +3,7 @@ part of'widget_imports.dart';
 
 
 class HomeOpenSearch extends StatefulWidget {
-final  HomeData homeData;
-  const HomeOpenSearch({super.key,required this.homeData});
+  const HomeOpenSearch({super.key,});
 
   @override
   State<HomeOpenSearch> createState() => _HomeOpenSearchState();
@@ -67,7 +66,7 @@ late  ValueNotifier<FinishingTypesModel> finishing;
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(valueListenable: widget.homeData.openSearch,
+    return ValueListenableBuilder(valueListenable:  context.read<HomeProvider>().openSearch,
       builder: (context, value, child) =>
           Align(
             alignment: Alignment.topCenter,
@@ -75,7 +74,7 @@ late  ValueNotifier<FinishingTypesModel> finishing;
               onTap: (){
                 FocusScope.of(context).requestFocus( FocusNode());
 
-                widget.homeData.openSearch.value=false;
+                 context.read<HomeProvider>().openSearch.value=false;
               },
               child: AnimatedContainer (
                 duration: Duration (seconds: 1),
@@ -184,9 +183,9 @@ late  ValueNotifier<FinishingTypesModel> finishing;
                               primaryColor: ColorManager.primary,
                               titleColor: ColorManager.white,
                               onPressed: ()async{
-                                widget.homeData.openSearch.value=false;
-                                widget.homeData.selectedCategory.value=selectedCategory.value;
-                                widget.homeData.showCitiesMarkers=false;
+                                 context.read<HomeProvider>().openSearch.value=false;
+                                 context.read<HomeProvider>().selectedCategory.value=selectedCategory.value;
+                                 context.read<HomeProvider>().showCitiesMarkers=false;
 
                                 // context.read<GeneralProvider>().mapCountry=selectedCountry;
                                 // context.read<GeneralProvider>().mapCity=selectedCity;
@@ -196,7 +195,7 @@ late  ValueNotifier<FinishingTypesModel> finishing;
                                     monthly: monthly.value,
                                     cityId: selectedCity.id,categoryId: selectedCategory.value.id,
                                 isNotify: true,
-                                    isAuction: widget.homeData.showAuctionOnMap.value,
+                                    isAuction:  context.read<HomeProvider>().showAuctionOnMap.value,
                                     propertySize: spaceController.text.isEmpty?null:double.parse(spaceController.text),
                                     minPrice: lowestPriceController.text.isEmpty?null:double.parse(lowestPriceController.text),
                                     maxPrice: abovePriceController.text.isEmpty?null:double.parse(abovePriceController.text),
@@ -229,7 +228,7 @@ late  ValueNotifier<FinishingTypesModel> finishing;
 
 
                                 ).then((value) =>
-                                    widget.homeData.initPropertiesMarkers(context: context));
+                                     context.read<HomeProvider>().initPropertiesMarkers(context: context));
 
                               }),
                         ],

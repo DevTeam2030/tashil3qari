@@ -1,18 +1,17 @@
 part of'widget_imports.dart';
 
 class SelectedCityMap extends StatelessWidget {
-  final HomeData homeData;
-  const SelectedCityMap({Key? key,required this.homeData}) : super(key: key);
+  const SelectedCityMap({super.key,});
 
   @override
   Widget build(BuildContext context) {
     return
       Align(
         alignment:Constants.isArabic? Alignment.topRight:Alignment.topLeft,
-        child: ValueListenableBuilder(valueListenable: homeData.selectedCity,
+        child: ValueListenableBuilder(valueListenable:  context.read<HomeProvider>().selectedCity,
             builder: (context, value, child) =>value==null?const AppSizeBox(width: 0,):Container(
               margin: const EdgeInsets.all(20.0),
-              constraints: BoxConstraints(
+              constraints: const BoxConstraints(
                 maxWidth: 200,
                 minWidth: 80
               ),
@@ -26,14 +25,16 @@ class SelectedCityMap extends StatelessWidget {
 
               child: InkWell(
                 onTap: (){
-                  homeData.showAllSamePosition=true;
-                  homeData.showCitiesMarkers=true;
-                  homeData.selectedCity.value=null;
-                  // homeData.showAllMap=true;
-                  homeData.mapType= MapType.normal;
+                  CacheHelper.removeData(key:ConstantsKeys.selectedCityIdnMapKey);
+                  context.read<HomeProvider>().showAllSamePosition=true;
+                  context.read<HomeProvider>().showCitiesMarkers=true;
+                  context.read<HomeProvider>().selectedCity.value=null;
+                  // provider.showAllMap=true;
+
+                  context.read<HomeProvider>().mapType= MapType.normal;
                   context.read<HomeProvider>().properties=[];
-                  homeData.initDataCitiesMarkers(context: context,isNotify: true,
-                      afterBuildCitiesMarkers:(){});
+
+                  context.read<HomeProvider>().initDataCitiesMarkers(context: context);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,7 +47,7 @@ class SelectedCityMap extends StatelessWidget {
                           titleMaxLines: 1,fontWeightType: FontWeightType.medium,
                           titleSize: FontSize.s14,titleColor: ColorManager.white),
                     ),
-                    AppSizeBox(width: 4,),
+                    const AppSizeBox(width: 4,),
                      Icon(Icons.close,color: ColorManager.white,size: 14),
                   ],
                 ),

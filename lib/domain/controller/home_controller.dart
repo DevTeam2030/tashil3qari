@@ -144,7 +144,16 @@ class HomeController  {
     if(apartmentsNo!=null&&apartmentsNo>0)url='$url&apartments_no=$apartmentsNo';
     if(storesNo!=null&&storesNo>0)url='$url&stores_no=$storesNo';
     if(buildingAge!=null&&buildingAge>0)url='$url&building_age=$buildingAge';
-    if(direction!=null&&direction.isNotEmpty)url='$url&direction=${direction.first}';
+    if(direction!=null&&direction.isNotEmpty){
+      String text='';
+      for(var item in direction){
+        text='$text$item${item==direction.last?'':','}';
+      }
+
+      url='$url&direction=$text';
+      print('============== $url');
+      
+    }
     if(streetWidth!=null&&streetWidth>0)url='$url&street_width=$streetWidth';
 
 

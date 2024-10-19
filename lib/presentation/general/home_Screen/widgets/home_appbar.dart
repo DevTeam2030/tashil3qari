@@ -1,13 +1,12 @@
 part of'widget_imports.dart';
 
 class HomeBuildAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final HomeData homeData;
+
   final bool? showFilter;
   final double? fromHeight;
   final bool isFromHome,showLogo;
   const HomeBuildAppBar({
     Key? key,
-   required this.homeData,
     this.showFilter,
     this.fromHeight,
     this.isFromHome=true,
@@ -79,7 +78,7 @@ class HomeBuildAppBar extends StatelessWidget implements PreferredSizeWidget {
 
 
                 if(showFilter!=false)
-                  ValueListenableBuilder(valueListenable: homeData.openSearch,
+                  ValueListenableBuilder(valueListenable:  context.read<HomeProvider>().openSearch,
                       builder: (context, value, child) => Container(
                           width: 120.0,
                           height: AppSize.s40,
@@ -97,7 +96,7 @@ class HomeBuildAppBar extends StatelessWidget implements PreferredSizeWidget {
                           // padding: EdgeInsets.symmetric(horizontal: PaddingManager.p4),
                           child:InkWell(
                               onTap: (){
-                                homeData.openSearch.value=!value;
+                                 context.read<HomeProvider>().openSearch.value=!value;
                               },
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -124,18 +123,18 @@ class HomeBuildAppBar extends StatelessWidget implements PreferredSizeWidget {
                 // if(false)
                 //   CitiesDropdownButton(
                 //     onChanged: () {
-                //       homeData.showCitiesMarkers=true;
+                //        context.read<HomeProvider>().showCitiesMarkers=true;
                 //       context.read<HomeProvider>().properties=[];
-                //       homeData.initDataCitiesMarkers(context: context,isNotify: true);
+                //        context.read<HomeProvider>().initDataCitiesMarkers(context: context,isNotify: true);
                 //     },
                 //   ),
 
-                // if(!homeData.showCitiesMarkers)
+                // if(! context.read<HomeProvider>().showCitiesMarkers)
                 // ForSaleOrRentDropdownButton(
-                //   selectedType:  homeData.selectedAdType,
+                //   selectedType:   context.read<HomeProvider>().selectedAdType,
                 //     onChanged: (type) async{
-                //       homeData.selectedAdType;
-                //       homeData.getByCategory(context: context, category: homeData.selectedCategory.value);
+                //        context.read<HomeProvider>().selectedAdType;
+                //        context.read<HomeProvider>().getByCategory(context: context, category:  context.read<HomeProvider>().selectedCategory.value);
                 //     },
                 //   ),
 
@@ -160,7 +159,7 @@ class HomeBuildAppBar extends StatelessWidget implements PreferredSizeWidget {
                 children: [
 
 
-                  // ValueListenableBuilder(valueListenable: homeData.openSearch,
+                  // ValueListenableBuilder(valueListenable:  context.read<HomeProvider>().openSearch,
                   //     builder: (context, value, child) => Container(
                   //         width: 100.0,
                   //         height: AppSize.s35,
@@ -184,7 +183,7 @@ class HomeBuildAppBar extends StatelessWidget implements PreferredSizeWidget {
                   //         // padding: EdgeInsets.symmetric(horizontal: PaddingManager.p4),
                   //         child:InkWell(
                   //             onTap: (){
-                  //               homeData.openSearch.value=!value;
+                  //                context.read<HomeProvider>().openSearch.value=!value;
                   //             },
                   //             child: Row(
                   //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -209,13 +208,13 @@ class HomeBuildAppBar extends StatelessWidget implements PreferredSizeWidget {
                   children: [
                     Expanded(child: ForSaleOrRentDropdownButton(
                       hint: 'saleRent'.tr(),
-                      selectedType:  homeData.selectedAdType,
+                      selectedType:   context.read<HomeProvider>().selectedAdType,
                       onChanged: (type) async{
-                        homeData.selectedAdType=type;
-                        homeData.getByCategory(context: context, category: homeData.selectedCategory.value);
+                         context.read<HomeProvider>().selectedAdType=type;
+                         context.read<HomeProvider>().getByCategory(context: context, category:  context.read<HomeProvider>().selectedCategory.value);
                       },
 
-                      monthly:   homeData.monthly,
+                      monthly:    context.read<HomeProvider>().monthly,
 
                       inAppbar: true,
                     ),),
@@ -223,8 +222,8 @@ class HomeBuildAppBar extends StatelessWidget implements PreferredSizeWidget {
                     AppSizeBox(width: 10,),
                     
                     Expanded(child: CategoriesDropdownButton(
-                      selectedCategory: homeData.selectedCategory.value,
-                      onChanged: (selectedCategory)=>homeData.getByCategory(context: context, category: selectedCategory),
+                      selectedCategory:  context.read<HomeProvider>().selectedCategory.value,
+                      onChanged: (selectedCategory)=> context.read<HomeProvider>().getByCategory(context: context, category: selectedCategory),
                     ),),
 
 
@@ -243,9 +242,9 @@ class HomeBuildAppBar extends StatelessWidget implements PreferredSizeWidget {
                           return  Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 4,vertical: 0),
                             child: ValueListenableBuilder(
-                              valueListenable: homeData.selectedCategory,
+                              valueListenable:  context.read<HomeProvider>().selectedCategory,
                               builder: (context, value, child) => InkWell(
-                                onTap: ()=>homeData.getByCategory(context: context, category: categories[index]),
+                                onTap: ()=> context.read<HomeProvider>().getByCategory(context: context, category: categories[index]),
                                 child:  Container(
                                   height: AppSize.s40,
                                   width: 60,

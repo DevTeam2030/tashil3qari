@@ -700,5 +700,7 @@
  "YouCannotMakeAgreementYourself": "You cannot make an agreement yourself",
  "reason num fees": "A fee of num Saudi Riyals will be paid",
  "IsBidBefore": "It has already been bid",
- "DeleteAdMessage": "Are you sure you want to delete the ad ?"
+ "DeleteAdMessage": "Are you sure you want to delete the ad ?",
+ "Bid done": "Bid done",
+ "subscribed": "Subscribed"
 }

@@ -13,9 +13,12 @@ class CouncilProvider extends ChangeNotifier {
   List<PostModel> opportunities = [];
 
   Future<void> getCouncilData({required BuildContext context, required bool notify,int? cityId}) async {
-    isLoading = true;
-    posts = [];
-    opportunities = [];
+
+    if(posts.isEmpty&&opportunities.isEmpty){
+      isLoading = true;
+    }
+    // posts = [];
+    // opportunities = [];
 
     if (notify) notifyListeners();
     posts = await _api.getPosts(context: context,cityId: cityId);

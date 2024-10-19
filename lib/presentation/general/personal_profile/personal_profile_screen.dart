@@ -9,7 +9,7 @@ class PersonalProfileScreen extends StatefulWidget {
 }
 
 class _PersonalProfileScreenState extends State<PersonalProfileScreen> {
-  HomeData homeData = HomeData();
+
  late PersonalProfileData personalProfileData;
 
 
@@ -45,8 +45,7 @@ class _PersonalProfileScreenState extends State<PersonalProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: HomeBuildAppBar(
-          homeData: homeData, showFilter: false, fromHeight: 70,isFromHome: Constants.userDataModel==null||Constants.userDataModel!.isUser),
+      appBar: HomeBuildAppBar(showFilter: false, fromHeight: 70,isFromHome: Constants.userDataModel==null||Constants.userDataModel!.isUser),
       body: Consumer<AuthProvider>(
           builder: (context, authProvider, child) =>Consumer<ProfileProvider>(
               builder: (context, provider, child) =>ScreenLoading(

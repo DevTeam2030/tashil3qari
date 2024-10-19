@@ -8,7 +8,6 @@ class YourConsultantScreen extends StatefulWidget {
 }
 
 class _YourConsultantScreenState extends State<YourConsultantScreen> {
-  HomeData homeData=HomeData();
   bool showAsList=false;
   TextEditingController searchController = TextEditingController();
   @override
@@ -26,7 +25,7 @@ class _YourConsultantScreenState extends State<YourConsultantScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: HomeBuildAppBar(homeData: homeData,showFilter: false,fromHeight: 70,showLogo:false),
+      appBar: HomeBuildAppBar(showFilter: false,fromHeight: 70,showLogo:false),
       body: Consumer<ConsultantProvider>(
         builder: (context, provider, child) => ScreenLoading(
           isLoading: provider.isLoading,

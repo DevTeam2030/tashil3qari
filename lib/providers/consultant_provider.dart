@@ -46,10 +46,12 @@ bool isLoading=false;
 
 
   Future<void>getConsultants({required BuildContext context,bool? notify,int? opportunityId, int? cityId })async{
-    allConsultants=[];
-    filterConsultants=[];
-    isLoading=true;
-    if(notify==true)notifyListeners();
+    // allConsultants=[];
+    // filterConsultants=[];
+    if(allConsultants.isEmpty){
+      isLoading=true;
+      if(notify==true)notifyListeners();
+    }
     var data=await _api.getConsultants(context: context,opportunityId: opportunityId,);
     if(cityId!=null)data=data.where((element) => element.cityId==cityId).toList();
     allConsultants=data;

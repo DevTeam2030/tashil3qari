@@ -723,5 +723,7 @@
   "YouCannotMakeAgreementYourself": "لا يمكنك إبرام اتفاقية مع نفسك",
   "IsBidBefore": "تم المزايده مسبقا",
   "reason num fees": "سيتم دفع رسوم num ريال سعودى",
-  "DeleteAdMessage": "هل تريد حذف الإعلان ؟"
+  "DeleteAdMessage": "هل تريد حذف الإعلان ؟",
+  "Bid done": "تم المزايدة",
+  "subscribed": "مشترك"
 }

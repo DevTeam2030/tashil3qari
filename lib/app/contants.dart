@@ -16,9 +16,9 @@ GeneralPropertyModel constantProperty=GeneralPropertyModel(
 
 );
 class Constants{
- static bool buildAllCitiesMarkersBefore=false;
+ // static bool buildAllCitiesMarkersBefore=false;
  // static    ValueNotifier<bool>   isRealLocationSelected= ValueNotifier<bool>(false);
- static  bool isProductionMode=false;
+ static  bool isProductionMode=true;
 
  static SettingModel settingModel=SettingModel(consultantFess: 0,countAllAds: 0,licenseFess: 0,categories: [],countries: [],
      appValueAfterSelling: 0,servicesAboutAr: '',servicesAboutEn: '',
@@ -125,12 +125,12 @@ class ConstantsKeys{
  //------------------ Keys
  static const langCodeKey='localePrefsLangCode';
  static const showAuthDashBoardBeforeKey='showAuthDashBoardBeforeKey';
-
  static const showLanguageScreenInFirstKey='showLanguageScreenInFirstKey';
-
+ static  String  selectedCityIdnMapKey='selectedCityIdnMapKey';
  static const userDataModelKey='userDataModelKey';
  static  String  notificationKey='unSeenNotification' ;
  static  String  rememberPasswordPhoneKey='rememberPasswordPhoneKey' ;
  static  String  rememberPasswordKey='rememberPasswordKey' ;
  static  String  themeModeIsDarkKey='themeModeIsDarkKey' ;
+
 }

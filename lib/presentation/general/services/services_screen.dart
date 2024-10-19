@@ -8,7 +8,7 @@ class ServicesScreen extends StatefulWidget {
 }
 
 class _ServicesScreenState extends State<ServicesScreen> {
-  HomeData homeData=HomeData();
+
 
   @override
   void initState() {
@@ -24,7 +24,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: HomeBuildAppBar(homeData: homeData,showFilter: false,fromHeight: 70),
+      appBar: HomeBuildAppBar(showFilter: false,fromHeight: 70),
       body: Consumer<ServicesProvider>(
         builder: (context, provider, child) => ScreenLoading(
           isLoading: provider.isLoading,
