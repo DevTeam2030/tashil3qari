@@ -18,12 +18,12 @@ GeneralPropertyModel constantProperty=GeneralPropertyModel(
 class Constants{
  // static bool buildAllCitiesMarkersBefore=false;
  // static    ValueNotifier<bool>   isRealLocationSelected= ValueNotifier<bool>(false);
- static  bool isProductionMode=false;
 
- static SettingModel settingModel=SettingModel(consultantFess: 0,countAllAds: 0,licenseFess: 0,categories: [],countries: [],
-     appValueAfterSelling: 0,servicesAboutAr: '',servicesAboutEn: '',
-     pledgeMessage: '',policyPrivacy: '',terms: '',
-     finishingTypes: [],auctionDurations: [],reasons: [],currencies: [],featuredPlans:[],serialNumbers: [],nationalities: []);
+ static  bool isProductionMode=true;
+ static SettingModel settingModel=SettingModel(consultantFess: 0,countAllAds: 0,licenseFess: 0,
+     categories: [],countries: [], appValueAfterSelling: 0,servicesAboutAr: '',servicesAboutEn: '',
+     pledgeMessage: '',policyPrivacy: '',terms: '', finishingTypes: [],auctionDurations: [],
+     reasons: [],currencies: [],featuredPlans:[],serialNumbers: [],nationalities: []);
 
  static const String getLocationUrl = 'http://www.geoplugin.net/json.gp?jsoncallback=?';
  static  LatLng currentLocationLatLngByUrl=const LatLng(0,0);

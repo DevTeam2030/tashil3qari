@@ -1,6 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../components/loading_manager.dart';
 
 class UrlLauncherMethods{
 
@@ -30,14 +33,25 @@ class UrlLauncherMethods{
   }
 
   static launchURL({required String url}) async {
-    if (!await launch(url)) throw 'Could not launch $url';
+    try{
+      if (!await launch(url))    LoadingDialog.showSimpleToast('errorTryAgainLater'.tr());
+    }catch(e){
+      LoadingDialog.showSimpleToast('errorTryAgainLater'.tr());
+
+    }
   }
   static Future<void> whatsapp({required String phoneNo, String? countryCode,String? message }) async {
     final link = WhatsAppUnilink(
       phoneNumber: countryCode??''+phoneNo,
       text:message?? "",
     );
-    if (!await launch('$link')) throw 'Could not launch $link';
+    try{
+      if (!await launch('$link'))  LoadingDialog.showSimpleToast('errorTryAgainLater'.tr());
+    }catch(e){
+      LoadingDialog.showSimpleToast('errorTryAgainLater'.tr());
+
+    }
+
   }
 
  static Future<void> sendingSMS({required String phoneNo,}) async {
@@ -45,8 +59,9 @@ class UrlLauncherMethods{
     if (await canLaunchUrl(url)) {
       await launchUrl(url);
     } else {
-      throw 'Could not launch $url';
+      LoadingDialog.showSimpleToast('errorTryAgainLater'.tr());
     }
+
   }
   static sendEmail({required String email})async{
     // UrlLauncher.launch('mailto:elsayed.fahmy.ali@gmail.com');

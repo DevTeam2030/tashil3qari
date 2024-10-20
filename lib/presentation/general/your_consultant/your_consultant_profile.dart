@@ -112,6 +112,7 @@ class _YourConsultantProfileScreenState extends State<YourConsultantProfileScree
                         child: NoDataCurrentlyAvailable(),
                       ),
 
+
                     if(!showAdsTab &&Constants.userDataModel!=null&&
                         widget.consultantId!=Constants.userDataModel!.id
                         &&provider.consultantInfo!.canRate
@@ -147,7 +148,8 @@ class _YourConsultantProfileScreenState extends State<YourConsultantProfileScree
                             ),
                           ],
                         ),
-                      )else const AppSizeBox(height: 14),
+                      )
+                    else const AppSizeBox(height: 14),
 
                     if (!showAdsTab&& provider.allConsultantRates.isEmpty&&!provider.isLoading)
                       const Padding(

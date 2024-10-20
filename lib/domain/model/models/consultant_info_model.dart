@@ -61,7 +61,7 @@ class ConsultantInfoModel {
     followingNo: json["follwing_no"]??0,
     isFollow: json["is_follow"]??false,
     rate: double.tryParse(json["rate"].toString())??0,
-    canRate: json["can_rate  "].toString()=='true'||json["can_rate  "].toString()=='1'?true:false,
+    canRate: json["can_rate"].toString()=='true'||json["can_rate"].toString()=='1'?true:false,
   );
 
 }
