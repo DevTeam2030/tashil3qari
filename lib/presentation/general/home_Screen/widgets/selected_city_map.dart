@@ -34,7 +34,7 @@ class SelectedCityMap extends StatelessWidget {
                   context.read<HomeProvider>().mapType= MapType.normal;
                   context.read<HomeProvider>().properties=[];
 
-                  context.read<HomeProvider>().initDataCitiesMarkers(context: context);
+                  context.read<HomeProvider>().initDataCitiesMarkers(context: context,notify: true);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

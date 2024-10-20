@@ -18,7 +18,7 @@ GeneralPropertyModel constantProperty=GeneralPropertyModel(
 class Constants{
  // static bool buildAllCitiesMarkersBefore=false;
  // static    ValueNotifier<bool>   isRealLocationSelected= ValueNotifier<bool>(false);
- static  bool isProductionMode=true;
+ static  bool isProductionMode=false;
 
  static SettingModel settingModel=SettingModel(consultantFess: 0,countAllAds: 0,licenseFess: 0,categories: [],countries: [],
      appValueAfterSelling: 0,servicesAboutAr: '',servicesAboutEn: '',

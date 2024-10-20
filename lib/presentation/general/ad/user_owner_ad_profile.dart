@@ -16,7 +16,7 @@ class _UserOwnerAdProfileScreenState extends State<UserOwnerAdProfileScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<ProductProvider>().getOwnerProperties(context: context,ownerId: widget.propertyInfo.userId,);
+    context.read<ProductProvider>().getOwnerProperties(context: context,ownerId: widget.propertyInfo.userId,isNotify: false);
   }
 
 

@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
       context.read<NotificationsProvider>().getCountUnreadNotification(context: context);
       // if(!showLocationPermiosion) getCurrentLocation(context: context);
       // if(context.read<HomeProvider>().allCitiesMarkers.isEmpty)
-      context.read<HomeProvider>().initDataCitiesMarkers(context: context,);
+      context.read<HomeProvider>().initDataCitiesMarkers(context: context,notify: false);
       homeData.getDocumented(context: context);
     } catch (e) {
       // Handle errors gracefully

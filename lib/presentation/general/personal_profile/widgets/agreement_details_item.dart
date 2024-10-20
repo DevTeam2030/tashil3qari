@@ -64,6 +64,7 @@ class AgreementDetailsItem extends StatelessWidget {
             children: [
               // InkWell(
               //   onTap: ()async{
+          // UrlLauncherMethods.launchURL(url:agreementModel.agreementFile);
               //     UrlLauncherMethods.launchURL(url:'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf');
               //     // Utils.downloadImage(context: context,
               //   },

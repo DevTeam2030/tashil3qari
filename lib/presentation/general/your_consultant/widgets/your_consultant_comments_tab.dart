@@ -13,7 +13,7 @@ class YourConsultantCommentsTab extends StatelessWidget {
                     (BuildContext context, int index) {
                   return RatingConsultantWidget(comment:provider.allConsultantRates[index],
                     consultantId: provider.consultantInfo!.id,
-                      consultantName: provider.consultantInfo!.firstName+ ' '+provider.consultantInfo!.firstName,);
+                      consultantName: '${provider.consultantInfo!.firstName} ${provider.consultantInfo!.firstName}',);
                 },
                 childCount: provider.allConsultantRates.length,
               )));

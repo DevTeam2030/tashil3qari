@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +9,6 @@ import 'package:tashil_agary/domain/model/models/country_model.dart';
 import 'package:tashil_agary/domain/model/models/home_catogery_model.dart';
 import 'package:tashil_agary/presentation/general/home_Screen/widgets/widget_imports.dart';
 import 'package:widget_to_marker/widget_to_marker.dart';
-
 import '../app/contants.dart';
 import '../app/enums.dart';
 import '../components/loading_manager.dart';
@@ -22,7 +20,7 @@ import 'general_provider.dart';
 class HomeProvider extends ChangeNotifier {
   final HomeController _api=HomeController();
   final SearchApiController _apiSearch=SearchApiController();
-bool isLoading=false;
+  bool isLoading=false;
   List<GeneralPropertyModel>properties=[];
   // List<FinishingTypesModel>finishingTypes=[];
   // List<HomeCatogeryModel> categories=[];
@@ -31,9 +29,7 @@ bool isLoading=false;
   Set<Marker> markers = {};
   Set<Marker> allCitiesMarkers = {};
   Completer<GoogleMapController> mapController = Completer();
-
-  // LatLng p1 = const LatLng(40.153474463955796, 35.33852195739747);
-  LatLng locationCustom = const LatLng(23.8859, 45.0792);
+  LatLng locationCustom = const LatLng(23.8859, 45.0785);
   LatLng currentLocation = const LatLng(23.8859, 45.0785);
   AdType? selectedAdType;
   ValueNotifier<bool> monthly = ValueNotifier<bool>(false);
@@ -46,7 +42,6 @@ bool isLoading=false;
 
   //LatLng startLocation = LatLng(27.6602292, 85.308027);
   String location = "Search Location";
-
   ValueNotifier<bool> openSearch = ValueNotifier<bool>(false);
   ValueNotifier<HomeCatogeryModel?> selectedCategory = ValueNotifier<HomeCatogeryModel?>(null);
   // ValueNotifier<HomeCatogeryModel> selectedCategory = ValueNotifier<HomeCatogeryModel>(Constants.settingModel.categories.first);
@@ -62,8 +57,6 @@ bool isLoading=false;
     // if (selectedCategory.value == category) return;
     selectedCategory.value = category;
     showCitiesMarkers = false;
-
-
     await getProperties(context: context,
         isAuction: showAuctionOnMap.value,
         forSale: selectedAdType == AdType.forSale,
@@ -88,7 +81,7 @@ bool isLoading=false;
         ));
   }
 
-  initDataCitiesMarkers({required BuildContext context, }) async {
+  initDataCitiesMarkers({required BuildContext context,required bool notify }) async {
     try {
 
       var country = context.read<GeneralProvider>().mapCountry;
@@ -108,9 +101,6 @@ bool isLoading=false;
         // isLoading=true;
         // notifyListeners();
 
-        print(properties.length.toString() +' xxxxx');
-        log('xxxx dddddddddddddddddddddddddddddd');
-
         if(properties.isEmpty)
         await getProperties(
           context: context,
@@ -120,15 +110,12 @@ bool isLoading=false;
           isNotify: false,
           isAuction: showAuctionOnMap.value,).then((value) => initPropertiesMarkers(context: context));
         else initPropertiesMarkers(context: context);
-
       }
       else{
-        log('xxxx ffffffffffffffffffffffffffffffff');
         showAllMap = true;
         properties=[];
 
         if (allCitiesMarkers.isEmpty) {
-          log('xxxx sssssssssssssssssssssss');
           for (var city in country.cities) {
             allCitiesMarkers.add(Marker(
                 markerId: MarkerId("${city.id}"),
@@ -153,6 +140,7 @@ bool isLoading=false;
           }
         }
         isLoading=false;
+        if(notify)
         notifyListeners();
         final GoogleMapController controller = await mapController.future;
 

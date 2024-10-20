@@ -33,13 +33,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
- late LoginData _loginData;
+ final LoginData _loginData=LoginData();
   @override
   void initState() {
     super.initState();
-    _loginData=LoginData();
-   // _loginData.idNumberController.text='654321';
-   //  _loginData.passwordController.text='as140800as';
+    // _loginData.idNumberController.text='1234567890';
+    // _loginData.passwordController.text='xFoXrEm8';
+    // _loginData.idNumberController.text='1234567891';
+    // _loginData.passwordController.text='Aa1234567';
   }
 
   @override
