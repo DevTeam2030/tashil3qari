@@ -125,6 +125,7 @@ Widget build(BuildContext context) {
 
                             CallIcon(phoneNo: widget.consultantInfo.phone),
                             ChatIcon(
+                              messageAd: '',
                               receiverId: widget.consultantInfo.id,
                               receiverName: widget.consultantInfo.firstName+' '+widget.consultantInfo.lastName,
                               receiverImage: widget.consultantInfo.image,

@@ -24,6 +24,8 @@ import '../../../../utilites/styles_manager.dart';
 import '../../../../utilites/values_manager.dart';
 import '../../../../app/validator.dart';
 import '../../../../components/text_field/text_field_imports.dart';
+import '../../ad/ad_imports.dart';
+import '../../your_consultant/your_consultant_imports.dart';
 import '../bid_imports.dart';
 
 

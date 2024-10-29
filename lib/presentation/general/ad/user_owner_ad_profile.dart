@@ -1,9 +1,10 @@
 part of 'ad_imports.dart';
 
 class UserOwnerAdProfileScreen extends StatefulWidget {
-  final PropertyInfoModel propertyInfo;
-  const UserOwnerAdProfileScreen({super.key,required this.propertyInfo});
-
+  final String userImage,userRate,userName,userPhone;
+  final int userId,propertyId;
+  const UserOwnerAdProfileScreen({super.key,required this.userImage,required this.userName,required this.userPhone,
+    required this.userRate,required this.userId,required this.propertyId});
   @override
   State<UserOwnerAdProfileScreen> createState() =>
       _UserOwnerAdProfileScreenState();
@@ -16,7 +17,8 @@ class _UserOwnerAdProfileScreenState extends State<UserOwnerAdProfileScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<ProductProvider>().getOwnerProperties(context: context,ownerId: widget.propertyInfo.userId,isNotify: false);
+    context.read<ProductProvider>().getOwnerProperties(context: context,
+        ownerId: widget.userId,isNotify: false);
   }
 
 
@@ -33,7 +35,7 @@ class _UserOwnerAdProfileScreenState extends State<UserOwnerAdProfileScreen> {
         height: 1.0.sh,
         width: 1.0.sw,
         child:Scaffold(
-          appBar: GeneralAppBar(title:widget.propertyInfo.userName,
+          appBar: GeneralAppBar(title:widget.userName,
               showChatNotify: false),
           body: ScreenLoading(
             isLoading: provider.isLoading,
@@ -49,7 +51,13 @@ class _UserOwnerAdProfileScreenState extends State<UserOwnerAdProfileScreen> {
                 slivers: [
                   SliverList(
                     delegate: SliverChildListDelegate([
-                      UserProfileDataWidget(propertyInfo: widget.propertyInfo ),
+                      UserProfileDataWidget(
+                        userId: widget.userId,propertyId: widget.propertyId,
+                        userImage: widget.userImage,
+                        userName: widget.userName,
+                        userPhone: widget.userPhone,
+                        userRate: widget.userRate,
+                      ),
 
 
 

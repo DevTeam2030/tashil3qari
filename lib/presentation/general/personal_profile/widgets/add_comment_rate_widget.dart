@@ -3,7 +3,8 @@ part of'widgets_imports.dart';
 
 class AddReplyCommentToRateWidget extends StatefulWidget {
   final int rateId,consultantId ;
-  const AddReplyCommentToRateWidget({super.key,required this.rateId,required this.consultantId});
+  final Function(String text) onComment;
+  const AddReplyCommentToRateWidget({super.key,required this.rateId,required this.consultantId,required this.onComment});
 
   @override
   State<AddReplyCommentToRateWidget> createState() => _AddReplyCommentToRateWidgetState();
@@ -97,11 +98,7 @@ Widget build(BuildContext context) {
                       onPressed: (){
                         Navigator.pop(context);
                         if(formKey.currentState!.validate()){
-                          context.read<ConsultantProvider>().addConsultantReplyRate(
-                              context: context,
-                              consultantId:widget.consultantId ,
-                              rateId: widget.rateId,
-                              comment: reasonController.text);
+                          widget.onComment(reasonController.text);
                         }
 
                       }),

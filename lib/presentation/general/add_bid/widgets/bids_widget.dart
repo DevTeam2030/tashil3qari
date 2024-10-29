@@ -4,10 +4,11 @@ part of'widgets_imports.dart';
 class BidWidget extends StatefulWidget {
   final BidData bidData;
   final bool isBidBefore;
+  final int propertyId;
   final   AuctionDataModel auctionData;
  final AuctionUserModel? mostAuctionUser;
   const BidWidget({super.key,required this.bidData,required this.auctionData,required this.mostAuctionUser,
-  required this.isBidBefore}) ;
+  required this.isBidBefore,required this.propertyId}) ;
 
   @override
   State<BidWidget> createState() => _BidWidgetState();
@@ -64,14 +65,16 @@ class _BidWidgetState extends State<BidWidget> {
 
               const AppSizeBox(height: 4,),
 
-            if(widget.mostAuctionUser!=null)BidPersonWidget(isWin: true,user: widget.mostAuctionUser!),
+            if(widget.mostAuctionUser!=null)BidPersonWidget(isWin: true,user: widget.mostAuctionUser!,
+            propertyId: widget.propertyId,),
 
             for(var item in widget.auctionData.auctionsUsers.where((element) => element!=widget.mostAuctionUser))
-             BidPersonWidget(isWin: false,user: item),
+             BidPersonWidget(isWin: false,user: item,propertyId: widget.propertyId,),
 
             const AppSizeBox(height: 10,),
 
-            if(Constants.userDataModel!=null&&widget.auctionData.userId!=Constants.userDataModel!.id)
+            if(Constants.userDataModel!=null&&widget.auctionData.userId!=Constants.userDataModel!.id&&
+                widget.auctionData.isLive)
               // widget.isBidBefore? Padding(
               //   padding: const EdgeInsets.only(top: 20),
               //   child: Row(

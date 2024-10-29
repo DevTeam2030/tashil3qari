@@ -8,8 +8,12 @@ class HorizontalRealEstateConsultantWidget extends StatelessWidget {
 @override
 Widget build(BuildContext context) {
   return    InkWell(
-    onTap: ()=>MyRoute().navigate(context: context, route:  YourConsultantProfileScreen(consultantId: consultant.id,)),
-    child: Container(
+    onTap: (){
+      if(Utils.checkIfUserLogin(context: context))
+        MyRoute().navigate(context: context, route:  YourConsultantProfileScreen(consultantId: consultant.id,));
+
+    },
+           child: Container(
       margin: const EdgeInsets.symmetric(vertical: 4),
       padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 10),
       width: 1.0.sw,
@@ -95,15 +99,45 @@ Widget build(BuildContext context) {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              CircleAvatar(
-                radius: 16,
-                backgroundColor: ColorManager.white,
-                child: Image.asset(ImageManager.chat,color: ColorManager.primary,),
+              InkWell(
+                onTap: (){
+                  if(Utils.checkIfUserLogin(context: context)){
+                    if(consultant.id==Constants.userDataModel!.id){
+                      LoadingDialog.showSimpleToast('YouCantMessageYourself'.tr());
+
+                    }else{
+                      MyRoute().navigate(context: context, route: ChatAgreementScreen(
+                        receiverId: consultant.id,
+                        messageAd: '',
+                        receiverName: consultant.name,
+                        receiverImage: consultant.image,
+                        receiverType: UserType.consultant,
+                      ));
+                    }
+
+                  }
+                },
+                child: CircleAvatar(
+                  radius: 16,
+                  backgroundColor: ColorManager.white,
+                  child: Image.asset(ImageManager.chat,color: ColorManager.primary,),
+                ),
               ),
 
               const AppSizeBox(width: 4,),
               InkWell(
-                onTap: ()=>UrlLauncherMethods.makePhoneCall(phoneNo: consultant.phone),
+                  onTap: (){
+                    if(Utils.checkIfUserLogin(context: context)){
+                      if(consultant.id==Constants.userDataModel!.id){
+                        LoadingDialog.showSimpleToast('YouCantMessageYourself'.tr());
+
+                      }else{
+                        UrlLauncherMethods.makePhoneCall(phoneNo: consultant.phone);
+                      }
+
+                    }
+                  },
+                // onTap: ()=>UrlLauncherMethods.makePhoneCall(phoneNo: consultant.phone),
                 child: CircleAvatar(
                   radius: 16,
                   backgroundColor: ColorManager.white,

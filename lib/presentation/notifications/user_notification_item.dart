@@ -79,7 +79,7 @@ class UserNotificationItem extends StatelessWidget {
                         fontWeightType: FontWeightType.medium,),
                       const AppSizeBox(height: AppSize.s4,),
                       AppText(
-                        title:notification.date.toString(),
+                        title:'${notification.date.day}/${notification.date.month}/${notification.date.year}',
                         titleSize: FontSize.s12,
                         titleMaxLines: 2,
                         titleHeight: 1.2,

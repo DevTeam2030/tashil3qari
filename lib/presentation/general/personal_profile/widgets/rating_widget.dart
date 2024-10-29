@@ -4,7 +4,9 @@ class RatingConsultantWidget extends StatelessWidget {
   final ConsultantCommentModel comment;
   final String consultantName;
   final int consultantId;
-  const RatingConsultantWidget({super.key,required this.comment,required this.consultantId,required this.consultantName});
+  final Function(ConsultantCommentModel comment) onTap;
+  const RatingConsultantWidget({super.key,required this.comment,
+    required this.consultantId,required this.consultantName,required this.onTap});
 
 @override
 Widget build(BuildContext context) {
@@ -64,10 +66,7 @@ Widget build(BuildContext context) {
           
         else if(Constants.userDataModel!=null&&consultantId==Constants.userDataModel!.id)
           InkWell(
-          onTap: (){
-            LoadingDialog().widgetAlertDialog(context: context,
-                widget: AddReplyCommentToRateWidget(rateId: comment.id,consultantId: consultantId,));
-          },
+          onTap: ()=>onTap(comment),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,

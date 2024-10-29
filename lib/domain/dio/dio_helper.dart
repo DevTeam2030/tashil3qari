@@ -79,7 +79,7 @@ class DioHelper {
     Utils.printData("$baseUrl$url");
     _dio?.options.headers = await _getHeader(url: url);
 
-    print('--------------------');
+    // print('--------------------');
     if(formData==null) Utils.printData(body.toString());
     else {
       print('--------------------form data');

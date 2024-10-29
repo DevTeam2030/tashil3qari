@@ -13,7 +13,12 @@ Widget build(BuildContext context) {
     height: 145,
     // color: ColorManager.primary,
     child: InkWell(
-      onTap: ()=>MyRoute().navigate(context: context, route: YourConsultantProfileScreen(consultantId: consultant.id,)),
+      onTap: (){
+        if(Utils.checkIfUserLogin(context: context))
+          MyRoute().navigate(context: context, route:  YourConsultantProfileScreen(consultantId: consultant.id,));
+
+      },
+      // onTap: ()=>MyRoute().navigate(context: context, route: YourConsultantProfileScreen(consultantId: consultant.id,)),
       child: Stack(
         children: [
           Container(
@@ -108,6 +113,7 @@ Widget build(BuildContext context) {
                           }else{
                             MyRoute().navigate(context: context, route: ChatAgreementScreen(
                               receiverId: consultant.id,
+                              messageAd: '',
                               receiverName: consultant.name,
                               receiverImage: consultant.image,
                               receiverType: UserType.consultant,
@@ -125,7 +131,18 @@ Widget build(BuildContext context) {
 
                     const AppSizeBox(width: 10,),
                     InkWell(
-                      onTap: ()=>UrlLauncherMethods.makePhoneCall(phoneNo: consultant.phone),
+                      onTap: (){
+                        if(Utils.checkIfUserLogin(context: context)){
+                          if(consultant.id==Constants.userDataModel!.id){
+                            LoadingDialog.showSimpleToast('YouCantMessageYourself'.tr());
+
+                          }else{
+                            UrlLauncherMethods.makePhoneCall(phoneNo: consultant.phone);
+                          }
+
+                        }
+                      },
+                      // onTap: ()=>UrlLauncherMethods.makePhoneCall(phoneNo: consultant.phone),
                       child: CircleAvatar(
                         radius: 18,
                         backgroundColor: ColorManager.white,

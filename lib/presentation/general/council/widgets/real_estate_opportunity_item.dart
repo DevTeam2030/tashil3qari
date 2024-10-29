@@ -263,6 +263,7 @@ class RealEstateOpportunityItem extends StatelessWidget {
                           const AppSizeBox(width: 10,),
                           ChatIcon(receiverType: UserType.consultant,
                               receiverName: opportunity.userName,
+                              messageAd: opportunity.post,
                               receiverImage: opportunity.userImage,
                               isOpportunity: true,
                               propertyId: opportunity.id,

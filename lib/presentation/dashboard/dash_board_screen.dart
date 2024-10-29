@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,6 @@ import 'package:tashil_agary/presentation/dashboard/bottom_dash_board_item2.dart
 import 'package:tashil_agary/utilites/color_manager.dart';
 import 'package:tashil_agary/utilites/image_manager.dart';
 import 'package:tashil_agary/utilites/route_manager.dart';
-
 import '../../app/contants.dart';
 import '../../app/enums.dart';
 import '../../components/loading_manager.dart';
@@ -134,7 +132,7 @@ List<String>titles=['Main'.tr(),
                 image: images[index],
                 isActive: screenIndex==index,
                 onTap: (){
-                  if(index==0) {
+                  if(index!=3) {
                     setState(()=>screenIndex=index);
                   } else if(Utils.checkIfUserLogin(context: context)) {
                     setState(()=>screenIndex=index);

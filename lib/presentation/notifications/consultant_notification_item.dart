@@ -93,6 +93,7 @@ class ConsultantNotificationItem extends StatelessWidget {
                                 if(notification.userId!=0)
                                 ChatIcon(receiverType: UserType.consultant,
                                 receiverName: notification.userName,
+                                messageAd: notification.message,
                                 propertyId: int.tryParse(notification.propertyId),
                                 receiverImage: notification.userImage,
                                 receiverId: notification.userId),
@@ -117,7 +118,7 @@ class ConsultantNotificationItem extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           AppText(
-                            title:notification.date.toString(),
+                            title:'${notification.date.day}/${notification.date.month}/${notification.date.year}',
                             titleSize:FontSize.s8,
                             titleMaxLines: 2,
                             titleHeight: 1.2,

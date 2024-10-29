@@ -117,6 +117,7 @@ class _SelectSerialScreenState extends State<SelectSerialScreen> {
                                 for(int i=0;i<serialNumbers.length;i++)
                                   InkWell(
                                     onTap: (){
+                                      if(serialNumbers[i].booked)return;
                                       setState(() {
                                         selectedSerialNumber=serialNumbers[i];
                                       });
@@ -125,7 +126,11 @@ class _SelectSerialScreenState extends State<SelectSerialScreen> {
                                       margin: const EdgeInsets.only(right: AppSize.s10,bottom: AppSize.s10),
                                       padding: const EdgeInsets.symmetric(horizontal: AppSize.s20,vertical: AppSize.s8),
                                       decoration: BoxDecoration(
-                                        color: selectedSerialNumber==serialNumbers[i]?ColorManager.primary:ColorManager.reviewGrey,
+                                        color:
+                                        serialNumbers[i].booked?ColorManager.red:
+                                        selectedSerialNumber==serialNumbers[i]?
+                                        ColorManager.primary:
+                                        ColorManager.reviewGrey,
                                         borderRadius: BorderRadius.circular(AppSize.s8),
                                         // border: Border.all(color: ColorManager.primary,width: 1)
                                       ),

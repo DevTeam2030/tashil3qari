@@ -187,6 +187,7 @@ class RealEstateNewsItem extends StatelessWidget {
                           ChatIcon(receiverType: UserType.consultant,
                               receiverName: post.userName,
                               receiverImage: post.userImage,
+                              messageAd: post.post,
                               // propertyId: null,
                               propertyId: null,
                               receiverId: post.userId),

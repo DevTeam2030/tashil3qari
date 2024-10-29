@@ -1,4 +1,6 @@
 
+import '../../../app/enums.dart';
+
 class AuctionDataModel {
   String minimumAuction;
   String price;
@@ -49,20 +51,28 @@ class AuctionDataModel {
 }
 
 class AuctionUserModel {
+  int userId;
   String userName;
   String userImage;
   String createdAt;
   String price;
   String currencyId;
   String currency;
+  String userPhone;
+  UserType userType;
+  double userRate;
 
   AuctionUserModel({
+    required this.userId,
     required this.userName,
     required this.userImage,
     required this.createdAt,
     required this.price,
     required this.currencyId,
     required this.currency,
+    required this.userType,
+    required this.userRate,
+    required this.userPhone,
   });
 
   factory AuctionUserModel.fromJson(Map<String, dynamic> json) => AuctionUserModel(
@@ -72,6 +82,10 @@ class AuctionUserModel {
     price: json["price"]??'',
     currencyId: json["currency_id"]??'',
     currency: json["currency"]??'',
+    userRate: double.tryParse(json["user_rate"].toString())??0,
+    userPhone: json["user_phone"]??'',
+    userId: int.tryParse(json["user_id"].toString())??0,
+    userType: json["user_type"]=='normal'?UserType.user:UserType.consultant,
   );
 
   Map<String, dynamic> toJson() => {

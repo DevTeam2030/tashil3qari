@@ -18,10 +18,10 @@ import '../widgets/widgets_imports.dart';
 
 class ChatAgreementScreen extends StatefulWidget {
   final int receiverId;
-  final String receiverName,receiverImage;
+  final String receiverName,receiverImage,messageAd;
   final UserType receiverType;
   const ChatAgreementScreen({Key? key,required this.receiverId,required this.receiverName,required this.receiverImage,
-    required this.receiverType,}) : super(key: key);
+    required this.receiverType, required this.messageAd}) : super(key: key);
 
   @override
   State<ChatAgreementScreen> createState() => _ChatAgreementScreenState();
@@ -34,10 +34,13 @@ class _ChatAgreementScreenState extends State<ChatAgreementScreen> {
   @override
   void initState() {
     super.initState();
+
     context.read<ChatAgreementDataProvider>().isLoading=false;
     context.read<ChatAgreementDataProvider>().isLoadingAgreement=false;
     context.read<ChatAgreementDataProvider>().checkIfHaveOpenAgreement(receiverId: widget.receiverId,);
     context.read<ChatAgreementDataProvider>().updateSeenMessages(userId:  Constants.userDataModel!.id, otherId: widget.receiverId,);
+
+    if(widget.messageAd.isNotEmpty)messageController.text=widget.messageAd;
   }
   @override
   void dispose() {

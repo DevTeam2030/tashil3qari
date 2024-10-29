@@ -48,7 +48,7 @@ String chatSubCollectionName='messages';
         await messageDoc.reference.update({'receiverUnreadMessage': 0});
       }
 
-      print('----------------------------');
+
       print('propertyId updated for all messages in the chat room.');
     } catch (error) {
       print('Error updating propertyId: $error');

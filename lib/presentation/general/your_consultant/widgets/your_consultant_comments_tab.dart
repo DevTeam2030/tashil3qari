@@ -11,9 +11,22 @@ class YourConsultantCommentsTab extends StatelessWidget {
           sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-                  return RatingConsultantWidget(comment:provider.allConsultantRates[index],
+                  return RatingConsultantWidget(
+                    comment:provider.allConsultantRates[index],
                     consultantId: provider.consultantInfo!.id,
-                      consultantName: '${provider.consultantInfo!.firstName} ${provider.consultantInfo!.firstName}',);
+                      consultantName: '${provider.consultantInfo!.firstName} ${provider.consultantInfo!.firstName}',
+                  onTap: (comment){
+                    LoadingDialog().widgetAlertDialog(context: context,
+                        widget: AddReplyCommentToRateWidget(
+                            rateId: comment.id,consultantId: provider.consultantInfo!.id,
+                        onComment: (text){
+                          context.read<ConsultantProvider>().addConsultantReplyRate(
+                              context: context,
+                              consultantId:provider.consultantInfo!.id,
+                              rateId: comment.id,
+                              comment: text);
+                        },));
+                  },);
                 },
                 childCount: provider.allConsultantRates.length,
               )));

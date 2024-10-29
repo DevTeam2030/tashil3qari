@@ -49,9 +49,12 @@ class _BidScreenState extends State<BidScreen> {
                     children: [
                       BidSlider(auctionData: provider.auctionData!,propertyId: widget.adId),
 
-                      RemainingTime(auctionData: provider.auctionData!),
+                      if(provider.auctionData!.isLive)
+                      RemainingTime(auctionData: provider.auctionData!)
+                      else const AppSizeBox(height: 30,),
                       BidWidget(bidData: bidData,auctionData: provider.auctionData!,
                         isBidBefore: widget.isBidBefore,
+                        propertyId: widget.adId,
                         mostAuctionUser: provider.mostAuctionUser,),
 
 
@@ -65,6 +68,7 @@ class _BidScreenState extends State<BidScreen> {
             ),
           )
       ),
+
     );
   }
 }

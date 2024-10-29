@@ -14,7 +14,7 @@ enum DirectionType{east, south, west, north, southeast, southwest, northeast, no
 enum NotificationType{notification,offer,delivery,}
 enum OrderType{newOrder,pastOrder,}
 
-enum PersonalDataType{ads,favorite,personal,agreements}
+enum PersonalDataType{ads,favorite,personal,agreements,comments}
 enum NotificationsTabType{all,myAds,realEstate }
 enum MapAdType{premium,primary,other }
 

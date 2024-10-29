@@ -156,6 +156,18 @@ class _PersonalProfileScreenState extends State<PersonalProfileScreen> {
                                   titleSize: FontSize.s16,
                                   titleColor: ColorManager.black),
                             ),
+                          if (personalProfileData.showDataTab == PersonalDataType.comments &&provider.isLoading==false&&
+                              provider.allConsultantRates.isEmpty)
+                            Padding(
+                              padding: const EdgeInsets.only(top:50),
+                              child: AppText(
+                                  title: 'NoDataCurrentlyAvailable'.tr(),
+                                  titleAlign: TextAlign.center,
+                                  titleMaxLines: 1,
+                                  fontWeightType: FontWeightType.extraBold,
+                                  titleSize: FontSize.s16,
+                                  titleColor: ColorManager.black),
+                            ),
                         ]),
                       ),
 
@@ -381,23 +393,32 @@ class _PersonalProfileScreenState extends State<PersonalProfileScreen> {
                                   },
                                   childCount: provider.agreements.length,
                                 ))),
-                      // if (personalProfileData.showDataTab == PersonalDataType.agreements)
-                      //   SliverList(
-                      //     delegate: SliverChildListDelegate([
-                      //         Padding(
-                      //           padding: const EdgeInsets.only(top:50),
-                      //           child: AppText(
-                      //               title: 'NoDataCurrentlyAvailable'.tr(),
-                      //               titleAlign: TextAlign.center,
-                      //               titleMaxLines: 1,
-                      //               fontWeightType: FontWeightType.extraBold,
-                      //               titleSize: FontSize.s16,
-                      //               titleColor: ColorManager.black),
-                      //         ),
-                      //
-                      //
-                      //     ]),
-                      //   ),
+
+                      if (personalProfileData.showDataTab == PersonalDataType.comments)
+                        SliverPadding(
+                            padding: const EdgeInsets.symmetric(horizontal: 14,vertical: 10),
+                            sliver: SliverList(
+                                delegate: SliverChildBuilderDelegate(
+                                      (BuildContext context, int index) {
+                                    return RatingConsultantWidget(comment:provider.allConsultantRates[index],
+                                      consultantId: Constants.userDataModel!.id,
+                                      consultantName: '${Constants.userDataModel!.firstName} ${Constants.userDataModel!.firstName}',
+                                      onTap: (comment){
+                                        LoadingDialog().widgetAlertDialog(context: context,
+                                            widget: AddReplyCommentToRateWidget(rateId: comment.id,
+                                                consultantId: Constants.userDataModel!.id,
+                                                onComment: (text){
+                                                  context.read<ConsultantProvider>().addConsultantReplyRate(
+                                                      context: context,
+                                                      consultantId:Constants.userDataModel!.id,
+                                                      rateId: comment.id,
+                                                      comment: text);
+                                                }));
+                                      },);
+                                  },
+                                  childCount: provider.allConsultantRates.length,
+                                ))),
+
 
                       if (personalProfileData.showDataTab == PersonalDataType.personal)
                         SliverList(

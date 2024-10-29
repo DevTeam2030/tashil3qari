@@ -56,25 +56,31 @@ class HomeBuildAppBar extends StatelessWidget implements PreferredSizeWidget {
                //   ],
                // ),
 
-                const HomeDropdownButton(),
-                if(Constants.isLogin&& Constants.userDataModel!.isUser==false&&isFromHome==true)
-                  Consumer<ProfileProvider>(
-                    builder: (context, provider, child) => Padding(
-                      padding: const EdgeInsets.symmetric(horizontal:2.0),
-                      child: InkWell(
-                        // onTap: ()=>MyRoute().navigate(context: context, route: HomeAddLocationScreen()),
-                        child:Consumer<AuthProvider>(
-                            builder: (context, provider, child) =>
-                            Constants.userDataModel!.documented?
-                            const Icon(Icons.check_circle_sharp,color: ColorManager.primary,size: 20,):
-                            const Icon(Icons.error,color: ColorManager.red,size: 20,)
+                Row(
+                  children: [
+                    const HomeDropdownButton(),
+                   const AppSizeBox(width: 14,),
+                    if(Constants.isLogin&& Constants.userDataModel!.isUser==false&&isFromHome==true)
+                      Consumer<ProfileProvider>(
+                        builder: (context, provider, child) => Padding(
+                          padding: const EdgeInsets.symmetric(horizontal:2.0),
+                          child: InkWell(
+                            // onTap: ()=>MyRoute().navigate(context: context, route: HomeAddLocationScreen()),
+                            child:Consumer<AuthProvider>(
+                                builder: (context, provider, child) =>
+                                Constants.userDataModel!.documented?
+                                const Icon(Icons.check_circle_sharp,color: ColorManager.primary,size: 20,):
+                                const Icon(Icons.error,color: ColorManager.red,size: 20,)
+                            ),
+
+
+                          ),
                         ),
-
-
-                      ),
-                    ),
-                  )
-                else AppSizeBox(width: .18.sw,),
+                      )
+                    // else AppSizeBox(width: .18.sw,),
+                  ],
+                ),
+                
 
 
                 if(showFilter!=false)

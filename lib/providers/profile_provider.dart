@@ -10,12 +10,14 @@ import 'package:tashil_agary/domain/model/models/user_data_model.dart';
 import 'package:tashil_agary/providers/wishlist_provider.dart';
 import '../app/utils.dart';
 import '../domain/controller/agreements_controller.dart';
+import '../domain/controller/consultant_controller.dart';
 import '../domain/controller/home_controller.dart';
 import '../domain/controller/profile_controller.dart';
 import '../domain/model/agreement/agreement_details_model.dart';
 import '../domain/model/following_user_model.dart';
 import '../domain/model/models/ProfileModel.dart';
 import '../domain/model/models/agreements_model.dart';
+import '../domain/model/models/comment_model.dart';
 import '../domain/model/models/general_property_model.dart';
 import '../domain/model/models/update_profile_request_body.dart';
 import '../domain/model/models/user_ads_model.dart';
@@ -24,6 +26,7 @@ import '../domain/model/models/user_ads_model.dart';
 
 class ProfileProvider extends ChangeNotifier {
   final ProfileController _api = ProfileController();
+  final ConsultantController _apiConsult=ConsultantController();
   final HomeController _apiHome=HomeController();
   final AgreementsController _agreementsController=AgreementsController();
   bool isLoading = false;
@@ -34,9 +37,20 @@ class ProfileProvider extends ChangeNotifier {
   List<GeneralPropertyModel>bids=[];
   List<FollowingUserModel>followingUsers=[];
   List<FollowingUserModel>followersUsers=[];
+  List<ConsultantCommentModel> allConsultantRates=[];
 
 
-
+  Future<void>setInitData()async{
+     profileData=null;
+   userAds=[];
+   userWishList=[];
+  agreements=[];
+    bids=[];
+    followingUsers=[];
+    followersUsers=[];
+     allConsultantRates=[];
+    notifyListeners();
+  }
   Future<void>getAllProfileData({required BuildContext context,bool?notify,})async{
     if(userWishList.isEmpty&&userAds.isEmpty){
     // if(userWishList.isEmpty&&userAds.isEmpty&&profileData==null&&agreements.isEmpty){
@@ -50,7 +64,9 @@ class ProfileProvider extends ChangeNotifier {
     userAds=await _api.getUserAds(context: context,);
     userWishList=await _api.getUserWishList(context: context,);
     agreements=await _agreementsController.getEstateAgreements(context: context,);
-
+    if(Constants.userDataModel!.type==UserType.consultant){
+      allConsultantRates=await _apiConsult.getConsultantRates(context: context,consultantId: Constants.userDataModel!.id);
+    }
     if (profileData != null){
       UserDataModel user=Constants.userDataModel!;
       user.firstName=profileData!.firstName;

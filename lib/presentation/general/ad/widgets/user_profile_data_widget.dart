@@ -1,8 +1,10 @@
 part of'widgets_imports.dart';
 
 class UserProfileDataWidget extends StatefulWidget {
-  final PropertyInfoModel propertyInfo;
-  const UserProfileDataWidget({super.key,required this.propertyInfo});
+  final String userImage,userRate,userName,userPhone;
+  final int userId,propertyId;
+  const UserProfileDataWidget({super.key,required this.userImage,required this.userName,required this.userPhone,
+  required this.userRate,required this.userId,required this.propertyId,});
 
   @override
   State<UserProfileDataWidget> createState() => _UserProfileDataWidgetState();
@@ -37,7 +39,7 @@ Widget build(BuildContext context) {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CachedImage(
-                    url:widget.propertyInfo.userImage,
+                    url:widget.userImage,
                     height: 65,
                     width: 65,
                     fit: BoxFit.cover,
@@ -69,7 +71,7 @@ Widget build(BuildContext context) {
                                   SizedBox(
                                     width: 0.27.sw,
                                     child: AppText(
-                                        title: widget.propertyInfo.userName,
+                                        title: widget.userName,
                                         titleAlign: TextAlign.start,
                                         titleMaxLines: 1,fontWeightType: FontWeightType.extraBold,
                                         titleSize: FontSize.s14,titleColor: ColorManager.black),
@@ -81,7 +83,7 @@ Widget build(BuildContext context) {
                                       child: Icon(Icons.star,size: 12,color: ColorManager.starColor,)),
 
                                   AppText(
-                                    title: '${widget.propertyInfo.userRate}',
+                                    title: '${widget.userRate}',
                                     titleSize: FontSize.s10,
                                     titleAlign: TextAlign.start,
                                     titleColor: ColorManager.black,
@@ -120,12 +122,13 @@ Widget build(BuildContext context) {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
 
-                            CallIcon(phoneNo: widget.propertyInfo.userPhone),
+                            CallIcon(phoneNo: widget.userPhone),
                             ChatIcon(
-                              receiverId: widget.propertyInfo.userId,
-                                receiverName: widget.propertyInfo.userName,
-                                receiverImage: widget.propertyInfo.userImage,
-                                propertyId:widget.propertyInfo.id,
+                              messageAd: '',
+                              receiverId: widget.userId,
+                                receiverName: widget.userName,
+                                receiverImage: widget.userImage,
+                                propertyId:widget.propertyId,
                               receiverType: UserType.user,
                             ),
                             // InkWell(
@@ -135,7 +138,7 @@ Widget build(BuildContext context) {
 
                             InkWell(
                                 onTap: () => UrlLauncherMethods.whatsapp(
-                                    phoneNo: widget.propertyInfo.userPhone),
+                                    phoneNo: widget.userPhone),
                             child:SvgPicture.asset(ImageManager.whatsSvg)),
 
                           ],

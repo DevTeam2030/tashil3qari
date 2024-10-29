@@ -48,8 +48,7 @@ class _BuildUserNotificationsState extends State<BuildUserNotifications> {
     todayList=widget.notifications.where((element) => element.date==DateTime.now()).toList();
 
     previousList=widget.notifications.where((element) => element.date!=DateTime.now()).toList();
-    print('todayList.length ${todayList.length}');
-    print('previousList.length ${todayList.length}');
+
     return  Container(
       height: 1.0.sh,
       width: 1.0.sw,

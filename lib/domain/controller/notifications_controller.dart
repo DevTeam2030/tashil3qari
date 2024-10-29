@@ -12,7 +12,6 @@ class NotificationsController  {
   final DioHelper _dio = DioHelper();
   Future<List<NotificationModel>> getUserNotifications({required BuildContext context,}) async {
     List<NotificationModel> data=[];
-    print('------------------- ${Constants.userDataModel!.isUser}');
 
     var res = await _dio.get(url:'${Constants.userDataModel!.isUser?Urls.userNotifications:Urls.consultantNotifications}?lang=${Constants.langCode}', context: context);
     if (res != null) {

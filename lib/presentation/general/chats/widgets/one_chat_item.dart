@@ -260,14 +260,17 @@ class _OneChatItemState extends State<OneChatItem> {
                   radius: 8,
                   backgroundColor: ColorManager.red,
                   child:  Center(
-                    child: AppText(title:unreadMessages.toString(),
-                      titleSize:FontSize.s10,
-                      // titleMaxLines: 10,
-                      // titleHeight: 1.3,
-                      titleAlign: TextAlign.start,
-                      titleColor: ColorManager.white,
-                      fontWeightType: FontWeightType.regular,
-                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top:3),
+                      child:AppText(title:unreadMessages.toString(),
+                        titleSize:FontSize.s10,
+                        // titleMaxLines: 10,
+                        // titleHeight: 1.3,
+                        titleAlign: TextAlign.start,
+                        titleColor: ColorManager.white,
+                        fontWeightType: FontWeightType.regular,
+                      ),
+                    )
                   ),
                 )
               ],

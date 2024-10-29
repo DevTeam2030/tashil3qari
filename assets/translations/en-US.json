@@ -702,5 +702,6 @@
  "IsBidBefore": "It has already been bid",
  "DeleteAdMessage": "Are you sure you want to delete the ad ?",
  "Bid done": "Bid done",
- "subscribed": "Subscribed"
+ "subscribed": "Subscribed",
+ "messageAd": "I am messaging you about an advertisement"
 }

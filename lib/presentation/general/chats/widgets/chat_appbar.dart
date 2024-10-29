@@ -26,16 +26,17 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
         children: [
         Row(
           children: [
-            BackAppBarButton(),
+            const BackAppBarButton(),
 
-            AppSizeBox(width: 6,),
+            // AppSizeBox(width: 4,),
             CachedImage(
               url:receiverImage,
-              height: 55,width: 55,
+              height: 50,
+              width: 50,
               boxShape: BoxShape.circle,
               fit: BoxFit.cover,
             ),
-            const AppSizeBox(width: AppSize.s6,),
+            const AppSizeBox(width: AppSize.s4,),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -88,7 +89,7 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
 
                      MyRoute().navigate(context: context, route: MakeAgreementScreen(receiverId: receiverId,
                        makeAgreementAction: MakeAgreementActon.create,
-                     previousConsults: [],
+                     previousConsults: const [],
                      receiverName: receiverName,
                       receiverImage: receiverImage,
                      ),);

@@ -27,11 +27,13 @@ class CallIcon extends StatelessWidget {
 class ChatIcon extends StatelessWidget {
   final int receiverId;
   final int? propertyId;
-  final String receiverName,receiverImage;
+  final String receiverName,receiverImage,messageAd;
   final UserType receiverType;
   final bool isOpportunity;
   const ChatIcon({super.key,required this.receiverId,required this.receiverName,
-    required this.receiverImage,required this.receiverType,required this.propertyId,this.isOpportunity=false});
+    required this.receiverImage,required this.receiverType,required this.propertyId,this.isOpportunity=false,
+ required this.messageAd
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +50,10 @@ class ChatIcon extends StatelessWidget {
                   receiverName: receiverName,
                   receiverImage: receiverImage,
                   receiverType: receiverType,
+                  messageAd:propertyId==null?
+                  '${'messageAd'.tr()}$messageAd'
+                      :
+                  '${'messageAd'.tr()}$messageAd - ${'Advertisement number'.tr()} $propertyId',
                 ));
           }
 

@@ -12,9 +12,8 @@ GeneralPropertyModel constantProperty=GeneralPropertyModel(
   propertyDescription: '',longitude: 0,latitude: 0,kitchensNo: '',
  isAuction: false,
  gallery: [],floor: '',featured: false,country: '',city: '',bathroomsNo: '',rate: 0,countryId: 0,image: '',
- cityId: 0,id: 1,type: '',category: '',currency: '',price: '',propertySize: '',propertyTitle: '',roomsNo: '',show: false,wishlist: false
-
-);
+ cityId: 0,id: 1,type: '',category: '',currency: '',price: '',propertySize: '',propertyTitle: '',roomsNo: '',
+    show: false,wishlist: false);
 class Constants{
  // static bool buildAllCitiesMarkersBefore=false;
  // static    ValueNotifier<bool>   isRealLocationSelected= ValueNotifier<bool>(false);

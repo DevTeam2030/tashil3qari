@@ -12,7 +12,13 @@ class AdvertiserData extends StatelessWidget {
           // MyRoute().navigate(context: context, route: AllOwnerAds(ownerId: propertyInfo.userId, ownerName: propertyInfo.userName,)),
       propertyInfo.userType == UserType.consultant?
           MyRoute().navigate(context: context, route:  YourConsultantProfileScreen(consultantId: propertyInfo.userId,)):
-          MyRoute().navigate(context: context, route:  UserOwnerAdProfileScreen(propertyInfo: propertyInfo,)),
+          MyRoute().navigate(context: context, route:  UserOwnerAdProfileScreen(
+            userRate: propertyInfo.userRate.toString(),
+            propertyId: propertyInfo.id,
+            userId: propertyInfo.userId,
+            userImage: propertyInfo.userImage,
+            userName: propertyInfo.userName,
+            userPhone: propertyInfo.userPhone,)),
     child:
       Column(
       children: [
@@ -150,6 +156,7 @@ class AdvertiserData extends StatelessWidget {
                                 receiverName: propertyInfo.userName,
                                 receiverImage: propertyInfo.userImage,
                                 propertyId: propertyInfo.id,
+                                messageAd: propertyInfo.propertyTitle,
                                 receiverId: propertyInfo.userId),
                             const AppSizeBox(
                               width: 4,

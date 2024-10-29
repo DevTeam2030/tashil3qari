@@ -365,7 +365,8 @@ static Future<void> setCurrentLocation()async{
 
  static void logOut(BuildContext context) {
    CacheHelper.clearUserModelData();
-   context.read<ProfileProvider>().notifyListeners();
+   context.read<ProfileProvider>().setInitData();
+
    gotoIntro(context:context,currentIndexScreen: 0);
    MyRoute().navigate(context: context, route: const LoginScreen());
    // Navigator.pushNamed(context, Routes.loginScreen);
@@ -992,12 +993,12 @@ static Future<void> downloadImage({required BuildContext context,required String
      File file = File(filePath);
      await file.writeAsBytes(response.data, flush: true);
 
-    print('done------------');
+
        imagePath = filePath;
      LoadingDialog.showSimpleToast('Successfully'.tr());
 
    } catch (e) {
-     print('error------------');
+     // print('error------------');
      print('حدث خطأ: $e');
    }
  }

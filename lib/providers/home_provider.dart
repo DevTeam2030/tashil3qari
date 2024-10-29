@@ -150,7 +150,7 @@ class HomeProvider extends ChangeNotifier {
         CameraPosition kLake = CameraPosition(
           // bearing: 192.8334901395799,
           // target: currentLocation,
-          target: currentLocation,
+          target: locationCustom,
           //tilt: 59.440717697143555,
           zoom: cameraZoom,
         );
@@ -210,7 +210,6 @@ class HomeProvider extends ChangeNotifier {
     isLoading=true;
     markers = {};
 
-    print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
     for (var prop in properties) {
       var marks=markers.where((element) => element.position.latitude==prop.latitude
           &&element.position.longitude==prop.longitude).toList();

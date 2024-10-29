@@ -118,6 +118,7 @@ class _AllChatScreenState extends State<AllChatScreen> {
                                 receiverImage: meSender?message.receiverImage:message.senderImage,
                                 receiverName:  meSender?message.receiverName:message.senderName,
                                 receiverId:  meSender?message.receiverId:message.senderId,
+                                messageAd: '',
 
                               ),));
                               setState(() {});

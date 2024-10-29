@@ -1,25 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:tashil_agary/app/contants.dart';
 import 'package:tashil_agary/app/enums.dart';
 import 'package:tashil_agary/app/extentions.dart';
-import 'package:tashil_agary/app/utils.dart';
-import 'package:tashil_agary/components/app_bar.dart';
-import 'package:tashil_agary/components/no_data_available.dart';
-import 'package:tashil_agary/components/refresh_indicator_widget.dart';
-import 'package:tashil_agary/components/screen_loading.dart';
 import 'package:tashil_agary/components/size_box_height.dart';
 import 'package:tashil_agary/presentation/notifications/consultant_notification_item.dart';
 import 'package:tashil_agary/presentation/notifications/user_notification_item.dart';
-import 'package:tashil_agary/providers/notifications_provider.dart';
 import 'package:tashil_agary/utilites/color_manager.dart';
-import 'package:tashil_agary/utilites/values_manager.dart';
 
 import '../../domain/model/user_notification_model.dart';
 import '../../utilites/font_manager.dart';
 import '../../utilites/styles_manager.dart';
-import 'notification_tab.dart';
 
 class BuildWidgetNotifications extends StatefulWidget {
   final bool isUser;

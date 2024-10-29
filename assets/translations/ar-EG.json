@@ -725,5 +725,6 @@
   "reason num fees": "سيتم دفع رسوم num ريال سعودى",
   "DeleteAdMessage": "هل تريد حذف الإعلان ؟",
   "Bid done": "تم المزايدة",
-  "subscribed": "مشترك"
+  "subscribed": "مشترك",
+  "messageAd": "أراسلك بخصوص إعلان "
 }

@@ -264,6 +264,26 @@ Widget build(BuildContext context) {
                           titleColor: widget.showAdsTab==PersonalDataType.agreements?ColorManager.white:ColorManager.grey),
                     ),
                   ),
+                  if(Constants.userDataModel!.type==UserType.consultant)
+                  InkWell(
+                    onTap: () =>widget.onTabPressed(PersonalDataType.comments),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 12),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                          BorderRadius.circular(RadiusManager.r16),
+                          color: widget.showAdsTab==PersonalDataType.comments?ColorManager.primary:ColorManager.white
+                        // boxShadow: Constants.kBoxShadow
+                      ),
+                      child: AppText(
+                          title: 'Comments'.tr(),
+                          titleAlign: TextAlign.center,
+                          titleMaxLines: 1,fontWeightType: FontWeightType.bold,
+                          titleSize: FontSize.s12,
+                          titleColor: widget.showAdsTab==PersonalDataType.comments?ColorManager.white:ColorManager.grey),
+                    ),
+                  ),
                   InkWell(
                     onTap: () =>widget.onTabPressed(PersonalDataType.personal),
                     child: Container(
