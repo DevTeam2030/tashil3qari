@@ -703,5 +703,6 @@
  "DeleteAdMessage": "Are you sure you want to delete the ad ?",
  "Bid done": "Bid done",
  "subscribed": "Subscribed",
- "messageAd": "I am messaging you about an advertisement"
+ "messageAd": "I am messaging you about an advertisement",
+ "Auction has ended":"Auction has ended"
 }

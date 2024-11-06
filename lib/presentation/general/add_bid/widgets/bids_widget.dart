@@ -73,8 +73,7 @@ class _BidWidgetState extends State<BidWidget> {
 
             const AppSizeBox(height: 10,),
 
-            if(Constants.userDataModel!=null&&widget.auctionData.userId!=Constants.userDataModel!.id&&
-                widget.auctionData.isLive)
+            if(Constants.userDataModel!=null&&widget.auctionData.userId!=Constants.userDataModel!.id&&widget.auctionData.isLive)
               // widget.isBidBefore? Padding(
               //   padding: const EdgeInsets.only(top: 20),
               //   child: Row(
@@ -232,6 +231,9 @@ class _BidWidgetState extends State<BidWidget> {
                 ),
               ],
             ),
+
+
+
 
 
             const AppSizeBox(height: 20,)

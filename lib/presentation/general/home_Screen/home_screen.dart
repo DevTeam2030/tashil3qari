@@ -141,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
                 if(provider.properties.isNotEmpty && provider.selectedCity.value != null)
-                HomeShowAll(properties: provider.properties),
+                HomeShowAll(properties: provider.properties,cityId: provider.selectedCity.value!.id),
                 if (provider.properties.isNotEmpty && provider.selectedCity.value != null)
                   AuctionButton(
                       onTap: (value) async {

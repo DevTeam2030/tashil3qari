@@ -51,7 +51,18 @@ class _BidScreenState extends State<BidScreen> {
 
                       if(provider.auctionData!.isLive)
                       RemainingTime(auctionData: provider.auctionData!)
-                      else const AppSizeBox(height: 30,),
+                      else  Padding(
+                        padding: const EdgeInsets.only(top:30),
+                        child: AppText(
+                                  title:'Auction has ended'.tr(),
+                              titleMaxLines: 2,
+                              titleHeight: 1.3,
+                              titleSize: FontSize.s14,
+                              titleAlign: TextAlign.center,
+                              titleColor: ColorManager.red,
+                              fontWeightType: FontWeightType.medium,
+                            ),
+                      ),
                       BidWidget(bidData: bidData,auctionData: provider.auctionData!,
                         isBidBefore: widget.isBidBefore,
                         propertyId: widget.adId,

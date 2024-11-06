@@ -180,7 +180,7 @@ class RouteGenerator{
 
       case Routes.homeScreen :return MaterialPageRoute(builder: (context) =>  const HomeScreen(),);
       case Routes.searchLocationScreen :return MaterialPageRoute(builder: (context) =>    SearchLocationScreen(onTap: (v,x,y){}),);
-      case Routes.searchListScreen :return MaterialPageRoute(builder: (context) =>  const SearchListScreen(),);
+      case Routes.searchListScreen :return MaterialPageRoute(builder: (context) =>  const SearchListScreen(cityId:0),);
       case Routes.dashBoardScreen :return MaterialPageRoute(builder: (context) =>  const DashBoardScreen(),);
       case Routes.addAdScreen :return MaterialPageRoute(builder: (context) =>  const AddAdScreen(),);
       case Routes.editAdScreen :return MaterialPageRoute(builder: (context) =>   EditAdScreen(

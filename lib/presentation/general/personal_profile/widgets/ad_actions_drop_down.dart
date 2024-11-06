@@ -120,8 +120,8 @@ double width=120.0;
 
     }
     if(!widget.ad.featured)filters.add('HighlightAd'.tr());
-    if(widget.personalProfileData.userType==UserType.user&&
-        !widget.ad.haveConsultant)filters.add('HiringRealEstateConsultant'.tr());
+    // if(widget.personalProfileData.userType==UserType.user&&
+    //     !widget.ad.haveConsultant)filters.add('HiringRealEstateConsultant'.tr());
 
     filters.add('Delete'.tr());
   }

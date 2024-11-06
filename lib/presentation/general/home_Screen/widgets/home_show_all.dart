@@ -18,7 +18,8 @@ import '../../search_list/search_list_screen.dart';
 
 class HomeShowAll extends StatelessWidget {
   final List<GeneralPropertyModel> properties;
-  const HomeShowAll({super.key,required this.properties});
+  final int cityId;
+  const HomeShowAll({super.key,required this.properties,required this.cityId});
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +30,14 @@ class HomeShowAll extends StatelessWidget {
         height: 40,
         decoration: Utils.returnDropdownButtonDecoration(ColorManager.primary,
           ColorManager.primary,10),
-        margin:  EdgeInsets.only(bottom: 30,right: 10,left: 10),
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        margin:  const EdgeInsets.only(bottom: 30,right: 10,left: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: InkWell(
           splashColor: ColorManager.white,
           highlightColor:ColorManager.white ,
           onTap: (){
             // MyRoute().navigate(context: context, route:  SearchListScreen(properties: properties,));
-            MyRoute().navigate(context: context, route:  SearchListScreen(properties: [],));
+            MyRoute().navigate(context: context, route:  SearchListScreen(properties: [],cityId:cityId));
           } ,
           child: Row(
             children: [

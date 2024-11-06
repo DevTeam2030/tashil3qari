@@ -177,10 +177,11 @@ class _AddAdRequirementsScreenState extends State<AddAdRequirementsScreen> {
                               secondIcon: Icons.arrow_forward_ios_rounded,
                               secondIconSize: 16,
                               title: 'HiringRealEstateConsultant'.tr(),
+                              subTitle: 'soon'.tr(),
                               onTap: (){
-                                MyRoute().navigate(context: context, route: SelectRealEstateConsultantScreen(
-                                  userAd: userAd,
-                                  addAdtData: addAdtData,));
+                                // MyRoute().navigate(context: context, route: SelectRealEstateConsultantScreen(
+                                //   userAd: userAd,
+                                //   addAdtData: addAdtData,));
                               },
                               child: Text('dddddddddd')),
 

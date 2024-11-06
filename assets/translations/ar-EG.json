@@ -726,5 +726,6 @@
   "DeleteAdMessage": "هل تريد حذف الإعلان ؟",
   "Bid done": "تم المزايدة",
   "subscribed": "مشترك",
-  "messageAd": "أراسلك بخصوص إعلان "
+  "messageAd": "أراسلك بخصوص إعلان ",
+  "Auction has ended":"تم إنتهاء المزاد"
 }

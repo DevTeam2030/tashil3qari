@@ -147,9 +147,6 @@ class ConsultantNotificationItem extends StatelessWidget {
                                 titleColor: ColorManager.white,
                                 onPressed: (){
                               int? id=int.tryParse(notification.propertyId);
-                              print(id.toString() +'dddddddddddddddd');
-                              print(notification.userId.toString() +'dddddddddddddddd');
-                              print(notification.notType +'dddddddddddddddd');
 
                             if(notification.notType=='agreement'&&id!=null&&notification.userId!=0){
                               context.read<NotificationsProvider>().acceptAgreement(

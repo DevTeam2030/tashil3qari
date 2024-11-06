@@ -49,8 +49,6 @@ class ProductProvider extends ChangeNotifier {
       getLocationDistance(latitude: propertyInfo!.latitude,longitude:propertyInfo!.latitude );
       getSimilarProperties(context: context,isNotify: false,categoryId: propertyInfo!.catId);
       adCategory=Constants.settingModel.categories.firstWhere((element) => element.id==propertyInfo!.catId);
-
-
     }
 
     isLoading=false;
@@ -79,7 +77,9 @@ class ProductProvider extends ChangeNotifier {
 
   Future<void>getAuctionData({required BuildContext context,required int propertyId,bool?isNotify,})async{
 
+    auctionData=null;
     isLoading=true;
+    mostAuctionUser=null;
     if(isNotify!=false) notifyListeners();
     auctionData=await _api.getAuctionData(context: context, propertyId: propertyId);
 

@@ -7,11 +7,12 @@ class RequirementWidget extends StatefulWidget {
   final double? secondIconSize;
   final IconData? isOpenIcon;
   final String title;
+  final String? subTitle;
   final Widget child;
   final Function? onTap;
 
   const RequirementWidget({super.key, this.isOpenIcon, this.secondIconSize, this.onTap,
-    required this.firstIcon,required this.secondIcon,required this.title,required this.child});
+    required this.firstIcon,required this.secondIcon,required this.title,required this.child,this.subTitle});
 
   @override
   State<RequirementWidget> createState() => _RequirementWidgetState();
@@ -102,6 +103,13 @@ Widget build(BuildContext context) {
          ),
 
               const AppSizeBox(width: 10,),
+              widget.subTitle!=null?
+              AppText(
+                  title: widget.subTitle!,
+                  titleAlign: TextAlign.end,
+                  titleHeight: 1.1,
+                  titleMaxLines: 10,fontWeightType: FontWeightType.medium,
+                  titleSize: FontSize.s14,titleColor: ColorManager.primary):
               Container (
                 width: 38,
                 height: 38,

@@ -26,7 +26,8 @@ import 'search_list_data.dart';
 
 class SearchListScreen extends StatefulWidget {
   final List<GeneralPropertyModel>? properties;
-  const SearchListScreen({Key? key,this.properties}) : super(key: key);
+  final int cityId;
+  const SearchListScreen({Key? key,this.properties,required this.cityId}) : super(key: key);
 
   @override
   State<SearchListScreen> createState() => _SearchListScreenState();
@@ -49,7 +50,7 @@ class _SearchListScreenState extends State<SearchListScreen> {
       context.read<SearchProvider>().allProperties=widget.properties!;
       context.read<SearchProvider>().properties=widget.properties!;
     }else {
-      context.read<SearchProvider>().getProperties(context: context,isNotify: false,);
+      context.read<SearchProvider>().getProperties(context: context,isNotify: false,cityId: widget.cityId);
     }
   }
 
@@ -95,7 +96,8 @@ class _SearchListScreenState extends State<SearchListScreen> {
               highlightColor:ColorManager.white ,
               onTap: (){
                 searchListData.isAuction.value=!value;
-                context.read<SearchProvider>().getProperties(context: context,isNotify: true,isAuction: searchListData.isAuction.value);
+                context.read<SearchProvider>().getProperties(context: context,isNotify: true,isAuction: searchListData.isAuction.value,
+                cityId: widget.cityId);
               } ,
               child: value? Row(
                 mainAxisAlignment: MainAxisAlignment.center,
