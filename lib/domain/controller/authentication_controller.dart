@@ -51,8 +51,10 @@ class AuthController  {
   Future<RegisterModel?> register({required BuildContext context,required RegisterRequestModel model}) async {
     RegisterModel? registerModel;
     FormData formData = FormData();
+    Map<String,dynamic>body= model.toJson();
+    body.removeWhere((key, value) => value == null);
 
-    for(var entry in model.toJson().entries){
+    for(var entry in body.entries){
       if(entry.value is File){
         formData.files.add(MapEntry(entry.key, MultipartFile.fromFileSync(entry.value.path)));
       }else{

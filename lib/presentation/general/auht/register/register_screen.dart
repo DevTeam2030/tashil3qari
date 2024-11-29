@@ -186,7 +186,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 borderColor: ColorManager.textGrey,
                                 // borderRadius: RadiusManager.r10,
                                 // prefixIcon: const Icon(Icons.email_outlined,color: ColorManager.icons,size: AppSize.s20,),
-                                validator: (v) => Validator().validateEmpty(value: v.toString(),),
+                                validator: (v) => Validator().validateIdNumber(value: v.toString(),),
                               ),
 
 
@@ -244,7 +244,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                               DefaultTextFormField(
                                 controller: _registerData.phoneController,
-                                hintTitle: 'MobileNumber'.tr(),
+                                // hintTitle: 'MobileNumber'.tr(),
+                                hintTitle: '05xxxxxxxx',
                                 labelTitle: 'MobileNumber'.tr(),
                                 textInputAction: TextInputAction.done,
                                 textInputType: TextInputType.phone,

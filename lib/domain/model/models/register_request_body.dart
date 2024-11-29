@@ -35,7 +35,7 @@ class RegisterRequestModel {
   String passwordConfirmation;
   String lang;
   String serialNumber;
-  File image;
+  File? image;
   String phone;
   String firstName;
   String des;

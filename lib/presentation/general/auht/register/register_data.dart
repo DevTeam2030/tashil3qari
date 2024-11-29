@@ -40,10 +40,10 @@ class RegisterData{
 
 
     if(formKey.currentState!.validate()){
-      if(imagePicker==null){
-        LoadingDialog.showSimpleToast('PleaseEnterPicture'.tr());
-        return;
-      }
+      // if(imagePicker==null){
+      //   LoadingDialog.showSimpleToast('PleaseEnterPicture'.tr());
+      //   return;
+      // }
       if(agreeTerms.value==false){
         LoadingDialog.showSimpleToast('agreeTermsMessage'.tr());
         return;
@@ -67,7 +67,7 @@ class RegisterData{
         nationality: nationality.id.toString(),
         // nationality: nationalityController.text,
         registrationType: RegisterType.email,
-        image: File(imagePicker!.path),
+        image:imagePicker==null?null: File(imagePicker!.path),
         phone: phoneController.text.trim(),
         firstName: firstNameController.text.trim(),
         lastName: lastNameController.text.trim(),

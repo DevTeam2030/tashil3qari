@@ -140,30 +140,29 @@ class _HomeScreenState extends State<HomeScreen> {
                   setState(() {});
                   },
                 ),
-                if(provider.properties.isNotEmpty && provider.selectedCity.value != null)
+                if(
+                // provider.properties.isNotEmpty &&
+                    provider.selectedCity.value != null)
                 HomeShowAll(properties: provider.properties,cityId: provider.selectedCity.value!.id),
-                if (provider.properties.isNotEmpty && provider.selectedCity.value != null)
+                if (
+                // provider.properties.isNotEmpty &&
+                    provider.selectedCity.value != null)
                   AuctionButton(
                       onTap: (value) async {
                         provider.showAuctionOnMap.value = value;
-                        await context
-                            .read<HomeProvider>()
-                            .getProperties(
-                                context: context,
-                                forSale:
-                                    provider.selectedAdType == AdType.forSale,
-                                forRent:
+                        await context.read<HomeProvider>().getProperties(
+                            context: context, forSale: provider.selectedAdType == AdType.forSale, forRent:
                                     provider.selectedAdType == AdType.forRent,
                                 cityId: provider.selectedCity.value?.id,
                                 isAuction: value)
                             .then((value) => provider.initPropertiesMarkers(
                                 context: context));
                       }),
-                SelectedCityMap(),
+                const SelectedCityMap(),
                 GetCurrentLocationWidget(
                   onTap: ()=>getCurrentLocation(context: context),
                 ),
-                HomeOpenSearch(),
+                const HomeOpenSearch(),
               ],
             ),
           ),
@@ -182,8 +181,9 @@ class _HomeScreenState extends State<HomeScreen> {
       context.read<HomeProvider>().currentLocation = latLng;
       CameraPosition kLake = CameraPosition(
         target: latLng,
-        zoom: 10,
+        zoom: 14,
       );
+
 
       final GoogleMapController controller = await  context.read<HomeProvider>().mapController.future;
       await controller.animateCamera(CameraUpdate.newCameraPosition(kLake));

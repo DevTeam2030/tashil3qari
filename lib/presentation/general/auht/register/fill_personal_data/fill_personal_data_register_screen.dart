@@ -242,7 +242,8 @@ class _FillPersonalDataRegisterScreenState extends State<FillPersonalDataRegiste
 
                               DefaultTextFormField(
                                 controller: _fillData.phoneController,
-                                hintTitle: 'MobileNumber'.tr(),
+                                hintTitle: '05xxxxxxxx',
+                                // hintTitle: 'MobileNumber'.tr(),
                                 labelTitle: 'MobileNumber'.tr(),
                                 textInputAction: TextInputAction.done,
                                 textInputType: TextInputType.phone,

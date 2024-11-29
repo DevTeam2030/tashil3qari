@@ -3,8 +3,8 @@ import 'package:tashil_agary/domain/model/models/setting_model.dart';
 import 'package:tashil_agary/domain/model/models/user_data_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 import '../domain/model/models/general_property_model.dart';
+
 
 GeneralPropertyModel constantProperty=GeneralPropertyModel(
  endDuration: '',userId: 0,
@@ -14,6 +14,7 @@ GeneralPropertyModel constantProperty=GeneralPropertyModel(
  gallery: [],floor: '',featured: false,country: '',city: '',bathroomsNo: '',rate: 0,countryId: 0,image: '',
  cityId: 0,id: 1,type: '',category: '',currency: '',price: '',propertySize: '',propertyTitle: '',roomsNo: '',
     show: false,wishlist: false);
+
 class Constants{
  // static bool buildAllCitiesMarkersBefore=false;
  // static    ValueNotifier<bool>   isRealLocationSelected= ValueNotifier<bool>(false);

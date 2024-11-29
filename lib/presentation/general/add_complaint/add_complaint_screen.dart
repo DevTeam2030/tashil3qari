@@ -74,7 +74,8 @@ late AddComplaintData addComplaintData;
 
                       DefaultTextFormField(
                         controller: addComplaintData.phoneController,
-                        hintTitle: 'MobileNumber'.tr(),
+                        hintTitle: '05xxxxxxxx',
+                        // hintTitle: 'MobileNumber'.tr(),
                         labelTitle: 'MobileNumber'.tr(),
                         textInputAction: TextInputAction.next,
                         textInputType: TextInputType.phone,

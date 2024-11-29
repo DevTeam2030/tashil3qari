@@ -139,7 +139,7 @@ Widget build(BuildContext context) {
                 borderColor: ColorManager.textGrey,
                 borderRadius: RadiusManager.r10,
                 // prefixIcon: const Icon(Icons.phone,color: ColorManager.icons,size: AppSize.s20,),
-                validator: (v) => Validator().validateEmpty(value: v.toString(),),
+                validator: (v) => Validator().validateIdNumber(value: v.toString(),),
               ),
             ],
           ),
@@ -161,7 +161,8 @@ Widget build(BuildContext context) {
 
           DefaultTextFormField(
             controller: widget.personalProfileData.phoneController,
-            hintTitle: 'MobileNumber'.tr(),
+            hintTitle: '05xxxxxxxx',
+            // hintTitle: 'MobileNumber'.tr(),
             labelTitle: 'MobileNumber'.tr(),
             enabled: false,
             textInputAction: TextInputAction.next,

@@ -21,6 +21,7 @@
   "user": "مستخدم",
   "RealEstateConsultant": "مستشار عقارى",
   "Phone must contain at least 9 numbers staring with 05": "يجب أن يحتوي الهاتف على 9 أرقام على الأقل يبدأ بـ 05",
+  "Phone must contain 10 numbers staring with 05": "يجب أن يحتوي الهاتف 10 أرقام و يبدأ بـ 05",
 
   "AddPersonalData": "أضف بياناتك الشخصية",
   "AddPersonalDataMessage": "يمكنك تعديل هذا لاحقًا في إعدادات حسابك.",
@@ -660,8 +661,9 @@
   "delete account": "حذف الحساب",
   "DeleteAccountMessage": "هل أنت متأكد من حذف حسابك ؟",
   "yesAgree": "نعم موافق",
-  "passWordValidate": "يجب ان تحتوى الكلمه على تحتوي على حرف و رقم واحد على الأقل",
+  "passWordValidate": "يجب ان تحتوى الكلمه على حرف و رقم واحد على الأقل",
   "passWordValidateLength": "يجب ان تحتوى الكلمه على الأقل 8 أحرف وارقام",
+  "The word must contain 10 characters": "يجب ان تحتوى الكلمة على 10 خانات",
   "saleRent": "للبيع/للايجار ",
   "Reason for reporting": "سبب الإبلاغ",
   "ChooseSerialNumber": "إختر الرقم التسلسلي",

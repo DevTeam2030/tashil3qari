@@ -185,15 +185,26 @@ class Validator {
 //     }
 //   }
 
+  String? validateIdNumber({required String value, String? message,}) {
+    if (value.trim().isEmpty) {
+      return message ?? fillFields;
+      } else if (value.length !=10) {
+      return message ?? tr('The word must contain 10 characters');
+
+    }
+    return null;
+  }
+
   String? validatePhone({required String value, String? message,}) {
     // String phone=Utils.checkStartDigitsPhone(phone: value);
-   
+
     String phone=value;
-    
+
     if (phone.trim().isEmpty) {
       return message ?? fillFields;
-    } else if (!phone.startsWith("05", 0) || phone.length > 14 || phone.length < 9) {
-      // } else if (!startsWith("05", 0) || length !=10) {
+    // } else if (!phone.startsWith("05", 0) || phone.length > 14 || phone.length < 9) {
+      } else if (!phone.startsWith("05", 0) || phone.length !=10) {
+      return message ?? tr('Phone must contain 10 numbers staring with 05');
       return message ?? tr('Phone must contain at least 9 numbers staring with 05');
     }
     return null;
