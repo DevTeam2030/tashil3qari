@@ -313,6 +313,61 @@ class TextBoxWidget extends StatelessWidget {
 
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 1),
+          // height: 40,
+          // width: 50,
+          // alignment: Alignment.center,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: ColorManager.primary.withOpacity(.5),
+            border: Border.all(
+              color: ColorManager.primary,
+              width: 1,
+            ),
+          ),
+
+
+          child:AppText(
+              title: text,
+              titleAlign: TextAlign.center,
+              titleMaxLines: 2,
+              titleHeight: 1.4,
+              fontWeightType: FontWeightType.medium,
+              titleSize: FontSize.s12,
+              titleColor: ColorManager.white),),
+            Image.asset(
+              ImageManager.polygon2,
+              width: 20,
+              height: 20,
+              fit: BoxFit.fill,
+              color:ColorManager.primary
+
+        ),
+
+
+          ],
+        );
+  }
+}
+
+class TextBoxWidget2 extends StatelessWidget {
+  const TextBoxWidget2({
+    super.key,
+    required this.text,
+
+  });
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return  Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+
+
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 1),
           // height: 30,
           // width: 30,
           // alignment: Alignment.center,

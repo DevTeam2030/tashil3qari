@@ -25,12 +25,14 @@ class HomeProvider extends ChangeNotifier {
   // List<FinishingTypesModel>finishingTypes=[];
   // List<HomeCatogeryModel> categories=[];
   //-------------------------------------------------
-  double cameraZoom=4.5;
+  double cameraZoom=5.1;
+  // double cameraZoom=4.5;
   Set<Marker> markers = {};
   Set<Marker> allCitiesMarkers = {};
   Completer<GoogleMapController> mapController = Completer();
   LatLng locationCustom = const LatLng(23.8859, 45.0785);
-  LatLng currentLocation = const LatLng(23.8859, 45.0785);
+  // LatLng currentLocation = const LatLng(23.8859, 45.0785);
+  LatLng currentLocation = const LatLng(25.8859, 45.0785);
   AdType? selectedAdType;
   ValueNotifier<bool> monthly = ValueNotifier<bool>(false);
   // AdType selectedAdType= AdType.forSale;
