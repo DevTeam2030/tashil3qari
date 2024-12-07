@@ -80,12 +80,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         mapType: provider.mapType,
                         myLocationButtonEnabled:false,
                         myLocationEnabled: false,
-                        scrollGesturesEnabled:true,
-                        zoomGesturesEnabled: true,
-                        zoomControlsEnabled: true,
-                        // scrollGesturesEnabled: !provider.showCitiesMarkers||showLocationPermiosion,
-                        // zoomGesturesEnabled: !provider.showCitiesMarkers||showLocationPermiosion,
-                        // zoomControlsEnabled: !provider.showCitiesMarkers||showLocationPermiosion,
+                        // scrollGesturesEnabled:true,
+                        // zoomGesturesEnabled: true,
+                        // zoomControlsEnabled: true,
+                        scrollGesturesEnabled: !provider.showCitiesMarkers||showLocationPermiosion,
+                        zoomGesturesEnabled: !provider.showCitiesMarkers||showLocationPermiosion,
+                        zoomControlsEnabled: !provider.showCitiesMarkers||showLocationPermiosion,
                         rotateGesturesEnabled: !provider.showCitiesMarkers,
                         compassEnabled: false,
                         // cameraTargetBounds: CameraTargetBounds(saudiBounds2),
@@ -96,12 +96,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         initialCameraPosition:  CameraPosition(
-                          // target:  LatLng(25.8859, 45.0785), // الموقع الافتراضي للسعودية
-                          // zoom: 5.1,
                           zoom: provider.cameraZoom,
                           target: provider.currentLocation, // الموقع الافتراضي للسعودية
-                          // target: LatLng(23.8859, 45.0792), // الموقع الافتراضي للسعودية
-
                         ),
                         minMaxZoomPreference:  MinMaxZoomPreference(provider.cameraZoom, 28),
                         onCameraMove: (CameraPosition position) async{
