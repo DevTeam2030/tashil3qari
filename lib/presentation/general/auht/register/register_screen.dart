@@ -92,7 +92,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             children: [
                               const AppSizeBox(height: AppSize.s60),
                               if(Navigator.canPop(context))
-                                 Row(
+                                 const Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     BackAppBarButton(),
@@ -174,8 +174,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               const AppSizeBox(height: AppSize.s8),
                               DefaultTextFormField(
                                 controller: _registerData.idNumberController,
-                                hintTitle:_registerData.userType==UserType.consultant?"idNumberCons".tr(): "idNumberUser".tr(),
-                                labelTitle:_registerData.userType==UserType.consultant?"idNumberCons".tr(): "idNumberUser".tr(),
+                                hintTitle:_registerData.userType==UserType.consultant? Constants.settingModel.idNumberCons:  Constants.settingModel.idNumberUser,
+                                labelTitle:_registerData.userType==UserType.consultant? Constants.settingModel.idNumberCons:  Constants.settingModel.idNumberUser,
+
+                                // hintTitle:_registerData.userType==UserType.consultant?"idNumberCons".tr(): "idNumberUser".tr(),
+                                // labelTitle:_registerData.userType==UserType.consultant?"idNumberCons".tr(): "idNumberUser".tr(),
                                 textInputAction: TextInputAction.next,
                                 textInputType: TextInputType.text,
                                 hintFontSize: FontSize.s12,

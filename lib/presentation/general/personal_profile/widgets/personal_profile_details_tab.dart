@@ -111,7 +111,8 @@ Widget build(BuildContext context) {
               Row(
                 children: [
                   AppText(
-                    title: widget.personalProfileData.userType==UserType.consultant?"idNumberCons".tr(): "idNumberUser".tr(),
+                    title: widget.personalProfileData.userType==UserType.consultant? Constants.settingModel.idNumberCons:  Constants.settingModel.idNumberUser,
+                    // title: widget.personalProfileData.userType==UserType.consultant?"idNumberCons".tr(): "idNumberUser".tr(),
                     // title:'National Identification Number'.tr(),
                     titleSize: FontSize.s12,
                     titleMaxLines: 2,
@@ -125,8 +126,10 @@ Widget build(BuildContext context) {
               DefaultTextFormField(
                 enabled: false,
                 controller: widget.personalProfileData.idController,
-                hintTitle:  widget.personalProfileData.userType==UserType.consultant?"idNumberCons".tr(): "idNumberUser".tr(),
-                labelTitle: widget.personalProfileData.userType==UserType.consultant?"idNumberCons".tr(): "idNumberUser".tr(),
+                hintTitle:  widget.personalProfileData.userType==UserType.consultant? Constants.settingModel.idNumberCons:  Constants.settingModel.idNumberUser,
+                labelTitle:  widget.personalProfileData.userType==UserType.consultant? Constants.settingModel.idNumberCons:  Constants.settingModel.idNumberUser,
+                // hintTitle:  widget.personalProfileData.userType==UserType.consultant?"idNumberCons".tr(): "idNumberUser".tr(),
+                // labelTitle: widget.personalProfileData.userType==UserType.consultant?"idNumberCons".tr(): "idNumberUser".tr(),
                 // hintTitle: 'Enter national ID number'.tr(),
                 // labelTitle: 'Enter national ID number'.tr(),
                 textInputAction: TextInputAction.next,

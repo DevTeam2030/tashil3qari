@@ -22,6 +22,7 @@ class Constants{
  static  bool isProductionMode=true;
  static SettingModel settingModel=SettingModel(consultantFess: 0,countAllAds: 0,licenseFess: 0,
      categories: [],countries: [], appValueAfterSelling: 0,servicesAboutAr: '',servicesAboutEn: '',
+      idNumberCons: '',idNumberUser: '',
      pledgeMessage: '',policyPrivacy: '',terms: '', finishingTypes: [],auctionDurations: [],
      reasons: [],currencies: [],featuredPlans:[],serialNumbers: [],nationalities: []);
 

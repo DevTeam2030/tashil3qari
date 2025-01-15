@@ -15,6 +15,7 @@ import 'package:tashil_agary/utilites/font_manager.dart';
 import 'package:tashil_agary/utilites/image_manager.dart';
 import 'package:tashil_agary/utilites/styles_manager.dart';
 import 'package:tashil_agary/utilites/values_manager.dart';
+import '../../../../app/contants.dart';
 import '../../../../components/text_field/text_field_imports.dart';
 import '../widgets/bar_title_value.dart';
 
@@ -84,8 +85,9 @@ class _EnterEmailForgetPasswordScreenState extends State<EnterEmailForgetPasswor
 
                   DefaultTextFormField(
                     controller: idController,
-                    hintTitle: 'idNumberCons'.tr(),
-                    labelTitle: 'idNumberCons'.tr(),
+                    hintTitle:  Constants.settingModel.idNumberCons,
+                    labelTitle:  Constants.settingModel.idNumberCons,
+                    // labelTitle: 'idNumberCons'.tr(),
                     textInputAction: TextInputAction.next,
                     textInputType: TextInputType.text,
                     hintFontSize: FontSize.s12,

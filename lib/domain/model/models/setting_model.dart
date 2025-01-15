@@ -23,6 +23,8 @@ class SettingModel {
     required this.terms,
     required this.policyPrivacy,
     required this.pledgeMessage,
+    required this.idNumberCons,
+    required this.idNumberUser,
   });
   List<HomeCatogeryModel> categories;
   List<CountryModel> countries;
@@ -42,6 +44,9 @@ class SettingModel {
   String terms;
   String policyPrivacy;
   String pledgeMessage ;
+  String idNumberCons ;
+  String idNumberUser ;
+
 
   factory SettingModel.fromJson(Map<String, dynamic> json) => SettingModel(
     categories: List<HomeCatogeryModel>.from(json["categories"].map((x) => HomeCatogeryModel.fromJson(x))),
@@ -62,6 +67,8 @@ class SettingModel {
     pledgeMessage : json["pledge_message"]??'',
     terms: json["terms"]??'',
     policyPrivacy: json["policy_privacy"]??'',
+    idNumberCons: json["id_number_cons"]??'',
+    idNumberUser: json["id_number_user"]??'',
 
   );
 
