@@ -12,7 +12,7 @@ import 'package:tashil_agary/components/size_box_height.dart';
 import 'package:tashil_agary/presentation/general/auht/forget_passwword/enter_email_forget_password_screen.dart';
 import 'package:tashil_agary/presentation/general/auht/login/login_data.dart';
 import 'package:tashil_agary/presentation/general/auht/register/register_screen.dart';
-import 'package:tashil_agary/presentation/general/auht/widgets/sign_up_with_widget.dart';
+import '../../../../app/contants.dart';
 import 'package:tashil_agary/providers/auth_provider.dart';
 import 'package:tashil_agary/utilites/color_manager.dart';
 import 'package:tashil_agary/utilites/font_manager.dart';
@@ -101,8 +101,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
                           DefaultTextFormField(
                             controller: _loginData.idNumberController,
-                            hintTitle: 'idNumberCons'.tr(),
-                            labelTitle: 'idNumberCons'.tr(),
+                            hintTitle:  Constants.settingModel.idNumberCons,
+                            labelTitle:  Constants.settingModel.idNumberCons,
+                            // hintTitle: 'idNumberCons'.tr(),
+                            // labelTitle: 'idNumberCons'.tr(),
                             textInputAction: TextInputAction.next,
                             textInputType: TextInputType.text,
                             hintFontSize: FontSize.s12,
