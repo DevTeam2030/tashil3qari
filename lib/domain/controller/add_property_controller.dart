@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -152,7 +153,9 @@ class AddPropertyController  {
 
   }
   Future<void> makeAdFeatured({required BuildContext context,required  MakeAdFeaturedModel model}) async {
-    var res = await _dio.post(url:'${Urls.featuredProperty}?lang=${Constants.langCode}', context: context,body: model.toJson(),);
+    log(model.toJson().toString());
+    var res = await _dio.post(url:'${Urls.featuredProperty}?lang=${Constants.langCode}',
+      context: context,body: model.toJson(),);
     if (res != null) {
       gotoIntro(context: context);
       LoadingDialog().widgetAlertDialog(context:Constants.navigatorAppKey.currentContext!,

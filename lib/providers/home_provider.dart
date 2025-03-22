@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
@@ -8,16 +9,20 @@ import 'package:tashil_agary/domain/controller/search_controller.dart';
 import 'package:tashil_agary/domain/model/models/country_model.dart';
 import 'package:tashil_agary/domain/model/models/home_catogery_model.dart';
 import 'package:tashil_agary/presentation/general/home_Screen/widgets/widget_imports.dart';
+import 'package:tashil_agary/providers/profile_provider.dart';
 import 'package:widget_to_marker/widget_to_marker.dart';
 import '../app/contants.dart';
 import '../app/enums.dart';
+import '../app/my_app.dart';
 import '../components/loading_manager.dart';
 import '../domain/model/models/general_property_model.dart';
+import '../presentation/general/ad/ad_imports.dart';
 import '../presentation/general/home_Screen/home_imports.dart';
+import '../utilites/route_manager.dart';
 import 'general_provider.dart';
 
 
-class HomeProvider extends ChangeNotifier {
+class HomeProvider2 extends ChangeNotifier {
   final HomeController _api=HomeController();
   final SearchApiController _apiSearch=SearchApiController();
   bool isLoading=false;
@@ -88,6 +93,7 @@ class HomeProvider extends ChangeNotifier {
 
       var country = context.read<GeneralProvider>().mapCountry;
       int? savedCityBefore=CacheHelper.getData(key: ConstantsKeys.selectedCityIdnMapKey);
+      // int? savedCityBefore;
       if(savedCityBefore!=null){
         selectedCity.value=country.cities.firstWhere((element) => element.id==savedCityBefore);
         showCitiesMarkers = false;
@@ -189,8 +195,7 @@ class HomeProvider extends ChangeNotifier {
     }catch(e){
       print(e.toString());
     }
-    Future.delayed(const Duration(seconds: 2)).then((value) =>
-    showAllMap = true);
+    Future.delayed(const Duration(seconds: 2)).then((value) => showAllMap = true);
     isLoading=false;
     notifyListeners();
   }

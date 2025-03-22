@@ -6,6 +6,7 @@ import 'package:tashil_agary/utilites/image_manager.dart';
 import '../../../../app/contants.dart';
 import '../../../../app/enums.dart';
 import '../../../../app/utils.dart';
+import '../../../../domain/model/models/country_model.dart';
 import '../../../../domain/model/models/general_property_model.dart';
 import '../../../../utilites/color_manager.dart';
 import '../../../../utilites/font_manager.dart';
@@ -18,8 +19,8 @@ import '../../search_list/search_list_screen.dart';
 
 class HomeShowAll extends StatelessWidget {
   final List<GeneralPropertyModel> properties;
-  final int cityId;
-  const HomeShowAll({super.key,required this.properties,required this.cityId});
+  final CityModel city;
+  const HomeShowAll({super.key,required this.properties,required this.city});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,7 @@ class HomeShowAll extends StatelessWidget {
           highlightColor:ColorManager.white ,
           onTap: (){
             // MyRoute().navigate(context: context, route:  SearchListScreen(properties: properties,));
-            MyRoute().navigate(context: context, route:  SearchListScreen(properties: [],cityId:cityId));
+            MyRoute().navigate(context: context, route:  SearchListScreen(properties: const [],city:city));
           } ,
           child: Row(
             children: [

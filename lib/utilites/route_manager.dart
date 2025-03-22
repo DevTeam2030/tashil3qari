@@ -30,6 +30,7 @@ import 'package:tashil_agary/presentation/orders_details/orders_details_screen.d
 import 'package:tashil_agary/presentation/search/search_screen.dart';
 
 import '../domain/model/models/auth/register_model.dart';
+import '../domain/model/models/country_model.dart';
 import '../domain/model/models/property_info_model.dart';
 import '../domain/model/models/user_ads_model.dart';
 import '../presentation/general/ad/ad_imports.dart';
@@ -43,6 +44,7 @@ import '../presentation/general/council/council_imports.dart';
 import '../presentation/general/edit_ad/edit_ad_imports.dart';
 import '../presentation/general/favorites/favorites_screen.dart';
 import '../presentation/general/home_Screen/home_imports.dart';
+import '../presentation/general/home_map_screen/home_map_imports.dart';
 import '../presentation/general/personal_profile/personal_profile_imports.dart';
 import '../presentation/general/search_list/search_list_screen.dart';
 import '../presentation/general/services/services_imports.dart';
@@ -178,9 +180,10 @@ class RouteGenerator{
       case Routes.ordersScreen :return MaterialPageRoute(builder: (context) =>  const OrdersScreen(),);
       case Routes.ordersDetailsScreen :return MaterialPageRoute(builder: (context) =>  const OrdersDetailsScreen(),);
 
-      case Routes.homeScreen :return MaterialPageRoute(builder: (context) =>  const HomeScreen(),);
+      case Routes.homeScreen :return MaterialPageRoute(builder: (context) =>  const HomeMapScreen(),);
+      // case Routes.homeScreen :return MaterialPageRoute(builder: (context) =>  const HomeScreen(),);
       case Routes.searchLocationScreen :return MaterialPageRoute(builder: (context) =>    SearchLocationScreen(onTap: (v,x,y){}),);
-      case Routes.searchListScreen :return MaterialPageRoute(builder: (context) =>  const SearchListScreen(cityId:0),);
+      case Routes.searchListScreen :return MaterialPageRoute(builder: (context) =>   SearchListScreen(city:CityModel(id: 0,name: '',image: '',latitude: 0,longitude: 0)),);
       case Routes.dashBoardScreen :return MaterialPageRoute(builder: (context) =>  const DashBoardScreen(),);
       case Routes.addAdScreen :return MaterialPageRoute(builder: (context) =>  const AddAdScreen(),);
       case Routes.editAdScreen :return MaterialPageRoute(builder: (context) =>   EditAdScreen(

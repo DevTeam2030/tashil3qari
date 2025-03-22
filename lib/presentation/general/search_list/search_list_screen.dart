@@ -19,6 +19,7 @@ import '../../../app/enums.dart';
 import '../../../components/gridListItem.dart';
 import '../../../components/screen_loading.dart';
 import '../../../components/text_field/general_appbar_logo.dart';
+import '../../../domain/model/models/country_model.dart';
 import '../../../domain/model/models/general_property_model.dart';
 import '../../../utilites/font_manager.dart';
 import '../../../utilites/styles_manager.dart';
@@ -26,8 +27,8 @@ import 'search_list_data.dart';
 
 class SearchListScreen extends StatefulWidget {
   final List<GeneralPropertyModel>? properties;
-  final int cityId;
-  const SearchListScreen({Key? key,this.properties,required this.cityId}) : super(key: key);
+  final CityModel city;
+  const SearchListScreen({super.key,this.properties,required this.city});
 
   @override
   State<SearchListScreen> createState() => _SearchListScreenState();
@@ -46,11 +47,12 @@ class _SearchListScreenState extends State<SearchListScreen> {
     super.initState();
     // categories.addAll(Constants.settingModel.categories);
     searchListData.selectedCategory.value=categories.first;
+    searchListData.selectedCity.value=widget.city;
     if(widget.properties!=null&&widget.properties!.isNotEmpty){
       context.read<SearchProvider>().allProperties=widget.properties!;
       context.read<SearchProvider>().properties=widget.properties!;
     }else {
-      context.read<SearchProvider>().getProperties(context: context,isNotify: false,cityId: widget.cityId);
+      context.read<SearchProvider>().getProperties(context: context,isNotify: false,cityId: widget.city.id);
     }
   }
 
@@ -90,14 +92,16 @@ class _SearchListScreenState extends State<SearchListScreen> {
             decoration: Utils.returnDropdownButtonDecoration(ColorManager.primary,
                 ColorManager.primary,10),
             margin:  const EdgeInsets.only(bottom: 30,right: 10,left: 10),
-            padding: EdgeInsets.symmetric(horizontal: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: InkWell(
               splashColor: ColorManager.white,
               highlightColor:ColorManager.white ,
               onTap: (){
                 searchListData.isAuction.value=!value;
-                context.read<SearchProvider>().getProperties(context: context,isNotify: true,isAuction: searchListData.isAuction.value,
-                cityId: widget.cityId);
+                context.read<SearchProvider>().getProperties(context: context,
+                    isNotify: true,isAuction: searchListData.isAuction.value,
+
+                cityId: searchListData.selectedCity.value?.id);
               } ,
               child: value? Row(
                 mainAxisAlignment: MainAxisAlignment.center,

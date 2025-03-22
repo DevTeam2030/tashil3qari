@@ -71,7 +71,9 @@ late  ValueNotifier<FinishingTypesModel> finishing;
   void initState() {
     super.initState();
     selectedCountry= context.read<GeneralProvider>().userCountry;
-    selectedCity= context.read<GeneralProvider>().userCity;
+
+    var cities=selectedCountry.cities.where((element) => element.id==widget.searchListData.selectedCity.value!.id,).toList();
+    selectedCity=cities.isNotEmpty?widget.searchListData.selectedCity.value!:context.read<GeneralProvider>().userCity;
     selectedCategory.value=Constants.settingModel.categories.first;
     finishing=finishing = ValueNotifier<FinishingTypesModel>(Constants.settingModel.finishingTypes.first);
   }

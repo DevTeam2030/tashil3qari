@@ -1,18 +1,13 @@
-import 'package:provider/provider.dart';
-import 'package:tashil_agary/app/enums.dart';
-import 'package:tashil_agary/app/extentions.dart';
-import 'package:tashil_agary/components/app_bar.dart';
-import 'package:tashil_agary/components/app_scaffold.dart';
-import 'package:tashil_agary/components/screen_loading.dart';
-import 'package:tashil_agary/components/size_box_height.dart';
-import 'package:tashil_agary/providers/home_provider.dart';
-import 'package:tashil_agary/utilites/font_manager.dart';
-import 'package:tashil_agary/utilites/styles_manager.dart';
-import 'package:tashil_agary/utilites/values_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:tashil_agary/app/extentions.dart';
+import 'package:tashil_agary/components/app_bar.dart';
+import 'package:tashil_agary/components/screen_loading.dart';
+import 'package:tashil_agary/utilites/values_manager.dart';
+import '../../../providers/home_map_provider.dart';
 
 class TermsOfServiceScreen extends StatefulWidget {
   const TermsOfServiceScreen({Key? key}) : super(key: key);
@@ -32,7 +27,7 @@ class _TermsOfServiceScreenState extends State<TermsOfServiceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar(title: 'termsOfService'.tr()),
-        body:  Consumer<HomeProvider>(
+        body:  Consumer<HomeMapProvider>(
           builder: (context, provider, child) => ScreenLoading(
             isLoading: provider.isLoading,
             height: 1.0.sh,

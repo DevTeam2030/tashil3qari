@@ -17,13 +17,13 @@ class GetCurrentLocationWidget extends StatelessWidget {
         
         decoration: Utils.returnDropdownButtonDecoration(ColorManager.white,
           ColorManager.white,18),
-        margin:  EdgeInsets.only(bottom: 120,right: 10,left: 10),
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        margin:  const EdgeInsets.only(bottom: 120,right: 10,left: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: InkWell(
           splashColor: ColorManager.white,
           highlightColor:ColorManager.white ,
           onTap: ()=>onTap() ,
-          child: Icon(Icons.gps_fixed_outlined,color: ColorManager.text,)
+          child:const Icon(Icons.gps_fixed_outlined,color: ColorManager.text,)
         ),
       ),
     );

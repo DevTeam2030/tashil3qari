@@ -1,12 +1,10 @@
-
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tashil_agary/app/contants.dart';
 import 'package:tashil_agary/domain/controller/wishlist_controller.dart';
-import 'package:tashil_agary/domain/model/home_venue_model.dart';
 import 'package:tashil_agary/domain/model/model/home_product.dart';
-import 'package:tashil_agary/providers/home_provider.dart';
+
+import 'home_map_provider.dart';
 
 
 class WishlistProvider extends ChangeNotifier {
@@ -51,10 +49,10 @@ class WishlistProvider extends ChangeNotifier {
     bool wished=await _api.wishlist(context: context,adId: adId);
     context= Constants.navigatorAppKey.currentState!.context;
     if(wished) {
-      for (var item in context.read<HomeProvider>().properties) {
+      for (var item in context.read<HomeMapProvider>().properties) {
         if (item.id == adId) {
           item.wishlist = true;
-          context.read<HomeProvider>().notifyListeners();
+          context.read<HomeMapProvider>().notifyListeners();
           return wished;
         }
       }
@@ -71,11 +69,11 @@ class WishlistProvider extends ChangeNotifier {
     context= Constants.navigatorAppKey.currentState!.context;
     if(unWished){
       // ignore: use_build_context_synchronously
-      for(var item in context.read<HomeProvider>().properties){
+      for(var item in context.read<HomeMapProvider>().properties){
         if(item.id==adId){
           item.wishlist=false;
           // ignore: use_build_context_synchronously
-          context.read<HomeProvider>().notifyListeners();
+          context.read<HomeMapProvider>().notifyListeners();
           return unWished;
         }
       }

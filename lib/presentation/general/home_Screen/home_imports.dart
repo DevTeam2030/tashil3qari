@@ -38,6 +38,7 @@ import '../../../utilites/image_manager.dart';
 import '../../../utilites/route_manager.dart';
 import '../ad/ad_imports.dart';
 import '../auht/widgets/bar_title_value.dart';
+import 'home_map.dart';
 
 
 part 'home_add_location_screen.dart';

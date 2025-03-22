@@ -21,6 +21,7 @@ import 'package:tashil_agary/utilites/values_manager.dart';
 
 import '../../app/enums.dart';
 import '../../components/buttons/date_button.dart';
+import '../../providers/home_map_provider.dart';
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
 
@@ -66,7 +67,7 @@ class _CartScreenState extends State<CartScreen> {
             showBackICon: false,
             showDrawer: false,
             titleColor: ColorManager.primary),
-        body: Consumer<HomeProvider>(
+        body: Consumer<HomeMapProvider>(
           builder: (context, provider, child) => ScreenLoading(
             isLoading: provider.isLoading,
             height: 1.0.sh,

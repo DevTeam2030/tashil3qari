@@ -14,6 +14,7 @@ import '../../components/loading_manager.dart';
 import '../general/add_ad/add_ad_imports.dart';
 import '../general/council/council_imports.dart';
 import '../general/home_Screen/home_imports.dart';
+import '../general/home_map_screen/home_map_imports.dart';
 import '../general/personal_profile/personal_profile_imports.dart';
 import '../general/services/services_imports.dart';
 import '../general/your_consultant/your_consultant_imports.dart';
@@ -30,7 +31,9 @@ class DashBoardScreen extends StatefulWidget {
 class _DashBoardScreenState extends State<DashBoardScreen> {
 int screenIndex=0;
 // List screens=[const HomeScreen(),const YourConsultantScreen(), const ServicesScreen(),const PersonalProfileScreen(),];
-List screens=[const HomeScreen(),
+List screens=[
+  // const HomeScreen(),
+  const HomeMapScreen(),
   !Constants.isLogin||Constants.userDataModel==null||Constants.userDataModel!.isUser?
   const YourConsultantScreen():const CouncilScreen(),
   // const AuctionsScreen(),
@@ -40,7 +43,9 @@ List screens=[const HomeScreen(),
   @override
   void initState() {
     super.initState();
-    screens=[const HomeScreen(),
+    screens=[
+      // const HomeScreen(),
+      const HomeMapScreen(),
       !Constants.isLogin||Constants.userDataModel==null||Constants.userDataModel!.isUser?
       const YourConsultantScreen():const CouncilScreen(),
       // const AuctionsScreen(),

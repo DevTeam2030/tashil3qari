@@ -66,7 +66,7 @@ late  ValueNotifier<FinishingTypesModel> finishing;
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(valueListenable:  context.read<HomeProvider>().openSearch,
+    return ValueListenableBuilder(valueListenable:  context.read<HomeMapProvider>().openSearch,
       builder: (context, value, child) =>
           Align(
             alignment: Alignment.topCenter,
@@ -74,7 +74,7 @@ late  ValueNotifier<FinishingTypesModel> finishing;
               onTap: (){
                 FocusScope.of(context).requestFocus( FocusNode());
 
-                 context.read<HomeProvider>().openSearch.value=false;
+                 context.read<HomeMapProvider>().openSearch.value=false;
               },
               child: AnimatedContainer (
                 duration: Duration (seconds: 1),
@@ -120,8 +120,8 @@ late  ValueNotifier<FinishingTypesModel> finishing;
                             borderColor: ColorManager.grey,
                             onChanged: (type) async{
                               selectedAdType=type;
-                              print(type.toString());
-                              print(selectedAdType.toString());
+                              log(type.toString());
+                              log(selectedAdType.toString());
                             },
                             monthly: monthly,
                             inAppbar: false,
@@ -183,19 +183,19 @@ late  ValueNotifier<FinishingTypesModel> finishing;
                               primaryColor: ColorManager.primary,
                               titleColor: ColorManager.white,
                               onPressed: ()async{
-                                 context.read<HomeProvider>().openSearch.value=false;
-                                 context.read<HomeProvider>().selectedCategory.value=selectedCategory.value;
-                                 context.read<HomeProvider>().showCitiesMarkers=false;
+                                 context.read<HomeMapProvider>().openSearch.value=false;
+                                 context.read<HomeMapProvider>().selectedCategory.value=selectedCategory.value;
+                                 context.read<HomeMapProvider>().showCitiesMarkers=false;
 
                                 // context.read<GeneralProvider>().mapCountry=selectedCountry;
                                 // context.read<GeneralProvider>().mapCity=selectedCity;
-                                await context.read<HomeProvider>().getProperties(context: context,
+                                await context.read<HomeMapProvider>().getProperties(context: context,
                                     forSale: selectedAdType==AdType.forSale,
                                     forRent: selectedAdType==AdType.forRent,
                                     monthly: monthly.value,
                                     cityId: selectedCity.id,categoryId: selectedCategory.value.id,
                                 isNotify: true,
-                                    isAuction:  context.read<HomeProvider>().showAuctionOnMap.value,
+                                    isAuction:  context.read<HomeMapProvider>().showAuctionOnMap,
                                     propertySize: spaceController.text.isEmpty?null:double.parse(spaceController.text),
                                     minPrice: lowestPriceController.text.isEmpty?null:double.parse(lowestPriceController.text),
                                     maxPrice: abovePriceController.text.isEmpty?null:double.parse(abovePriceController.text),
@@ -228,7 +228,7 @@ late  ValueNotifier<FinishingTypesModel> finishing;
 
 
                                 ).then((value) =>
-                                     context.read<HomeProvider>().initPropertiesMarkers(context: context));
+                                     context.read<HomeMapProvider>().initPropertiesMarkers(context: context));
 
                               }),
                         ],

@@ -26,6 +26,7 @@ import '../providers/chat_provider.dart';
 import '../providers/consultant_provider.dart';
 import '../providers/council_provider.dart';
 import '../providers/general_provider.dart';
+import '../providers/home_map_provider.dart';
 import '../providers/profile_provider.dart';
 import '../providers/services_provider.dart';
 
@@ -70,7 +71,8 @@ class _MyAppState extends State<MyApp> {
 
         ChangeNotifierProvider(create: (context) => SocialLoginProvider()),
         ChangeNotifierProvider(create: (context) => UserProvider()),
-        ChangeNotifierProvider(create: (context) => HomeProvider()),
+        // ChangeNotifierProvider(create: (context) => HomeProvider()),
+        ChangeNotifierProvider(create: (context) => HomeMapProvider()),
         ChangeNotifierProvider(create: (context) => ProductProvider()),
         ChangeNotifierProvider(create: (context) => OneCategoryProvider()),
 
