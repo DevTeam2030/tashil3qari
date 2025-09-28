@@ -14,7 +14,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-
   firebase_messaging:
   firebase_analytics:
   firebase_core:
@@ -22,7 +21,6 @@ dependencies:
   firebase_auth:
   firebase_dynamic_links:
   cloud_firestore:
-
   google_sign_in:
   flutter_login_facebook:
   sign_in_with_apple:
