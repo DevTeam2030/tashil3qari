@@ -41,6 +41,11 @@ class _LoginScreenState extends State<LoginScreen> {
     // _loginData.passwordController.text='xFoXrEm8';
     // _loginData.idNumberController.text='1234567891';
     // _loginData.passwordController.text='Aa1234567';
+
+    // _loginData.idNumberController.text='54321';
+    // _loginData.passwordController.text='hpY1kaC8';
+    _loginData.idNumberController.text='000000';
+    _loginData.passwordController.text='a1b2c3e4';
   }
 
   @override

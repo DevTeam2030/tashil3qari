@@ -14,10 +14,12 @@ class _HomeMapScreenState extends State<HomeMapScreen> {
     super.initState();
     if(mounted) {
       context.read<HomeMapProvider>().mapController = Completer();
+      context.read<HomeMapProvider>().initDataCitiesMarkers(context: context,notify: false);
+
       // context.read<HomeMapProvider>().showLocationPermiosion=false;
         context.read<NotificationsProvider>().getCountUnreadNotification(context: context);
-        context.read<HomeMapProvider>().initDataCitiesMarkers(context: context,notify: false);
       context.read<HomeMapProvider>().getDocumented(context: context);
+
      
     }
   }
@@ -26,6 +28,7 @@ class _HomeMapScreenState extends State<HomeMapScreen> {
   void dispose() {
     super.dispose();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +42,7 @@ class _HomeMapScreenState extends State<HomeMapScreen> {
             isLoading: provider.isLoading,
             height: 1.sh,
             width: 1.sw,
+
 
             child: Stack(
               children: [

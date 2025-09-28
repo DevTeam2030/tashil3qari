@@ -198,8 +198,9 @@ class DioHelper {
 
 
 String getBaseUrl(){
-    return 'https://naasaq.com/api/';
-    // return 'http://estate.naasaq.com/api/';
+    return 'https://job.phlera.net/m/api/';
+    // return 'https://naasaq.com/api/';
+    // return 'http://estate.naasaq.com/ api/';
     // return 'http://estate.smartbox.com.sa/api/';
 
 }

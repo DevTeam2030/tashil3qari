@@ -139,8 +139,8 @@ class UserAddressModel {
     cityName: json["city_name"]??'',
     countryId: json["country_id"]??0,
     countryName: json["country_name"]??'',
-    longitude: json["longitude"]??'0',
-    latitude: json["latitude"]??'0',
+    longitude: double.tryParse(json["longitude"].toString())!=null?json["longitude"].toString():'0',
+    latitude: double.tryParse(json["latitude"].toString())!=null?json["latitude"].toString():'0',
   );
 
   Map<String, dynamic> toJson() => {

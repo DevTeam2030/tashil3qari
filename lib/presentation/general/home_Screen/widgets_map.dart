@@ -309,8 +309,6 @@ class TextBoxWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       children: [
-
-
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 1),
           // height: 40,

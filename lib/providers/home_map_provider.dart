@@ -141,6 +141,7 @@ var saudiBounds=LatLngBounds(
         isLoading = false;
         notifyListeners();
       }
+
     } catch (e) {
       log(e.toString());
     }
